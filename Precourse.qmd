@@ -82,6 +82,8 @@ pak::pkg_install("survival")
 pak::pkg_install("xml2")
 pak::pkg_install("here")
 pak::pkg_install("BS1125/CMAverse")
+pak::pkg_install("ggdag")
+pak::pkg_install("ggplot2")
 ```
 
 If installation of a package does not work using the "pak" package, then use:
