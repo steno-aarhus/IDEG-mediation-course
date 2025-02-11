@@ -398,27 +398,7 @@ Mediation analysis can be used in both intervention and observational studies.
 
 A key assumption is that the exposure should be before the mediator and the mediator and exposure before the outcome. It is possible by design to have these three variables measured at different time points. In practice, this is rarely the case. Probably because the study was not designed to conduct mediation analysis.
 
-::: callout-note
-## Exercise: Understanding different study designs (30 min)
-
-Stay in the same groups that you did the previous exercise.
-
-1.  First discuss the study you were assigned to in the previous session: (10 min)
-
--   How does the study separate the timing between the exposure, mediator and outcome?
--   Did the study account for all the confounding assumptions? If not, why not? What could they have done?
-
-2.  Everyone: (10 min)
-
--   Describe the issues in your study to everyone.
-
-3.  Everyone: (5 min)
-
--   How should we rank the different studies?
--   And what would be the ideal study design?
-:::
-
-## Two trials
+Two trials:
 
 It is possible to conduct two randomized controlled trials to investigate mediation (@imai_experimental_2013). One approach is the so-called parallel design. Two randomized controlled trials are conducted in parallel. The first investigates the effect of the treatment on the outcome (i.e., total effect). In the second trial we randomize both the treatment and the mediator.
 
