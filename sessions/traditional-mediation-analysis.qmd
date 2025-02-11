@@ -92,11 +92,11 @@ Note: The terms 'mediation effect' and 'indirect effect' are used synonymously.
 
 In this session, we will use an example to address a mediation research question using both traditional approaches.
 
-It has been suggested that physical activity is associated with a reduced risk of Type 2 diabetes (T2D). The predominant hypothesis is that physical activity contributes to weight reduction, which in turn improves lipid metabolism and lowers the risk of developing T2D. Therefore, we aim to investigate the extent to which the effect of physical activity on lipid metabolism (e.g., total cholesterol) is mediated by BMI.
+It has been suggested that physical activity is associated with improved cardiovascular health. The predominant hypothesis is that physical activity contributes to weight reduction, which in turn improves cardiovascular function and lowers resting pulse rate. Therefore, we aim to investigate the extent to which the effect of physical activity on resting pulse rate is mediated by BMI.
 
 The situation is depicted by below figure.
 
-> Does physical activity lead to reduce levels of total cholesterol by mediating BMI?
+How much does BMI explain the relation between physical activity and pulse rate?
 
 ```{r echo=FALSE}
 #| echo: false
@@ -107,7 +107,7 @@ digraph {
   node [shape = plaintext]
     X [label = 'Physical activity']
     M [label = 'BMI']
-    Y [label = 'Cholesterol']
+    Y [label = 'Pulse']
   edge [minlen = 1.5]
     X->Y [label = 'c*', xlabel = 'c']
     X->M [taillabel = 'a']
@@ -120,7 +120,7 @@ digraph {
 ::: callout-note
 ## Example Dataset: A Brief Overview
 
-We'll explore the relationship between physical activity and cholesterol in the National Health and Nutrition Examination Survey (NHANES) dataset, which has been modified for this course with simulated variables.
+We'll explore the relationship between physical activity and pulse in the National Health and Nutrition Examination Survey (NHANES) dataset, which has been modified for this course with simulated variables.
 
 To try this out in practice, we load the NHANES dataset, only keep the variables we need for the example.
 
@@ -128,7 +128,7 @@ The variables used in the dataset:
 
 -   exposure of interest (a): physical activity (continuous variable, grams per day)
 
--   outcome (y): cholesterol (continuous variable)
+-   outcome (y): Pulse (continuous variable)
 
 -   mediator (m): BMI (continuous variable)
 
@@ -138,15 +138,38 @@ Four demographic variables are considered in the analysis: age, gender, educatio
 :::
 
 ```{r}
+# load the data
 nhanes <- read_csv(here::here("data/NHANES.csv"))
-nhanes <- nhanes %>%
-  select(
-  id = ID, w1 = Age, w2 = Gender, w3 = Education, w4 = Smoke100,
-    a = PhysActive, # this is the exposure
-    m = BMI, # this is the mediator
-    y = DirectChol # this is the outcome
-  ) %>%
-  na.omit()
+library(dplyr)
+# keep the variables used in the analyses
+data <- nhanes %>%
+  dplyr::select(
+    ID, 
+    w1 = Age, 
+    w2 = Gender, 
+    w3 = Education, 
+    w4 = Smoke100, 
+    a = PhysActive, 
+    m = BMI, 
+    y = Pulse,
+    y2 = Diabetes
+  )  %>% 
+  na.omit()    
+
+```
+
+```{r}
+# Physical activity is a binary variable, dichotomized as 'Yes' or 'No'. 
+table(data$a)
+# check the distribution of outcome 
+summary(data$y)
+hist(data$y)
+# check the distribution of mediation
+summary(data$m)
+hist(data$m)
+# check the education categories and relevel 
+table(data$w3)
+data$w3 <- relevel(factor(data$w3), ref = "College Grad")
 ```
 
 ## Method 1: Baron & Kenny (the product method)
@@ -169,60 +192,59 @@ As the mediator is a continuous variable, we can build a linear regression model
 $(E(M|A=a, C=c)$ = $\beta_0$ + $\beta_1a$ + $\beta_2c$ (3.1)
 
 ```{r}
-fita <- lm(m ~ a + w1 + w2 + w3 + w4, data = nhanes)
+fita <- lm(m ~ a + w1 + w2 + w3 + w4, data = data)
 summary(fita)
 ```
 
-Here, we see that physical activity is negatively associated with BMI (an increase of 1 unit in physical activity is associated with a 1.76 unit increase in BMI).
+Here, we see that physical activity is negatively associated with BMI (an increase of 1 unit in physical activity is associated with a 1.64 unit decrease in BMI). Individuals who are physically active have an average BMI that is 1.64 kg/m2 lower than those who are inactive, holding all other variables constant.
 
 ### Step 2: Estimate the relationship between M on Y controlling for A (path b)
 
-That is to build the model between BMI and chlesterol levels, controlling for physical activity. This step corresponds to criteria (ii).
+That is to build the model between BMI and pulse rates, controlling for physical activity. This step corresponds to criteria (ii).
 
 $(E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c$ (3.2)
 
 ```{r}
-fitb <- lm(y ~ a + m + w1 + w2 + w3 + w4, data = nhanes)
-
+fitb <- lm(y ~ a + m + w1 + w2 + w3 + w4, data = data)
 summary(fitb)
 ```
 
-After adjusting for physical activity, BMI is associated with lower cholesterol (an increase of 1 unit in BMI is associated with 0.02 unit reduction in the blood cholesterol).
+BMI is positively associated with pulse rates after adjusting for physical activity, each one-unit increase in BMI is associated with a 0.20-unit increase in pulse rate. Physical activity remains its negative association with pulse rates.
 
 ### Step 3: Estimate the relationship between A on Y (path c)
 
-That is to build the model between physical activity and cholesterol levels, without adjusting for the BMI. The only difference between step 2 and step 3 is that mediator is not included in the model.
+That is to build the model between physical activity and pulse levels, without adjusting for the BMI. The only difference between step 2 and step 3 is that mediator is not included in the model.
 
 $(E(Y|A=a, C=c)$ = $\theta_0'$ + $\theta_1'a$ + $\theta4'c$ (3.3)
 
 ```{r}
-fitc <- lm(y ~ a + w1 + w2 + w3 + w4, data = nhanes)
+fitc <- lm(y ~ a + w1 + w2 + w3 + w4, data = data)
 summary(fitc)
 ```
 
-We can see that red meat intake is strongly associated with higher glucose levels (an increase of 1 unit in red meat consumption is associated with a 70.5 unit increase in the blood glucose.
+We can see that physical activity is associated with lower pulse levels. Specifically, if someone is physically active (compared to someone who is not), pulse decreases by 1.76 units.
 
-Then we can estimate the direct effect and indirect effect:
+Based on the models, we can estimate the direct effect and indirect effect:
 
 -   **direct effect** = $\theta_1$\
 -   **indirect effect** = $\beta_1 \theta_2$\
 -   **total effect** = $\theta_1'$
 
-The *direct effect* ($\theta_1$) of physical activity on cholesterol levels can be assessed by the coefficient of physical activity in model b.
+The *direct effect* ($\theta_1$) of physical activity on pulse levels can be assessed by the coefficient of physical activity in model b.
 
 ```{r}
 direct_ma <- fitb$coefficients[2]
 direct_ma
 ```
 
-The *indirect effect* can be assessed by calculating the product of $\beta_1$ $\theta_2$. In this example, the indirect effect between physical activity and cholesterol levels through BMI is 0.036.
+The *indirect effect* can be assessed by calculating the product of $\beta_1$ $\theta_2$. In this example, the indirect effect between physical activity and pulse levels through BMI is -0.34.
 
 ```{r}
 indirect_ma <- fita$coefficients[2] * fitb$coefficients[3]
 indirect_ma
 ```
 
-The *total effect* ($\theta_1'$) of physical activity on cholesterol levels can be assessed by the coefficient of physical activity in model c, which is 0.07. You might have noticed the total effect also equals the sum of the direct effect and indirect effect.
+The *total effect* ($\theta_1'$) of physical activity on pulse levels can be assessed by the coefficient of physical activity in model c, which is -1.76. You might have noticed the total effect also equals the sum of the direct effect and indirect effect.
 
 ```{r}
 total_ma <- fitc$coefficients[2]
@@ -235,7 +257,7 @@ The difference approach is more commonly used in epidemiology. And the rational 
 
 If a mediation effect exists, the effect of A on Y will be attenuated when M is included in the regression, indicating the effect of A on Y goes through M. If the effect of A on Y completely disappears, M fully mediates between A and Y (full mediation). If the effect of A on Y still exists, but in a smaller magnitude, M partially mediates between A and Y (partial mediation).
 
-Back to the example, the indirect effect will be the coefficient of physical activity in model c (without adjusting for m) minus the coefficient of physical activity in model b (adjusting for m), which equals to 0.036.
+Back to the example, the indirect effect will be the coefficient of physical activity in model c (without adjusting for m) minus the coefficient of physical activity in model b (adjusting for m), which equals to -0.34.
 
 ```{r}
 indirect_mb <- fitc$coefficients[2] - fitb$coefficients[2]
@@ -277,22 +299,22 @@ mediate() takes two model objects as input ($A \rightarrow M$ and $A + M \righta
 set.seed(260524)
 
 # Fit mediator model
-lm_m <- lm(m ~ a + w1 + w2 + w3 + w4, data = nhanes)
+lm_m <- lm(m ~ a + w1 + w2 + w3 + w4, data = data)
 # Fit outcome model
-lm_y <- lm(y ~ a + m + w1 + w2 + w3 + w4, data = nhanes)
+lm_y <- glm(y ~ a + m + w1 + w2 + w3 + w4, data = data)
 # Run mediation analysis
-results <- mediate(lm_m, lm_y, treat = "a", mediator = "m", boot = TRUE, sims = 10) #can set to 500
+results <- mediate(lm_m, lm_y, treat = "a", mediator = "m", boot = TRUE, sims = 10) #set simulation for 10 for time effecacy
 
 summary(results)
 ```
 
 -   **ADE** stands for average direct effects. It describes the direct effect of the A on the Y when controlling for the mediator. Note this estimate is the same as the coefficient We got in the product and difference method. But be aware we are able to get *confidence interval* and *significance* levels for the indirect effect, not only its two individual parts by bootstrapping. This is something we need for reporting the mediation.
 
--   **ACME** stands for average causal mediation effects. This is the indirect effect of the IV on the DV that goes through the mediator. Note that ACME estimated to be 0.0365, which is the same to the traditional approached we just used.
+-   **ACME** stands for average causal mediation effects. This is the indirect effect of the IV on the DV that goes through the mediator. Note that ACME estimated to be -0.34, which is the same to the traditional approached we just used.
 
 -   **Total Effect** stands for the total effect (direct + indirect) of the IV onto the DV. We can also get it by adding the ACME () and the ADE () to receive the total effect.
 
--   **Prop. Mediated** describes the proportion of the effect of the IV on the DV that goes through the mediator. It's calculated by dividing the ACME (0.0365) by the total effect (0.072) and yields 0.506. The result suggests the mediator (BMI) explains 50.6% proportion of the effect of physical activity on cholesteol levels. We will talk more about proportion mediation in the next session.
+-   **Prop. Mediated** describes the proportion of the effect of the IV on the DV that goes through the mediator. It's calculated by dividing the ACME (-0.34) by the total effect (-1.76) and yields 0.19. The result suggests the mediator (BMI) explains 19% proportion of the effect of physical activity on pulse rate . We will talk more about proportion mediation in the next session.
 
 ```{r}
 # We can also plot the estimates
