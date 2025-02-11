@@ -1,0 +1,345 @@
+# Traditional mediation analysis
+
+```{r setup}
+#| include: false
+#| screenshot: true
+library(here)
+library(DiagrammeR)
+library(tidyverse)
+library(dplyr)
+```
+
+::: callout-note
+## Objective of this session
+
+-   To learn how to conduct mediation analysis using the traditional approaches.
+-   Understanding the assumptions and limitations of the methods.
+:::
+
+The purpose of mediation analysis is to determine if the effect of a treatment (A) on an outcome (Y) can be explained by a third mediating variable (M). Thus, mediation analysis not only answers whether two variables are related, but also **why**.
+
+This can be visualized in the following figures.
+
+Overall relationship between A and Y:
+
+```{r}
+#| echo: false
+
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    A [label = 'A']
+    Y [label = 'Y']
+  edge [minlen = 1.5]
+    A->Y [label = 'c']
+  { rank = same; A; Y }
+}")
+```
+
+Relationship between A and Y through M:
+
+```{r echo=FALSE}
+#| echo: false
+
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    A [label = 'A']
+    M [label = 'M']
+    Y [label = 'Y']
+  edge [minlen = 1.5]
+    A->Y [label = 'c*', xlabel = 'c']
+    A->M [taillabel = 'a']
+    M->Y [label = 'b']
+  { rank = same; A; Y }
+  { rank = min; M;}
+}")
+```
+
+## Traditional approaches for mediation analysis
+
+The two traditional approaches to mediation analysis are **the difference method** and **the product method**; also known as the Baron & Kenny-method @baron_moderatormediator_1986.
+
+The traditional approach use these equations for mediator and outcome (for the case of a continuous mediator and a continuous outcome)
+
+Mediator-model:
+
+$E(M|A=a, C=c) = \beta_0 + \beta_1a + \beta_2c$ (3.1)
+
+Outcome model with adjustment for mediator:
+
+$E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c$ (3.2)
+
+Outcome model without adjustment for mediator:
+
+$E(Y|A=a, C=c) = \theta_0' + \theta_1'a + \theta4'c$ (3.3)
+
+Note:
+
+-   total effect=$\theta_1'$ , that is the total effect of the independent variable on the dependent variable
+
+-   direct effect=$\theta_1$', that is the effect of the independent variable on the dependent variable that is not mediated by the mediator
+
+-   mediation effect=$\beta1*\theta_2$ (the product method)
+
+-   mediation effect='$\theta_1'-\theta_1$ (the difference method)
+
+Note: The terms 'mediation effect' and 'indirect effect' are used synonymously.
+
+## An example
+
+In this session, we will use an example to address a mediation research question using both traditional approaches.
+
+It has been suggested that physical activity is associated with a reduced risk of Type 2 diabetes (T2D). The predominant hypothesis is that physical activity contributes to weight reduction, which in turn improves lipid metabolism and lowers the risk of developing T2D. Therefore, we aim to investigate the extent to which the effect of physical activity on lipid metabolism (e.g., total cholesterol) is mediated by BMI.
+
+The situation is depicted by below figure.
+
+> Does physical activity lead to reduce levels of total cholesterol by mediating BMI?
+
+```{r echo=FALSE}
+#| echo: false
+
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    X [label = 'Physical activity']
+    M [label = 'BMI']
+    Y [label = 'Cholesterol']
+  edge [minlen = 1.5]
+    X->Y [label = 'c*', xlabel = 'c']
+    X->M [taillabel = 'a']
+    M->Y [label = 'b']
+  { rank = same; X; Y }
+  { rank = min; M;}
+}")
+```
+
+::: callout-note
+## Example Dataset: A Brief Overview
+
+We'll explore the relationship between physical activity and cholesterol in the National Health and Nutrition Examination Survey (NHANES) dataset, which has been modified for this course with simulated variables.
+
+To try this out in practice, we load the NHANES dataset, only keep the variables we need for the example.
+
+The variables used in the dataset:
+
+-   exposure of interest (a): physical activity (continuous variable, grams per day)
+
+-   outcome (y): cholesterol (continuous variable)
+
+-   mediator (m): BMI (continuous variable)
+
+Note that the example is created to demonstrate the methods, and there is no clinical relevance of the results. For the convenience of analysis, we have transformed the mediator (m) and outcome variable (y) so that they follow a normal distribution.
+
+Four demographic variables are considered in the analysis: age, gender, education, and smoking. We assume that adjusting for these four confounding is sufficient to block the backdoor paths. Further discussion on confounding adjustment will be covered in the following session.
+:::
+
+```{r}
+nhanes <- read_csv(here::here("data/NHANES.csv"))
+nhanes <- nhanes %>%
+  select(
+  id = ID, w1 = Age, w2 = Gender, w3 = Education, w4 = Smoke100,
+    a = PhysActive, # this is the exposure
+    m = BMI, # this is the mediator
+    y = DirectChol # this is the outcome
+  ) %>%
+  na.omit()
+```
+
+## Method 1: Baron & Kenny (the product method)
+
+According to Baron and Kenny (1986) @baron_moderatormediator_1986, the following criteria need to be satisfied for a variable to be considered a mediator:
+
+1.  The exposure should be associated with the mediator.
+2.  In the model for the outcome that includes both the exposure and mediator: the mediator should be associated with the outcome.
+3.  In the model for the outcome that includes only the exposure: the exposure should be associated with the outcome.
+4.  When controlling for the mediator, the association between the exposure and outcome should be reduced, with the strongest demonstration of mediation occurring when the path from the exposure to the outcome, when controlling for the mediator is zero.
+
+The following shows the basic steps for mediation analysis suggested by Baron & Kenny.
+
+### Step 1: Estimate the relationship between A on M (path a)
+
+That is to check the relation between exposure (physical activity) and the mediator (BMI), which corresponds to criteria 1. A mediation makes sense only if A affects M. If A and M have no relationship, M is just a third variable that may or may not be associated with Y.
+
+As the mediator is a continuous variable, we can build a linear regression model, adjusting for confounders on the pathway between A and M.
+
+$(E(M|A=a, C=c)$ = $\beta_0$ + $\beta_1a$ + $\beta_2c$ (3.1)
+
+```{r}
+fita <- lm(m ~ a + w1 + w2 + w3 + w4, data = nhanes)
+summary(fita)
+```
+
+Here, we see that physical activity is negatively associated with BMI (an increase of 1 unit in physical activity is associated with a 1.76 unit increase in BMI).
+
+### Step 2: Estimate the relationship between M on Y controlling for A (path b)
+
+That is to build the model between BMI and chlesterol levels, controlling for physical activity. This step corresponds to criteria (ii).
+
+$(E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c$ (3.2)
+
+```{r}
+fitb <- lm(y ~ a + m + w1 + w2 + w3 + w4, data = nhanes)
+
+summary(fitb)
+```
+
+After adjusting for physical activity, BMI is associated with lower cholesterol (an increase of 1 unit in BMI is associated with 0.02 unit reduction in the blood cholesterol).
+
+### Step 3: Estimate the relationship between A on Y (path c)
+
+That is to build the model between physical activity and cholesterol levels, without adjusting for the BMI. The only difference between step 2 and step 3 is that mediator is not included in the model.
+
+$(E(Y|A=a, C=c)$ = $\theta_0'$ + $\theta_1'a$ + $\theta4'c$ (3.3)
+
+```{r}
+fitc <- lm(y ~ a + w1 + w2 + w3 + w4, data = nhanes)
+summary(fitc)
+```
+
+We can see that red meat intake is strongly associated with higher glucose levels (an increase of 1 unit in red meat consumption is associated with a 70.5 unit increase in the blood glucose.
+
+Then we can estimate the direct effect and indirect effect:
+
+-   **direct effect** = $\theta_1$\
+-   **indirect effect** = $\beta_1 \theta_2$\
+-   **total effect** = $\theta_1'$
+
+The *direct effect* ($\theta_1$) of physical activity on cholesterol levels can be assessed by the coefficient of physical activity in model b.
+
+```{r}
+direct_ma <- fitb$coefficients[2]
+direct_ma
+```
+
+The *indirect effect* can be assessed by calculating the product of $\beta_1$ $\theta_2$. In this example, the indirect effect between physical activity and cholesterol levels through BMI is 0.036.
+
+```{r}
+indirect_ma <- fita$coefficients[2] * fitb$coefficients[3]
+indirect_ma
+```
+
+The *total effect* ($\theta_1'$) of physical activity on cholesterol levels can be assessed by the coefficient of physical activity in model c, which is 0.07. You might have noticed the total effect also equals the sum of the direct effect and indirect effect.
+
+```{r}
+total_ma <- fitc$coefficients[2]
+total_ma
+```
+
+## Method 2: Difference approach
+
+The difference approach is more commonly used in epidemiology. And the rational of this approach is to compare the effect of A on Y without and with adding M in the models.
+
+If a mediation effect exists, the effect of A on Y will be attenuated when M is included in the regression, indicating the effect of A on Y goes through M. If the effect of A on Y completely disappears, M fully mediates between A and Y (full mediation). If the effect of A on Y still exists, but in a smaller magnitude, M partially mediates between A and Y (partial mediation).
+
+Back to the example, the indirect effect will be the coefficient of physical activity in model c (without adjusting for m) minus the coefficient of physical activity in model b (adjusting for m), which equals to 0.036.
+
+```{r}
+indirect_mb <- fitc$coefficients[2] - fitb$coefficients[2]
+indirect_mb
+```
+
+::: callout-note
+The algebraic equivalence of the indirect effect using the product method and the difference method will coincide for a continuous outcome on the difference scale (MacKinnon 1995). However, the two methods diverge when using a binary outcome and logistic regression. (MacKinnon and Dwyer 1993).
+:::
+
+::: callout-note
+Recall the four criteria suggested by Baron and Kenny. One of the criteria is that 'Path C must be significantly different from 0 to ensure there is a total effect between X and Y'. However, this step can be controversial. Even if we don't find a significant association between X and Y, we could proceed to the next step if we have a strong theoretical basis for their relationship.
+:::
+
+::: callout-note
+## Group work - 5 minutes
+
+-   Discuss with your group about the two traditional approaches, did you get the same results?
+-   Discuss the scenarios under which there might be no significant association between A and Y.
+:::
+
+### Use mediation packages
+
+Now we have estimated the direct and indirect effect using the product and the difference methods.You might have noticed what you got so far are only point estimates, but what if you want to see if this mediation effect is statistically significant (different from zero or not)?
+
+To do so, there are two main approaches: the Sobel test @sobel_asymptotic_1982 and bootstrapping @preacher_spss_2004.
+
+Here we will demonstrate that we can use the mediate() function in 'mediation' package @tingley_mediation_2014 to conduct mediation analysis. One of the very good options to conduct mediation analysis using the mediation package is we can get confidence interval by bootstrapping.
+
+Let's load up the R packages.
+
+```{r}
+library(mediation) # Mediation package
+```
+
+mediate() takes two model objects as input ($A \rightarrow M$ and $A + M \rightarrow Y$) and we need to specify which variable is an IV (treatment) and a mediator (mediator). For bootstrapping, set boot = TRUE and sims to at least 500.
+
+```{r}
+set.seed(260524)
+
+# Fit mediator model
+lm_m <- lm(m ~ a + w1 + w2 + w3 + w4, data = nhanes)
+# Fit outcome model
+lm_y <- lm(y ~ a + m + w1 + w2 + w3 + w4, data = nhanes)
+# Run mediation analysis
+results <- mediate(lm_m, lm_y, treat = "a", mediator = "m", boot = TRUE, sims = 10) #can set to 500
+
+summary(results)
+```
+
+-   **ADE** stands for average direct effects. It describes the direct effect of the A on the Y when controlling for the mediator. Note this estimate is the same as the coefficient We got in the product and difference method. But be aware we are able to get *confidence interval* and *significance* levels for the indirect effect, not only its two individual parts by bootstrapping. This is something we need for reporting the mediation.
+
+-   **ACME** stands for average causal mediation effects. This is the indirect effect of the IV on the DV that goes through the mediator. Note that ACME estimated to be 0.0365, which is the same to the traditional approached we just used.
+
+-   **Total Effect** stands for the total effect (direct + indirect) of the IV onto the DV. We can also get it by adding the ACME () and the ADE () to receive the total effect.
+
+-   **Prop. Mediated** describes the proportion of the effect of the IV on the DV that goes through the mediator. It's calculated by dividing the ACME (0.0365) by the total effect (0.072) and yields 0.506. The result suggests the mediator (BMI) explains 50.6% proportion of the effect of physical activity on cholesteol levels. We will talk more about proportion mediation in the next session.
+
+```{r}
+# We can also plot the estimates
+plot(results)
+```
+
+For details of the mediate() package, please refer to @tingley_mediation_2014.
+
+## Limitations of the traditional approach
+
+-   Non-linearity
+-   Interactions
+-   Multiple mediators
+
+```{r}
+#| echo: false
+
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    X [label = 'Physical activity']
+    M [label = 'Inflammation']
+    Y [label = 'Lipid metabolism']
+    N[label = 'Insulin sensitivity']
+    A[label = 'Fasting insulin']
+  edge [minlen = 1.5]
+    X->Y 
+    X->M 
+    M->Y 
+    X->N    
+    N->Y
+    X->A    
+    A->Y
+  { rank = same; X; N; Y; }
+  { rank = min; M;}
+  { rank = max; A;}
+}")
+```
+
+## When can we use the traditional approach
+
+When fulfill the criteria, simple tools like regression can be used to estimate a causal mediation effect:
+
+-   no unmeasured confounding
+-   no exposure-mediator interaction
+-   linear relationship
+-   rare binary outcome
+
+## References
