@@ -27,6 +27,7 @@ Here's a quick overview of the tasks you need to do. Specific details about them
 2.  Install the necessary programs in ???sec-intall-r-packages(add later)
 3.  Read the Code of Conduct ???sec-code-of-conduct(add later)
 4.  Download the data or the repository in ??sec-download-data(add later)
+5.  Get familiar with Directed Acyclic Graphs.
 
 Check each section for exact details on completing these tasks.
 
