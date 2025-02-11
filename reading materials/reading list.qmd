@@ -6,6 +6,22 @@ editor: visual
 
 ## Reading materials 
 
+Judd, C. M., & Kenny, D. A. (1981).  Process analysis: Estimating mediation in treatment evaluations. Evaluation Review, 5, 602-619
+
+Baron, R. M., & Kenny, D. A. (1986).  The moderator-mediator variable distinction in social psychological research: Conceptual, strategic and statistical considerations. Journal of Personality and Social Psychology, 51, 1173-1182
+
+Greenland, S., Pearl, J., & Robins, J. M. (1999). Causal diagrams for epidemiologic research. Epidemiology, 37-48.
+
+MacKinnon, D. P. (2008). Introduction to statistical mediation analysis. New York: Erlbaum.
+
+Selig, J. P., & Preacher, K. J. (2009). Mediation models for longitudinal data in developmental research. Research in Human Development, 6(2),144-164.
+
+VanderWeele, T. J. & Vansteelandt, S. (2009). Conceptual issues concerning mediation, interventions and composition. Statistics and Its Interface, 2(4), 457-468.
+
+Preacher, K. J., & Kelley, K.  (2011).  Effect size measures for mediation models:  Quantitative strategies for communicating indirect effects. Psychological Methods, 16, 93-115.
+
+Hayes, A. F. (2013). Introduction to mediation, moderation, and conditional process analysis: A regression-based approach. Guilford Press.
+
 **More (Adjustment) is Not Always Better: How Directed Acyclic Graphs Can Help Researchers Decide Which Covariates to Include in Models for the Causal Relationship Between an Exposure and an Outcome in Observational Research** <https://pmc.ncbi.nlm.nih.gov/articles/PMC8974490/>
 
 # 

@@ -41,7 +41,7 @@ Mediation analysis provides an answer to this **WHY** question, by uncovering th
 
 ```{r, echo=FALSE}
 library(DiagrammeR)
-grViz("
+graph <- grViz("
 digraph {
   graph [rankdir = LR]  # Left to right graph
   node [shape = plaintext] 
@@ -53,9 +53,11 @@ digraph {
   M -> Y
 }
 ")
+
+graph
 ```
 
-We might be interested in further refining the intervention so as to increase the magnitude of the effect. This might be done by altering or improving components of the intervention that target a particular mechanism for the outcome and discarding those components of which perhaps are not relevant for the outcome
+We might be interested in further refining the intervention so as to increase the magnitude of the effect. This might be done by altering or improving components of the intervention that target a particular mechanism for the outcome and discarding those components of which perhaps are not relevant for the outcome.
 
 When implementing the same lifestyle interventions in real world settings, lifestyle interventions show smaller effect and the long-term adoption and sustainability over time were some of the challenges to the effectiveness of these prevention efforts
 
