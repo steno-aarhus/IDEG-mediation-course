@@ -14,7 +14,7 @@ Spend 3 minutes talking to your neighbour and discuss your own motivations for p
 
 </div>
 
-## Mediation analysis in Epidemiology 
+## Mediation analysis in Epidemiology
 
 ```{r setup}
 #| include: false 
@@ -23,21 +23,27 @@ library(DiagrammeR)
 
 Mediation analysis is the study of pathways and mechanisms through which an exposure or intervention impacts an outcome. In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome. Once this effect is established, the next natural question is to explore the "black box"—the underlying mechanisms that explain how the intervention (or exposure) leads to the observed outcome. As we are not only interested in whether an intervention works, but how it works (\[\@vanderweele_mediation_2016\]).
 
-Mediation analysis provides an answer to this **WHY** question, by uncovering the pathways and mechanisms that explain the causal relationship between the exposure (e.g., intervention or treatment) and the outcome. By doing so, mediation analysis helps to open the black box, showing not only if an intervention works but how it works, and guiding more effective and targeted interventions.
+Mediation analysis provides an answer to this HOW question, by uncovering the pathways and mechanisms that explain the causal relationship between the exposure (e.g., intervention or treatment) and the outcome. By doing so, mediation analysis helps to open the black box, showing not only if an intervention works but how it works, and guiding more effective and targeted interventions.
 
 ## Motivation for mediation analysis
 
-1.  **Explanation and Understanding**: Unpacking how and why certain factors (e.g., physical activity) impact outcomes (e.g., diabetes risk) through intermediary variables (e.g., weight loss).
+1.  **Explanation and Understanding**:
 
-*Example*: Does body mass index mediate the relationship between diet and type 2 diabetes in mid-life?
+    Unpacking how and why certain factors (e.g., physical activity) impact outcomes (e.g., diabetes risk) through intermediary variables (e.g., weight loss).
 
-2.  **Confirmation and Refutation of Theory**: Testing theories about the mechanisms behind health outcomes and determining whether certain factors mediate the relationships between exposures and outcomes.
+    *Example*: Does body mass index mediate the relationship between diet and type 2 diabetes in mid-life?
 
-*Example*: Is the relationship between lower socioeconomic status and cardiovascular disease explained (mediated) through high allostatic load?
+2.  **Confirmation and Refutation of Theory**:
 
-2.  **Refining Interventions**: Using mediation analysis to improve the effectiveness of interventions by targeting key mediators, leading to better and more sustainable outcomes.
+    Testing theories about the mechanisms behind health outcomes and determining whether certain factors mediate the relationships between exposures and outcomes.
 
-*Example*: Let's consider the evidence from the landmark prevention trials. The Diabetes Prevention Programme @knowler_reduction_2002, The Diabetes Prevention Study @tuomilehto_prevention_2001, and The Da Quin study @pan_effects_1997. These studies randomized high risk individuals to either metformin or a lifestyle intervention consisting of a physical activity or physical activity + diet. The main finding was a \~58% lower risk of incidence type 2 diabetes in the lifestyle intervention group compared to the metformin group.
+    *Example*: Is the relationship between lower socioeconomic status and cardiovascular disease explained (mediated) through high allostatic load?
+
+3.  **Refining Interventions**:
+
+    Using mediation analysis to improve the effectiveness of interventions by targeting key mediators, leading to better and more sustainable outcomes.
+
+    *Example*: Let's consider the evidence from the landmark prevention trials. The Diabetes Prevention Programme @knowler_reduction_2002, The Diabetes Prevention Study @tuomilehto_prevention_2001, and The Da Quin study @pan_effects_1997. These studies randomized high risk individuals to either metformin or a lifestyle intervention consisting of a physical activity or physical activity + diet. The main finding was a \~58% lower risk of incidence type 2 diabetes in the lifestyle intervention group compared to the metformin group.
 
 ```{r, echo=FALSE}
 library(DiagrammeR)
