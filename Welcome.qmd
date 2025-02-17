@@ -6,9 +6,13 @@ editor: visual
 
 ## Welcome
 
-Welcome to the mediation course!
+Welcome to the short workshop on Directed Acyclic Graphs (DAGs) and mediation analysis!
 
-This course provides a brief introduction to mediation analysis in the context of diabetes and endocrine diseases.
+Instrctors: Daniel Witte, Jie Zhang
+
+Time duration: 75 mins
+
+# Course Outline
 
 During this 90-minute course, you will learn about traditional mediation approaches before exploring the theory of causal mediation, accompanied by hands-on R coding practice. We hope this will be the beginning of your journey in mediation analysis and open the door to more interesting research studies!
 
@@ -43,6 +47,14 @@ During this 90-minute course, you will learn about traditional mediation approac
 ## Important things before the course
 
 To make the most of our training course in Bangkok, please complete the pre-course tasks before you arrive. This will ensure we can start our sessions smoothly and dive right into the content!
+
+## Course outline
+
+-   Motivation
+-   Traditional mediation analysis
+-   Introduction to causal mediation analysis
+-   Perform causal mediation analysis using R software
+-   Interpret results from causal mediation analysis
 
 ## Acknowledgement
 
