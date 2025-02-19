@@ -46,7 +46,7 @@ Mediation analysis provides an answer to this HOW question, by uncovering the pa
     *Example*: Let's consider the evidence from the landmark prevention trials. The Diabetes Prevention Programme @knowler_reduction_2002, The Diabetes Prevention Study @tuomilehto_prevention_2001, and The Da Quin study @pan_effects_1997. These studies randomized high risk individuals to either metformin or a lifestyle intervention consisting of a physical activity or physical activity + diet. The main finding was a \~58% lower risk of incidence type 2 diabetes in the lifestyle intervention group compared to the metformin group.
 
 ```{r, echo=FALSE}
-library(DiagrammeR)
+library(DiagrammeRsvg)
 graph <- grViz("
 digraph {
   graph [rankdir = LR]  # Left to right graph
@@ -59,7 +59,6 @@ digraph {
   M -> Y
 }
 ")
-
 graph
 ```
 
@@ -67,7 +66,7 @@ We might be interested in further refining the intervention so as to increase th
 
 When implementing the same lifestyle interventions in real world settings, lifestyle interventions show smaller effect and the long-term adoption and sustainability over time were some of the challenges to the effectiveness of these prevention efforts
 
-```{r, echo=FALSE}
+```{r}
 library(DiagrammeR)
 grViz("
 digraph {

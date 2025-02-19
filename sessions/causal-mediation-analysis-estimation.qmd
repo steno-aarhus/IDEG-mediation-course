@@ -37,7 +37,7 @@ TNDE can be obtained by this formula:
 
 $TNDE = (\sigma_1 + \sigma_3 * (\beta_0 + beta_1*a + \beta'_2*w))(a - a^*)$
 
-```{}
+```         
 ```
 
 Here, the value of M is enabled to act (as opposed to the PNDE). The TNDE asks the question: "to what extent does x cause y via pathways other than through m, allowing m to boost up or tune down such effect at the same time?" @wang_g-computation_2015

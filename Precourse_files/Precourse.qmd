@@ -130,6 +130,8 @@ We recommend that you do not do this before March 31, in the afternoon as we wil
 
 If you want to only download the course data. You can go to \#[here](https://github.com/steno-aarhus/mediation-analysis-course/tree/main/data) for the Framingham, NHANES and simulated data. Click "download raw file" in the top right corner after you have clicked on the specific file.
 
+Go through the DAG in pre-course.
+
 ## Code of conduct {#sec-code-of-conduct}
 
 We have a [Code of Conduct](https://guides.rostools.org/conduct.html). If you haven't read it, **read it now**. This course is a supportive and safe environment for learning, so this Code of Conduct is important.

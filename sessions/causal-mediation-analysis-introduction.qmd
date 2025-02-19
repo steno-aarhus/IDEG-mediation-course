@@ -28,9 +28,9 @@ A = received treatment/intervention/exposure (e.g., 1 = intervention, 0 = no int
 
 Y = observed outcome (e.g., 1 = developed the outcome, 0 = no outcome)
 
-$Y^{a=1}$ = Counterfactual outcome under treatment a (i.e., the outcome had everyone, counter to the fact, received treatment a = 1)
+$Y^{a=1}$ = Counterfactual outcome under treatment a=1 (i.e., the outcome had everyone, counter to the fact, received treatment a = 1)
 
-$Y^{a=0}$ = Counterfactual outcome under treatment a (i.e., the outcome had everyone, counter to the fact, received treatment a = 0)
+$Y^{a=0}$ = Counterfactual outcome under treatment a =0 (i.e., the outcome had everyone, counter to the fact, received treatment a = 0)
 :::
 
 ### Individual causal effect
@@ -148,7 +148,7 @@ The observed outcome for all treated equals the outcome if they had received the
 
 The probability of receiving every value of treatment conditional on L is greater than zero. In other words, there must be a probability of being assigned to each treatment level.
 
-Think, if we don't have anyone with A = 0 among those with L=1 (e.g. long education), then we cannot estimate the conditional probability of the outcome.
+Image if we don't have anyone with A = 0 among those with L=1 (e.g. long education), then we cannot estimate the conditional probability of the outcome.
 
 ## A randomized controlled trial
 

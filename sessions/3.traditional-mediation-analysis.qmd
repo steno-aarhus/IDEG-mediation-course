@@ -126,7 +126,7 @@ To try this out in practice, we load the NHANES dataset, only keep the variables
 
 The variables used in the dataset:
 
--   exposure of interest (a): physical activity (continuous variable, grams per day)
+-   exposure of interest (a): physical activity (continuous variable)
 
 -   outcome (y): Pulse (continuous variable)
 
