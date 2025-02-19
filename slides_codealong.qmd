@@ -20,11 +20,13 @@ The variables used in the dataset:
 
 Note that the example is created to demonstrate the methods, and there is no clinical relevance of the results. For the convenience of analysis, we have transformed the mediator (m) and outcome variable (y) so that they follow a normal distribution.
 
-Four demographic variables are considered in the analysis: age, gender, education, and smoking. We assume that adjusting for these four confounding is sufficient to block the backdoor paths. Further discussion on confounding adjustment will be covered in the following session.
+Four demographic variables are considered in the analysis: age, gender, education, and smoking. We assume that adjusting for these four confounding is sufficient to block the backdoor paths.
 
-## Continuous outcome
+## 
 
 ```{r}
+# load the library
+library(readr)
 # load the data 
 nhanes <- read_csv(here::here("data/NHANES.csv")) 
 library(dplyr) 
@@ -33,6 +35,8 @@ data <- nhanes %>%
   dplyr::select(ID, w1 = Age, w2 = Gender, w3 = Education, w4 = Smoke100, a = PhysActive, m = BMI, y = Pulse, y2 = Diabetes ) %>% 
   na.omit()
 ```
+
+## Continuous outcome
 
 ```{r}
 # Physical activity is a binary variable, dichotomized as 'Yes' or 'No'. 
@@ -127,6 +131,8 @@ res_rb <- cmest(
 summary(res_rb)
 ```
 
+## Binary outcome
+
 Suppose now i am interested in how physical activity influences the risk of diabetes. I will first check the proportion of diabetes in the sample.
 
 ```{# y2 is diaebtes}
@@ -134,9 +140,19 @@ table(data$y2)
 ```
 
 ```{r}
+# recode diabetes to 1(Yes) and 0(No)
+data$y2 <- case_when(
+  data$y2 == "Yes" ~ 1,
+  data$y2 == "No" ~ 0
+)
+```
+
+```{r}
 res_rb <- cmest( data = data, model = "rb", outcome = "y2", exposure = "a", mediator = "m", basec = c("w1","w2","w3","w4"), EMint = TRUE, 
 mreg = list("linear"), 
-yreg = "logit",  mval = list(25), estimation = "paramfunc", inference = "delta" )
+yreg = "logistic",  mval = list(25), estimation = "paramfunc", inference = "delta" )
 
 summary(res_rb)
 ```
+
+We can see that a great proportion of the effect of physical activity on diabetes risk is mediated through BMI (65%). undefinedThe remaining \~35% would represent physical activity's direct effect on diabetes risk through other pathways

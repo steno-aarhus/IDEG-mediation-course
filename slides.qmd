@@ -2,11 +2,9 @@
 title: "Mediation Analyses"
 author: "Daniel Witte, Jie Zhang"
 format: revealjs
+slide-number: c/t    # current/total format
 editor: visual
-number-sections: true
 ---
-
-## 
 
 ## Welcome to the workshop on Mediation Analysis🎉
 
@@ -52,62 +50,85 @@ The purpose of mediation analysis is to determine if the effect of a treatment (
 
 3.  **Refining Interventions**
 
-## Examples
+## Mediation analysis
+
+Mediation analysis is becoming more popular. [Fig. 1](https://pmc.ncbi.nlm.nih.gov/articles/PMC8496983/#F1) shows that both the number of entries in Google Scholar and the number of peer-reviewed articles in PsycINFO that have “mediation analysis” in the title or text have been growing exponentially. 
+
+```{r}
+#| label: fig-mediation-analysis
+#| fig-cap: "Trend Mediation Analysis"
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: "center"
+knitr::include_graphics("images/trend_mediation.jpg")
+```
+
+## Mediation
 
 Overall relationship between A and Y:
 
-```{r setup1}
-#| include: false 
-#| #| screenshot: true library(here) 
-library(DiagrammeR) 
-library(tidyverse) 
-library(dplyr)
-```
-
 ```{r}
-#| echo: false
-library(DiagrammeR) 
-
-grViz("
-digraph {
-  graph []
-  node [shape = plaintext]
-    A [label = 'A']
-    Y [label = 'Y']
-  edge [minlen = 1.5]
-    A->Y [label = 'c']
-  { rank = same; A; Y }
-}")
+knitr::include_graphics("images/a-y.png")
 ```
 
 Relationship between A and Y through M:
 
 ```{r}
-#| echo: false
-library(DiagrammeR) 
+knitr::include_graphics("images/a-m-y.png")
+```
 
-grViz("
-digraph {
-  graph []
-  node [shape = plaintext]
-    A [label = 'A']
-    M [label = 'M']
-    Y [label = 'Y']
-  edge [minlen = 1.5]
-    A->Y [label = 'c*', xlabel = 'c']
-    A->M [taillabel = 'a']
-    M->Y [label = 'b']
-  { rank = same; A; Y }
-  { rank = min; M;}
-}")
+## Mediation
 
+How much does BMI explain the relation between physical activity and the risk of diabetes?
+
+```{r}
+knitr::include_graphics("images/example1.jpg")
+```
+
+How much does inflammation explain the relation between physical activity and the risk of diabetes?
+
+```{r}
+knitr::include_graphics("images/example2.png")
 ```
 
 ## Traditional approaches for mediation analysis
 
 The two traditional approaches to mediation analysis are **the difference method** and **the product method** (also known as the Baron & Kenny-method).
 
-## Traditional approaches for mediation analysis
+## Method 1: Baron & Kenny (the product method)
+
+The following criteria need to be satisfied for a variable to be considered a mediator:
+
+1.  The exposure should be associated with the mediator.
+2.  The mediator should be associated with the outcome.
+3.  The exposure should be associated with the outcome.
+4.  When controlling for the mediator, the association between the exposure and outcome should be reduced (up to debate).
+
+## Baron&Kenny
+
+### The four steps:
+
+**STEP 1:** test association between exposure and outcome (a)
+
+**STEP 2:** test association between exposure and mediator (b)
+
+**STEP 3:** test association between mediator and outcome, controlling for exposure (c)
+
+**STEP 4:** mediation is shown if association between X and Y is reduced to non-significance when M is controlled (d)
+
+## Method 2: Difference approach
+
+Total effect:  regress Y on X
+
+Direct effect:  regress Y on X and M (take coefficient for X i.e. theta_1)
+
+$E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c$ (1.2)
+
+Indirect effect:  total effect – direct effect
+
+If a mediation effect exists, the effect of A on Y will be attenuated when M is included in the regression, indicating the effect of A on Y goes through M. If the effect of A on Y completely disappears, M fully mediates between A and Y (full mediation). If the effect of A on Y still exists, but in a smaller magnitude, M partially mediates between A and Y (partial mediation).
+
+## Build models
 
 Mediator-model:
 
@@ -120,66 +141,6 @@ $E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c$ (1.2)
 Outcome model without adjustment for mediator:
 
 $E(Y|A=a, C=c) = \theta_0' + \theta_1'a + \theta4'c$ (1.3)
-
-A: exposure; M: mediator; Y: outcome; C: confounders
-
-## An example
-
-How much does BMI explain the relation between physical activity and pulse rate?
-
-```{r echo=FALSE}
-#| echo: false
-
-grViz("
-digraph {
-  graph []
-  node [shape = plaintext]
-    X [label = 'Physical activity']
-    M [label = 'BMI']
-    Y [label = 'Pulse']
-  edge [minlen = 1.5]
-    X->Y [label = 'c*', xlabel = 'c']
-    X->M [taillabel = 'a']
-    M->Y [label = 'b']
-  { rank = same; X; Y }
-  { rank = min; M;}
-}")
-```
-
-## 
-
-## Method 1: Baron & Kenny (the product method)
-
-The following criteria need to be satisfied for a variable to be considered a mediator:
-
-1.  The exposure should be associated with the mediator.
-2.  The mediator should be associated with the outcome.
-3.  The exposure should be associated with the outcome.
-4.  When controlling for the mediator, the association between the exposure and outcome should be reduced, with the strongest demonstration of mediation occurring when the path from the exposure to the outcome, when controlling for the mediator is zero.
-
-## Baron&Kenny
-
-### Steps 
-
-**STEP 1:** testassociation between exposure and outcome (a)
-
-**STEP 2:** testassociation between exposure and mediator (b)
-
-**STEP 3:** testassociation between mediator and outcome, controlling for exposure (c)
-
-**STEP 4:** mediation is shown if association between X and Y is reduced to non-significance when M is controlled (d)
-
-## Method 2: Difference approach
-
-Total effect:  regress Y on X
-
-Direct effect:  regress Y on X and M (take coefficient for X i.e. \\theta_1)
-
-$E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c$ (1.2)
-
-Indirect effect:  total effect – direct effect
-
-If a mediation effect exists, the effect of A on Y will be attenuated when M is included in the regression, indicating the effect of A on Y goes through M. If the effect of A on Y completely disappears, M fully mediates between A and Y (full mediation). If the effect of A on Y still exists, but in a smaller magnitude, M partially mediates between A and Y (partial mediation).
 
 ## Summary
 
@@ -203,6 +164,18 @@ The algebraic equivalence of the indirect effect using the product method and th
 -   Interactions
 -   Multiple mediators
 
+## Further limitations of the traditional approach
+
+⚠️ Unmeasured confounding of the Mediator-Outcome path
+
+This assumption can be violated in both observational studies as well as RCTs because while the exposure can sometimes be randomized, it is often not the case that both exposure and mediator are randomized.
+
+## Intermediate confouding
+
+```{r}
+knitr::include_graphics("images/intermediate.jpg")
+```
+
 ## When can we use the traditional approach
 
 When fulfill the criteria, simple tools like regression can be used to estimate a causal mediation effect:
@@ -213,13 +186,6 @@ When fulfill the criteria, simple tools like regression can be used to estimate 
 -   rare binary outcome
 
 # Introduction to causal mediation analysis
-
-```{r setup}
-#| include: false
-#| cache: false
-library(here)
-library(DiagrammeR)
-```
 
 ## Concept of Cause
 
@@ -249,6 +215,30 @@ Instead, we can perform a randomized controlled trial. We now ask a slightly dif
 
 We can randomely assigning one group to consume more red meat and the other group to consume more of something else over 1 year. Then we compare the average blood glucose levels after 1 year in each of the groups. If there is a difference, we could say there is an average causal effect.
 
+## **Association vs causation**
+
+What makes it complicated to estimate a causal effect is that we cannot observe the outcome under different treatments.
+
+When we only have a subset of the outcomes, we have an association. This is illustrated in @fig-causation-association.
+
+\![Caption\](images/causation-association.png)
+
+```{r}
+#| label: fig-causation-association
+#| fig-cap: "Relationship between causation and association"
+knitr::include_graphics("images/causation-association.png")
+```
+
+## [Key As](images/filename.png)sumptions
+
+If we want to infer a causal effect (i.e., what would have happened, had everyone done A=1 vs A=0), we need three assumptions to be fulfilled:
+
+-   Exchangeability
+
+-   Consistency
+
+-   Positivity
+
 ## Notation
 
 A = received treatment/intervention/exposure (e.g., 1 = intervention, 0 = no intervention)
@@ -259,9 +249,7 @@ $Y^{a=1}$ = Counterfactual outcome under treatment a =1(i.e., the outcome had ev
 
 $Y^{a=0}$ = Counterfactual outcome under treatment a=0 (i.e., the outcome had everyone, counter to the fact, received treatment a = 0)
 
-## Notation
-
-### modify the terms a little for average causal effect:
+## Modify the terms a little for average causal effect:
 
 $E[Y^{a=1}]$ the average counterfactual outcome, had all subjects in the population received treatment a = 1.
 
@@ -276,18 +264,6 @@ $Pr[Y^{a=0}]$ the proportion of subjects that would have developed the outcome Y
 More formally we can now define a causal effect:
 
 $E[Y^{a=1} = 1] - E[Y^{a=0} = 1] \ne 0$
-
-## Code example: estimating causal effect
-
-## Causal effect
-
-What makes it complicated to estimate a causal effect is that we cannot observe the outcome under different treatments.
-
-When we only have a subset of the outcomes, we have an association. This is illustrated in @fig-causation-association.
-
-![Causation vs association. From @hernan_definition_2004](/images/causation-association.PNG){#fig-causation-association alt="Causation vs association. From @hernan_definition_2004"}
-
-## 
 
 ## Causal mediation analysis
 
@@ -311,32 +287,12 @@ Causal mediation analysis is an extension of the traditional approach by:
     -   Direct Effect
 
     -   Indirect Effect
-
-```{=html}
-<!-- -->
-```
 -   Counterfactual-based Causal Mediation Analysis
     -   Controlled Direct Effect (CDE(m))
 
     -   Natural Direct Effect (NDE)
 
     -   Natural Indirect Effect (NIE)
-
-## Key Assumptions
-
-If we want to infer a causal effect (i.e., what would have happened, had everyone done A=1 vs A=0), we need three assumptions to be fulfilled:
-
--   Exchangeability and cross-world independence
-
-    *The risk of the outcome in A = 1 would have been the same as the risk of the outcome in A = 0, had those in A = 1 received A = 0*.
-
--   Consistency
-
-    *An individual's potential outcome under the observed exposure should be equal to the observed outcome*.
-
--   Positivity
-
-    *The probability of receiving every value of treatment conditional on L is greater than zero. In other words, there must be a probability of being assigned to each treatment level*.
 
 ## Key Strengths
 
@@ -355,39 +311,6 @@ Causal mediation analysis can take this into account. It can do this using a reg
 -   it builds a causal model. This model can include non-linearity and interactions
 -   then artificially manipulate the data to set the treatment **and** the mediator to certain values
 -   then predict the outcome using the causal model and contrast the outcomes
-
-## Intermediate confounding
-
-```{r}
-#| echo: false
-
-grViz("
-digraph {
-  graph []
-  node [shape = plaintext]
-    W1 [label = 'W1']
-    A [label = 'A']
-    M [label = 'M']
-    Y [label = 'Y']
-    W2 [label = 'W2']
-  edge [minlen = 2]
-    A->M
-    M->Y
-    A->Y
-    W1->A
-    W1->Y
-    W1->M
-    W2->M
-    W2->Y
-    A->W2
-    W1->W2
-{rank = same; W1; A; M; Y; }
-{rank = max; W2 ; }
-}
-")
-```
-
-## 
 
 ## Defining estimands
 
@@ -411,10 +334,6 @@ $Y^{a,m}$ = a subject's outcome if A were set to a and M were set to m
 
 $Y^{a,M_a}$ = a subject's outcome if A were set to a and M were set the value m would have had had a been set to a. Note, this is a nested counterfactual
 
-## Causal Mediation Analysis
-
-### Practice using R package
-
 ## Effect Decomposition
 
 We can now define these estimands:
@@ -423,9 +342,51 @@ We can now define these estimands:
 -   natural direct effect (NDE)
 -   natural indirect effect (NIE)
 
-## Effect Decomposition
+# Estimation of effects using causal mediation analysis
 
-when there are interaction and non-linearity, differet ways of accounting for the interaction:
+## Natural direct effect
+
+The NDE is how much the outcome would change if the treatment a, was set at its natural value versus 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.
+
+## Controlled direct effect
+
+For the controlled direct effect we set m to a specific value. The CDE answer the question, what would be the effect of A on Y, when fixing M at a specific value for everyone in the population.
+
+## Natural indirect effect
+
+The NIE is how much the outcome would change on average if the treatment was fixed at level a but the mediator was changed from the level it would take if a\* = 0 to the level it would take if a =1 .
+
+Note that exposure has to have an effect on M otherwise this will be zero.
+
+The NIE asks the question: the effect of exposure that 'would be prevented if the exposure did not cause the mediator' (i.e., the portion of the effect for which mediation is 'necessary')
+
+This is often the effect we are interested in in biomedical research for questions regarding mediation.
+
+## Proportion mediation
+
+From this, we can calculate the proportion mediated.
+
+$PM = \frac{TNIE}{TE}$
+
+## Total effect
+
+The total effect can be decomposed as:
+
+$TE = PNDE + TNIE$
+
+This is the overall effect of x on y.
+
+### 
+
+## Further decomposition
+
+```{r}
+knitr::include_graphics("images/a-i-y.jpg")
+```
+
+## Effect Decomposition (Robins and Greenland)
+
+When there are interaction and non-linearity, different ways of accounting for the interaction:
 
 -   Pure natural direct effect (PNDE)-indirect effect due to mediator alone
 -   Total natural indirect effect (TNIE)-indirect effect due to mediator and its interaction with the exposure
@@ -472,17 +433,13 @@ The NIE is how much the outcome would change on average if the exposure were fix
 
 Note that exposure has to have an effect on M otherwise this will be zero.
 
-### Pure natural indirect effect
+## Pure natural indirect effect
 
 $Y^{a=0,M_a=1}$ - $Y^{a=0,M_a=0}$
 
 Note, this is different from the TNIE in that the exposure is set to no intervention.
 
 ## Interaction effects
-
-More information on the interaction effects can be found in @vanderweele_unification_2014.
-
-Reference interaction:
 
 $INT_{ref} = PNDE - CDE$
 
@@ -520,66 +477,4 @@ Proportion eliminated:
 
 $PE = (INT_{ref} + INT_{med} + PNIE) / TE$
 
-# Estimation of effects using causal mediation analysis
-
-## (Pure) natural direct effect
-
-PNDE can be obtained using this formula:
-
-$PNDE = (\sigma_1 + \sigma_3 * (\beta_0 + \beta_1*a^* + \beta'_2*w))(a - a^*)$
-
-The PNDE is how much the outcome would change if the treatment a, was set at its natural value versus 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.
-
-## Controlled direct effect
-
-The controlled direct effect can be obtained using this formula based on the regression coefficients:
-
-$CDE(m) = (\sigma_1 + \sigma_3*m)(a - a^*)$
-
-$a^*$ is for a change from level $a^*$ (=control) to level $a$ (=intervention).
-
-For the controlled direct effect we set m to a specific value. The CDE answer the question, what would be the effect of A on Y, when fixing M at a specific value for everyone in the population @wang_g-computation_2015?
-
-## (Total) natural direct effect
-
-TNDE can be obtained by this formula:
-
-$TNDE = (\sigma_1 + \sigma_3 * (\beta_0 + beta_1*a + \beta'_2*w))(a - a^*)$
-
-### Total natural indirect effect
-
-The TNIE can be obtained by this formula:
-
-$TNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a)(a - a^*)$
-
-The TNIE is how much the outcome would change on average if the treatment was fixed at level a but the mediator was changed from the level it would take if a\* = 0 to the level it would take if a =1 .
-
-Note that exposure has to have an effect on M otherwise this will be zero.
-
-The TNIE asks the question: to what extent does x cause y via m and the possible interaction between x and m in affecting y? In other words, the effect of exposure that 'would be prevented if the exposure did not cause the mediator' (i.e., the portion of the effect for which mediation is 'necessary') @wang_g-computation_2015.
-
-This is often the effect we are interested in in biomedical research for questions regarding mediation.
-
-### Pure natural indirect effect
-
-The PNIE can be obtained by this formula:
-
-$PNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a^*)(a - a^*)$
-
-The PNIE is different from the TNIE because it does not include the interaction effect. We estimate the effect of x on m and then subsequent effect of m on y.
-
-The PNIE answer the question: "to what extent does x cause y via m only (i.e., due to physical activity affecting body weight and subsequently, body weight affecting pulse), not accounting for the possible interaction between x and y? In other words, the effect that the exposure would have had if 'its only action were to cause the mediator' (i.e., the portion of the effect for which mediation is ''sufficient'')" @wang_g-computation_2015.
-
-### Total effect
-
-The total effect can be decomposed as:
-
-$TE = PNDE + TNIE$
-
-This is the overall effect of x on y.
-
-### Proportion mediation
-
-From this, we can calculate the proportion mediated.
-
-$PM = \frac{TNIE}{TE}$
+## Code-along practice
