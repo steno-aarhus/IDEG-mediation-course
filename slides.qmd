@@ -112,106 +112,45 @@ $E(M|A=a, C=c) = \beta_0 + \beta_1a + \beta_2c$ (1.1)
 
 Outcome model with adjustment for mediator:
 
-## Mediation Effects
-
-Total effect: $\theta_1'$, that is the total effect of the independent variable on the dependent variable.
-
-------------------------------------------------------------------------
-
-## Notes
-
-::: notes
--   **Total effect** = $\theta_1'$, the total effect of the independent variable on the dependent variable.\
--   **Direct effect** = $\theta_1'$, the effect of the independent variable on the dependent variable that is not mediated by the mediator.\
--   **Mediation effect** = $\beta_1 \cdot \theta_2$ (product method).\
--   **Mediation effect** = $\theta_1' - \theta_1$ (difference method).\
--   The terms *mediation effect* and *indirect effect* are used synonymously.\
-:::
-
-## Mediation Effects
-
-Total effect: $\theta_1'$, that is the total effect of the independent variable on the dependent variable.
-
-------------------------------------------------------------------------
-
-## Notes
-
-::: notes
--   **Total effect** = $\theta_1'$, the total effect of the independent variable on the dependent variable.\
--   **Direct effect** = $\theta_1'$, the effect of the independent variable on the dependent variable that is not mediated by the mediator.\
--   **Mediation effect** = $\beta_1 \cdot \theta_2$ (product method).\
--   **Mediation effect** = $\theta_1' - \theta_1$ (difference method).\
--   The terms *mediation effect* and *indirect effect* are used synonymously.\
-:::
-
-## Mediation Effects
-
-Total effect: $\theta_1'$, that is the total effect of the independent variable on the dependent variable.
-
-------------------------------------------------------------------------
-
-## Notes
-
-::: notes
--   **Total effect** = $\theta_1'$, the total effect of the independent variable on the dependent variable.\
--   **Direct effect** = $\theta_1'$, the effect of the independent variable on the dependent variable that is not mediated by the mediator.\
--   **Mediation effect** = $\beta_1 \cdot \theta_2$ (product method).\
--   **Mediation effect** = $\theta_1' - \theta_1$ (difference method).\
--   The terms *mediation effect* and *indirect effect* are used synonymously.\
-:::
-
-## Mediation Effects
-
-Total effect: $\theta_1'$, that is the total effect of the independent variable on the dependent variable.
-
-------------------------------------------------------------------------
-
-## Notes
-
-::: notes
--   **Total effect** = $\theta_1'$, the total effect of the independent variable on the dependent variable.\
--   **Direct effect** = $\theta_1'$, the effect of the independent variable on the dependent variable that is not mediated by the mediator.\
--   **Mediation effect** = $\beta_1 \cdot \theta_2$ (product method).\
--   **Mediation effect** = $\theta_1' - \theta_1$ (difference method).\
--   The terms *mediation effect* and *indirect effect* are used synonymously.\
-:::
-
-## Mediation Effects
-
-Total effect: $\theta_1'$, that is the total effect of the independent variable on the dependent variable.
-
-------------------------------------------------------------------------
-
-## Notes
-
-::: notes
--   **Total effect** = $\theta_1'$, the total effect of the independent variable on the dependent variable.\
--   **Direct effect** = $\theta_1'$, the effect of the independent variable on the dependent variable that is not mediated by the mediator.\
--   **Mediation effect** = $\beta_1 \cdot \theta_2$ (product method).\
--   **Mediation effect** = $\theta_1' - \theta_1$ (difference method).\
--   The terms *mediation effect* and *indirect effect* are used synonymously.\
-:::
-
 $E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c$ (1.2)
 
 Outcome model without adjustment for mediator:
 
 $E(Y|A=a, C=c) = \theta_0' + \theta_1'a + \theta4'c$ (1.3)
 
-::: notes
+## Note
 
-Note:
+-   **Total effect** = $\theta_1'$, the total effect of the independent variable on the dependent variable.
 
--   total effect=$\theta_1'$ , that is the total effect of the independent variable on the dependent variable
+-   **Direct effect** = $\theta_1'$, the effect of the independent variable on the dependent variable that is not mediated by the mediator.
 
--   direct effect=$\theta_1$', that is the effect of the independent variable on the dependent variable that is not mediated by the mediator
+-   **Mediation effect** = $\beta_1 \cdot \theta_2$ (product method).
 
--   mediation effect=$\beta1*\theta_2$ (the product method)
+-   **Mediation effect** = $\theta_1' - \theta_1$ (difference method).
 
--   mediation effect='$\theta_1'-\theta_1$ (the difference method)
-
-The terms \*mediation effect\* and \**indirect effect*\* are used synonymously.
-
-:::
+-   The terms *mediation effect* and *indirect effect* are used synonymously.
 
 ## An example
+
+How much does BMI explain the relation between physical activity and pulse rate?
+
+```{r echo=FALSE}
+#| echo: false
+
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    X [label = 'Physical activity']
+    M [label = 'BMI']
+    Y [label = 'Pulse']
+  edge [minlen = 1.5]
+    X->Y [label = 'c*', xlabel = 'c']
+    X->M [taillabel = 'a']
+    M->Y [label = 'b']
+  { rank = same; X; Y }
+  { rank = min; M;}
+}")
+```
+
+## 
