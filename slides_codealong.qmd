@@ -1,0 +1,142 @@
+---
+title: "code-along"
+format: html
+editor: visual
+---
+
+## Example Dataset: A Brief Overview
+
+We'll explore the relationship between physical activity and pulse in the National Health and Nutrition Examination Survey (NHANES) dataset, which has been modified for this course with simulated variables.
+
+To try this out in practice, we load the NHANES dataset, only keep the variables we need for the example.
+
+The variables used in the dataset:
+
+-   exposure of interest (a): physical activity (continuous variable)
+
+-   outcome (y): Pulse (continuous variable)
+
+-   mediator (m): BMI (continuous variable)
+
+Note that the example is created to demonstrate the methods, and there is no clinical relevance of the results. For the convenience of analysis, we have transformed the mediator (m) and outcome variable (y) so that they follow a normal distribution.
+
+Four demographic variables are considered in the analysis: age, gender, education, and smoking. We assume that adjusting for these four confounding is sufficient to block the backdoor paths. Further discussion on confounding adjustment will be covered in the following session.
+
+## Continuous outcome
+
+```{r}
+# load the data 
+nhanes <- read_csv(here::here("data/NHANES.csv")) 
+library(dplyr) 
+# keep the variables used in the analyses 
+data <- nhanes %>% 
+  dplyr::select(ID, w1 = Age, w2 = Gender, w3 = Education, w4 = Smoke100, a = PhysActive, m = BMI, y = Pulse, y2 = Diabetes ) %>% 
+  na.omit()
+```
+
+```{r}
+# Physical activity is a binary variable, dichotomized as 'Yes' or 'No'. 
+table(data$a)
+# check the distribution of outcome 
+summary(data$y)
+hist(data$y)
+# check the distribution of mediation
+summary(data$m)
+hist(data$m)
+# check the education categories and relevel 
+table(data$w3)
+data$w3 <- relevel(factor(data$w3), ref = "College Grad")
+```
+
+i\) run a model for the mediator only adjusting for confouding factors.
+
+```{r}
+lm_m <- lm(m ~ a + w1 + w2 + w3 + w4, data = data)
+summary(lm_m)
+```
+
+We see that physical activity (a) is associated with lower BMI.
+
+ii\) run the model for the outcome, including an interaction term between exposure and mediator.
+
+```{r}
+lm_y <- lm(y ~ a + m + a:m + w1 + w2 + w3 + w4, data = data)
+summary(lm_y)
+```
+
+In this model we can see:
+
+-   physical activity reduces pulse rate, independent of BMI (m);
+
+-   BMI is positively associated with pulse rate (y);
+
+-   There is interaction between physical activity (a) and BMI (m)
+
+    ### We will use the CMAverse R package to conduct the mediation analyses. 
+
+First, we load the package and then we setup the model object. We have to specify:
+
+-   model: this is the type of model, or the approach for the causal mediation. We used the regression-based approach, so we will also do that here. However, one can also use weighting-based approach marginal structural models or the gformula.
+
+-   outcome: your outcome variable
+
+-   exposure: your exposure/intervention/treatment
+
+-   mediator: your mediator
+
+-   mreg: the type of model for the mediator. It is a list because you can have multiple mediators
+
+-   yreg: type of regression for the outcome. E.g., linear, logistic, cox.
+
+-   astar: Control/comparison intervention (value from)
+
+-   a: Intervention (value to)
+
+-   mval: the value for the mediator when estimating the CDE
+
+-   EMin0t: indicator of whether there should be exposure and mediator interaction in the models.
+
+-   estimation: method for estimating causal effects. Can use parametric functions or imputation.
+
+-   inference: how to calculate confidence intervals. For regression-based we use the delta method. But for the other methods we use a bootstrap.
+
+Load the library:
+
+```{r}
+## install.packages("CMAverse")  #reinstall the package if the library is not loaded
+library(CMAverse)
+```
+
+Build the models:
+
+-   Since both the mediator(BMI) and outcome(pulse rate) are continuous, we use linear regression models.
+
+-   Note EMint: we specify it as TRUE, to add interaction term
+
+-   We set mediator values to 25, suppose mediator could be intervened to normal weight
+
+```{r}
+res_rb <- cmest(
+  data = data, model = "rb", outcome = "y", exposure = "a",
+  mediator = "m", basec = c("w1","w2","w3","w4"), EMint = TRUE,
+  mreg = list("linear"), yreg = "linear", #specifiy model types
+  astar = 0, a = 1, mval = list(25),
+  estimation = "paramfunc", inference = "delta"
+)
+
+summary(res_rb)
+```
+
+Suppose now i am interested in how physical activity influences the risk of diabetes. I will first check the proportion of diabetes in the sample.
+
+```{# y2 is diaebtes}
+table(data$y2)
+```
+
+```{r}
+res_rb <- cmest( data = data, model = "rb", outcome = "y2", exposure = "a", mediator = "m", basec = c("w1","w2","w3","w4"), EMint = TRUE, 
+mreg = list("linear"), 
+yreg = "logit",  mval = list(25), estimation = "paramfunc", inference = "delta" )
+
+summary(res_rb)
+```
