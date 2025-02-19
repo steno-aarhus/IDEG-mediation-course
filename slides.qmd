@@ -1,0 +1,217 @@
+---
+title: "Mediation Analyses"
+author: "Daniel Witte, Jie Zhang"
+format: revealjs
+editor: visual
+---
+
+## Mediation Analysis
+
+## Welcome to the workshop on Mediation Analysis🎉
+
+## Outlines 📌
+
+In this course, you will learn:
+
+-   Understand the fundementals of mediation analysis
+
+    *What is mediation analyses? Why and when to use mediation analyses?*
+
+-   Master the theoretical framework
+
+    *Understand traditional mediation concepts; Learn principles of causal mediation analysis*
+
+-   Conduct practical analyses using R software
+
+    *Perform traditional mediation and causal mediation analysis; Apply appropriate statistical methods*
+
+-   Interpret and communicate results
+
+    *Analyze outputs from mediation analyses; Draw meaningful conclusions from results*
+
+## What is mediation? 
+
+Mediation analysis is the study of pathways and mechanisms through which an exposure or intervention impacts an outcome. In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome. Once this effect is established, the next natural question is to explore the "black box"—the underlying mechanisms that explain how the intervention (or exposure) leads to the observed outcome. As we are not only interested in whether an intervention works, but how it works.
+
+## Motivation for mediation analysis
+
+1.  **Explanation and Understanding**
+
+2.  **Confirmation and Refutation of Theory**
+
+3.  **Refining Interventions**
+
+## Mediation analyses
+
+The cause (or exposure) affects the outcome through a process or a series of processes involving different intermediate stages.
+
+What proportion of the effect of the cause on the outcome is operating through the intermediate of interest, is referred to as an indirect effect or mediated effect.
+
+The techniques to assess the relative magnitude of the direct and indirect effects is referred to as 'mediation analysis'.
+
+## Mediation analyses
+
+The purpose of mediation analysis is to determine if the effect of a treatment (A) on an outcome (Y) can be explained by a third mediating variable (M). Thus, mediation analysis not only answers whether two variables are related, but also **why and how**.
+
+## Examples
+
+Overall relationship between A and Y:
+
+```{r setup}
+#| include: false 
+#| #| screenshot: true library(here) 
+library(DiagrammeR) 
+library(tidyverse) 
+library(dplyr)
+```
+
+```{r}
+#| echo: false
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    A [label = 'A']
+    Y [label = 'Y']
+  edge [minlen = 1.5]
+    A->Y [label = 'c']
+  { rank = same; A; Y }
+}")
+```
+
+Relationship between A and Y through M:
+
+```{r}
+#| echo: false
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    A [label = 'A']
+    M [label = 'M']
+    Y [label = 'Y']
+  edge [minlen = 1.5]
+    A->Y [label = 'c*', xlabel = 'c']
+    A->M [taillabel = 'a']
+    M->Y [label = 'b']
+  { rank = same; A; Y }
+  { rank = min; M;}
+}")
+
+```
+
+## Traditional approaches for mediation analysis
+
+The two traditional approaches to mediation analysis are **the difference method** and **the product method**; also known as the Baron & Kenny-method.
+
+## Traditional approaches for mediation analysis
+
+Mediator-model:
+
+$E(M|A=a, C=c) = \beta_0 + \beta_1a + \beta_2c$ (1.1)
+
+Outcome model with adjustment for mediator:
+
+## Mediation Effects
+
+Total effect: $\theta_1'$, that is the total effect of the independent variable on the dependent variable.
+
+------------------------------------------------------------------------
+
+## Notes
+
+::: notes
+-   **Total effect** = $\theta_1'$, the total effect of the independent variable on the dependent variable.\
+-   **Direct effect** = $\theta_1'$, the effect of the independent variable on the dependent variable that is not mediated by the mediator.\
+-   **Mediation effect** = $\beta_1 \cdot \theta_2$ (product method).\
+-   **Mediation effect** = $\theta_1' - \theta_1$ (difference method).\
+-   The terms *mediation effect* and *indirect effect* are used synonymously.\
+:::
+
+## Mediation Effects
+
+Total effect: $\theta_1'$, that is the total effect of the independent variable on the dependent variable.
+
+------------------------------------------------------------------------
+
+## Notes
+
+::: notes
+-   **Total effect** = $\theta_1'$, the total effect of the independent variable on the dependent variable.\
+-   **Direct effect** = $\theta_1'$, the effect of the independent variable on the dependent variable that is not mediated by the mediator.\
+-   **Mediation effect** = $\beta_1 \cdot \theta_2$ (product method).\
+-   **Mediation effect** = $\theta_1' - \theta_1$ (difference method).\
+-   The terms *mediation effect* and *indirect effect* are used synonymously.\
+:::
+
+## Mediation Effects
+
+Total effect: $\theta_1'$, that is the total effect of the independent variable on the dependent variable.
+
+------------------------------------------------------------------------
+
+## Notes
+
+::: notes
+-   **Total effect** = $\theta_1'$, the total effect of the independent variable on the dependent variable.\
+-   **Direct effect** = $\theta_1'$, the effect of the independent variable on the dependent variable that is not mediated by the mediator.\
+-   **Mediation effect** = $\beta_1 \cdot \theta_2$ (product method).\
+-   **Mediation effect** = $\theta_1' - \theta_1$ (difference method).\
+-   The terms *mediation effect* and *indirect effect* are used synonymously.\
+:::
+
+## Mediation Effects
+
+Total effect: $\theta_1'$, that is the total effect of the independent variable on the dependent variable.
+
+------------------------------------------------------------------------
+
+## Notes
+
+::: notes
+-   **Total effect** = $\theta_1'$, the total effect of the independent variable on the dependent variable.\
+-   **Direct effect** = $\theta_1'$, the effect of the independent variable on the dependent variable that is not mediated by the mediator.\
+-   **Mediation effect** = $\beta_1 \cdot \theta_2$ (product method).\
+-   **Mediation effect** = $\theta_1' - \theta_1$ (difference method).\
+-   The terms *mediation effect* and *indirect effect* are used synonymously.\
+:::
+
+## Mediation Effects
+
+Total effect: $\theta_1'$, that is the total effect of the independent variable on the dependent variable.
+
+------------------------------------------------------------------------
+
+## Notes
+
+::: notes
+-   **Total effect** = $\theta_1'$, the total effect of the independent variable on the dependent variable.\
+-   **Direct effect** = $\theta_1'$, the effect of the independent variable on the dependent variable that is not mediated by the mediator.\
+-   **Mediation effect** = $\beta_1 \cdot \theta_2$ (product method).\
+-   **Mediation effect** = $\theta_1' - \theta_1$ (difference method).\
+-   The terms *mediation effect* and *indirect effect* are used synonymously.\
+:::
+
+$E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c$ (1.2)
+
+Outcome model without adjustment for mediator:
+
+$E(Y|A=a, C=c) = \theta_0' + \theta_1'a + \theta4'c$ (1.3)
+
+::: notes
+
+Note:
+
+-   total effect=$\theta_1'$ , that is the total effect of the independent variable on the dependent variable
+
+-   direct effect=$\theta_1$', that is the effect of the independent variable on the dependent variable that is not mediated by the mediator
+
+-   mediation effect=$\beta1*\theta_2$ (the product method)
+
+-   mediation effect='$\theta_1'-\theta_1$ (the difference method)
+
+The terms \*mediation effect\* and \**indirect effect*\* are used synonymously.
+
+:::
+
+## An example
