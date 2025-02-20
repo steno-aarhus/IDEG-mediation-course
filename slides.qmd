@@ -6,15 +6,15 @@ slide-number: c/t    # current/total format
 editor: visual
 ---
 
-## Welcome to the workshop on Mediation Analysis🎉
+## Welcome to the IDEG workshop on Mediation Analysis🎉
 
-## Outlines 📌
+## Outline 📌
 
-In this course, you will learn:
+In this course, you will learn to:
 
--   Understand the fundementals of mediation analysis
+-   Understand the fundamentals of mediation analysis
 
-    *What is mediation analyses? Why and when to use mediation analyses?*
+    *What is mediation analysis? Why and when can we use mediation analysis?*
 
 -   Master the theoretical framework
 
@@ -26,27 +26,27 @@ In this course, you will learn:
 
 -   Interpret and communicate results
 
-    *Analyze outputs from mediation analyses; Draw meaningful conclusions from results*
+    *Understand outputs from mediation analyses; Draw meaningful conclusions from results*
 
 ## What is mediation?
 
 Mediation analysis is the study of pathways and mechanisms through which an *exposure* or *intervention* impacts an outcome.
 
-In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome. Once this effect is established, the next natural question is to explore the "black box"—the underlying mechanisms that explain how the intervention (or exposure) leads to the observed outcome. As we are not only interested in whether an intervention works, but *how* it works.
+In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome (aetiological research). Once this main effect is established, the next natural question is to explore the "black box"—the underlying mechanisms that explain how the intervention (or exposure) leads to the observed outcome. As we are not only interested in whether an intervention works, but *how* it works.
 
-## Mediation analyses
+## Mediation analysis
 
 The techniques to assess the relative magnitude of the direct and indirect effects is referred to as 'mediation analysis'.
 
-## Mediation analyses
+## Mediation analysis
 
-The purpose of mediation analysis is to determine if the effect of a treatment (A) on an outcome (Y) can be explained by a third mediating variable (M). Thus, mediation analysis not only answers whether two variables are related, but also **why and how**.
+The purpose of mediation analysis is to determine if the effect of a treatment (A) on an outcome (Y) can be explained by a third mediating variable (M). Thus, mediation analysis not only answers whether two variables are related, but also approaches the questions of **why and how** they are related.
 
 ## Motivation for mediation analysis
 
 1.  **Explanation and Understanding**
 
-2.  **Confirmation and Refutation of Theory**
+2.  **Confirmation or Refutation of Theory**
 
 3.  **Refining Interventions**
 
@@ -102,19 +102,19 @@ The following criteria need to be satisfied for a variable to be considered a me
 1.  The exposure should be associated with the mediator.
 2.  The mediator should be associated with the outcome.
 3.  The exposure should be associated with the outcome.
-4.  When controlling for the mediator, the association between the exposure and outcome should be reduced (up to debate).
+4.  When controlling for the mediator, the association between the exposure and outcome should be reduced (up for debate).
 
-## Baron&Kenny
+## Baron & Kenny
 
 ### The four steps:
 
-**STEP 1:** test association between exposure and outcome (a)
+**STEP 1:** quantify the association between exposure and outcome (a)
 
-**STEP 2:** test association between exposure and mediator (b)
+**STEP 2:** quantify the association between exposure and mediator (b)
 
-**STEP 3:** test association between mediator and outcome, controlling for exposure (c)
+**STEP 3:** quantify the association between mediator and outcome, controlling for exposure (c)
 
-**STEP 4:** mediation is shown if association between X and Y is reduced to non-significance when M is controlled (d)
+**STEP 4:** mediation is shown if the association between X and Y is reduced (to non-significance) when M is controlled (d)
 
 ## Method 2: Difference approach
 
@@ -176,14 +176,14 @@ This assumption can be violated in both observational studies as well as RCTs be
 knitr::include_graphics("images/intermediate.jpg")
 ```
 
-## When can we use the traditional approach
+## When can we use the traditional approach?
 
-When fulfill the criteria, simple tools like regression can be used to estimate a causal mediation effect:
+When the criteria are fulfilled, simple tools like regression can be used to estimate a causal mediation effect:
 
 -   no unmeasured confounding
 -   no exposure-mediator interaction
 -   linear relationship
--   rare binary outcome
+-   rare binary outcomes
 
 # Introduction to causal mediation analysis
 
@@ -205,7 +205,7 @@ When investigating health outcomes, we would ideally want to know if **you** do 
 
 To answer this question we would ideally have you consume more red meat over 1 year and measure your blood glucose levels. Then, we would turn back time, and make you eat something else over 1 year and then measure your blood glucose levels again. If there is a **difference** between your two outcomes, then we say there is a causal effect.
 
-But we can never do this in the real world. Only ever observe one of Y(0) or Y(1) the other is counterfactual.
+But we can never do this in the real world. We can only ever observe one of Y(0) or Y(1) the other is counterfactual.
 
 ## Average causal effect
 
@@ -213,11 +213,11 @@ Instead, we can perform a randomized controlled trial. We now ask a slightly dif
 
 > Will eating more red meat give adults higher blood glucose in 1 year?
 
-We can randomely assigning one group to consume more red meat and the other group to consume more of something else over 1 year. Then we compare the average blood glucose levels after 1 year in each of the groups. If there is a difference, we could say there is an average causal effect.
+We can randomly assign one group to consume more red meat and the other group to consume more of something else over 1 year. Then we compare the average blood glucose levels after 1 year in each of the groups. If there is a difference, we could say there is an average causal effect.
 
 ## **Association vs causation**
 
-What makes it complicated to estimate a causal effect is that we cannot observe the outcome under different treatments.
+What makes it complicated to estimate a causal effects in observational research is that we cannot observe the outcome under different assigned exposures, only under different naturally occurring exposures.
 
 When we only have a subset of the outcomes, we have an association. This is illustrated in @fig-causation-association.
 
@@ -229,7 +229,7 @@ When we only have a subset of the outcomes, we have an association. This is illu
 knitr::include_graphics("images/causation-association.png")
 ```
 
-## [Key As](images/filename.png)sumptions
+## Key assumptions
 
 If we want to infer a causal effect (i.e., what would have happened, had everyone done A=1 vs A=0), we need three assumptions to be fulfilled:
 
