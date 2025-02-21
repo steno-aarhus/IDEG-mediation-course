@@ -10,11 +10,11 @@ editor: visual
 
 ## Outlines 📌
 
-In this course, you will learn:
+In this course, you will:
 
 -   Understand the fundementals of mediation analysis
 
-    *What is mediation analyses? Why and when to use mediation analyses?*
+    *Apply What is mediation analysis? When and why should you use this?*
 
 -   Master the theoretical framework
 
@@ -22,11 +22,11 @@ In this course, you will learn:
 
 -   Conduct practical analyses using R software
 
-    *Perform traditional mediation and causal mediation analysis; Apply appropriate statistical methods*
+    *Apply appropriate statistical methods to perform mediation analysis*
 
 -   Interpret and communicate results
 
-    *Analyze outputs from mediation analyses; Draw meaningful conclusions from results*
+    *Analyze outputs from mediation analyses and draw meaningful conclusions from results*
 
 ## What is mediation?
 
@@ -67,13 +67,13 @@ knitr::include_graphics("images/trend_mediation.jpg")
 
 Overall relationship between A and Y:
 
-```{r}
+```{r, out.width='80%', out.height='50%'}
 knitr::include_graphics("images/a-y.png")
 ```
 
 Relationship between A and Y through M:
 
-```{r}
+```{r,out.width='80%', out.height='50%'}
 knitr::include_graphics("images/a-m-y.png")
 ```
 
@@ -120,11 +120,7 @@ The following criteria need to be satisfied for a variable to be considered a me
 
 Total effect:  regress Y on X
 
-Direct effect:  regress Y on X and M (take coefficient for X i.e. theta_1)
-
-$E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c$ (1.2)
-
-Indirect effect:  total effect – direct effect
+Direct effect:  regress Y on X and M
 
 If a mediation effect exists, the effect of A on Y will be attenuated when M is included in the regression, indicating the effect of A on Y goes through M. If the effect of A on Y completely disappears, M fully mediates between A and Y (full mediation). If the effect of A on Y still exists, but in a smaller magnitude, M partially mediates between A and Y (partial mediation).
 
@@ -152,7 +148,7 @@ $E(Y|A=a, C=c) = \theta_0' + \theta_1'a + \theta4'c$ (1.3)
 
 -   **Mediation effect** = $\theta_1' - \theta_1$ (difference method).
 
-    *The terms mediation effect and indirect effect are used synonymously.*
+    *The terms mediation effect and indirect effect are used synonymously*.
 
 ## Product method VS Difference method
 
@@ -170,11 +166,31 @@ The algebraic equivalence of the indirect effect using the product method and th
 
 This assumption can be violated in both observational studies as well as RCTs because while the exposure can sometimes be randomized, it is often not the case that both exposure and mediator are randomized.
 
-## Intermediate confouding
+## Problem 1-Intermediate confounding
 
 ```{r}
-knitr::include_graphics("images/intermediate.jpg")
+knitr::include_graphics("images/intermediate_eg.jpg")
 ```
+
+## Problem 1-Intermediate confounding
+
+-   In an **RCT study**, pregnant women are randomized to receive a **lifestyle intervention (A)** aimed at weight loss. While **A (lifestyle intervention)** can be randomized, **M (birth weight)** cannot, as it is a pre-existing condition that results from the pregnancy.
+
+-   Gestational diabetes is a descent of A (lifestyle intervention on pregnant women), and a cause of Y (child adiposity), you cannot condition on it because it is a mediator of A-Y(lifestyle intervention-child adiposity);
+
+-   Gestational diabetes is also a confounder of M-Y relationship (birth weight-child adiposity), it biases the M-Y path if you do not condition on it.
+
+## Problem 2-Collider bias
+
+```{r}
+knitr::include_graphics("images/intermediate_eg2.jpg")
+```
+
+In observational studies, the situation might get even more complex.
+
+-   C1, C2 represent a series of confounders on the pathways.
+
+-   Notably, in the presence of **C2**, **gestational diabetes (L)** acts as a **collider** on the pathway **A → L ← C2 → Y** (maternal pre-pregnancy BMI → gestational diabetes **←** C2 → child adiposity). If we adjust for **gestational diabetes (L)**, it will **open a backdoor path**, introducing bias in the estimation of both **direct and indirect effects**. This could distort the causal interpretation of mediation.
 
 ## When can we use the traditional approach
 
