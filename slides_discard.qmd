@@ -1,8 +1,8 @@
 ---
 title: "Mediation Analyses"
-author: "Daniel Witte, Jie Zhang" 
-format: revealjs 
-slide-number: c/t    
+author: "Daniel Witte, Jie Zhang"
+format: revealjs
+slide-number: c/t    # current/total format
 editor: visual
 ---
 
