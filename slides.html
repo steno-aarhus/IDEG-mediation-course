@@ -8,7 +8,7 @@
 <link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.57">
+  <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Daniel Witte, Jie Zhang">
   <title>Mediation Analyses</title>
@@ -337,49 +337,49 @@ Daniel Witte, Jie Zhang
 </div>
 
 </section>
-<section id="welcome-to-the-ideg-workshop-on-mediation-analysis" class="slide level2">
-<h2>Welcome to the IDEG workshop on Mediation Analysis🎉</h2>
+<section id="welcome-to-the-workshop-on-mediation-analysis" class="slide level2">
+<h2>Welcome to the workshop on Mediation Analysis🎉</h2>
 </section>
 <section id="outlines" class="slide level2">
 <h2>Outlines 📌</h2>
-<p>In this course, you will learn to:</p>
+<p>In this course, you will:</p>
 <ul>
-<li><p>Understand the fundamentals of mediation analysis</p>
-<p><em>What is mediation analysis? Why and when can we use mediation analysis?</em></p></li>
+<li><p>Understand the fundementals of mediation analysis</p>
+<p><em>Apply What is mediation analysis? When and why should you use this?</em></p></li>
 <li><p>Master the theoretical framework</p>
 <p><em>Understand traditional mediation concepts; Learn principles of causal mediation analysis</em></p></li>
 <li><p>Conduct practical analyses using R software</p>
-<p><em>Perform traditional mediation and causal mediation analysis; Apply appropriate statistical methods</em></p></li>
+<p><em>Apply appropriate statistical methods to perform mediation analysis</em></p></li>
 <li><p>Interpret and communicate results</p>
-<p><em>Understand outputs from mediation analyses; Draw meaningful conclusions from results</em></p></li>
+<p><em>Analyze outputs from mediation analyses and draw meaningful conclusions from results</em></p></li>
 </ul>
 </section>
 <section id="what-is-mediation" class="slide level2">
 <h2>What is mediation?</h2>
 <p>Mediation analysis is the study of pathways and mechanisms through which an <em>exposure</em> or <em>intervention</em> impacts an outcome.</p>
-<p>In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome (aetiological research). Once this main effect is established, the next natural question is to explore the “black box”—the underlying mechanisms that explain how the intervention (or exposure) leads to the observed outcome. As we are not only interested in whether an intervention works, but <em>how</em> it works.</p>
+<p>In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome. Once this effect is established, the next natural question is to explore the “black box”—the underlying mechanisms that explain how the intervention (or exposure) leads to the observed outcome. As we are not only interested in whether an intervention works, but <em>how</em> it works.</p>
 </section>
-<section id="mediation-analysis" class="slide level2">
-<h2>Mediation analysis</h2>
+<section id="mediation-analyses" class="slide level2">
+<h2>Mediation analyses</h2>
 <p>The techniques to assess the relative magnitude of the direct and indirect effects is referred to as ‘mediation analysis’.</p>
 </section>
-<section id="mediation-analysis-1" class="slide level2">
-<h2>Mediation analysis</h2>
-<p>The purpose of mediation analysis is to determine if the effect of a treatment (A) on an outcome (Y) can be explained by a third mediating variable (M). Thus, mediation analysis not only answers whether two variables are related, but also approaches the questions of <strong>why and how</strong> they are related.</p>
+<section id="mediation-analyses-1" class="slide level2">
+<h2>Mediation analyses</h2>
+<p>The purpose of mediation analysis is to determine if the effect of a treatment (A) on an outcome (Y) can be explained by a third mediating variable (M). Thus, mediation analysis not only answers whether two variables are related, but also <strong>why and how</strong>.</p>
 </section>
 <section id="motivation-for-mediation-analysis" class="slide level2">
 <h2>Motivation for mediation analysis</h2>
 <ol type="1">
 <li><p><strong>Explanation and Understanding</strong></p></li>
-<li><p><strong>Confirmation or Refutation of Theory</strong></p></li>
+<li><p><strong>Confirmation and Refutation of Theory</strong></p></li>
 <li><p><strong>Refining Interventions</strong></p></li>
 </ol>
 </section>
-<section id="mediation-analysis-2" class="slide level2">
+<section id="mediation-analysis" class="slide level2">
 <h2>Mediation analysis</h2>
 <p>Mediation analysis is becoming more popular.&nbsp;<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8496983/#F1">Fig. 1</a>&nbsp;shows that both the number of entries in Google Scholar and the number of peer-reviewed articles in PsycINFO that have “mediation analysis” in the title or text have been growing exponentially.&nbsp;</p>
 
-<img data-src="images/trend_mediation.jpg" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">
+<img data-src="images/trend_mediation.jpg" class="quarto-figure quarto-figure-center r-stretch" width="525"><p class="caption">
 Figure&nbsp;1: Trend Mediation Analysis
 </p></section>
 <section id="mediation" class="slide level2">
@@ -389,7 +389,7 @@ Figure&nbsp;1: Trend Mediation Analysis
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="images/a-y.png"></p>
+<p><img data-src="images/a-y.png" style="width:80.0%;height:50.0%"></p>
 </figure>
 </div>
 </div>
@@ -399,7 +399,7 @@ Figure&nbsp;1: Trend Mediation Analysis
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="images/a-m-y.png"></p>
+<p><img data-src="images/a-m-y.png" style="width:80.0%;height:50.0%"></p>
 </figure>
 </div>
 </div>
@@ -412,7 +412,7 @@ Figure&nbsp;1: Trend Mediation Analysis
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="images/example1.jpg"></p>
+<p><img data-src="images/example1.jpg" width="606"></p>
 </figure>
 </div>
 </div>
@@ -422,7 +422,7 @@ Figure&nbsp;1: Trend Mediation Analysis
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="images/example2.png"></p>
+<p><img data-src="images/example2.png" width="611"></p>
 </figure>
 </div>
 </div>
@@ -439,23 +439,21 @@ Figure&nbsp;1: Trend Mediation Analysis
 <li>The exposure should be associated with the mediator.</li>
 <li>The mediator should be associated with the outcome.</li>
 <li>The exposure should be associated with the outcome.</li>
-<li>When controlling for the mediator, the association between the exposure and outcome should be reduced (up for debate).</li>
+<li>When controlling for the mediator, the association between the exposure and outcome should be reduced (up to debate).</li>
 </ol>
 </section>
-<section id="baron-kenny" class="slide level2">
-<h2>Baron &amp; Kenny</h2>
+<section id="baronkenny" class="slide level2">
+<h2>Baron&amp;Kenny</h2>
 <h3 id="the-four-steps">The four steps:</h3>
-<p><strong>STEP 1:</strong> quantify the association between exposure and outcome (a)</p>
-<p><strong>STEP 2:</strong> quantify the association between exposure and mediator (b)</p>
-<p><strong>STEP 3:</strong> quantify the association between mediator and outcome, controlling for exposure (c)</p>
-<p><strong>STEP 4:</strong> mediation is shown if the association between X and Y is reduced (to non-significance) when M is controlled (d)</p>
+<p><strong>STEP 1:</strong> test association between exposure and outcome (a)</p>
+<p><strong>STEP 2:</strong> test association between exposure and mediator (b)</p>
+<p><strong>STEP 3:</strong> test association between mediator and outcome, controlling for exposure (c)</p>
+<p><strong>STEP 4:</strong> mediation is shown if association between X and Y is reduced to non-significance when M is controlled (d)</p>
 </section>
 <section id="method-2-difference-approach" class="slide level2">
 <h2>Method 2: Difference approach</h2>
 <p>Total effect:&nbsp; regress Y on X</p>
-<p>Direct effect:&nbsp; regress Y on X and M (take coefficient for X i.e.&nbsp;theta_1)</p>
-<p><span class="math inline">\(E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c\)</span> (1.2)</p>
-<p>Indirect effect:&nbsp; total effect – direct effect</p>
+<p>Direct effect:&nbsp; regress Y on X and M</p>
 <p>If a mediation effect exists, the effect of A on Y will be attenuated when M is included in the regression, indicating the effect of A on Y goes through M. If the effect of A on Y completely disappears, M fully mediates between A and Y (full mediation). If the effect of A on Y still exists, but in a smaller magnitude, M partially mediates between A and Y (partial mediation).</p>
 </section>
 <section id="build-models" class="slide level2">
@@ -474,7 +472,7 @@ Figure&nbsp;1: Trend Mediation Analysis
 <li><p><strong>Direct effect</strong> = <span class="math inline">\(\theta_1\)</span>, the effect of the independent variable on the dependent variable that is not mediated by the mediator.</p></li>
 <li><p><strong>Mediation effect</strong> = <span class="math inline">\(\beta_1 \cdot \theta_2\)</span> (product method).</p></li>
 <li><p><strong>Mediation effect</strong> = <span class="math inline">\(\theta_1' - \theta_1\)</span> (difference method).</p>
-<p><em>The terms mediation effect and indirect effect are used synonymously.</em></p></li>
+<p><em>The terms mediation effect and indirect effect are used synonymously</em>.</p></li>
 </ul>
 </section>
 <section id="product-method-vs-difference-method" class="slide level2">
@@ -494,18 +492,38 @@ Figure&nbsp;1: Trend Mediation Analysis
 <p>⚠️ Unmeasured confounding of the Mediator-Outcome path</p>
 <p>This assumption can be violated in both observational studies as well as RCTs because while the exposure can sometimes be randomized, it is often not the case that both exposure and mediator are randomized.</p>
 </section>
-<section id="intermediate-confouding" class="slide level2">
-<h2>Intermediate confouding</h2>
+<section id="problem-1-intermediate-confounding" class="slide level2">
+<h2>Problem 1-Intermediate confounding</h2>
 
-<img data-src="images/intermediate.jpg" class="r-stretch"></section>
+<img data-src="images/intermediate_eg.jpg" width="1333" class="r-stretch"></section>
+<section id="problem-1-intermediate-confounding-1" class="slide level2">
+<h2>Problem 1-Intermediate confounding</h2>
+<ul>
+<li><p>In an <strong>RCT study</strong>, pregnant women are randomized to receive a <strong>lifestyle intervention (A)</strong> aimed at weight loss. While <strong>A (lifestyle intervention)</strong> can be randomized, <strong>M (birth weight)</strong> cannot, as it is a pre-existing condition that results from the pregnancy.</p></li>
+<li><p>Gestational diabetes is a descent of A (lifestyle intervention on pregnant women), and a cause of Y (child adiposity), you cannot condition on it because it is a mediator of A-Y(lifestyle intervention-child adiposity);</p></li>
+<li><p>Gestational diabetes is also a confounder of M-Y relationship (birth weight-child adiposity), it biases the M-Y path if you do not condition on it.</p></li>
+</ul>
+</section>
+<section id="problem-2-collider-bias" class="slide level2">
+<h2>Problem 2-Collider bias</h2>
+
+<img data-src="images/intermediate_eg2.jpg" width="634" class="r-stretch"></section>
+<section id="problem-2-collider-bias-1" class="slide level2">
+<h2>Problem 2-Collider bias</h2>
+<p>In observational studies, the situation might get even more complex.</p>
+<ul>
+<li><p>C1, C2 represent a series of confounders on the pathways.</p></li>
+<li><p>Notably, in the presence of <strong>C2</strong>, <strong>gestational diabetes (L)</strong> acts as a <strong>collider</strong> on the pathway <strong>A → L ← C2 → Y</strong> (maternal pre-pregnancy BMI → gestational diabetes <strong>←</strong> C2 → child adiposity). If we adjust for <strong>gestational diabetes (L)</strong>, it will <strong>open a backdoor path</strong>, introducing bias in the estimation of both <strong>direct and indirect effects</strong>. This could distort the causal interpretation of mediation.</p></li>
+</ul>
+</section>
 <section id="when-can-we-use-the-traditional-approach" class="slide level2">
-<h2>When can we use the traditional approach?</h2>
-<p>When the criteria are fulfilled, simple tools like regression can be used to estimate a causal mediation effect:</p>
+<h2>When can we use the traditional approach</h2>
+<p>When fulfill the criteria, simple tools like regression can be used to estimate a causal mediation effect:</p>
 <ul>
 <li>no unmeasured confounding</li>
 <li>no exposure-mediator interaction</li>
 <li>linear relationship</li>
-<li>rare binary outcomes</li>
+<li>rare binary outcome</li>
 </ul>
 </section>
 <section>
@@ -531,7 +549,7 @@ Figure&nbsp;1: Trend Mediation Analysis
 <p>Will eating more red meat give me higher blood glucose in 1 year?</p>
 </blockquote>
 <p>To answer this question we would ideally have you consume more red meat over 1 year and measure your blood glucose levels. Then, we would turn back time, and make you eat something else over 1 year and then measure your blood glucose levels again. If there is a <strong>difference</strong> between your two outcomes, then we say there is a causal effect.</p>
-<p>But we can never do this in the real world. We can only ever observe one of Y(0) or Y(1) the other is counterfactual.</p>
+<p>But we can never do this in the real world. Only ever observe one of Y(0) or Y(1) the other is counterfactual.</p>
 </section>
 <section id="average-causal-effect" class="slide level2">
 <h2>Average causal effect</h2>
@@ -539,15 +557,15 @@ Figure&nbsp;1: Trend Mediation Analysis
 <blockquote>
 <p>Will eating more red meat give adults higher blood glucose in 1 year?</p>
 </blockquote>
-<p>We can randomly assign one group to consume more red meat and the other group to consume more of something else over 1 year. Then we compare the average blood glucose levels after 1 year in each of the groups. If there is a difference, we could say there is an average causal effect.</p>
+<p>We can randomely assigning one group to consume more red meat and the other group to consume more of something else over 1 year. Then we compare the average blood glucose levels after 1 year in each of the groups. If there is a difference, we could say there is an average causal effect.</p>
 </section>
 <section id="association-vs-causation" class="slide level2">
 <h2><strong>Association vs causation</strong></h2>
-<p>What makes it complicated to estimate a causal effects in observational research is that we cannot observe the outcome under different assigned exposures, only under different naturally occurring exposures.</p>
+<p>What makes it complicated to estimate a causal effect is that we cannot observe the outcome under different treatments.</p>
 <p>When we only have a subset of the outcomes, we have an association. This is illustrated in <a href="#/fig-causation-association" class="quarto-xref">Figure&nbsp;2</a>.</p>
 <p>![Caption](images/causation-association.png)</p>
 
-<img data-src="images/causation-association.png" class="r-stretch quarto-figure-center"><p class="caption">
+<img data-src="images/causation-association.png" width="562" class="r-stretch quarto-figure-center"><p class="caption">
 Figure&nbsp;2: Relationship between causation and association
 </p></section>
 <section id="key-assumptions" class="slide level2">
@@ -686,7 +704,7 @@ Figure&nbsp;2: Relationship between causation and association
 <section id="further-decomposition" class="slide level2">
 <h2>Further decomposition</h2>
 
-<img data-src="images/a-i-y.jpg" class="r-stretch"></section>
+<img data-src="images/a-i-y.jpg" width="606" class="r-stretch"></section>
 <section id="effect-decomposition-robins-and-greenland" class="slide level2">
 <h2>Effect Decomposition (Robins and Greenland)</h2>
 <p>When there are interaction and non-linearity, different ways of accounting for the interaction:</p>
@@ -968,42 +986,80 @@ Figure&nbsp;2: Relationship between causation and association
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1037,7 +1093,18 @@ Figure&nbsp;2: Relationship between causation and association
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1069,29 +1136,7 @@ Figure&nbsp;2: Relationship between causation and association
         }, 1000);
         // clear code selection
         e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
       });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1099,7 +1144,7 @@ Figure&nbsp;2: Relationship between causation and association
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

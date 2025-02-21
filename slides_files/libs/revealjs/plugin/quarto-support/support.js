@@ -301,6 +301,8 @@ window.QuartoSupport = function () {
     }
   }
 
+<<<<<<< HEAD
+=======
   function handleWhiteSpaceInColumns(deck) {
     for (const outerDiv of window.document.querySelectorAll("div.columns")) {
       // remove all whitespace text nodes
@@ -318,6 +320,7 @@ window.QuartoSupport = function () {
     }
   }
 
+>>>>>>> a548a1f23239b8e9391f217ee1d9d2aa39fa3100
   return {
     id: "quarto-support",
     init: function (deck) {
@@ -332,7 +335,10 @@ window.QuartoSupport = function () {
       handleTabbyClicks();
       handleSlideChanges(deck);
       workaroundMermaidDistance(deck);
+<<<<<<< HEAD
+=======
       handleWhiteSpaceInColumns(deck);
+>>>>>>> a548a1f23239b8e9391f217ee1d9d2aa39fa3100
     },
   };
 };

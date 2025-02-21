@@ -16,6 +16,8 @@ The variables used in the dataset:
 
 -   outcome (y): Pulse (continuous variable)
 
+-   outcome (y2): Diabetes(binary variable)
+
 -   mediator (m): BMI (continuous variable)
 
 Note that the example is created to demonstrate the methods, and there is no clinical relevance of the results. For the convenience of analysis, we have transformed the mediator (m) and outcome variable (y) so that they follow a normal distribution.
@@ -76,7 +78,7 @@ In this model we can see:
 
 -   There is interaction between physical activity (a) and BMI (m)
 
-    ### We will use the CMAverse R package to conduct the mediation analyses. 
+    ### We will use the CMAverse R package to conduct the mediation analyses.
 
 First, we load the package and then we setup the model object. We have to specify:
 
@@ -115,9 +117,25 @@ Build the models:
 
 -   Since both the mediator(BMI) and outcome(pulse rate) are continuous, we use linear regression models.
 
--   Note EMint: we specify it as TRUE, to add interaction term
+-   
 
--   We set mediator values to 25, suppose mediator could be intervened to normal weight
+-   We set mediator (BMI9 values to 25kg/m2, suppose mediator could be intervened to normal weight
+
+-   I will first pretent there is no interaction, set EMint to FALSE.
+
+```{r}
+res_rb <- cmest(
+  data = data, model = "rb", outcome = "y", exposure = "a",
+  mediator = "m", basec = c("w1","w2","w3","w4"), EMint = FALSE,
+  mreg = list("linear"), yreg = "linear", #specifiy model types
+  astar = 0, a = 1, mval = list(25),
+  estimation = "paramfunc", inference = "delta"
+)
+
+summary(res_rb)
+```
+
+Now change EMint to TRUE to allow for interaction.
 
 ```{r}
 res_rb <- cmest(
@@ -135,9 +153,7 @@ summary(res_rb)
 
 Suppose now i am interested in how physical activity influences the risk of diabetes. I will first check the proportion of diabetes in the sample.
 
-```{# y2 is diaebtes}
-table(data$y2)
-```
+`{# y2 is diaebtes} table(data$y2)`
 
 ```{r}
 # recode diabetes to 1(Yes) and 0(No)

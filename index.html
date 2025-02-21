@@ -2,7 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
+<<<<<<< HEAD
+<meta name="generator" content="quarto-1.4.555">
+=======
 <meta name="generator" content="quarto-1.5.57">
+>>>>>>> a548a1f23239b8e9391f217ee1d9d2aa39fa3100
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +37,11 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
+<<<<<<< HEAD
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+=======
 pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+>>>>>>> a548a1f23239b8e9391f217ee1d9d2aa39fa3100
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -269,7 +277,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
+<<<<<<< HEAD
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+=======
   const onCopySuccess = function(e) {
+>>>>>>> a548a1f23239b8e9391f217ee1d9d2aa39fa3100
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -301,6 +324,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+<<<<<<< HEAD
+  });
+=======
   }
   const getTextToCopy = function(trigger) {
       const codeEl = trigger.previousElementSibling.cloneNode(true);
@@ -324,6 +350,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     });
     clipboardModal.on('success', onCopySuccess);
   }
+>>>>>>> a548a1f23239b8e9391f217ee1d9d2aa39fa3100
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -331,7 +358,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
+<<<<<<< HEAD
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+=======
  	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+>>>>>>> a548a1f23239b8e9391f217ee1d9d2aa39fa3100
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
