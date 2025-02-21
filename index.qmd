@@ -158,5 +158,6 @@ International License](https://creativecommons.org/licenses/by/4.0/) so
 the material can be used, re-used, and modified, as long as there is
 attribution to this source.
 
+
 ## Acknowledgements
 This course is adapted from 'Mediation Analysis Course' developed by Daniel B. Ibsen, Omar Silverman, Jie Zhang from Steno Diabetes Center Aarhus in Denmark, and Nima Hejarzi and Ivan Diaz from the US, which is sponsored by the Danish Diabetes and Endocrine Academy.
