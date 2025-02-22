@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -104,6 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>exposure of interest (a): physical activity (continuous variable)</p></li>
 <li><p>outcome (y): Pulse (continuous variable)</p></li>
+<li><p>outcome (y2): Diabetes(binary variable)</p></li>
 <li><p>mediator (m): BMI (continuous variable)</p></li>
 </ul>
 <p>Note that the example is created to demonstrate the methods, and there is no clinical relevance of the results. For the convenience of analysis, we have transformed the mediator (m) and outcome variable (y) so that they follow a normal distribution.</p>
@@ -129,13 +130,13 @@ dbl (45): ID, Age, AgeMonths, HHIncomeMid, Poverty, HomeRooms, Weight, Lengt...
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
-Vedhæfter pakke: 'dplyr'
+Attaching package: 'dplyr'
 
-De følgende objekter er maskerede fra 'package:stats':
+The following objects are masked from 'package:stats':
 
     filter, lag
 
-De følgende objekter er maskerede fra 'package:base':
+The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
@@ -289,13 +290,14 @@ F-statistic: 57.53 on 10 and 6905 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Build the models:</p>
 <ul>
 <li><p>Since both the mediator(BMI) and outcome(pulse rate) are continuous, we use linear regression models.</p></li>
-<li><p>Note EMint: we specify it as TRUE, to add interaction term</p></li>
-<li><p>We set mediator values to 25, suppose mediator could be intervened to normal weight</p></li>
+<li></li>
+<li><p>We set mediator (BMI9 values to 25kg/m2, suppose mediator could be intervened to normal weight</p></li>
+<li><p>I will first pretent there is no interaction, set EMint to FALSE.</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>res_rb <span class="ot">&lt;-</span> <span class="fu">cmest</span>(</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data, <span class="at">model =</span> <span class="st">"rb"</span>, <span class="at">outcome =</span> <span class="st">"y"</span>, <span class="at">exposure =</span> <span class="st">"a"</span>,</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mediator =</span> <span class="st">"m"</span>, <span class="at">basec =</span> <span class="fu">c</span>(<span class="st">"w1"</span>,<span class="st">"w2"</span>,<span class="st">"w3"</span>,<span class="st">"w4"</span>), <span class="at">EMint =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mediator =</span> <span class="st">"m"</span>, <span class="at">basec =</span> <span class="fu">c</span>(<span class="st">"w1"</span>,<span class="st">"w2"</span>,<span class="st">"w3"</span>,<span class="st">"w4"</span>), <span class="at">EMint =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mreg =</span> <span class="fu">list</span>(<span class="st">"linear"</span>), <span class="at">yreg =</span> <span class="st">"linear"</span>, <span class="co">#specifiy model types</span></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">astar =</span> <span class="dv">0</span>, <span class="at">a =</span> <span class="dv">1</span>, <span class="at">mval =</span> <span class="fu">list</span>(<span class="dv">25</span>),</span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimation =</span> <span class="st">"paramfunc"</span>, <span class="at">inference =</span> <span class="st">"delta"</span></span>
@@ -307,6 +309,128 @@ F-statistic: 57.53 on 10 and 6905 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code>Warning in estinf(): astar is not a value of the exposure; No is used</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res_rb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Causal Mediation Analysis
+
+# Outcome regression:
+
+Call:
+glm(formula = y ~ a + m + w1 + w2 + w3 + w4, family = gaussian(), 
+    data = getCall(x$reg.output$yreg)$data, weights = getCall(x$reg.output$yreg)$weights)
+
+Coefficients:
+                  Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      73.580916   0.819142  89.827  &lt; 2e-16 ***
+aYes             -1.422879   0.298167  -4.772 1.86e-06 ***
+m                 0.203864   0.020907   9.751  &lt; 2e-16 ***
+w1               -0.127155   0.008377 -15.178  &lt; 2e-16 ***
+w2male           -3.728063   0.278752 -13.374  &lt; 2e-16 ***
+w38th Grade       0.458752   0.635246   0.722 0.470218    
+w39 - 11th Grade  2.113914   0.489138   4.322 1.57e-05 ***
+w3High School     0.896878   0.408775   2.194 0.028264 *  
+w3Some College    1.388716   0.362258   3.834 0.000127 ***
+w4Yes             1.520113   0.285735   5.320 1.07e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for gaussian family taken to be 130.961)
+
+    Null deviance: 978151  on 6915  degrees of freedom
+Residual deviance: 904417  on 6906  degrees of freedom
+AIC: 53354
+
+Number of Fisher Scoring iterations: 2
+
+
+# Mediator regressions: 
+
+Call:
+glm(formula = m ~ a + w1 + w2 + w3 + w4, family = gaussian(), 
+    data = getCall(x$reg.output$mreg[[1L]])$data, weights = getCall(x$reg.output$mreg[[1L]])$weights)
+
+Coefficients:
+                  Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      28.467603   0.323923  87.884  &lt; 2e-16 ***
+aYes             -1.643518   0.170461  -9.642  &lt; 2e-16 ***
+w1                0.012135   0.004819   2.518 0.011827 *  
+w2male            0.274867   0.160396   1.714 0.086633 .  
+w38th Grade       1.271955   0.365283   3.482 0.000501 ***
+w39 - 11th Grade  1.084541   0.281211   3.857 0.000116 ***
+w3High School     1.538987   0.234533   6.562 5.70e-11 ***
+w3Some College    1.381674   0.207826   6.648 3.19e-11 ***
+w4Yes            -1.056643   0.163957  -6.445 1.24e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for gaussian family taken to be 43.3789)
+
+    Null deviance: 310099  on 6915  degrees of freedom
+Residual deviance: 299618  on 6907  degrees of freedom
+AIC: 45711
+
+Number of Fisher Scoring iterations: 2
+
+
+# Effect decomposition on the mean difference scale via the regression-based approach
+ 
+Closed-form parameter function estimation with 
+ delta method standard errors, confidence intervals and p-values 
+ 
+     Estimate Std.error  95% CIL 95% CIU    P.val    
+cde  -1.42288   0.29817 -2.00728  -0.838 1.82e-06 ***
+pnde -1.42288   0.29817 -2.00728  -0.838 1.82e-06 ***
+tnde -1.42288   0.29817 -2.00728  -0.838 1.82e-06 ***
+pnie -0.33505   0.04887 -0.43084  -0.239 7.08e-12 ***
+tnie -0.33505   0.04887 -0.43084  -0.239 7.08e-12 ***
+te   -1.75793   0.29821 -2.34242  -1.173 3.75e-09 ***
+pm    0.19060   0.04086  0.11052   0.271 3.09e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(cde: controlled direct effect; pnde: pure natural direct effect; tnde: total natural direct effect; pnie: pure natural indirect effect; tnie: total natural indirect effect; te: total effect; pm: overall proportion mediated)
+
+Relevant variable values: 
+$a
+[1] "Yes"
+
+$astar
+[1] "No"
+
+$mval
+$mval[[1]]
+[1] 25
+
+
+$basecval
+$basecval[[1]]
+[1] 47.17467
+
+$basecval[[2]]
+[1] 0.4939271
+
+$basecval[[3]]
+[1] 0.06029497 0.12406015 0.20922499 0.31318681
+
+$basecval[[4]]
+[1] 0.4467901</code></pre>
+</div>
+</div>
+<p>Now change EMint to TRUE to allow for interaction.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>res_rb <span class="ot">&lt;-</span> <span class="fu">cmest</span>(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data, <span class="at">model =</span> <span class="st">"rb"</span>, <span class="at">outcome =</span> <span class="st">"y"</span>, <span class="at">exposure =</span> <span class="st">"a"</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mediator =</span> <span class="st">"m"</span>, <span class="at">basec =</span> <span class="fu">c</span>(<span class="st">"w1"</span>,<span class="st">"w2"</span>,<span class="st">"w3"</span>,<span class="st">"w4"</span>), <span class="at">EMint =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mreg =</span> <span class="fu">list</span>(<span class="st">"linear"</span>), <span class="at">yreg =</span> <span class="st">"linear"</span>, <span class="co">#specifiy model types</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">astar =</span> <span class="dv">0</span>, <span class="at">a =</span> <span class="dv">1</span>, <span class="at">mval =</span> <span class="fu">list</span>(<span class="dv">25</span>),</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimation =</span> <span class="st">"paramfunc"</span>, <span class="at">inference =</span> <span class="st">"delta"</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in estinf(): a is not a value of the exposure; Yes is used</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in estinf(): astar is not a value of the exposure; No is used</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res_rb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Causal Mediation Analysis
 
@@ -426,18 +550,18 @@ $basecval[[4]]
 <section id="binary-outcome" class="level2">
 <h2 class="anchored" data-anchor-id="binary-outcome">Binary outcome</h2>
 <p>Suppose now i am interested in how physical activity influences the risk of diabetes. I will first check the proportion of diabetes in the sample.</p>
-<pre class="{# y2 is diaebtes}"><code>table(data$y2)</code></pre>
+<p><code>{# y2 is diaebtes} table(data$y2)</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recode diabetes to 1(Yes) and 0(No)</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>y2 <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>y2 <span class="sc">==</span> <span class="st">"Yes"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>y2 <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">~</span> <span class="dv">0</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recode diabetes to 1(Yes) and 0(No)</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>y2 <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>y2 <span class="sc">==</span> <span class="st">"Yes"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>y2 <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">~</span> <span class="dv">0</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>res_rb <span class="ot">&lt;-</span> <span class="fu">cmest</span>( <span class="at">data =</span> data, <span class="at">model =</span> <span class="st">"rb"</span>, <span class="at">outcome =</span> <span class="st">"y2"</span>, <span class="at">exposure =</span> <span class="st">"a"</span>, <span class="at">mediator =</span> <span class="st">"m"</span>, <span class="at">basec =</span> <span class="fu">c</span>(<span class="st">"w1"</span>,<span class="st">"w2"</span>,<span class="st">"w3"</span>,<span class="st">"w4"</span>), <span class="at">EMint =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="at">mreg =</span> <span class="fu">list</span>(<span class="st">"linear"</span>), </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="at">yreg =</span> <span class="st">"logistic"</span>,  <span class="at">mval =</span> <span class="fu">list</span>(<span class="dv">25</span>), <span class="at">estimation =</span> <span class="st">"paramfunc"</span>, <span class="at">inference =</span> <span class="st">"delta"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>res_rb <span class="ot">&lt;-</span> <span class="fu">cmest</span>( <span class="at">data =</span> data, <span class="at">model =</span> <span class="st">"rb"</span>, <span class="at">outcome =</span> <span class="st">"y2"</span>, <span class="at">exposure =</span> <span class="st">"a"</span>, <span class="at">mediator =</span> <span class="st">"m"</span>, <span class="at">basec =</span> <span class="fu">c</span>(<span class="st">"w1"</span>,<span class="st">"w2"</span>,<span class="st">"w3"</span>,<span class="st">"w4"</span>), <span class="at">EMint =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="at">mreg =</span> <span class="fu">list</span>(<span class="st">"linear"</span>), </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="at">yreg =</span> <span class="st">"logistic"</span>,  <span class="at">mval =</span> <span class="fu">list</span>(<span class="dv">25</span>), <span class="at">estimation =</span> <span class="st">"paramfunc"</span>, <span class="at">inference =</span> <span class="st">"delta"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in regrun(): When estimation is 'paramfunc' and yreg is 'logistic' or
 'coxph', the outcome must be rare; ignore this warning if the outcome is rare</code></pre>
@@ -451,7 +575,7 @@ $basecval[[4]]
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in estinf(): yval is not specified; 1 is used</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res_rb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res_rb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Causal Mediation Analysis
 
@@ -612,18 +736,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -655,7 +768,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -663,7 +798,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

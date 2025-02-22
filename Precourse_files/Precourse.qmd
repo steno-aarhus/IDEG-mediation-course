@@ -34,9 +34,9 @@ Check each section for exact details on completing these tasks.
 ## Learning objectives {#sec-learning-objectives}
 
 ::: callout-note
-## The overall course objective
+## The overall workshop objective
 
-To provide participants with the knowledge, tools and skills to implement modern mediation analysis for investigation of disease mechanisms.
+To introduce participants to background principles, tools and skills to understand and apply modern mediation analysis for investigation of disease mechanisms.
 :::
 
 The more specific learning outcomes include:
@@ -51,9 +51,17 @@ The more specific learning outcomes include:
 
 ### Installing R
 
-If you have not already done so, please download the latest version of R for [Window](https://cran.r-project.org/bin/windows/base/) or [Mac](https://cran.r-project.org/bin/macosx/)
+If you have not already done so, please download the latest version of R for [Window](https://cran.r-project.org/bin/windows/base/) or [Mac](https://cran.r-project.org/bin/macosx/).
 
-If you have R, check the version.
+### Installing R Studio
+
+Beside R, you will need to download and install [R Studio Desktop](https://posit.co/downloads/). This is a separate program that provides an intuitive user interface with R.
+
+### More detailed instructions.
+You can find more detailed instructions for [installing R and R Studio](https://rstudio-education.github.io/hopr/starting.html) here.
+
+### Check your version of R
+If you already have a previously installed R and R Studio, please check your R version.
 
 ```{r}
 #| echo: true
