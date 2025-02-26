@@ -6,11 +6,12 @@ editor: visual
 
 ## What is a Directed Acyclic Graph (DAG)?
 
-A Directed Acyclic Graph (DAG) is a visual tool for representing causal relationships between variables. When we’re assessing the causal effect between an exposure and an outcome, drawing our assumptions in the form of a DAG can help us pick the right model without having to know much about the math behind it.
+A Directed Acyclic Graph (DAG) is a visual tool for representing causal relationships between variables.
+When we’re assessing the causal effect between an exposure and an outcome, drawing our assumptions in the form of a DAG can help us pick the right model without having to know much about the math behind it.
 
-How can DAGs be used in Epidemiological research?
+How could DAG be used in Epidemioloical research?
 
--   Identify possible presence of confounding (*check exchangeability between exposure and unexposed)*
+-   Identify the existence of confounding (*check exchangeability between exposure and unexposed)*
 
 -   Identify which covariates need/not need to be adjusted (*more is not always better*)
 
@@ -18,7 +19,7 @@ How can DAGs be used in Epidemiological research?
 
 -   Helpful in the stages of data collection, data analysis and interpretation
 
-## Simple example
+## Simple example 
 
 ```{r,echo=FALSE}
 #  set theme of all DAGs to `theme_dag()`
@@ -73,8 +74,9 @@ Now let's introduce another variable z into the graph. The path is x→y→z .
 
 -   **Ancestor**: A variable that influences another (x is an ancestor of y)
 
+```{=html}
 <!-- -->
-
+```
 -   **Descendant**: A variable influenced by another (z is a descendant of y)
 
 ```{r,echo=FALSE}
@@ -95,7 +97,7 @@ ggdag(fork) +
 
 We can use DAGs to illustrate some *key* termiology in epidemiology.
 
-## *confounder*:
+## *confounder*:   
 
 A confounder is represented by a node (z) with arrows pointing toward both x and y, indicating it is an ancestor of both the exposure x and the response y.
 
@@ -116,7 +118,7 @@ ggdag(fork) +
   theme_dag()
 ```
 
-## mediator:
+## mediator:   
 
 A mediator is a variable that lies on the causal pathway between the exposure (X) and the outcome (Y). In a DAG, it is a descendant of X and an ancestor of Y, meaning that X influences Y, at least in part, through the mediator (Z).
 
@@ -137,7 +139,7 @@ ggdag(chain) +
   theme_dag()
 ```
 
-## collider:
+## collider:   
 
 A collider is a variable with both edges pointing into the node. It is a descendent of both the exposure x and the response y.
 
