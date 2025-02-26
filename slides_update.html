@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="slides_files/libs/clipboard/clipboard.min.js"></script>
-<script src="slides_files/libs/quarto-html/tabby.min.js"></script>
-<script src="slides_files/libs/quarto-html/popper.min.js"></script>
-<script src="slides_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="slides_update_files/libs/clipboard/clipboard.min.js"></script>
+<script src="slides_update_files/libs/quarto-html/tabby.min.js"></script>
+<script src="slides_update_files/libs/quarto-html/popper.min.js"></script>
+<script src="slides_update_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="slides_update_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="slides_update_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="slides_update_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="slides_update_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.555">
 
-  <meta name="author" content="Daniel Witte, Jie Zhang">
   <title>Mediation Analyses</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="slides_update_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="slides_update_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -30,11 +29,11 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="slides_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="slides_update_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="slides_update_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="slides_update_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="slides_update_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="slides_update_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -329,29 +328,29 @@
   <h1 class="title">Mediation Analyses</h1>
 
 <div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Daniel Witte, Jie Zhang 
-</div>
-</div>
 </div>
 
 </section>
 <section id="welcome-to-the-workshop-on-mediation-analysis" class="slide level2">
 <h2>Welcome to the workshop on Mediation Analysis🎉</h2>
+<h4 id="april-2-2025"><u><strong>April 2, 2025</strong></u></h4>
+<h4 id="instructors-daniel-witte-jie-zhang">Instructors: Daniel Witte, Jie Zhang</h4>
+<p><em>Steno Diabetes Center Aarhus, Aarhus University, Denmark</em></p>
 </section>
 <section id="outlines" class="slide level2">
 <h2>Outlines 📌</h2>
-<p>In this course, you will:</p>
+</section>
+<section id="in-this-course-you-will" class="slide level2">
+<h2>In this course, you will:</h2>
 <ul>
-<li><p>Understand the fundementals of mediation analysis</p>
-<p><em>Apply What is mediation analysis? When and why should you use this?</em></p></li>
-<li><p>Master the theoretical framework</p>
-<p><em>Understand traditional mediation concepts; Learn principles of causal mediation analysis</em></p></li>
-<li><p>Conduct practical analyses using R software</p>
-<p><em>Apply appropriate statistical methods to perform mediation analysis</em></p></li>
-<li><p>Interpret and communicate results</p>
-<p><em>Analyze outputs from mediation analyses and draw meaningful conclusions from results</em></p></li>
+<li><p><strong>Understand the fundamentals of mediation analysis</strong><br>
+<em>Apply what is mediation analysis? When and why should you use this?</em></p></li>
+<li><p><strong>Master the theoretical framework</strong><br>
+<em>Understand traditional mediation concepts; Learn principles of causal mediation analysis</em></p></li>
+<li><p><strong>Conduct practical analyses using R software</strong><br>
+<em>Apply appropriate statistical methods to perform mediation analysis</em></p></li>
+<li><p><strong>Interpret and communicate results</strong><br>
+<em>Analyze outputs from mediation analyses and draw meaningful conclusions from results</em></p></li>
 </ul>
 </section>
 <section id="what-is-mediation" class="slide level2">
@@ -417,7 +416,7 @@ Figure&nbsp;1: Trend Mediation Analysis
 </div>
 </div>
 </div>
-<p>How much does inflammation explain the relation between physical activity and the risk of diabetes?</p>
+<p>How much does inflammation explain the relation between red meat and the risk of diabetes?</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -442,13 +441,21 @@ Figure&nbsp;1: Trend Mediation Analysis
 <li>When controlling for the mediator, the association between the exposure and outcome should be reduced (up to debate).</li>
 </ol>
 </section>
-<section id="baronkenny" class="slide level2">
-<h2>Baron&amp;Kenny</h2>
-<h3 id="the-four-steps">The four steps:</h3>
-<p><strong>STEP 1:</strong> test association between exposure and outcome (a)</p>
-<p><strong>STEP 2:</strong> test association between exposure and mediator (b)</p>
-<p><strong>STEP 3:</strong> test association between mediator and outcome, controlling for exposure (c)</p>
-<p><strong>STEP 4:</strong> mediation is shown if association between X and Y is reduced to non-significance when M is controlled (d)</p>
+<section id="baronkenny-four-steps" class="slide level2">
+<h2>Baron&amp;Kenny-four steps</h2>
+<h5 id="step-1-test-association-between-exposure-and-outcome-a"><strong>STEP 1:</strong> <strong>test association between exposure and outcome (a)</strong></h5>
+<h5 id="step-2-test-association-between-exposure-and-mediator-b"><strong>STEP 2:</strong> test association between exposure and mediator (b)</h5>
+<h5 id="step-3-test-association-between-mediator-and-outcome-controlling-for-exposure-c"><strong>STEP 3:</strong> test association between mediator and outcome, controlling for exposure (c)</h5>
+<h5 id="step-4-mediation-is-shown-if-association-between-x-and-y-is-reduced-to-non-significance-when-m-is-controlled-d"><strong>STEP 4:</strong> mediation is shown if association between X and Y is reduced to non-significance when M is controlled (d)</h5>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/basic.png" style="width:60.0%;height:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="method-2-difference-approach" class="slide level2">
 <h2>Method 2: Difference approach</h2>
@@ -779,19 +786,19 @@ Figure&nbsp;2: Relationship between causation and association
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="slides_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="slides_update_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="slides_update_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="slides_update_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="slides_update_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="slides_update_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="slides_update_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="slides_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="slides_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="slides_update_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="slides_update_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="slides_update_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="slides_update_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

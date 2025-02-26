@@ -1,6 +1,5 @@
 ---
 title: "Mediation Analyses"
-author: "Daniel Witte, Jie Zhang"
 format: revealjs
 slide-number: c/t    # current/total format
 editor: visual
@@ -8,24 +7,28 @@ editor: visual
 
 ## Welcome to the workshop on Mediation Analysis🎉
 
+```{r}
+knitr::include_graphics("images/cover.png")
+```
+
+#### Instructors:  Daniel Witte, Jie Zhang
+
+#### ***Steno Diabetes Center Aarhus, Aarhus University, Denmark***
+
 ## Outlines 📌
 
-In this course, you will:
+## In this course, you will:
 
--   Understand the fundementals of mediation analysis
+-   **Understand the fundamentals of mediation analysis**\
+    *Apply what is mediation analysis? When and why should you use this?*
 
-    *Apply What is mediation analysis? When and why should you use this?*
-
--   Master the theoretical framework
-
+-   **Master the theoretical framework**\
     *Understand traditional mediation concepts; Learn principles of causal mediation analysis*
 
--   Conduct practical analyses using R software
-
+-   **Conduct practical analyses using R software**\
     *Apply appropriate statistical methods to perform mediation analysis*
 
--   Interpret and communicate results
-
+-   **Interpret and communicate results**\
     *Analyze outputs from mediation analyses and draw meaningful conclusions from results*
 
 ## What is mediation?
@@ -85,7 +88,7 @@ How much does BMI explain the relation between physical activity and the risk of
 knitr::include_graphics("images/example1.jpg")
 ```
 
-How much does inflammation explain the relation between physical activity and the risk of diabetes?
+How much does inflammation explain the relation between red meat and the risk of diabetes?
 
 ```{r}
 knitr::include_graphics("images/example2.png")
@@ -104,23 +107,25 @@ The following criteria need to be satisfied for a variable to be considered a me
 3.  The exposure should be associated with the outcome.
 4.  When controlling for the mediator, the association between the exposure and outcome should be reduced (up to debate).
 
-## Baron&Kenny
+## Baron&Kenny-four steps
 
-### The four steps:
+##### **STEP 1:** **test association between exposure and outcome (c)**
 
-**STEP 1:** test association between exposure and outcome (a)
+##### **STEP 2:** test association between exposure and mediator (a)
 
-**STEP 2:** test association between exposure and mediator (b)
+##### **STEP 3:** test association between mediator and outcome, controlling for exposure (b)
 
-**STEP 3:** test association between mediator and outcome, controlling for exposure (c)
+##### **STEP 4:** mediation is shown if association between X and Y is reduced to non-significance when M is controlled (c')
 
-**STEP 4:** mediation is shown if association between X and Y is reduced to non-significance when M is controlled (d)
+```{r, out.width='60%', out.height='60%'}
+knitr::include_graphics("images/basic.png")
+```
 
 ## Method 2: Difference approach
 
-Total effect:  regress Y on X
+Total effect:  regress A on X
 
-Direct effect:  regress Y on X and M
+Direct effect:  regress Y on A and M
 
 If a mediation effect exists, the effect of A on Y will be attenuated when M is included in the regression, indicating the effect of A on Y goes through M. If the effect of A on Y completely disappears, M fully mediates between A and Y (full mediation). If the effect of A on Y still exists, but in a smaller magnitude, M partially mediates between A and Y (partial mediation).
 
@@ -209,21 +214,67 @@ When fulfill the criteria, simple tools like regression can be used to estimate 
 
 ### What is a cause?
 
-If I do A, then Y will happen. If I press the switch, the light will come on.
+Causation is everywhere in life.
+
+If I do A, then Y will happen.
+
+If I press the switch, the light will come on.
+
+```{r}
+knitr::include_graphics("images/bulb.png")
+```
+
+## What is cause inference?
+
+#### Inferring the effects of any treatment/intervention/risk factor/policy 
+
+Examples:
+
+-   Effects of treatment on a disease
+
+-   Effect of intervention (e.g. obesity) on risk of death
+
+-   Effect of poverty on mental health
 
 ## Individual causal effect
 
-When investigating health outcomes, we would ideally want to know if **you** do X, then Y will happen. We could have a specific question:
+When investigating health outcomes, we would ideally want to know if **you** do A, then Y will happen. We could have a specific question:
 
 > Will eating more red meat give me higher blood glucose in 1 year?
+
+To answer this question, we would ideally have you consume more red meat over 1 year and measure your blood glucose levels. Then, we would turn back time, and make you eat something else over 1 year and then measure your blood glucose levels again. If there is a **difference** between your two outcomes, then we say there is a causal effect.
 
 ## Individual causal effect
 
 > Will eating more red meat give me higher blood glucose in 1 year?
 
-To answer this question we would ideally have you consume more red meat over 1 year and measure your blood glucose levels. Then, we would turn back time, and make you eat something else over 1 year and then measure your blood glucose levels again. If there is a **difference** between your two outcomes, then we say there is a causal effect.
+```{r}
+knitr::include_graphics("images/causal_eg1.jpg")
+```
 
-But we can never do this in the real world. Only ever observe one of Y(0) or Y(1) the other is counterfactual.
+## Individual causal effect
+
+> Will eating more red meat give me higher blood glucose in 1 year?
+
+::: callout-note
+A = received treatment/intervention/exposure (e.g., 1 = intervention, 0 = no intervention)
+
+Y = observed outcome (e.g., 1 = developed the outcome, 0 = no outcome)
+
+$Y^{a=1}$ = Counterfactual outcome under treatment a =1(i.e., the outcome had everyone, counter to the fact, received treatment a = 1)
+
+$Y^{a=0}$ = Counterfactual outcome under treatment a=0 (i.e., the outcome had everyone, counter to the fact, received treatment a = 0)
+:::
+
+## Individual causal effect
+
+> Will eating more red meat give me higher blood glucose in 1 year?
+
+```{r}
+knitr::include_graphics("images/causal_eg2.jpg")
+```
+
+But we can never do this in the real world. We could Only observe one of Y(0) or Y(1) the other is counterfactual.
 
 ## Average causal effect
 
@@ -231,7 +282,21 @@ Instead, we can perform a randomized controlled trial. We now ask a slightly dif
 
 > Will eating more red meat give adults higher blood glucose in 1 year?
 
-We can randomely assigning one group to consume more red meat and the other group to consume more of something else over 1 year. Then we compare the average blood glucose levels after 1 year in each of the groups. If there is a difference, we could say there is an average causal effect.
+We can randomely assigning one group to consume more red meat and the other group to consume more of something else over 1 year. Then we compare the **average** blood glucose levels after 1 year in each of the groups. If there is a difference, we could say there is an average causal effect.
+
+## Average causal effect
+
+$E[Y^{a=1}]$ the average counterfactual outcome, had all subjects in the population received treatment a = 1.
+
+$E[Y^{a=0}]$ the average counterfactual outcome, had all subjects in the population received no treatment a = 0.
+
+Average treatment effect (ATE) : $E[Y^{a=1}]$ -$E[Y^{a=0}]$
+
+## Definition of a causal effect
+
+More formally we can now define a causal effect:
+
+$E[Y^{a=1} = 1] - E[Y^{a=0} = 1] \ne 0$
 
 ## **Association vs causation**
 
@@ -257,32 +322,6 @@ If we want to infer a causal effect (i.e., what would have happened, had everyon
 
 -   Positivity
 
-## Notation
-
-A = received treatment/intervention/exposure (e.g., 1 = intervention, 0 = no intervention)
-
-Y = observed outcome (e.g., 1 = developed the outcome, 0 = no outcome)
-
-$Y^{a=1}$ = Counterfactual outcome under treatment a =1(i.e., the outcome had everyone, counter to the fact, received treatment a = 1)
-
-$Y^{a=0}$ = Counterfactual outcome under treatment a=0 (i.e., the outcome had everyone, counter to the fact, received treatment a = 0)
-
-## Modify the terms a little for average causal effect:
-
-$E[Y^{a=1}]$ the average counterfactual outcome, had all subjects in the population received treatment a = 1.
-
-$Pr[Y^{a=1}]$ the proportion of subjects that would have developed the outcome Y had all subjects in the population of interest received treatment a = 1.
-
-$E[Y^{a=0}]$ the average counterfactual outcome, had no subjects in the population received treatment a = 0.
-
-$Pr[Y^{a=0}]$ the proportion of subjects that would have developed the outcome Y had no subjects in the population of interest received treatment a = 0.
-
-## Definition of a causal effect
-
-More formally we can now define a causal effect:
-
-$E[Y^{a=1} = 1] - E[Y^{a=0} = 1] \ne 0$
-
 ## Causal mediation analysis
 
 Causal mediation analyses help you establish whether treatment *causes* the outcome because it *causes* the mediator.
@@ -299,7 +338,7 @@ Causal mediation analysis is an extension of the traditional approach by:
 
 ## Causal approach brings alternative parameters
 
--   Stand Mediation Analysis
+-   Standard Mediation Analysis
     -   Total Effect
 
     -   Direct Effect
@@ -494,5 +533,11 @@ $INT = (INT_{ref} + INT_{med}) / TE$
 Proportion eliminated:
 
 $PE = (INT_{ref} + INT_{med} + PNIE) / TE$
+
+## 
+
+```{r}
+knitr::include_graphics("images/ladder.png")
+```
 
 ## Code-along practice
