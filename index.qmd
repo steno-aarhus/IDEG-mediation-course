@@ -1,6 +1,6 @@
 # Welcome to the IDEG workshop on Mediation Analysis and Directed Acyclic Graphs {.unnumbered}
 
-<!-- Daniel 10 min -->
+
 
 During this short workshop, you will be introduced to traditional mediation approaches before exploring the theory of causal mediation, as a method to investigate disease mechanisms in the context of diabetes.
 
@@ -22,8 +22,7 @@ If you are a workshop attendee - please clone https://github.com/steno-aarhus/ID
 
 ::: callout-note
 ## The overall workshop objective
-
-To introduce participants to background principles, tools and skills to understand and apply modern mediation analysis for investigation of disease mechanisms.
+This course introduces participants to the fundamental principles, analytical tools, and essential skills needed to understand and apply modern mediation analysis for investigating disease mechanisms
 :::
 
 The more specific learning outcomes include:
@@ -41,6 +40,8 @@ PhD students and postdoctoral researchers working with clinical and epidemiologi
 ### Prerequisites
 
 To make the most of our training course in Bangkok, please complete the pre-course tasks before you arrive. This will ensure we can start our sessions smoothly and dive right into the content!
+
+<!-- add link to pre-course -->
 
 ::: callout-note
 ## Practical information
@@ -68,7 +69,7 @@ We will combine lectures with code-along sessions, group work, and discussions.
 Instructors: Daniel Witte (DW), Jie Zhang (JZ)
 :::
 
-## Pre-Work
+## ⚠️ Pre-Work
 
 If you are a workshop attendee and have any trouble with installation locally, please reach out to us directly!
 

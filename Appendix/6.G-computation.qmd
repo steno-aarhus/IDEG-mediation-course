@@ -1,0 +1,227 @@
+## G-computation-based approach
+
+::: callout-note
+## Recall no-confounding assumption of causal mediation
+
+-   no exposure-mediator confounding
+-   no mediator-outcome confounding
+-   no exposure-outcome confounding
+-   no exposure-induced mediator-outcome confounding (or intermediate confounding)
+
+Note: Assumption 4 is also called post-treatment confounding, or treatment induced mediator-outcome confounding in randomization trials.
+
+Assumptions 1 and 3 could be satisfied in randomization trials. The assumption 2 and 4 might be problematic, particularly in observational studies.
+:::
+
+### Intermediate confounding
+
+Like the figure below, L is influenced by the exposure, also severs as a confounder of M and Y. When considering the effect on Y of changes to X via a specific mediator M, the presence of L is challenging and regression-based methods could no longer handle this situation.
+
+Conditional on L, we successfully block the backdoor path between X-M-L-Y; but at the same time we also block the backdoor path X-L-Y, which represents part of the direct effect of X on Y (all the paths not going through M). Furthermore, if there is unmeasured confounder between L and Y, adjusting on L will induce a noncausal association among A, U and Y.
+
+```{r  echo=FALSE }
+# Creating The causal diagram for a mediation model
+library(DiagrammeR)
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    W [label = 'W']
+    A [label = 'A']
+    M [label = 'M']
+    Y [label = 'Y']
+    L [label = 'L']
+    U [label = 'U']
+  edge [minlen = 2]
+    A->M
+    A->L
+    L->M
+    L->Y
+    M->Y
+    A->Y
+    W->A
+    W->Y
+    W->M
+    U->L
+    U->Y
+{rank = same; W; A; M; Y; }
+}
+")
+```
+
+### Time-varying confounding
+
+```{r  echo=FALSE }
+# Creating The causal diagram for a mediation model
+library(DiagrammeR)
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    W
+    X0
+    X1
+    X2
+    Xt
+    M0
+    M1
+    M2
+    Mt
+    L0
+    L1
+    L2
+    Lt
+    Y
+  edge [minlen = 2]
+    X0 -> X1
+    X1 -> X2
+    X2 -> Xt
+    Xt -> Y
+    M0 -> M1
+    M1 -> M2
+    M2 -> Mt
+    Mt -> Y
+    L0 -> L1
+    L1 -> L2
+    L2 -> Lt
+    X0 -> M0
+    X1 -> M1
+    X2 -> M2
+    Xt -> Mt
+    L0 -> X0
+    L1 -> X1
+    L2 -> X2
+    Lt -> Xt
+    Lt -> Y
+    X0 -> L1
+    X1 -> L2
+    X2 -> Lt
+    W -> L0
+    W -> L1
+    W -> L2
+    W -> Lt
+    W -> Y
+  { rank = min; W;}
+  { rank = same; L0; L1; L2; Lt }
+  { rank = same; X0; X1; X2; Xt }
+  { rank = same; M0; M1; M2; Mt; Y }
+}")
+```
+
+### G-computation
+
+Because of these limitations, we need to resort to a more general framework for mediation analysis utilizing causal diagrams and potential outcome languages.
+
+The G-computation algorithm was first introduced by Robins 1986 @robins_new_1986 for estimating time-varying exposure causal in the presence of time-varying confounders of exposure effects. When estimating total effect, g-computation is generally equivalent to inverse-probability-of-treatment weighting (IPTW). But in high-dimensional settings, g-computation is more powerful. G-computation (using g-formula) could also provide an intuitive method for decomposing the total effect.
+
+The basic idea of g-computation is to estimate the probability of the outcome under a hypothetical action (i.e., intervention).
+
+::: callout-note
+Ingredients: A, Y, and controls W
+
+-   Step 1: Model the outcome as a function of A and W.
+
+-   Step 2: Duplicate the initial dataset in two counterfactual datasets. In one world, set A=1; in the other, set A=0. All other variables keep the original values.
+
+-   Step 3: Apply the function in step 1 to predict each individual's outcome in the two counterfactual datasets, then get potential outcomes Y1 and Y0.
+
+-   Step 4: Aggregate these potential outcomes (e.g., average across all individuals) and contrast them (e.g, by taking the difference) to arrive at an estimate.
+:::
+
+We will now demonstrate how to conduct g-computation in a simulated dataset.
+
+```{r}
+datasim <- function(n) { 
+  # This small function simulates a dataset with n rows
+  # containing covariats, and action, an outcome and
+  # the underlying potential outcomes
+  x1 <- rbinom(n, size = 1, prob = 0.5) 
+  x2 <- rbinom(n, size = 1, prob = 0.65)
+  x3 <- rnorm(n, 0, 1)
+  x4 <- rnorm(n, 0, 1)
+  # The action (independent variable, treatment, exposure...)
+  # is a function of x2, x3, x4 and 
+  # the product of (ie, an interaction of) x2 and x4
+  A <- rbinom(n, size = 1, prob = plogis(-1.6 + 2.5*x2 + 2.2*x3 + 0.6*x4 + 0.4*x2*x4)) 
+  # Simulate the two potential outcomes
+  # as functions of x1, X2, X4 and the product of x2 and x4
+  
+  # Potential outcome if the action is 1
+  # note that here, we add 1
+  Y.1 <- rbinom(n, size = 1, prob = plogis(-0.7 + 1 - 0.15*x1 + 0.45*x2 + 0.20*x4 + 0.4*x2*x4)) 
+  # Potential outcome if the action is 0
+  # note that here, we do not add 1 so that there
+  # is a different the two potential outcomes (ie, an effect of A)
+  Y.0 <- rbinom(n, size = 1, prob = plogis(-0.7 + 0 - 0.15*x1 + 0.45*x2 + 0.20*x4 + 0.4*x2*x4)) 
+  
+  # Observed outcome 
+  # is the potential outcomes (Y.1 or Y.0)
+  # corresponding to action the individual experienced (A)
+  Y <- Y.1*A + Y.0*(1 - A) 
+  
+  # Return a data.frame as the output of this function
+  data.frame(x1, x2, x3, x4, A, Y, Y.1, Y.0) 
+} 
+
+
+
+set.seed(120110) # for reproducibility
+ObsData <- datasim(n = 500000) # really large sample
+TRUE_EY.1 <- mean(ObsData$Y.1); TRUE_EY.1  # mean outcome under A = 1
+TRUE_EY.0 <- mean(ObsData$Y.0); TRUE_EY.   # mean outcome under A = 0
+TRUE_ACE=TRUE_EY.TRUE_EY.1-TRUE_EY.0
+
+
+
+# Fit a logistic regression model predicting Y from the relevant confounders
+Q <- glm(Y ~ A + x2 + x4 + x2*x4, data = ObsData, family=binomial)
+
+
+# Copy the "actual" (simulated) data twice
+A1Data <- A0Data <- ObsData
+# In one world A equals 1 for everyone, in the other one it equals 0 for everyone
+# The rest of the data stays as is (for now)
+A1Data$A <- 1; A0Data$A <- 0
+head(ObsData); head(A1Data); head(A0Data)
+
+# Predict Y if everybody attends
+Y_A1 <- predict(Q, A1Data, type="response") 
+# Predict Y if nobody attends
+Y_A0 <- predict(Q, A0Data, type="response") 
+# Taking a look at the predictions
+data.frame(Y_A1=head(Y_A1), Y_A0=head(Y_A0), TRUE_Y=head(ObsData$Y)) |> round(digits = 2)
+
+# Mean outcomes in the two worlds
+pred_A1 <- mean(Y_A1); pred_A0 <- mean(Y_A0)
+
+# Marginal odds ratio
+MOR_gcomp <- (pred_A1*(1 - pred_A0))/((1 - pred_A1)*pred_A0)
+# ATE (risk difference)
+RD_gcomp <- pred_A1 - pred_A0
+c(MOR_gcomp, RD_gcomp) |> round(digits=3)
+```
+
+We recommend take the advantage of R packages to do the work (decomposition).
+
+```{r}
+set.seed(1)
+expit <- function(x) exp(x) / (1 + exp(x))
+n <- 10000
+w <- rnorm(n, mean = 1, sd = 0.2)
+a <- rbinom(n, 1, expit(0.3 + 0.5 * w))
+l <- rnorm(n, mean = 1 + a + 0.5 * w, sd = 0.5)
+m <- rbinom(n, 1, expit(1 + 2 * a - l + 2 * w))
+y <- rbinom(n, 1, expit(0.3 * a + 0.8 * m + 0.5 * a * m - 0.3 * l + 0.4 * w))
+data <- data.frame(a, m, y, w, l)
+
+library(CMAverse)
+
+res_gformula <- cmest(data = data, model = "gformula", outcome = "y", exposure = "a",
+                 mediator = "m", basec = c("w"), postc = "l", EMint = TRUE,
+                 mreg = list("logistic"), yreg = "logistic",
+                 postcreg = list("linear"),
+                 astar = 0, a = 1, mval = list(1), 
+                 estimation = "imputation", inference = "bootstrap", nboot = 2)
+
+summary(res_gformula)
+```
