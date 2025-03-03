@@ -1,0 +1,184 @@
+---
+title: "pre-course"
+format: html
+editor: visual
+---
+
+---
+execute:
+  eval: false
+---
+
+# Pre-course tasks {#sec-pre-course}
+
+In order to participate in this course, you must complete the pre-course
+tasks.
+
+These tasks are designed to make it easier for everyone to start the
+course with everything ready to go.
+
+Depending on your skills and knowledge, these tasks could take between
+**30 min to 1 hrs to finish**.
+
+If you have any issues, please write us an email or ask during the
+registration on the morning of the first day of the course.
+
+## List of tasks
+
+Here's a quick overview of the tasks you need to do. Specific details
+about them are found as you work through this section.
+
+1.  Read the learning objectives in ???sec-learning-objectives (add
+    later)
+2.  Install the necessary programs in ???sec-intall-r-packages(add
+    later)
+3.  Read the Code of Conduct ???sec-code-of-conduct(add later)
+4.  Download the data or the repository in ??sec-download-data(add
+    later)
+5.  Get familiar with Directed Acyclic Graphs.
+
+Check each section for exact details on completing these tasks.
+
+## Learning objectives {#sec-learning-objectives}
+
+::: callout-note
+## The overall workshop objective
+
+To introduce participants to background principles, tools and skills to
+understand and apply modern mediation analysis for investigation of
+disease mechanisms.
+:::
+
+The more specific learning outcomes include:
+
+-   Explain the theoretical concepts and statistical methods regarding
+    traditional and modern mediation analysis applied to basic, clinical
+    and epidemiological research on diabetes and endocrine diseases
+-   Perform traditional, causal and modern mediation analysis using R
+    software
+-   Present results from mediation analysis according to the current
+    mediation analysis reporting guidelines
+-   Interpret results from mediation analysis and suggest relevant
+    sensitivity analyses for mediation analyses
+-   Discuss the strengths, limitations and assumptions of traditional,
+    causal and modern mediation analysis
+
+## Installing programs {#sec-intall-r-packages}
+
+### Installing R
+
+If you have not already done so, please download the latest version of R
+for [Window](https://cran.r-project.org/bin/windows/base/) or
+[Mac](https://cran.r-project.org/bin/macosx/).
+
+### Installing R Studio
+
+Beside R, you will need to download and install [R Studio
+Desktop](https://posit.co/downloads/). This is a separate program that
+provides an intuitive user interface with R.
+
+### More detailed instructions.
+
+You can find more detailed instructions for [installing R and R
+Studio](https://rstudio-education.github.io/hopr/starting.html) here.
+
+### Check your version of R
+
+If you already have a previously installed R and R Studio, please check
+your R version.
+
+```{r}
+#| echo: true
+#| eval: false
+#| results: asis
+R.Version()
+```
+
+If you have anything from 4.3.1 or later, it should be okay.
+
+### Installing R packages
+
+```{r}
+#| echo: true
+#| eval: false
+install.packages("pak")
+pak::pkg_install("tidyverse")
+pak::pkg_install("DiagrammeR")
+pak::pkg_install("downlit")
+pak::pkg_install("furrr")
+pak::pkg_install("here")
+pak::pkg_install("knitr")
+pak::pkg_install("mediation")
+pak::pkg_install("NetCoupler")
+pak::pkg_install("rmarkdown")
+pak::pkg_install("survival")
+pak::pkg_install("xml2")
+pak::pkg_install("here")
+pak::pkg_install("BS1125/CMAverse")
+pak::pkg_install("ggdag")
+pak::pkg_install("ggplot2")
+```
+
+If installation of a package does not work using the "pak" package, then
+use:
+
+```{r}
+#| echo: true
+#| eval: false
+#| results: asis
+
+install.packages("name-of-package")
+```
+
+If you have issues with the CMA package, you could also try this:
+
+```{r}
+#| echo: true
+#| eval: false
+#| results: asis
+
+install.packages("devtools")
+
+devtools::install_github("BS1125/CMAverse")
+```
+
+## Download the data {#sec-download-data}
+
+You can follow all the teaching material on this website. For the
+exercises, you will need to use the datasets we have created.
+
+You can either download the entire repository (recommended) or simply
+download the data from our github.
+
+We recommend that you do not do this before March 31, in the afternoon
+as we will making updates until then.
+
+### Download repository
+
+1.  Open a new session of R in RStudio. If you are in a project, go our
+    of that project.
+2.  Using RStudio's New Project menu item: "File -\> New Project -\>
+    Version control -\> Git"
+3.  Keeping RStudio open, open your browser and go to our
+    ??[repository](https://github.com/steno-aarhus/mediation-analysis-course)
+4.  Then, Click on the green "code" icon and copy-paste
+5.  Now go back to R and put in what you just copy-pasted under
+    "Repository URL." You should also select where this project should.
+6.  Click "create project" and you should now have all materials there.
+
+### Download the data
+
+If you want to only download the course data. You can go to
+\#[here](https://github.com/steno-aarhus/mediation-analysis-course/tree/main/data)
+for the Framingham, NHANES and simulated data. Click "download raw file"
+in the top right corner after you have clicked on the specific file.
+
+Go through the DAG in pre-course.
+
+## Code of conduct {#sec-code-of-conduct}
+
+We have a [Code of Conduct](https://guides.rostools.org/conduct.html).
+If you haven't read it, **read it now**. This course is a supportive and
+safe environment for learning, so this Code of Conduct is important.
+
+See you at the course!
