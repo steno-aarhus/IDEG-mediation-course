@@ -1,4 +1,25 @@
+# RStudio and R files
+.Rbuildignore
 .Rproj.user
 .Rhistory
-.RData
-.Ruserdata
+.Rdata
+
+# Temporary files
+*.tmp
+
+# Authentication files
+.httr-oauth
+
+# MacOS
+.DS_Store
+
+# Quarto
+/.quarto/
+
+# Website generation
+_site
+_book
+_freeze
+*_files
+*.html
+
