@@ -6,22 +6,19 @@ editor: visual
 
 ## What is a Directed Acyclic Graph (DAG)?
 
-A Directed Acyclic Graph (DAG) is a visual tool for representing causal relationships between variables.
-When we’re assessing the causal effect between an exposure and an outcome, drawing our assumptions in the form of a DAG can help us pick the right model without having to know much about the math behind it.
+A Directed Acyclic Graph (DAG) is a visual tool to represent putative causal relationships between variables in observational research. In the case of etiological epidemiology, we are interested in assessing the causal effect of an exposure on an outcome. Before embarking on statistical analyses DAGs can help us map our prior knowledge and assumptions about the various mechanisms that influence or explain the causal effect we are interested in. DAGs can help to guide us in the design of our study, the choice of which data to collect, and in how to set up our statistical analysis to adequately control for known sources of bias and confounding.
 
-How could DAG be used in Epidemioloical research?
+In preparation for our workshop on mediation analysis, it is important that you understand the basic concepts and notations used when drawing and communicating about our causal assumptions using DAGs.
 
--   Identify the existence of confounding (*check exchangeability between exposure and unexposed)*
+::: callout-tip
+## Tip: Read this reference for more background!
 
--   Identify which covariates need/not need to be adjusted (*more is not always better*)
+This brief introduction to DAGs follows an excellent [tutorial](https://www.jclinepi.com/article/S0895-4356(21)00240-7/fulltext). Read this reference to get a bit more background than we can cover here.
+:::
 
--   Illustration issues of selection and information bias
+## Simple example
 
--   Helpful in the stages of data collection, data analysis and interpretation
-
-## Simple example 
-
-```{r,echo=FALSE}
+```{r,echo=FALSE, message=FALSE, warning=FALSE}
 #  set theme of all DAGs to `theme_dag()`
 #| echo: false
 #| eval: false
@@ -32,11 +29,13 @@ library(tidyverse)
 theme_set(theme_dag())
 ```
 
-DAGs help us tell stories about causes and effects. Let's think of a simple example:
+DAGs help us describe our hypotheses and assumptions about a system of causes and effects. Let's think of a simple example:
 
 -   X represents a light switch (the cause)
 
 -   Y represents whether a light bulb is on or off (the effect)
+
+In observational epidemiology we often also see the cause referred to as the exposure or determinant. The effect is often referred to as the outcome.
 
 When we flip the switch (X):
 
@@ -44,13 +43,13 @@ When we flip the switch (X):
 
 -   Switch down → Light off
 
-This simple cause-effect relationship can be drawn as: X → Y
+This simple cause-effect relationship can be drawn as: X → Y.
 
 DAGs consist of two basic elements:
 
-1.  **Nodes**: Points representing variables (like x and y)
+1.  **Nodes**: Points representing variables (like X and Y)
 
-2.  **Edges**: Arrows showing relationships between variables (like x → y)
+2.  **Edges**: Arrows representing known or suspected causal relationships between variables (like X → Y)
 
 A **directed path** (often simply referred to as a path) is any arrow-based route between two variables on the graph.
 
@@ -70,14 +69,15 @@ ggdag(chain) + # Make sure to use a + sign, not a pipe
   theme_dag()
 ```
 
-Now let's introduce another variable z into the graph. The path is x→y→z .
+Now let's introduce another variable Z into the graph. The path is X→Y→Z.
 
--   **Ancestor**: A variable that influences another (x is an ancestor of y)
+-   **Ancestor**: A variable that influences another (X is an ancestor of Y)
 
-```{=html}
 <!-- -->
-```
--   **Descendant**: A variable influenced by another (z is a descendant of y)
+
+-   **Descendant**: A variable influenced by another (Z is a descendant of Y)
+
+Note that both X and Y are ancestors of Z, and both Y and Z are descendants of X. In other words, **all** variables that influence a given variable are its ancestors and **all** variables that are influenced by it are its descendants, even if they are only connected indirectly.
 
 ```{r,echo=FALSE}
 # Create the DAG called fork
@@ -95,11 +95,11 @@ ggdag(fork) +
   theme_dag()
 ```
 
-We can use DAGs to illustrate some *key* termiology in epidemiology.
+We can use DAGs to illustrate some *key* terminology in epidemiology.
 
-## *confounder*:   
+## *Confounders*:
 
-A confounder is represented by a node (z) with arrows pointing toward both x and y, indicating it is an ancestor of both the exposure x and the response y.
+A confounder is a cause (ancestor) of both the exposure and the outcome of interest which is not on the causal pathway between the two. It is a problem in observational epidemiology because confounding may cause a spurious association between exposure and outcome. This means that we need to account for potential confounders before we can make a causal inference about the relationship between exposure and outcome. In a DAG, we can represent a confounder by a node (Z) with arrows pointing toward both X and Y, indicating that it is an ancestor of both the exposure X and the outcome Y.
 
 ```{r, echo=FALSE}
 # Create the DAG called fork
@@ -118,7 +118,7 @@ ggdag(fork) +
   theme_dag()
 ```
 
-## mediator:   
+## Mediators:
 
 A mediator is a variable that lies on the causal pathway between the exposure (X) and the outcome (Y). In a DAG, it is a descendant of X and an ancestor of Y, meaning that X influences Y, at least in part, through the mediator (Z).
 
@@ -139,7 +139,7 @@ ggdag(chain) +
   theme_dag()
 ```
 
-## collider:   
+## collider:
 
 A collider is a variable with both edges pointing into the node. It is a descendent of both the exposure x and the response y.
 
