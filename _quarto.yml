@@ -25,7 +25,7 @@ book:
       - sessions/traditional-mediation-analysis.qmd
       - sessions/causal-mediation-analysis-introduction.qmd
   appendices:
-    - appendix/welcome.qmd
+    - appendix/reading-list.qmd
   page-footer:
     center:
       - text: "License: CC BY 4.0"
