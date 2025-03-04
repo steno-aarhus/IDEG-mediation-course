@@ -58,9 +58,11 @@ If you have not already done so, please download the latest version of R for [Wi
 Beside R, you will need to download and install [R Studio Desktop](https://posit.co/downloads/). This is a separate program that provides an intuitive user interface with R.
 
 ### More detailed instructions.
+
 You can find more detailed instructions for [installing R and R Studio](https://rstudio-education.github.io/hopr/starting.html) here.
 
 ### Check your version of R
+
 If you already have a previously installed R and R Studio, please check your R version.
 
 ```{r}
