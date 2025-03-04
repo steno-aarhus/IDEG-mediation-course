@@ -108,7 +108,7 @@ devtools::install_github("BS1125/CMAverse")
 We designed an introduction to Directed Acyclic Graph,
 please get yourself familiar with this tool.
 
-link: [Introduction to DAGs](Introduction-to-DAGs.qmd)
+link: [Introduction to DAGs](/preamble/Introduction-to-DAGs.qmd)
 
 ## 3. Download the data and repository {#sec-download-data}
 
