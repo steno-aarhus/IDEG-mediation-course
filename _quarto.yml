@@ -17,7 +17,7 @@ book:
     - part: "Preamble"
       chapters:
       - preamble/precourse.qmd
-      -Introduction-to-DAGs.qmd
+      - preamble/Introduction-to-DAGs.qmd
     - part: "Sessions"
       chapters:
       - sessions/welcome.qmd
