@@ -40,7 +40,7 @@ PhD students and postdoctoral researchers working with clinical and epidemiologi
 To make the most of our training course in Bangkok, please complete the pre-course tasks before you arrive. This will ensure we can start our sessions smoothly and dive right into the content!
 
 1. Finish the pre-course task: 
-[Precourse](/preamble/precourse.qmd)
+[Precourse](/path/to/Precourse.qmd)
 
 2  If you are interested in more networking with the speakers and want to learn more about their research, please check our previous 3-day course on mediation analyses: 
 
@@ -68,7 +68,7 @@ Instructors: Daniel Witte (DW), Jie Zhang (JZ)
 
 ## Building the course
 
-The course material was created using [Quarto](https://quarto.org/) to write the lessons and create the book format, [GitHub](https://github.com/) to host the [Git](https://git-scm.com/) repository of the material, and [GitHub Actions](https://github.com/features/actions) to create and host the website. The original source material for this course is found on the [`steno-aarhus/mediation-analysis-course`](https://github.com/steno-aarhus/IDEG-mediation-course) GitHub repository.
+The course material was created using [Quarto](https://quarto.org/) to write the lessons and create the book format, [GitHub](https://github.com/) to host the [Git](https://git-scm.com/) repository of the material, and [GitHub Actions](https://github.com/features/actions) with [Netlify](https://www.netlify.com/) to create and host the website. The original source material for this course is found on the [`steno-aarhus/mediation-analysis-course`](https://github.com/steno-aarhus/IDEG-mediation-course) GitHub repository.
 
 ## Re-use and licensing {#licensing}
 

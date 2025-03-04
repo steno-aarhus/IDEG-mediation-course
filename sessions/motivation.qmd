@@ -2,8 +2,12 @@
 
 What is your motivation for this course on mediation analysis?
 
+::: callout-note
+## What is your movitation for this course?
+
 Spend 3 minutes talking to your neighbour and discuss your own
 motivations for participating in this course.
+:::
 
 ## Mediation analysis in Epidemiology
 
