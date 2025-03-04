@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -273,33 +239,23 @@ window.Quarto = {
   <li><a href="#individual-causal-effect" id="toc-individual-causal-effect" class="nav-link" data-scroll-target="#individual-causal-effect"><span class="header-section-number">6.1.1</span> Individual causal effect</a></li>
   <li><a href="#average-causal-effect" id="toc-average-causal-effect" class="nav-link" data-scroll-target="#average-causal-effect"><span class="header-section-number">6.1.2</span> Average causal effect</a></li>
   <li><a href="#definition-of-a-causal-effect" id="toc-definition-of-a-causal-effect" class="nav-link" data-scroll-target="#definition-of-a-causal-effect"><span class="header-section-number">6.1.3</span> Definition of a causal effect</a></li>
-  <li><a href="#code-example-estimating-causal-effect" id="toc-code-example-estimating-causal-effect" class="nav-link" data-scroll-target="#code-example-estimating-causal-effect"><span class="header-section-number">6.1.4</span> Code example: estimating causal effect</a></li>
   </ul></li>
-  <li><a href="#association-vs-causation" id="toc-association-vs-causation" class="nav-link" data-scroll-target="#association-vs-causation"><span class="header-section-number">6.2</span> Association vs causation</a>
+  <li><a href="#association-vs-causation" id="toc-association-vs-causation" class="nav-link" data-scroll-target="#association-vs-causation"><span class="header-section-number">6.2</span> Association vs causation</a></li>
+  <li><a href="#causal-mediation-analysis" id="toc-causal-mediation-analysis" class="nav-link" data-scroll-target="#causal-mediation-analysis"><span class="header-section-number">6.3</span> Causal mediation analysis</a></li>
+  <li><a href="#confounding-assumptions" id="toc-confounding-assumptions" class="nav-link" data-scroll-target="#confounding-assumptions"><span class="header-section-number">6.4</span> Confounding assumptions</a></li>
+  <li><a href="#non-linearity-and-interactions" id="toc-non-linearity-and-interactions" class="nav-link" data-scroll-target="#non-linearity-and-interactions"><span class="header-section-number">6.5</span> Non-linearity and interactions</a></li>
+  <li><a href="#defining-estimands" id="toc-defining-estimands" class="nav-link" data-scroll-target="#defining-estimands"><span class="header-section-number">6.6</span> Defining estimands</a>
   <ul class="collapse">
-  <li><a href="#exchangeability" id="toc-exchangeability" class="nav-link" data-scroll-target="#exchangeability"><span class="header-section-number">6.2.1</span> Exchangeability</a></li>
-  <li><a href="#consistency" id="toc-consistency" class="nav-link" data-scroll-target="#consistency"><span class="header-section-number">6.2.2</span> Consistency</a></li>
-  <li><a href="#positivity" id="toc-positivity" class="nav-link" data-scroll-target="#positivity"><span class="header-section-number">6.2.3</span> Positivity</a></li>
+  <li><a href="#controlled-direct-effect" id="toc-controlled-direct-effect" class="nav-link" data-scroll-target="#controlled-direct-effect"><span class="header-section-number">6.6.1</span> Controlled direct effect</a></li>
+  <li><a href="#pure-natural-direct-effect" id="toc-pure-natural-direct-effect" class="nav-link" data-scroll-target="#pure-natural-direct-effect"><span class="header-section-number">6.6.2</span> (Pure) Natural direct effect</a></li>
+  <li><a href="#total-natural-direct-effect" id="toc-total-natural-direct-effect" class="nav-link" data-scroll-target="#total-natural-direct-effect"><span class="header-section-number">6.6.3</span> Total natural direct effect</a></li>
+  <li><a href="#total-natural-indirect-effect" id="toc-total-natural-indirect-effect" class="nav-link" data-scroll-target="#total-natural-indirect-effect"><span class="header-section-number">6.6.4</span> (Total) Natural indirect effect</a></li>
+  <li><a href="#pure-natural-indirect-effect" id="toc-pure-natural-indirect-effect" class="nav-link" data-scroll-target="#pure-natural-indirect-effect"><span class="header-section-number">6.6.5</span> Pure natural indirect effect</a></li>
+  <li><a href="#interaction-effects" id="toc-interaction-effects" class="nav-link" data-scroll-target="#interaction-effects"><span class="header-section-number">6.6.6</span> Interaction effects</a></li>
+  <li><a href="#effect-decomposition" id="toc-effect-decomposition" class="nav-link" data-scroll-target="#effect-decomposition"><span class="header-section-number">6.6.7</span> Effect decomposition</a></li>
+  <li><a href="#proportions" id="toc-proportions" class="nav-link" data-scroll-target="#proportions"><span class="header-section-number">6.6.8</span> Proportions</a></li>
   </ul></li>
-  <li><a href="#a-randomized-controlled-trial" id="toc-a-randomized-controlled-trial" class="nav-link" data-scroll-target="#a-randomized-controlled-trial"><span class="header-section-number">6.3</span> A randomized controlled trial</a></li>
-  <li><a href="#importance-of-good-research-questions" id="toc-importance-of-good-research-questions" class="nav-link" data-scroll-target="#importance-of-good-research-questions"><span class="header-section-number">6.4</span> Importance of good research questions</a></li>
-  <li><a href="#directed-acyclic-graphs" id="toc-directed-acyclic-graphs" class="nav-link" data-scroll-target="#directed-acyclic-graphs"><span class="header-section-number">6.5</span> Directed Acyclic Graphs</a></li>
-  <li><a href="#causal-mediation-analysis" id="toc-causal-mediation-analysis" class="nav-link" data-scroll-target="#causal-mediation-analysis"><span class="header-section-number">6.6</span> Causal mediation analysis</a></li>
-  <li><a href="#confounding-assumptions" id="toc-confounding-assumptions" class="nav-link" data-scroll-target="#confounding-assumptions"><span class="header-section-number">6.7</span> Confounding assumptions</a></li>
-  <li><a href="#non-linearity-and-interactions" id="toc-non-linearity-and-interactions" class="nav-link" data-scroll-target="#non-linearity-and-interactions"><span class="header-section-number">6.8</span> Non-linearity and interactions</a></li>
-  <li><a href="#defining-estimands" id="toc-defining-estimands" class="nav-link" data-scroll-target="#defining-estimands"><span class="header-section-number">6.9</span> Defining estimands</a>
-  <ul class="collapse">
-  <li><a href="#controlled-direct-effect" id="toc-controlled-direct-effect" class="nav-link" data-scroll-target="#controlled-direct-effect"><span class="header-section-number">6.9.1</span> Controlled direct effect</a></li>
-  <li><a href="#pure-natural-direct-effect" id="toc-pure-natural-direct-effect" class="nav-link" data-scroll-target="#pure-natural-direct-effect"><span class="header-section-number">6.9.2</span> (Pure) Natural direct effect</a></li>
-  <li><a href="#total-natural-direct-effect" id="toc-total-natural-direct-effect" class="nav-link" data-scroll-target="#total-natural-direct-effect"><span class="header-section-number">6.9.3</span> Total natural direct effect</a></li>
-  <li><a href="#total-natural-indirect-effect" id="toc-total-natural-indirect-effect" class="nav-link" data-scroll-target="#total-natural-indirect-effect"><span class="header-section-number">6.9.4</span> (Total) Natural indirect effect</a></li>
-  <li><a href="#pure-natural-indirect-effect" id="toc-pure-natural-indirect-effect" class="nav-link" data-scroll-target="#pure-natural-indirect-effect"><span class="header-section-number">6.9.5</span> Pure natural indirect effect</a></li>
-  <li><a href="#interaction-effects" id="toc-interaction-effects" class="nav-link" data-scroll-target="#interaction-effects"><span class="header-section-number">6.9.6</span> Interaction effects</a></li>
-  <li><a href="#effect-decomposition" id="toc-effect-decomposition" class="nav-link" data-scroll-target="#effect-decomposition"><span class="header-section-number">6.9.7</span> Effect decomposition</a></li>
-  <li><a href="#proportions" id="toc-proportions" class="nav-link" data-scroll-target="#proportions"><span class="header-section-number">6.9.8</span> Proportions</a></li>
-  </ul></li>
-  <li><a href="#study-designs-for-causal-mediation-analysis" id="toc-study-designs-for-causal-mediation-analysis" class="nav-link" data-scroll-target="#study-designs-for-causal-mediation-analysis"><span class="header-section-number">6.10</span> Study designs for causal mediation analysis</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6.11</span> References</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6.7</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -326,26 +282,9 @@ window.Quarto = {
 
 
 <p>In this session we will go over fundamental concepts of causal inference in general and then focus more specifically on causal mediation analysis.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Learning outcomes
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Explain the theoretical concepts and statistical methods regarding causal mediation analysis</li>
-<li>Perform causal mediation analysis using R software</li>
-<li>Interpret results from causal mediation analysis</li>
-</ul>
-</div>
-</div>
 <section id="what-is-a-cause" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="what-is-a-cause"><span class="header-section-number">6.1</span> What is a cause?</h2>
-<p>In a way this can be very intuitive. If I press the switch, the light will come on. We use causal reasoning all the time. If I do A, then Y will happen. Some relationships we can define them to be deterministic. Doing A will always lead to Y. This is useful for our intuition but when we work with health outcomes it is more complicated.</p>
+<p>We employ constantly in our daily lives. Consider a simple example: when you press a light switch, you expect the light to turn on. Or in another scenario, you anticipate that performing action A will result in outcome Y. In some instances, we can identify deterministic relationships where action A will lead to outcome Y. While these straightforward cause-and-effect relationships are intuitive and help us navigate the world, they become significantly more complex when we explore health outcomes.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -399,71 +338,6 @@ Notation
 <p>More formally we can now define a causal effect <span class="citation" data-cites="hernan_definition_2004">@hernan_definition_2004</span>:</p>
 <p><span class="math inline">\(E[Y^{a=1} = 1] - E[Y^{a=0} = 1] \ne 0\)</span></p>
 </section>
-<section id="code-example-estimating-causal-effect" class="level3" data-number="6.1.4">
-<h3 data-number="6.1.4" class="anchored" data-anchor-id="code-example-estimating-causal-effect"><span class="header-section-number">6.1.4</span> Code example: estimating causal effect</h3>
-<p>To get an idea of what is going on, we will simulate a simple dataset with an outcome Y, treatment A and a confounder W.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e6</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fl">0.5</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, w <span class="sc">+</span> a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Then, we will run a linear regression model for the effect of the treatment on the outcome, adjusting for confounder w.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lm_y <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> a <span class="sc">+</span> w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We now use this model to predict the outcome, if <strong>all</strong> had received treatment = 1 and another prediction of the outcome had everyone not received treatment (A = 0).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pred_y1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_y, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">w =</span> w))</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pred_y0 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_y, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="dv">0</span>, <span class="at">w =</span> w))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We can now get the causal effect, which is the average of the difference in the treatment effect in each group. Or put more formally <span class="math inline">\(E[Y^{a=1} = 1] - E[Y^{a=0} = 1]\)</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(pred_y1 <span class="sc">-</span> pred_y0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.000446</code></pre>
-</div>
-</div>
-<p>It turns out that this average causal effect is the same as the regression coefficient in the linear model.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = y ~ a + w)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--4.5734 -0.6764  0.0007  0.6728  4.9370 
-
-Coefficients:
-              Estimate Std. Error  t value Pr(&gt;|t|)    
-(Intercept) -0.0002494  0.0014139   -0.176     0.86    
-a            1.0004464  0.0020011  499.952   &lt;2e-16 ***
-w            1.0006213  0.0009999 1000.672   &lt;2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 1.001 on 999997 degrees of freedom
-Multiple R-squared:  0.5555,    Adjusted R-squared:  0.5555 
-F-statistic: 6.248e+05 on 2 and 999997 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-</div>
-<p>A regression-based approach can in some situations also be used. However, for more complicated situations, the regression-based approach fail. The causal intuition in the regression-based approach is also less clear.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Question
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Why is there no difference between the linear regression coefficient and the predicted mean difference?</p>
-</div>
-</div>
-</section>
 </section>
 <section id="association-vs-causation" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="association-vs-causation"><span class="header-section-number">6.2</span> Association vs causation</h2>
@@ -485,6 +359,16 @@ Figure&nbsp;6.1: Causation vs association. From <span class="citation" data-cite
 <li>Consistency</li>
 <li>Positivity</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Causal Assumptions
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <section id="exchangeability" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="exchangeability"><span class="header-section-number">6.2.1</span> Exchangeability</h3>
 <p>The risk of the outcome in A = 1 would have been the same as the risk of the outcome in A = 0, had those in A = 1 received A = 0.</p>
@@ -506,79 +390,58 @@ Figure&nbsp;6.1: Causation vs association. From <span class="citation" data-cite
 <p>The probability of receiving every value of treatment conditional on L is greater than zero. In other words, there must be a probability of being assigned to each treatment level.</p>
 <p>Image if we don’t have anyone with A = 0 among those with L=1 (e.g.&nbsp;long education), then we cannot estimate the conditional probability of the outcome.</p>
 </section>
-</section>
-<section id="a-randomized-controlled-trial" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="a-randomized-controlled-trial"><span class="header-section-number">6.3</span> A randomized controlled trial</h2>
-<p>In a randomized controlled trial these assumptions are often fulfilled given that the randomization is successful (i.e., have exchangeability and large enough groups), the treatment is clearly defined (consistency) and by design all have the possibility to be in either group (positivity).</p>
-<p>These assumptions are much harder, let alone impossible, to verify in an observational study. That is why causation is more challenging in observational studies.</p>
-</section>
-<section id="importance-of-good-research-questions" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="importance-of-good-research-questions"><span class="header-section-number">6.4</span> Importance of good research questions</h2>
-<p>When we talk about causal effects, we often ask “what if”-questions and we can think of them in the context of a randomized controlled trial.</p>
-<p>A formal extension of this notion is the target trial framework. Here, one first specify the target trial, or referred to as the hypothetical interventions that one would have wanted to perform, to address a specific research question.</p>
-</section>
-<section id="directed-acyclic-graphs" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="directed-acyclic-graphs"><span class="header-section-number">6.5</span> Directed Acyclic Graphs</h2>
-<p>Another method to graphically display your research question and your assumptions about your data is by using directed acyclic graphs (DAGs). DAGs are a simple and transparent way to identify and illustrate your assumptions about the causal relationships between variables in your dataset.</p>
-<p>A DAG contains nodes and arrows. It cannot be circular. <a href="#fig-dag" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> shows the different types of variables in a DAG and rules for paths <span class="citation" data-cites="tennant_use_2021">@tennant_use_2021</span>.</p>
-<div id="fig-dag" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-dag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../images/dag-overview.PNG" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.2: Components of a DAG, including the common types of variables and paths. From <span class="citation" data-cites="tennant_use_2021">@tennant_use_2021</span>
-</figcaption>
-</figure>
-</div>
-</section>
-<section id="causal-mediation-analysis" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="causal-mediation-analysis"><span class="header-section-number">6.6</span> Causal mediation analysis</h2>
-<p>Causal mediation analyses help you establish whether treatment <em>causes</em> the outcome because it <em>causes</em> the mediator. To do this, causal mediation seek to understand how the paths behave under circumstances different from the observed circumstances (e.g., interventions).</p>
-<p>Causal mediation analysis is an extension of the traditional approach by:</p>
-<ul>
-<li>outlining all confounding assumptions needed</li>
-<li>handling non-linearity and interaction</li>
-<li>clearly defining estimands of interest</li>
-</ul>
-</section>
-<section id="confounding-assumptions" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="confounding-assumptions"><span class="header-section-number">6.7</span> Confounding assumptions</h2>
-<p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
-<p>DAG under no mediator-outcome relation affected by treatment:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-0ac19ed568ed092dd981" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-0ac19ed568ed092dd981">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
+</section>
+<section id="causal-mediation-analysis" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="causal-mediation-analysis"><span class="header-section-number">6.3</span> Causal mediation analysis</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Randomized controlled trials
+recall the major limations of tranditional mediation methods:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note, even if you have a randomized controlled trial, you can have mediator-outcome confounding. This is because the mediator has not been randomized.</p>
-<p>Consequently, mediation analysis in randomized controlled trials also need to do adjustment of potential confounders and residual confounding cannot be ruled out.</p>
+<ul>
+<li>Non-linearity</li>
+<li>Interactions</li>
+<li>Multiple mediators</li>
+<li>Confounding</li>
+</ul>
 </div>
 </div>
+<p>Causal mediation analysis is an extension of the traditional approach by:</p>
+<ul>
+<li>Outlining all confounding assumptions needed</li>
+<li>Handling non-linearity and interaction</li>
+<li>Clearly defining estimands of interest</li>
+</ul>
+</section>
+<section id="confounding-assumptions" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="confounding-assumptions"><span class="header-section-number">6.4</span> Confounding assumptions</h2>
+<p>By using DAGs, the assumptions about confounding are made much more explicit. DAG under no mediator-outcome relation affected by treatment:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-2b22116c4c4b320e1903" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-2b22116c4c4b320e1903">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
 <p>In addition, we can have a more complicated situation where the treatment also impacts another mediator that is also a mediator-outcome confounder.</p>
 <p>DAG where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-dede97713de033c64b8b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-dede97713de033c64b8b">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-9b8a2c176ca544ef3a2a" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-9b8a2c176ca544ef3a2a">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
 </section>
-<section id="non-linearity-and-interactions" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="non-linearity-and-interactions"><span class="header-section-number">6.8</span> Non-linearity and interactions</h2>
+<section id="non-linearity-and-interactions" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="non-linearity-and-interactions"><span class="header-section-number">6.5</span> Non-linearity and interactions</h2>
 <p>Neither the product method nor the difference method can take interaction and non-linearity into account.</p>
 <p>Causal mediation analysis can take this into account. It can do this using a regression-based approach. It can also use other causal inference analysis methods such as g-computation, that are different from the traditional regression approach in that:</p>
 <ul>
@@ -588,8 +451,8 @@ Randomized controlled trials
 </ul>
 <p>Additional approaches also exists, but we will not focus on these in this course.</p>
 </section>
-<section id="defining-estimands" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="defining-estimands"><span class="header-section-number">6.9</span> Defining estimands</h2>
+<section id="defining-estimands" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="defining-estimands"><span class="header-section-number">6.6</span> Defining estimands</h2>
 <p>Imagine we have a hypothetical randomized controlled trial where we give participants treatment or no treatment on a specific outcome Y.</p>
 <p><span class="math inline">\(Y^{a=1} - Y^{a=0}\)</span></p>
 <p>For mediation, we are also interested in the effect of a mediator on this pathway. Now image that we also intervene on the mediator in a new hypothetical randomized controlled trial.</p>
@@ -617,84 +480,63 @@ Notation
 <li>natural direct effect (NDE)</li>
 <li>natural indirect effect (NIE)</li>
 </ul>
-<section id="controlled-direct-effect" class="level3" data-number="6.9.1">
-<h3 data-number="6.9.1" class="anchored" data-anchor-id="controlled-direct-effect"><span class="header-section-number">6.9.1</span> Controlled direct effect</h3>
+<section id="controlled-direct-effect" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="controlled-direct-effect"><span class="header-section-number">6.6.1</span> Controlled direct effect</h3>
 <p>The effect of A on Y not mediated through M. Fixing the value of M to m.</p>
 <p><span class="math inline">\(Y^{a=1,m}\)</span> - <span class="math inline">\(Y^{a=0,m}\)</span></p>
 <p>We intervene on <span class="math inline">\(a\)</span> but fix <span class="math inline">\(m\)</span> to a certain value. The CDE is how much the outcome would change on average if the mediator were fixed at level m uniformly in the population but the treatment were changed from 0 to 1.</p>
 <p>This could be relevant in the context of a change in a policy that impacted the mediator for everyone. For instance, if air pollution was a mediator between physical activity and cardiovascular disease risk. If a new policy would change the level of air pollution for all while we implement an intervention to increase biking in the city.</p>
 <p>This effect is not used that often. But can be highly relevant in some situations.</p>
 </section>
-<section id="pure-natural-direct-effect" class="level3" data-number="6.9.2">
-<h3 data-number="6.9.2" class="anchored" data-anchor-id="pure-natural-direct-effect"><span class="header-section-number">6.9.2</span> (Pure) Natural direct effect</h3>
+<section id="pure-natural-direct-effect" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="pure-natural-direct-effect"><span class="header-section-number">6.6.2</span> (Pure) Natural direct effect</h3>
 <p>The effect that would remain, if we were to disable the pathway from exposure to mediator.</p>
 <p><span class="math inline">\(Y^{a=1,M_a=0}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
 <p>The PNDE is how much the outcome would change if the exposure was set at a = 1 versus a* = 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
 <p>Note that the word “natural” refers to the nested counterfactual, the level the mediator would have taken in the absence of exposure. What it would naturally have been in the absence of exposure.</p>
 </section>
-<section id="total-natural-direct-effect" class="level3" data-number="6.9.3">
-<h3 data-number="6.9.3" class="anchored" data-anchor-id="total-natural-direct-effect"><span class="header-section-number">6.9.3</span> Total natural direct effect</h3>
+<section id="total-natural-direct-effect" class="level3" data-number="6.6.3">
+<h3 data-number="6.6.3" class="anchored" data-anchor-id="total-natural-direct-effect"><span class="header-section-number">6.6.3</span> Total natural direct effect</h3>
 <p><span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=1}\)</span></p>
 <p>Note, different from above in that the mediator is kept at the level it would have taken in the <strong>presence</strong> of the exposure.</p>
 </section>
-<section id="total-natural-indirect-effect" class="level3" data-number="6.9.4">
-<h3 data-number="6.9.4" class="anchored" data-anchor-id="total-natural-indirect-effect"><span class="header-section-number">6.9.4</span> (Total) Natural indirect effect</h3>
+<section id="total-natural-indirect-effect" class="level3" data-number="6.6.4">
+<h3 data-number="6.6.4" class="anchored" data-anchor-id="total-natural-indirect-effect"><span class="header-section-number">6.6.4</span> (Total) Natural indirect effect</h3>
 <p>The effect of the mediator pathway.</p>
 <p><span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=1,M_a=0}\)</span></p>
 <p>The NIE is how much the outcome would change on average if the exposure were fixed at level a = 1 but the mediator were changed from the level it would take if a* = 0 to the level it would take if a = 1.</p>
 <p>Note that exposure has to have an effect on M otherwise this will be zero.</p>
 </section>
-<section id="pure-natural-indirect-effect" class="level3" data-number="6.9.5">
-<h3 data-number="6.9.5" class="anchored" data-anchor-id="pure-natural-indirect-effect"><span class="header-section-number">6.9.5</span> Pure natural indirect effect</h3>
+<section id="pure-natural-indirect-effect" class="level3" data-number="6.6.5">
+<h3 data-number="6.6.5" class="anchored" data-anchor-id="pure-natural-indirect-effect"><span class="header-section-number">6.6.5</span> Pure natural indirect effect</h3>
 <p><span class="math inline">\(Y^{a=0,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
 <p>Note, this is different from the TNIE in that the exposure is set to no intervention.</p>
 </section>
-<section id="interaction-effects" class="level3" data-number="6.9.6">
-<h3 data-number="6.9.6" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">6.9.6</span> Interaction effects</h3>
+<section id="interaction-effects" class="level3" data-number="6.6.6">
+<h3 data-number="6.6.6" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">6.6.6</span> Interaction effects</h3>
 <p>More information on the interaction effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">@vanderweele_unification_2014</span>.</p>
 <p>Reference interaction:</p>
 <p><span class="math inline">\(INT_{ref} = PNDE - CDE\)</span></p>
 <p>Mediation interaction:</p>
 <p><span class="math inline">\(INT_{med} = TNIE - PNIE\)</span></p>
 </section>
-<section id="effect-decomposition" class="level3" data-number="6.9.7">
-<h3 data-number="6.9.7" class="anchored" data-anchor-id="effect-decomposition"><span class="header-section-number">6.9.7</span> Effect decomposition</h3>
+<section id="effect-decomposition" class="level3" data-number="6.6.7">
+<h3 data-number="6.6.7" class="anchored" data-anchor-id="effect-decomposition"><span class="header-section-number">6.6.7</span> Effect decomposition</h3>
 <p>Using the causal inference framework also allow for effect decomposition, even when there are interaction and non-linearity.</p>
 <p>Effect decomposition is important when we want to assess relative contributions such as the proportion mediated and eliminated.</p>
 <p>TE = PNDE + TNIE = TNDE + PNIE</p>
 <p>More information about decomposition of effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">@vanderweele_unification_2014</span>.</p>
 </section>
-<section id="proportions" class="level3" data-number="6.9.8">
-<h3 data-number="6.9.8" class="anchored" data-anchor-id="proportions"><span class="header-section-number">6.9.8</span> Proportions</h3>
-<p>Proportion CDE:</p>
-<p><span class="math inline">\(prop^{CDE} = CDE / TE\)</span></p>
-<p>Proportion <span class="math inline">\(INT_{ref}\)</span></p>
-<p><span class="math inline">\(prop^{INT_{ref}} = INT_{ref} / TE\)</span></p>
-<p>Proportion <span class="math inline">\(INT_{med}\)</span></p>
-<p><span class="math inline">\(prop^{INT_{med}} = INT_{med} / TE\)</span></p>
-<p>Proportion pure natural indirect effect:</p>
-<p><span class="math inline">\(prop^{PNIE} = PNIE / TE\)</span></p>
+<section id="proportions" class="level3" data-number="6.6.8">
+<h3 data-number="6.6.8" class="anchored" data-anchor-id="proportions"><span class="header-section-number">6.6.8</span> Proportions</h3>
 <p>Proportion mediated:</p>
-<p><span class="math inline">\(PM = TNIE / TE\)</span></p>
-<p>Proportion attributable to interaction:</p>
-<p><span class="math inline">\(INT = (INT_{ref} + INT_{med}) / TE\)</span></p>
+<p><span class="math inline">\(PM = NIE / TE\)</span></p>
 <p>Proportion eliminated:</p>
-<p><span class="math inline">\(PE = (INT_{ref} + INT_{med} + PNIE) / TE\)</span></p>
+<p><span class="math inline">\(PE = (TE-CDE(m)) / TE\)</span></p>
 </section>
 </section>
-<section id="study-designs-for-causal-mediation-analysis" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="study-designs-for-causal-mediation-analysis"><span class="header-section-number">6.10</span> Study designs for causal mediation analysis</h2>
-<p>Mediation analysis can be used in both intervention and observational studies.</p>
-<p>A key assumption is that the exposure should be before the mediator and the mediator and exposure before the outcome. It is possible by design to have these three variables measured at different time points. In practice, this is rarely the case. Probably because the study was not designed to conduct mediation analysis.</p>
-<p>Two trials:</p>
-<p>It is possible to conduct two randomized controlled trials to investigate mediation (<span class="citation" data-cites="imai_experimental_2013">@imai_experimental_2013</span>). One approach is the so-called parallel design. Two randomized controlled trials are conducted in parallel. The first investigates the effect of the treatment on the outcome (i.e., total effect). In the second trial we randomize both the treatment and the mediator.</p>
-<p>For example, one could use transcranial magnetic stimulation (TMS) to investigate if activation of specific brain regions mediate the propensity to accept more unfair monetary offers in a bidding game called the “ultimatum game” (<span class="citation" data-cites="knoch_diminishing_2006">@knoch_diminishing_2006</span>). First, you conduct an experiment with unfair bidding and acceptance. Then one conducts the same experiment but with manipulation of the mediator, here TMS to activate a certain brain region.</p>
-<p>A key assumption here is consistency. The subjects should not know the receive the extra intervention.</p>
-<p>There is also a crossover version (<span class="citation" data-cites="imai_experimental_2013">@imai_experimental_2013</span>). Here, we first randomize the order of the treatment and control, then observe the effect on mediator and outcome. Then we assign the opposite treatment status and to the value of the mediator that was observed in the first period.</p>
-<p>In addition to consistency there is the assumption of no carry-over effects.</p>
-</section>
-<section id="references" class="level2" data-number="6.11">
-<h2 data-number="6.11" class="anchored" data-anchor-id="references"><span class="header-section-number">6.11</span> References</h2>
+<section id="references" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="references"><span class="header-section-number">6.7</span> References</h2>
 
 
 </section>
