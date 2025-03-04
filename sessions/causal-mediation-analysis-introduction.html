@@ -421,7 +421,7 @@ Notation
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(pred_y1 <span class="sc">-</span> pred_y0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.001162</code></pre>
+<pre><code>[1] 1.001206</code></pre>
 </div>
 </div>
 <p>It turns out that this average causal effect is the same as the regression coefficient in the linear model.</p>
@@ -434,19 +434,19 @@ lm(formula = y ~ a + w)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--4.7637 -0.6734 -0.0003  0.6739  4.6049 
+-5.2474 -0.6751  0.0002  0.6748  4.7338 
 
 Coefficients:
-              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -0.0025800  0.0014132  -1.826   0.0679 .  
-a            1.0011623  0.0019991 500.811   &lt;2e-16 ***
-w            0.9986709  0.0009995 999.158   &lt;2e-16 ***
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -0.001616   0.001414  -1.143    0.253    
+a            1.001206   0.002000 500.615   &lt;2e-16 ***
+w            0.999832   0.001000 999.654   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.9995 on 999997 degrees of freedom
-Multiple R-squared:  0.5553,    Adjusted R-squared:  0.5553 
-F-statistic: 6.244e+05 on 2 and 999997 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 1 on 999997 degrees of freedom
+Multiple R-squared:  0.5558,    Adjusted R-squared:  0.5558 
+F-statistic: 6.257e+05 on 2 and 999997 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <p>A regression-based approach can in some situations also be used. However, for more complicated situations, the regression-based approach fail. The causal intuition in the regression-based approach is also less clear.</p>
@@ -548,8 +548,8 @@ Figure&nbsp;6.2: Components of a DAG, including the common types of variables an
 <p>DAG under no mediator-outcome relation affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-a6f49f6a8b12236de8a4" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-a6f49f6a8b12236de8a4">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-bd1b16c61df93c888a98" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-bd1b16c61df93c888a98">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -571,8 +571,8 @@ Randomized controlled trials
 <p>DAG where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-ccb1fdb8f541844d9bf6" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-ccb1fdb8f541844d9bf6">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-39ff02a5b963c942112e" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-39ff02a5b963c942112e">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
