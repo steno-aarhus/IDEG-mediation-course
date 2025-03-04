@@ -100,6 +100,118 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="what-is-a-directed-acyclic-graph-dag">What is a Directed Acyclic Graph (DAG)?</h2>
 <p>A Directed Acyclic Graph (DAG) is a visual tool to represent putative causal relationships between variables in observational research. In the case of etiological epidemiology, we are interested in assessing the causal effect of an exposure on an outcome. Before embarking on statistical analyses DAGs can help us map our prior knowledge and assumptions about the various mechanisms that influence or explain the causal effect we are interested in. DAGs can help to guide us in the design of our study, the choice of which data to collect, and in how to set up our statistical analysis to adequately control for known sources of bias and confounding.</p>
 <p>In preparation for our workshop on mediation analysis, it is important that you understand the basic concepts and notations used when drawing and communicating about our causal assumptions using DAGs.</p>
+</section>
+<section id="simple-example" class="level2">
+<h2 class="anchored" data-anchor-id="simple-example">Simple example</h2>
+<p>DAGs help us describe our hypotheses and assumptions about a system of causes and effects. Let’s think of a simple example:</p>
+<ul>
+<li><p>X represents a light switch (the cause)</p></li>
+<li><p>Y represents whether a light bulb is on or off (the effect)</p></li>
+</ul>
+<p>In observational epidemiology we often also see the cause referred to as the exposure or determinant. The effect is often referred to as the outcome.</p>
+<p>When we flip the switch (X):</p>
+<ul>
+<li><p>Switch up → Light on</p></li>
+<li><p>Switch down → Light off</p></li>
+</ul>
+<p>This simple cause-effect relationship can be drawn as: X → Y.</p>
+<p>DAGs consist of two basic elements:</p>
+<ol type="1">
+<li><p><strong>Nodes</strong>: Points representing variables (like X and Y)</p></li>
+<li><p><strong>Edges</strong>: Arrows representing known or suspected causal relationships between variables (like X → Y)</p></li>
+</ol>
+<p>A&nbsp;<strong>directed path</strong>&nbsp;(often simply referred to as a path) is any arrow-based route between two variables on the graph.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now let’s introduce another variable Z into the graph. The path is X→Y→Z.</p>
+<ul>
+<li><strong>Ancestor</strong>: A variable that influences another (X is an ancestor of Y)</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Descendant</strong>: A variable influenced by another (Z is a descendant of Y)</li>
+</ul>
+<p>Note that both X and Y are ancestors of Z, and both Y and Z are descendants of X. In other words, <strong>all</strong> variables that influence a given variable are its ancestors and <strong>all</strong> variables that are influenced by it are its descendants, even if they are only connected indirectly.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can use DAGs to illustrate some <em>key</em> terminology in epidemiology.</p>
+</section>
+<section id="confounders" class="level2">
+<h2 class="anchored" data-anchor-id="confounders">Confounders:</h2>
+<p>A confounder is a cause (ancestor) of both the exposure and the outcome of interest which is not on the causal pathway between the two. It is a problem in observational epidemiology because confounding may cause a spurious association between exposure and outcome. This means that we need to account for potential confounders before we can make a causal inference about the relationship between exposure and outcome. In a DAG, we can represent a confounder by a node (Z) with arrows pointing toward both X and Y, indicating that it is an ancestor of both the exposure X and the outcome Y.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="mediators" class="level2">
+<h2 class="anchored" data-anchor-id="mediators">Mediators:</h2>
+<p>A mediator is a variable that lies on the causal pathway between the exposure (X) and the outcome (Y). In a DAG, it is a descendant of X and an ancestor of Y, meaning that X influences Y, at least in part, through the mediator (Z).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="colliders" class="level2">
+<h2 class="anchored" data-anchor-id="colliders">Colliders:</h2>
+<p>A collider is a variable that is a consequence (is caused by) both the exposure and the outcome of interest. In a DAG, a collider has both edges pointing into its node. In the DAG below Z is a collider because it is a descendant of both the exposure X and the outcome Y.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It is important to identify potential colliders, because adjusting for or stratifying by a them (conditioning on a collider) can <strong>introduce</strong> a spurious association between the exposure and the outcome.</p>
+<p>Consider the relationship between Body Mass Index (BMI) and Type 2 Diabetes (T2D). Both BMI and T2D are causes of increased incidence of Myocardial Infarction (MI), making MI a <strong>collider</strong> in this DAG. If we were to study the causal effect of BMI on T2D only in people who have a history of MI, we would be conditioning on a collider. We might then find a spurious association (could be stronger, weaker or even inverse) between BMI and T2D. In order to avoid this introduction of bias we should avoid conditioning (selecting) on a collider.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="dags-must-be-acyclic" class="level2">
+<h2 class="anchored" data-anchor-id="dags-must-be-acyclic">DAGs must be acyclic:</h2>
+<p>A DAG must be acyclic (the A in DAG), meaning that it does not contain any feedback loops. In other words, a variable cannot be its own descendant (not even via mediators). The examples discussed so far are all valid DAGs because they maintain this property. However, the following example is not a DAG, as it contains a cycle:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -114,117 +226,9 @@ Tip: Read this reference for more background!
 </div>
 </div>
 </section>
-<section id="simple-example" class="level2">
-<h2 class="anchored" data-anchor-id="simple-example">Simple example</h2>
-<p>DAGs help us tell stories about causes and effects. Let’s think of a simple example:</p>
-<ul>
-<li><p>X represents a light switch (the cause)</p></li>
-<li><p>Y represents whether a light bulb is on or off (the effect)</p></li>
-</ul>
-<p>When we flip the switch (X):</p>
-<ul>
-<li><p>Switch up → Light on</p></li>
-<li><p>Switch down → Light off</p></li>
-</ul>
-<p>This simple cause-effect relationship can be drawn as: X → Y</p>
-<p>DAGs consist of two basic elements:</p>
-<ol type="1">
-<li><p><strong>Nodes</strong>: Points representing variables (like x and y)</p></li>
-<li><p><strong>Edges</strong>: Arrows showing relationships between variables (like x → y)</p></li>
-</ol>
-<p>A&nbsp;<strong>directed path</strong>&nbsp;(often simply referred to as a path) is any arrow-based route between two variables on the graph.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Now let’s introduce another variable z into the graph. The path is x→y→z .</p>
-<ul>
-<li><strong>Ancestor</strong>: A variable that influences another (x is an ancestor of y)</li>
-</ul>
-<!-- -->
-<ul>
-<li><strong>Descendant</strong>: A variable influenced by another (z is a descendant of y)</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>We can use DAGs to illustrate some <em>key</em> termiology in epidemiology.</p>
-</section>
-<section id="confounder" class="level2">
-<h2 class="anchored" data-anchor-id="confounder"><em>confounder</em>:</h2>
-<p>A confounder is represented by a node (z) with arrows pointing toward both x and y, indicating it is an ancestor of both the exposure x and the response y.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="mediator" class="level2">
-<h2 class="anchored" data-anchor-id="mediator">mediator:</h2>
-<p>A mediator is a variable that lies on the causal pathway between the exposure (X) and the outcome (Y). In a DAG, it is a descendant of X and an ancestor of Y, meaning that X influences Y, at least in part, through the mediator (Z).</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="collider" class="level2">
-<h2 class="anchored" data-anchor-id="collider">collider:</h2>
-<p>A collider is a variable with both edges pointing into the node. It is a descendent of both the exposure x and the response y.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Can you think of an example of collider stratification bias?</p>
-<p>Consider the relationship between body mass index (BMI), Type 2 Diabetes (T2D), and mortality. T2D lies on the pathway between BMI and mortality, meaning BMI can influence mortality through T2D. However, other unknown factors (U), such as genetic predisposition, may also affect the risk of developing T2D. Graphically, T2D is a descendant of both BMI and U, making it a <strong>collider</strong> when we analyze the causal effect of BMI on mortality.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Final Note:</p>
-<p>A DAG is acyclic, meaning it does not contain any feedback loops. In other words, a variable cannot be its own descendant. The examples discussed so far are all valid DAGs because they maintain this property. However, the following example is not a DAG, as it contains a cycle:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
 <section id="create-your-own-dag" class="level2">
 <h2 class="anchored" data-anchor-id="create-your-own-dag">Create your own DAG</h2>
-<p>There are a number of tools we can use to create and analyze DAGs.&nbsp;<a href="https://www.dagitty.net/">DAGitty</a>&nbsp;is a popular tool for creating and DAGs. Notably, DAGitty has a graphical interface we can use to create, edit, and analyze DAGs directly in our web browser. We can access DAGitty in our browser by navigating to&nbsp;<a href="https://www.dagitty.net/" class="uri">https://www.dagitty.net/</a>&nbsp;and clicking on&nbsp;<code>Launch DAGitty online in your browser</code>.</p>
+<p>There are a number of tools we can use to create and analyze DAGs.&nbsp;<a href="https://www.dagitty.net/">DAGitty</a>&nbsp;is a popular tool for working with DAGs. Notably, DAGitty has a graphical interface we can use to create, edit, and analyze DAGs directly in our web browser. We can access DAGitty in our browser by navigating to&nbsp;<a href="https://www.dagitty.net/" class="uri">https://www.dagitty.net/</a>&nbsp;and clicking on&nbsp;<code>Launch DAGitty online in your browser</code>.</p>
 <p>You can also use R package ggdag to create DAGs.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the packages we will need below</span></span>
@@ -237,7 +241,7 @@ Tip: Read this reference for more background!
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>chain <span class="ot">&lt;-</span> <span class="fu">dagify</span>(</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  y <span class="sc">~</span> x <span class="co"># The form is effect ~ cause</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>) </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the value stored in chain to the screen</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the values stored in 'chain' to the screen</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>chain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>dag {
@@ -246,7 +250,7 @@ y
 x -&gt; y
 }</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the chain dag and print it to the screen</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the 'chain' dag and print it to the screen</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdag</span>(chain)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
@@ -256,7 +260,19 @@ x -&gt; y
 </div>
 </div>
 </div>
-<p><strong>Use DAGs to help with your research question</strong></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip: <strong>Use DAGs to map out your research question</strong>!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Drawing, understanding and communicating epidemiological considerations with DAGs can be complex. The best way to learn is by making your own DAGs representing a topic you work with or know well. For example, follow the steps in the exercise below and if you have time try it once more with other variables.</p>
+</div>
+</div>
 <p>Suppose your research question is: <strong>What is the relationship between physical activity and Type 2 Diabetes (T2D)?</strong> We hypothesize that increased physical activity reduces the risk of developing T2D.</p>
 <ul>
 <li><p><strong>Exposure:</strong> Physical activity</p></li>
