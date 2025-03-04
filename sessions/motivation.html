@@ -268,7 +268,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>What is your motivation for this course on mediation analysis?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is your movitation for this course?
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Spend 3 minutes talking to your neighbour and discuss your own motivations for participating in this course.</p>
+</div>
+</div>
 <section id="mediation-analysis-in-epidemiology" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="mediation-analysis-in-epidemiology"><span class="header-section-number">4.1</span> Mediation analysis in Epidemiology</h2>
 <p>Mediation analysis is the study of pathways and mechanisms through which an exposure or intervention impacts an outcome. In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome. Once this effect is established, the next natural question is to explore the “black box”—the underlying mechanisms that explain how the intervention (or exposure) leads to the observed outcome. As we are not only interested in whether an intervention works, but how it works. ([@vanderweele_mediation_2016]).</p>
@@ -289,8 +301,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-fd6d2e5fa5eb173961e4" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-fd6d2e5fa5eb173961e4">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-a409580fbdcc887e56fb" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a409580fbdcc887e56fb">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We might be interested in further refining the intervention so as to increase the magnitude of the effect. This might be done by altering or improving components of the intervention that target a particular mechanism for the outcome and discarding those components of which perhaps are not relevant for the outcome.</p>
@@ -314,8 +326,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-80b3383674ac38252097" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-80b3383674ac38252097">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-92cdeb15f549c2e5848f" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-92cdeb15f549c2e5848f">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>

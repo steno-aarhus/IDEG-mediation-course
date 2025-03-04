@@ -329,15 +329,15 @@ Objective of this session
 <p>Overall relationship between A and Y:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-e39a0b97198049531f5f" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-e39a0b97198049531f5f">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c\"]\n  { rank = same; A; Y }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-270cbeb04626c5115dfd" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-270cbeb04626c5115dfd">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c\"]\n  { rank = same; A; Y }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Relationship between A and Y through M:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-b9c5baa4a645cf497879" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-b9c5baa4a645cf497879">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c*\", xlabel = \"c\"]\n    A->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-6d8a6c662070615fcf3c" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-6d8a6c662070615fcf3c">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c*\", xlabel = \"c\"]\n    A->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="traditional-approaches-for-mediation-analysis" class="level2" data-number="5.1">
@@ -367,8 +367,8 @@ Objective of this session
 <p>How much does BMI explain the relation between physical activity and pulse rate?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-0b1a9a5ebafced3ff3b6" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-0b1a9a5ebafced3ff3b6">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c*\", xlabel = \"c\"]\n    X->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-3febea3e80e9f09b4769" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-3febea3e80e9f09b4769">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c*\", xlabel = \"c\"]\n    X->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -793,8 +793,8 @@ Simulations: 10 </code></pre>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-4c42c9b0b7d2387dac93" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-4c42c9b0b7d2387dac93">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"Inflammation\"]\n    Y [label = \"Lipid metabolism\"]\n    N[label = \"Insulin sensitivity\"]\n    A[label = \"Fasting insulin\"]\n  edge [minlen = 1.5]\n    X->Y \n    X->M \n    M->Y \n    X->N    \n    N->Y\n    X->A    \n    A->Y\n  { rank = same; X; N; Y; }\n  { rank = min; M;}\n  { rank = max; A;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-eab5886ed83bde00189a" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-eab5886ed83bde00189a">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"Inflammation\"]\n    Y [label = \"Lipid metabolism\"]\n    N[label = \"Insulin sensitivity\"]\n    A[label = \"Fasting insulin\"]\n  edge [minlen = 1.5]\n    X->Y \n    X->M \n    M->Y \n    X->N    \n    N->Y\n    X->A    \n    A->Y\n  { rank = same; X; N; Y; }\n  { rank = min; M;}\n  { rank = max; A;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
