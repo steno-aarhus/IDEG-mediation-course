@@ -1,3 +1,29 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+## Importance of good research questions
+
+When we talk about causal effects, we often ask "what if"-questions and we can think of them in the context of a randomized controlled trial.
+
+A formal extension of this notion is the target trial framework. Here, one first specify the target trial, or referred to as the hypothetical interventions that one would have wanted to perform, to address a specific research question.
+
+## A randomized controlled trial
+
+In a randomized controlled trial these assumptions are often fulfilled given that the randomization is successful (i.e., have exchangeability and large enough groups), the treatment is clearly defined (consistency) and by design all have the possibility to be in either group (positivity).
+
+These assumptions are much harder, let alone impossible, to verify in an observational study. That is why causation is more challenging in observational studies.
+
+::: callout-note
+## Randomized controlled trials
+
+Note, even if you have a randomized controlled trial, you can have mediator-outcome confounding. This is because the mediator has not been randomized.
+
+Consequently, mediation analysis in randomized controlled trials also need to do adjustment of potential confounders and residual confounding cannot be ruled out.
+:::
+
 ## G-computation-based approach
 
 ::: callout-note
