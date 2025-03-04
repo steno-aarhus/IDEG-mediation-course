@@ -4,11 +4,6 @@ format: html
 editor: visual
 ---
 
----
-execute:
-  eval: false
----
-
 # Pre-course tasks {#sec-pre-course}
 
 In order to participate in this course, you must complete the pre-course tasks.
@@ -118,6 +113,15 @@ install.packages("devtools")
 
 devtools::install_github("BS1125/CMAverse")
 ```
+
+<div>
+
+## Tips
+
+If you are a workshop attendee - please clone https://github.com/steno-aarhus/IDEG-mediation-course via RStudio before April 3rd 2025.
+
+</div>
+
 
 ## Download the data {#sec-download-data}
 
