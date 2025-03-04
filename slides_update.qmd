@@ -11,7 +11,7 @@ editor: visual
 knitr::include_graphics("images/cover.png")
 ```
 
-#### Instructors:  Daniel Witte, Jie Zhang
+#### Instructors: Daniel Witte, Jie Zhang
 
 #### ***Steno Diabetes Center Aarhus, Aarhus University, Denmark***
 
@@ -226,7 +226,7 @@ knitr::include_graphics("images/bulb.png")
 
 ## What is cause inference?
 
-#### Inferring the effects of any treatment/intervention/risk factor/policy 
+#### Inferring the effects of any treatment/intervention/risk factor/policy
 
 Examples:
 
