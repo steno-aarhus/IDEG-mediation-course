@@ -15,6 +15,8 @@ book:
   chapters:
     - index.qmd
     - part: "Preamble"
+      chapters:
+      - preamble/precourse.qmd
     - part: "Sessions"
       chapters:
       - sessions/welcome.qmd
