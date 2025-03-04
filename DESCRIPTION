@@ -8,7 +8,7 @@ Depends:
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    CMAverse,
+    CMAverse (>= 0.1.0),
     DiagrammeR,
     DiagrammeRsvg,
     dplyr,
@@ -18,3 +18,5 @@ Imports:
     mediation,
     readr,
     rmarkdown
+Remotes:  
+    BS1125/CMAverse
