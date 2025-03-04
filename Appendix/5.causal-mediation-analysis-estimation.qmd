@@ -9,6 +9,309 @@ library(DiagrammeR)
 library(tidyverse)
 ```
 
+
+Counterfactual-based direct and indirect effects can be estimated from regression models,
+provided that the no confounding assumption hold. To be able to do so,
+we need a model for the mediator and a model for the outcome.
+
+Model for the mediator:
+
+$E(M|A = a, W = w) = \beta_0 + \beta_1a + \beta'_2w$
+
+Model for the outcome:
+
+$E(Y|A = a, M = m, W = w) = \sigma_0 + \sigma_1a + \sigma_2m + \sigma_3am + \sigma'_4w$
+
+
+From these two regression models we can estimate the CDE, NDE and NIE.
+
+
+The example here include a continuous treatment, mediator and outcome.
+We use these equations on an additive scale because it is easier to
+explain the intuition behind the estimands. Similar equations exist for
+other types and combinations of variables.
+
+```{r}
+nhanes <- read_csv(here::here("data/NHANES.csv")) 
+
+
+# keep the variables used in the analyses 
+data <- nhanes %>% 
+  dplyr::select(ID, 
+                w1 = Age, 
+                w2 = Gender, 
+                w3 = Education, 
+                w4 = Smoke100, 
+                a = PhysActive,  # this is the exposure
+                m = BMI,         # this is the mediator
+                y = Pulse,       # this is the outcome
+                y2 = Diabetes ) %>% 
+  na.omit()
+```
+
+We can now run a model for the mediator only adjusting for a single
+variable. In practice you would adjust for many more variables to
+satisfy the confounding assumptions.
+
+
+```{r}
+lm_m <- lm(m ~ a + w1 + w2+ w3 + w4, data = data)
+summary(lm_m)
+```
+
+Here, we see that physical activity (a) is associated with lower pulse.
+
+Now, we run the model for the outcome, including an interaction.
+
+```{r}
+lm_y <- lm(y ~ a + m + a:m + w1 + w2 + w3 + w4, data = data)
+summary(lm_y)
+```
+
+In this model we can see:
+
+-   higher physical activity (a) decreases pulse,
+    independent of the mediator (BMI)
+-   there is statistically significant interaction between physical activity (a) and BMI (m). 
+-   BMI (m) is associated with higher pulse, independent of physical activity
+
+
+::: callout-note
+## interaction terms 
+
+:::
+
+
+Based on the coefficients of these two models, we can now estimate the
+different effects.
+
+The equations are from @valeri_mediation_2013 and
+@vanderweele_unification_2014.
+
+### Controlled direct effect
+The controlled direct effect can be obtained using this formula based on
+the regression coefficients:
+
+$CDE(m) = (\sigma_1 + \sigma_3*m)(a - a^*)$
+
+$a^*$ is for a change from level $a^*$ (=control) to level $a$
+(=intervention).
+
+For the controlled direct effect we set m to a specific value.
+
+Let's look at the distribution of m.
+
+```{r}
+data %>%
+  select(m) %>%
+  summary()
+
+median_m <- round(median(data$m), digits = 1)
+```
+
+In this example we will set it to the median of BMI, at `r median_m` which is a low level.
+You can also try to set BMI to 25kg/m2. 
+
+```{r}
+CDE_m <- (lm_y$coefficients[2] + lm_y$coefficients[5] * median_m) * (1 - 0)
+round(as.numeric(CDE_m), digits = 2)
+```
+
+The CDE is how much the outcome, here pulse rate, would change on
+average if the mediator, here BMI, were
+fixed at level (m = `r median_m`) uniformly in the population but the
+treatment, physical activity, was changed from 0 to 1. 
+
+The CDE answer the question, what would be the effect of A on Y, when
+fixing M at a specific value for everyone in the population
+@wang_g-computation_2015?
+
+### (Pure) natural direct effect
+
+PNDE can be obtained using this formula:
+
+$PNDE = (\sigma_1 + \sigma_3 * (\beta_0 + \beta_1*a^* + \beta'_2*w))(a - a^*)$
+
+We set the value for the confounder w1 for the interaction to be the
+mean value of w1.
+
+```{r}
+mean_w1 <- mean(data$w1)
+```
+
+Then we calculate the PNDE.
+
+```{r}
+PNDE <- (lm_y$coefficients[2] + (lm_y$coefficients[5] * (lm_m$coefficients[1] + lm_m$coefficients[2] * 0 + lm_m$coefficients[3] * mean_w1))) * (1 - 0)
+round(as.numeric(PNDE), digits = 2)
+```
+
+The PNDE is how much the outcome, pulse rate, would change if the
+treatment a, physical activity, was set at 1 versus 0 but for each individual
+the mediator was kept at the level it would have taken, for that
+individual, in the absence of the exposure.
+
+In other words, to what extent does red meat cause higher blood glucose
+via pathways other than through inflammation @wang_g-computation_2015.
+
+### (Total) natural direct effect
+
+TNDE can be obtained by this formula:
+
+$TNDE = (\sigma_1 + \sigma_3 * (\beta_0 + beta_1*a + \beta'_2*w))(a - a^*)$
+
+```{r}
+TNDE <- (lm_y$coefficients[2] + (lm_y$coefficients[5] * (lm_m$coefficients[1] + lm_m$coefficients[2] * 1 + lm_m$coefficients[3] * mean_w1))) * (1 - 0)
+
+round(as.numeric(TNDE), digits = 2)
+```
+
+Here, the value of M is enabled to act (as opposed to the PNDE). Here we
+see a little higher blood glucose, and that is the extra contribution
+from inflammation.
+
+The TNDE asks the question: "to what extent does red meat cause higher
+blood glucose via pathways other than through inflammation, allowing
+inflammation to boost up or tune down such effect at the same time?"
+@wang_g-computation_2015
+
+### Total natural indirect effect
+
+The TNIE can be obtained by this formula:
+
+$TNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a)(a - a^*)$
+
+```{r}
+TNIE <- ((lm_y$coefficients[3] * lm_m$coefficients[2]) + (lm_y$coefficients[5] * lm_m$coefficients[2] * 1)) * (1 - 0)
+
+round(as.numeric(TNIE), digits = 2)
+```
+
+The TNIE is how much the outcome would change on average if the
+treatment was fixed at level a = 65 g/day but the mediator was changed
+from the level it would take if a\* = 0 to the level it would take if a
+= 65 g/day.
+
+Note that exposure has to have an effect on M otherwise this will be
+zero.
+
+The TNIE asks the question: to what extent does red meat cause higher
+blood glucose via inflammation (due to red meat affecting inflammation
+and subsequently, inflammation affecting blood glucose) and the possible
+interaction between red meat and inflammation in affecting blood glucose
+levels? In other words, the effect of exposure that 'would be prevented
+if the exposure did not cause the mediator' (i.e., the portion of the
+effect for which mediation is 'necessary') @wang_g-computation_2015.
+
+This is often the effect we are interested in in biomedical research for
+questions regarding mediation.
+
+### Pure natural indirect effect
+
+The PNIE can be obtained by this formula:
+
+$PNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a^*)(a - a^*)$
+
+```{r}
+PNIE <- ((lm_y$coefficients[3] * lm_m$coefficients[2]) + (lm_y$coefficients[5] * lm_m$coefficients[2] * 0)) * (1 - 0)
+
+round(as.numeric(PNIE), digits = 2)
+```
+
+The PNIE is different from the TNIE because it does not include the
+interaction effect. We estimate the effect of red meat on inflammation
+and then subsequent effect of inflammation on blood glucose.
+
+The PNIE answer the question: "to what extent does red meat cause higher
+blood glucose via inflammation only (i.e., due to red meat affecting
+inflammation and subsequently, inflammation affecting blood glucose),
+not accounting for the possible interaction between red meat and
+inflammation? In other words, the effect that the exposure would have
+had if 'its only action were to cause the mediator' (i.e., the portion
+of the effect for which mediation is ''sufficient'')"
+@wang_g-computation_2015.
+
+### Total effect
+
+The total effect can be decomposed as:
+
+$TE = PNDE + TNIE$
+
+```{r}
+TE <- PNDE + TNIE
+
+round(as.numeric(TE), digits = 2)
+```
+
+This is the overall effect of red meat on blood glucose levels. Higher
+red meat is associated with higher blood glucose.
+
+### Proportion mediation
+
+From this, we can calculate the proportion mediated.
+
+$PM = \frac{TNIE}{TE}$
+
+```{r}
+PM <- TNIE / TE
+
+as.numeric(PM) * 100
+```
+
+26% of the association between red meat and blood glucose is mediated by
+M, inflammation.
+
+### R package example for causal mediation analysis - CMAverse-package
+
+All of this can be done using an R package. Here we use the CMAverse R
+package @shi_cmaverse_2021. With this package we can use several
+different approach for the estimation and get confidence intervals.
+
+First, we load the package and then we setup the model object. We have
+to specify:
+
+-   model: this is the type of model, or the approach for the causal
+    mediation. We used the regression-based approach, so we will also do
+    that here. However, one can also use weighting-based approach
+    marginal structural models or the gformula.
+-   outcome: your outcome variable
+-   exposure: your exposure/intervention/treatment
+-   mediator: your mediator
+-   mreg: the type of model for the mediator. It is a list because you
+    can have multiple mediators
+-   yreg: type of regression for the outcome. E.g., linear, logistic,
+    cox.
+-   astar: Control/comparison intervention (value from)
+-   a: Intervention (value to)
+-   mval: the value for the mediator when estimating the CDE
+-   EMin0t: indicator of whether there should be exposure and mediator
+    interaction in the models.
+-   estimation: method for estimating causal effects. Can use parametric
+    functions or imputation.
+-   inference: how to calculate confidence intervals. For
+    regression-based we use the delta method. But for the other methods
+    we use a bootstrap.
+
+In short, all the things we did above can be estimated like this:
+
+
+
+
+To try this out in practice, we load the NHANES dataset, only keep the
+variables we need for the example, remove missing data and scale the
+intake of red meat to be per 65 g/day (i.e., 1-unit higher = 65 g/day).
+
+Note, that for your own data, you may need to take missing data into
+account in another way.
+
+The example here include a continuous treatment, mediator and outcome.
+We use these equations on an additive scale because it is easier to
+explain the intuition behind the estimands. Similar equations exist for
+other types and combinations of variables.
+
+
+
+
 Before we start to work on a real example, let's get familiar with the terms.
 
 ### (Pure) natural direct effect
