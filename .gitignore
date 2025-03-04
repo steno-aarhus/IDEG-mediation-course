@@ -2,6 +2,7 @@
 .Rbuildignore
 .Rproj.user
 .Rhistory
+.Ruserdata
 .Rdata
 
 # Temporary files

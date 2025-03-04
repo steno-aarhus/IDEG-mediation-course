@@ -1,0 +1,168 @@
+# Pre-course tasks {#sec-pre-course}
+
+In order to
+participate in this course actively, you recommend you complete the
+pre-course tasks. 
+
+These tasks are designed to make it easier for everyone to start the
+course with everything ready to go.
+
+Depending on your skills and knowledge, these tasks could take
+between **1 to 2 hours to finish**.
+
+If you have any issues, please write us an email or ask during the
+registration on the morning of the first day of the course.
+
+## List of tasks
+
+Here's a quick overview of the tasks you need to do. Specific details
+about them are found as you work through this section.
+
+::: callout-note 
+1. Install the necessary programs and the right version of the programs. 
+2. Get familiar with Directed Acyclic Graphs. 
+3. Download the data or the repository in @sec-download-data
+4. Read the Code of Conduct
+:::
+
+## 1. Installing programs {#sec-intall-r-packages}
+
+If you are a workshop attendee and have any trouble
+with installation locally, please reach out to us directly!
+
+1️⃣ Install R (Latest Version): If you have not already done so, please
+download and install the latest version of R based on your operating
+system:
+
+<https://cran.r-project.org/>
+
+2️⃣ Install
+RStudio: This is a separate program that provides an intuitive user
+interface with R. 
+
+Visit RStudio Download Page:
+<https://posit.co/products/open-source/rstudio/> Click "Download
+RStudio" and follow the instructions.
+
+3️⃣ Check Your R Version If you already have R
+installed, check your version to ensure compatibility: \>\>\>\>\>\>\>
+c0858882aefc0e9dc24c8e312fba09cea0bcba8d:Precourse_files/Precourse.qmd
+
+```{r}
+#| echo: true
+#| eval: false
+#| results: asis
+R.Version()
+```
+
+If your R version is 4.3.1 or later, you're good to go!
+
+4️⃣ Install Required R Packages: To ensure you have all necessary
+packages, run the following command in R:
+
+```{r}
+#| echo: true
+#| eval: false
+install.packages("pak")
+pak::pkg_install("tidyverse")
+pak::pkg_install("DiagrammeR")
+pak::pkg_install("downlit")
+pak::pkg_install("furrr")
+pak::pkg_install("here")
+pak::pkg_install("knitr")
+pak::pkg_install("mediation")
+pak::pkg_install("NetCoupler")
+pak::pkg_install("rmarkdown")
+pak::pkg_install("survival")
+pak::pkg_install("xml2")
+pak::pkg_install("here")
+pak::pkg_install("BS1125/CMAverse")
+pak::pkg_install("ggdag")
+pak::pkg_install("ggplot2")
+```
+
+If installation of a package does not work using the "pak" package, then
+use:
+
+```{r}
+#| echo: true
+#| eval: false
+#| results: asis
+
+install.packages("name-of-package")
+```
+
+If you have issues with the CMA package, you could also try this:
+
+```{r}
+#| echo: true
+#| eval: false
+#| results: asis
+
+install.packages("devtools")
+devtools::install_github("BS1125/CMAverse")
+```
+
+## 2. DAG in pre-course {#sec-code-of-conduct}
+
+We designed an introduction to Directed Acyclic Graph,
+please get yourself familiar with this tool.
+
+link: [Introduction to DAGs](Introduction-to-DAGs.qmd)
+
+## 3. Download the data and repository {#sec-download-data}
+
+You can follow all the teaching material on this website. For the
+exercises, you will need to use the datasets we have created. You can
+either download the entire repository (recommended) or simply download
+the data from our github. We recommend that you do not do this before
+March 31, in the afternoon as we will making updates until then.
+
+### Download repository
+
+1.  Open a new session of R in RStudio. If you are in a project, go out
+    of that project.
+
+2.  Using RStudio's New Project menu item: "File -\> New Project -\>
+    Version control -\> Git"
+
+3.  Keeping RStudio open, open your browser and go to our
+    ??[repository](https://github.com/steno-aarhus/mediation-analysis-course)
+
+4.  Then, Click on the green "code" icon and copy-paste
+
+5.  Now go back to R and put in what you just copy-pasted under
+    "Repository URL." You should also select where this project should.
+
+6. Click "create project" and you should now have all materials there.
+
+### Download the data
+
+If you want to only download the course data. You can go to
+[here](https://github.com/steno-aarhus/mediation-analysis-course/tree/main/data)
+for the Framingham, NHANES and simulated data. Click "download raw file"
+in the top right corner after you have clicked on the specific file.
+
+## 4. Code of conduct
+
+We are dedicated to providing a welcoming and supportive environment for
+all people, regardless of background or identity. As such, we do not
+tolerate behaviour that is disrespectful to our teachers or learners or
+that excludes, intimidates, or causes discomfort to others. We do not
+tolerate discrimination or harassment based on characteristics that
+include, but are not limited to, gender identity and expression, sexual
+orientation, disability, physical appearance, body size, citizenship,
+nationality, ethnic or social origin, pregnancy, familial status,
+veteran status, genetic information, religion or belief (or lack
+thereof), membership of a national minority, property, age, education,
+socio-economic status, technical choices, and experience level.
+
+Everyone who
+participates in this workshop’s activities is required to conform to
+this Code of Conduct. It applies to all spaces associated with this
+workshop including, but not limited to, group work, emails, and any
+online forums such as GitHub and X(Twitter). By participating,
+participants indicate their acceptance of the procedures by which the
+instructors and organizers resolves any Code of Conduct incidents.
+
+See you at the course!
