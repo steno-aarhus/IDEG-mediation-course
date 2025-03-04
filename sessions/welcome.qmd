@@ -1,0 +1,72 @@
+# Mediation Analysis
+
+## Welcome
+
+Welcome to the short workshop on Directed Acyclic Graphs (DAGs) and
+mediation analysis!
+
+Instrctors: Daniel Witte, Jie Zhang
+
+Time duration: 75 mins
+
+# Course Outline
+
+During this 75-minute course, you will learn about traditional mediation
+approaches before exploring the theory of causal mediation, accompanied
+by hands-on R coding practice. We hope this will be the beginning of
+your journey in mediation analysis and open the door to more interesting
+research studies!
+
+::: callout-note
+## Learning outcomes
+
+-   Understand the fundementals of mediation analysis
+
+    *What is mediation analyses?*
+
+    *Why and when to use mediation analyses?*
+
+-   Master the theoretical framework
+
+    *Understand traditional mediation concepts*
+
+    *Learn principles of causal mediation analysis*
+
+-   Conduct practical analyses using R software
+
+    *Perform traditional mediation and causal mediation analysis*
+
+    *Apply appropriate statistical methods*
+
+-   Interpret and communicate results
+
+    *Analyze outputs from mediation analyses*
+
+    *Draw meaningful conclusions from results*
+:::
+
+## Important things before the course
+
+To make the most of our training course in Bangkok, please complete the
+pre-course tasks before you arrive. This will ensure we can start our
+sessions smoothly and dive right into the content!
+
+## Course outline
+
+-   Motivation
+-   Traditional mediation analysis
+-   Introduction to causal mediation analysis
+-   Perform causal mediation analysis using R software
+-   Interpret results from causal mediation analysis
+
+## Acknowledgement
+
+This course is developed based on ['Mediation Analysis Course'](https://analysis-of-mechanisms.netlify.app/) developed
+by Daniel B. Ibsen, Omar Silverman, Jie Zhang from Steno Diabetes Center
+Aarhus in Denmark, and Nima Hejarzi and Ivan Diaz from the US, which is
+sponsored by the Danish Diabetes and Endocrine Academy.
+
+The repository contains the lesson, lecture, and assignment material for
+the course, including the website source files and other associated
+course administration files. You can always go to check the website to
+learn more about mediation.

@@ -1,0 +1,20 @@
+Package: ideg.mediation.course
+Type: Website
+Version: 0.1
+Title: "Mediation course"
+Depends: 
+    R (>= 3.6.0),
+    tidyverse
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    CMAverse,
+    DiagrammeR,
+    DiagrammeRsvg,
+    dplyr,
+    here,
+    knitr,
+    medflex,
+    mediation,
+    readr,
+    rmarkdown

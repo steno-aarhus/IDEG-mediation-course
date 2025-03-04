@@ -105,11 +105,6 @@ summary(lm_y)
 
 A regression-based approach can in some situations also be used. However, for more complicated situations, the regression-based approach fail. The causal intuition in the regression-based approach is also less clear.
 
-::: callout-note
-## Question
-
-Why is there no difference between the linear regression coefficient and the predicted mean difference?
-:::
 
 ## Association vs causation
 
@@ -156,21 +151,15 @@ In a randomized controlled trial these assumptions are often fulfilled given tha
 
 These assumptions are much harder, let alone impossible, to verify in an observational study. That is why causation is more challenging in observational studies.
 
-## Importance of good research questions
 
-When we talk about causal effects, we often ask "what if"-questions and we can think of them in the context of a randomized controlled trial.
-
-A formal extension of this notion is the target trial framework. Here, one first specify the target trial, or referred to as the hypothetical interventions that one would have wanted to perform, to address a specific research question.
-
-## Directed Acyclic Graphs
-
-Another method to graphically display your research question and your assumptions about your data is by using directed acyclic graphs (DAGs). DAGs are a simple and transparent way to identify and illustrate your assumptions about the causal relationships between variables in your dataset.
-
-A DAG contains nodes and arrows. It cannot be circular. @fig-dag shows the different types of variables in a DAG and rules for paths @tennant_use_2021.
-
-![Components of a DAG, including the common types of variables and paths. From @tennant_use_2021](/images/dag-overview.PNG){#fig-dag}
 
 ## Causal mediation analysis
+::: callout-note
+## recall the major limations of tranditional mediation methods: 
+
+-   confounding assumptions 
+-   non-lineariry and interactions
+:::
 
 Causal mediation analyses help you establish whether treatment *causes* the outcome because it *causes* the mediator. To do this, causal mediation seek to understand how the paths behave under circumstances different from the observed circumstances (e.g., interventions).
 
@@ -180,10 +169,10 @@ Causal mediation analysis is an extension of the traditional approach by:
 -   handling non-linearity and interaction
 -   clearly defining estimands of interest
 
+
 ## Confounding assumptions
 
 By using DAGs, the assumptions about confounding are made much more explicit.
-
 DAG under no mediator-outcome relation affected by treatment:
 
 ```{r}
@@ -211,13 +200,6 @@ digraph {
 
 We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome ($A \leftarrow W \rightarrow Y$) confounding into account.
 
-::: callout-note
-## Randomized controlled trials
-
-Note, even if you have a randomized controlled trial, you can have mediator-outcome confounding. This is because the mediator has not been randomized.
-
-Consequently, mediation analysis in randomized controlled trials also need to do adjustment of potential confounders and residual confounding cannot be ruled out.
-:::
 
 In addition, we can have a more complicated situation where the treatment also impacts another mediator that is also a mediator-outcome confounder.
 
@@ -266,8 +248,34 @@ Causal mediation analysis can take this into account. It can do this using a reg
 
 Additional approaches also exists, but we will not focus on these in this course.
 
-## Defining estimands
+::: callout-note
+## recall the equations used in traditional methods: 
+Mediator-model:
 
+$E(M|A=a, C=c) = \beta_0 + \beta_1a + \beta_2c$ (3.1)
+
+Outcome model with adjustment for mediator:
+
+$E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c$ (3.2)
+
+Outcome model without adjustment for mediator:
+
+$E(Y|A=a, C=c) = \theta_0' + \theta_1'a + \theta4'c$ (3.3)
+
+:::
+
+We can conduct causal mediation using regression models: 
+(Pure) natural direct effect
+$PNDE = (\sigma_1 + \sigma_3 * (\beta_0 + \beta_1*a^* + \beta'_2*w))(a - a^*)$
+Controlled direct effect
+$CDE(m) = (\sigma_1 + \sigma_3*m)(a - a^*)$
+(Total) natural direct effect
+$TNDE = (\sigma_1 + \sigma_3 * (\beta_0 + beta_1*a + \beta'_2*w))(a - a^*)$
+
+
+
+
+## Defining estimands
 Imagine we have a hypothetical randomized controlled trial where we give participants treatment or no treatment on a specific outcome Y.
 
 $Y^{a=1} - Y^{a=0}$
@@ -364,50 +372,15 @@ More information about decomposition of effects can be found in @vanderweele_uni
 
 ### Proportions
 
-Proportion CDE:
-
-$prop^{CDE} = CDE / TE$
-
-Proportion $INT_{ref}$
-
-$prop^{INT_{ref}} = INT_{ref} / TE$
-
-Proportion $INT_{med}$
-
-$prop^{INT_{med}} = INT_{med} / TE$
-
-Proportion pure natural indirect effect:
-
-$prop^{PNIE} = PNIE / TE$
 
 Proportion mediated:
 
-$PM = TNIE / TE$
+$PM = NIE / TE$
 
-Proportion attributable to interaction:
-
-$INT = (INT_{ref} + INT_{med}) / TE$
 
 Proportion eliminated:
 
-$PE = (INT_{ref} + INT_{med} + PNIE) / TE$
+$PE = (TE-CDE(m)) / TE$
 
-## Study designs for causal mediation analysis
-
-Mediation analysis can be used in both intervention and observational studies.
-
-A key assumption is that the exposure should be before the mediator and the mediator and exposure before the outcome. It is possible by design to have these three variables measured at different time points. In practice, this is rarely the case. Probably because the study was not designed to conduct mediation analysis.
-
-Two trials:
-
-It is possible to conduct two randomized controlled trials to investigate mediation (@imai_experimental_2013). One approach is the so-called parallel design. Two randomized controlled trials are conducted in parallel. The first investigates the effect of the treatment on the outcome (i.e., total effect). In the second trial we randomize both the treatment and the mediator.
-
-For example, one could use transcranial magnetic stimulation (TMS) to investigate if activation of specific brain regions mediate the propensity to accept more unfair monetary offers in a bidding game called the "ultimatum game" (@knoch_diminishing_2006). First, you conduct an experiment with unfair bidding and acceptance. Then one conducts the same experiment but with manipulation of the mediator, here TMS to activate a certain brain region.
-
-A key assumption here is consistency. The subjects should not know the receive the extra intervention.
-
-There is also a crossover version (@imai_experimental_2013). Here, we first randomize the order of the treatment and control, then observe the effect on mediator and outcome. Then we assign the opposite treatment status and to the value of the mediator that was observed in the first period.
-
-In addition to consistency there is the assumption of no carry-over effects.
 
 ## References

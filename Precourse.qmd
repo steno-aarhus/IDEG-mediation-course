@@ -1,24 +1,14 @@
----
-title: "pre-course"
-format: html
-editor: visual
----
-
----
-execute:
-  eval: false
----
-
 # Pre-course tasks {#sec-pre-course}
 
-In order to participate in this course, you must complete the pre-course
-tasks.
+In order to
+participate in this course actively, you recommend you complete the
+pre-course tasks. 
 
 These tasks are designed to make it easier for everyone to start the
 course with everything ready to go.
 
-Depending on your skills and knowledge, these tasks could take between
-**30 min to 1 hrs to finish**.
+Depending on your skills and knowledge, these tasks could take
+between **1 to 2 hours to finish**.
 
 If you have any issues, please write us an email or ask during the
 registration on the morning of the first day of the course.
@@ -28,64 +18,35 @@ registration on the morning of the first day of the course.
 Here's a quick overview of the tasks you need to do. Specific details
 about them are found as you work through this section.
 
-1.  Read the learning objectives in ???sec-learning-objectives (add
-    later)
-2.  Install the necessary programs in ???sec-intall-r-packages(add
-    later)
-3.  Read the Code of Conduct ???sec-code-of-conduct(add later)
-4.  Download the data or the repository in ??sec-download-data(add
-    later)
-5.  Get familiar with Directed Acyclic Graphs.
-
-Check each section for exact details on completing these tasks.
-
-## Learning objectives {#sec-learning-objectives}
-
-::: callout-note
-## The overall workshop objective
-
-To introduce participants to background principles, tools and skills to
-understand and apply modern mediation analysis for investigation of
-disease mechanisms.
+::: callout-note 
+1. Install the necessary programs and the right version of the programs. 
+2. Get familiar with Directed Acyclic Graphs. 
+3. Download the data or the repository in @sec-download-data
+4. Read the Code of Conduct
 :::
 
-The more specific learning outcomes include:
+## 1. Installing programs {#sec-intall-r-packages}
 
--   Explain the theoretical concepts and statistical methods regarding
-    traditional and modern mediation analysis applied to basic, clinical
-    and epidemiological research on diabetes and endocrine diseases
--   Perform traditional, causal and modern mediation analysis using R
-    software
--   Present results from mediation analysis according to the current
-    mediation analysis reporting guidelines
--   Interpret results from mediation analysis and suggest relevant
-    sensitivity analyses for mediation analyses
--   Discuss the strengths, limitations and assumptions of traditional,
-    causal and modern mediation analysis
+If you are a workshop attendee and have any trouble
+with installation locally, please reach out to us directly!
 
-## Installing programs {#sec-intall-r-packages}
+1️⃣ Install R (Latest Version): If you have not already done so, please
+download and install the latest version of R based on your operating
+system:
 
-### Installing R
+<https://cran.r-project.org/>
 
-If you have not already done so, please download the latest version of R
-for [Window](https://cran.r-project.org/bin/windows/base/) or
-[Mac](https://cran.r-project.org/bin/macosx/).
+2️⃣ Install
+RStudio: This is a separate program that provides an intuitive user
+interface with R. 
 
-### Installing R Studio
+Visit RStudio Download Page:
+<https://posit.co/products/open-source/rstudio/> Click "Download
+RStudio" and follow the instructions.
 
-Beside R, you will need to download and install [R Studio
-Desktop](https://posit.co/downloads/). This is a separate program that
-provides an intuitive user interface with R.
-
-### More detailed instructions.
-
-You can find more detailed instructions for [installing R and R
-Studio](https://rstudio-education.github.io/hopr/starting.html) here.
-
-### Check your version of R
-
-If you already have a previously installed R and R Studio, please check
-your R version.
+3️⃣ Check Your R Version If you already have R
+installed, check your version to ensure compatibility: \>\>\>\>\>\>\>
+c0858882aefc0e9dc24c8e312fba09cea0bcba8d:Precourse_files/Precourse.qmd
 
 ```{r}
 #| echo: true
@@ -94,9 +55,10 @@ your R version.
 R.Version()
 ```
 
-If you have anything from 4.3.1 or later, it should be okay.
+If your R version is 4.3.1 or later, you're good to go!
 
-### Installing R packages
+4️⃣ Install Required R Packages: To ensure you have all necessary
+packages, run the following command in R:
 
 ```{r}
 #| echo: true
@@ -138,47 +100,69 @@ If you have issues with the CMA package, you could also try this:
 #| results: asis
 
 install.packages("devtools")
-
 devtools::install_github("BS1125/CMAverse")
 ```
 
-## Download the data {#sec-download-data}
+## 2. DAG in pre-course {#sec-code-of-conduct}
+
+We designed an introduction to Directed Acyclic Graph,
+please get yourself familiar with this tool.
+
+link: [Introduction to DAGs](Introduction-to-DAGs.qmd)
+
+## 3. Download the data and repository {#sec-download-data}
 
 You can follow all the teaching material on this website. For the
-exercises, you will need to use the datasets we have created.
-
-You can either download the entire repository (recommended) or simply
-download the data from our github.
-
-We recommend that you do not do this before March 31, in the afternoon
-as we will making updates until then.
+exercises, you will need to use the datasets we have created. You can
+either download the entire repository (recommended) or simply download
+the data from our github. We recommend that you do not do this before
+March 31, in the afternoon as we will making updates until then.
 
 ### Download repository
 
-1.  Open a new session of R in RStudio. If you are in a project, go our
+1.  Open a new session of R in RStudio. If you are in a project, go out
     of that project.
+
 2.  Using RStudio's New Project menu item: "File -\> New Project -\>
     Version control -\> Git"
+
 3.  Keeping RStudio open, open your browser and go to our
     ??[repository](https://github.com/steno-aarhus/mediation-analysis-course)
+
 4.  Then, Click on the green "code" icon and copy-paste
+
 5.  Now go back to R and put in what you just copy-pasted under
     "Repository URL." You should also select where this project should.
-6.  Click "create project" and you should now have all materials there.
+
+6. Click "create project" and you should now have all materials there.
 
 ### Download the data
 
 If you want to only download the course data. You can go to
-\#[here](https://github.com/steno-aarhus/mediation-analysis-course/tree/main/data)
+[here](https://github.com/steno-aarhus/mediation-analysis-course/tree/main/data)
 for the Framingham, NHANES and simulated data. Click "download raw file"
 in the top right corner after you have clicked on the specific file.
 
-Go through the DAG in pre-course.
+## 4. Code of conduct
 
-## Code of conduct {#sec-code-of-conduct}
+We are dedicated to providing a welcoming and supportive environment for
+all people, regardless of background or identity. As such, we do not
+tolerate behaviour that is disrespectful to our teachers or learners or
+that excludes, intimidates, or causes discomfort to others. We do not
+tolerate discrimination or harassment based on characteristics that
+include, but are not limited to, gender identity and expression, sexual
+orientation, disability, physical appearance, body size, citizenship,
+nationality, ethnic or social origin, pregnancy, familial status,
+veteran status, genetic information, religion or belief (or lack
+thereof), membership of a national minority, property, age, education,
+socio-economic status, technical choices, and experience level.
 
-We have a [Code of Conduct](https://guides.rostools.org/conduct.html).
-If you haven't read it, **read it now**. This course is a supportive and
-safe environment for learning, so this Code of Conduct is important.
+Everyone who
+participates in this workshop’s activities is required to conform to
+this Code of Conduct. It applies to all spaces associated with this
+workshop including, but not limited to, group work, emails, and any
+online forums such as GitHub and X(Twitter). By participating,
+participants indicate their acceptance of the procedures by which the
+instructors and organizers resolves any Code of Conduct incidents.
 
 See you at the course!

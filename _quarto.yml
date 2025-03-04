@@ -1,0 +1,34 @@
+project:
+  type: book
+  # pre-render: quarto render slides/*.qmd
+  # resources:
+  #   - slides/*.html
+
+book:
+  title: "Mediation course"
+  author: 
+    - Jie Zhang
+    - Daniel Witte
+  date: last-modified
+  repo-url: https://github.com/steno-aarhus/IDEG-mediation-course
+  site-url: https://steno-aarhus.github.io/IDEG-mediation-course
+  chapters:
+    - index.qmd
+    - part: "Preamble"
+    - part: "Sessions"
+      chapters:
+      - sessions/welcome.qmd
+      - sessions/motivation.qmd
+      - sessions/traditional-mediation-analysis.qmd
+  appendices:
+    - appendix/welcome.qmd
+  page-footer:
+    center:
+      - text: "License: CC BY 4.0"
+
+format: html
+
+editor:
+  markdown:
+    wrap: 72
+    canonical: true
