@@ -1,7 +1,5 @@
 # Welcome to the IDEG workshop on Mediation Analysis and Directed Acyclic Graphs {.unnumbered}
 
-
-
 During this short workshop, you will be introduced to traditional mediation approaches before exploring the theory of causal mediation, as a method to investigate disease mechanisms in the context of diabetes.
 
 We hope this will be the beginning of your journey in mediation analysis and open the door to more theory-grounded studies in aetiological diabetes epidemiology! The workshop is offered as part of the [International Diabetes Epidemiology Group (IDEG) Trainee Workshop](https://www.ideg-diabetes.org/idegtraineeworkshop) in Bangkok, Thailand, on 3 April 2025.
@@ -10,18 +8,13 @@ The workshop requires some pre-course preparation to install R and R Studio as w
 
 The face-to-face workshop will consist of a combination of brief lectures and hands-on coding practice in R code-along sessions. We encourage students to discuss the materials and network during the entire Trainee Workshop. The instructors will be available to answer questions throughout the day.
 
-::: callout-note
-## Tips
-
-If you are a workshop attendee - please clone https://github.com/steno-aarhus/IDEG-mediation-course via RStudio before April 3rd 2025.
-:::
-
 🗓 April 3, 2025 🏨 Bangkok, Thailand
 
 ## Overall learning outcomes
 
 ::: callout-note
 ## The overall workshop objective
+
 This course introduces participants to the fundamental principles, analytical tools, and essential skills needed to understand and apply modern mediation analysis for investigating disease mechanisms
 :::
 
