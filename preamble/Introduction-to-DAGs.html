@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Motivation – Mediation course</title>
+<title>2&nbsp; Directed Acyclic Graphs (DAG) – Mediation course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../sessions/traditional-mediation-analysis.html" rel="next">
-<link href="../sessions/welcome.html" rel="prev">
+<link href="../sessions/welcome.html" rel="next">
+<link href="../preamble/precourse.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -102,11 +102,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="../site_libs/viz-1.8.2/viz.js"></script>
-<link href="../site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="../site_libs/grViz-binding-1.0.11/grViz.js"></script>
 
 
 </head>
@@ -120,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sessions/welcome.html">Sessions</a></li><li class="breadcrumb-item"><a href="../sessions/motivation.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Motivation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../preamble/precourse.html">Preamble</a></li><li class="breadcrumb-item"><a href="../preamble/Introduction-to-DAGs.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Directed Acyclic Graphs (DAG)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -171,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../preamble/Introduction-to-DAGs.html" class="sidebar-item-text sidebar-link">
+  <a href="../preamble/Introduction-to-DAGs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Directed Acyclic Graphs (DAG)</span></span></a>
   </div>
 </li>
@@ -194,7 +189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sessions/motivation.html" class="sidebar-item-text sidebar-link active">
+  <a href="../sessions/motivation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Motivation</span></span></a>
   </div>
 </li>
@@ -239,18 +234,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#mediation-analysis-in-epidemiology" id="toc-mediation-analysis-in-epidemiology" class="nav-link active" data-scroll-target="#mediation-analysis-in-epidemiology"><span class="header-section-number">4.1</span> Mediation analysis in Epidemiology</a></li>
-  <li><a href="#motivation-for-mediation-analysis" id="toc-motivation-for-mediation-analysis" class="nav-link" data-scroll-target="#motivation-for-mediation-analysis"><span class="header-section-number">4.2</span> Motivation for mediation analysis</a></li>
-  <li><a href="#motivations-for-running-this-course" id="toc-motivations-for-running-this-course" class="nav-link" data-scroll-target="#motivations-for-running-this-course"><span class="header-section-number">4.3</span> Motivations for running this course</a></li>
+  <li><a href="#what-is-a-directed-acyclic-graph-dag" id="toc-what-is-a-directed-acyclic-graph-dag" class="nav-link active" data-scroll-target="#what-is-a-directed-acyclic-graph-dag"><span class="header-section-number">2.1</span> What is a Directed Acyclic Graph (DAG)?</a></li>
+  <li><a href="#simple-example" id="toc-simple-example" class="nav-link" data-scroll-target="#simple-example"><span class="header-section-number">2.2</span> Simple example</a></li>
+  <li><a href="#confounders" id="toc-confounders" class="nav-link" data-scroll-target="#confounders"><span class="header-section-number">2.3</span> Confounders:</a></li>
+  <li><a href="#mediators" id="toc-mediators" class="nav-link" data-scroll-target="#mediators"><span class="header-section-number">2.4</span> Mediators:</a></li>
+  <li><a href="#colliders" id="toc-colliders" class="nav-link" data-scroll-target="#colliders"><span class="header-section-number">2.5</span> Colliders:</a></li>
+  <li><a href="#dags-must-be-acyclic" id="toc-dags-must-be-acyclic" class="nav-link" data-scroll-target="#dags-must-be-acyclic"><span class="header-section-number">2.6</span> DAGs must be acyclic:</a></li>
+  <li><a href="#create-your-own-dag" id="toc-create-your-own-dag" class="nav-link" data-scroll-target="#create-your-own-dag"><span class="header-section-number">2.7</span> Create your own DAG</a></li>
+  <li><a href="#take-home-messages" id="toc-take-home-messages" class="nav-link" data-scroll-target="#take-home-messages"><span class="header-section-number">2.8</span> Take home messages</a></li>
+  <li><a href="#recommended-reading" id="toc-recommended-reading" class="nav-link" data-scroll-target="#recommended-reading"><span class="header-section-number">2.9</span> <strong>Recommended reading</strong></a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sessions/welcome.html">Sessions</a></li><li class="breadcrumb-item"><a href="../sessions/motivation.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Motivation</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../preamble/precourse.html">Preamble</a></li><li class="breadcrumb-item"><a href="../preamble/Introduction-to-DAGs.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Directed Acyclic Graphs (DAG)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Motivation</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Directed Acyclic Graphs (DAG)</span></h1>
 </div>
 
 
@@ -267,64 +268,219 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>What is your motivation for this course on mediation analysis?</p>
-<p>Spend 3 minutes talking to your neighbour and discuss your own motivations for participating in this course.</p>
-<section id="mediation-analysis-in-epidemiology" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="mediation-analysis-in-epidemiology"><span class="header-section-number">4.1</span> Mediation analysis in Epidemiology</h2>
-<p>Mediation analysis is the study of pathways and mechanisms through which an exposure or intervention impacts an outcome. In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome. Once this effect is established, the next natural question is to explore the “black box”—the underlying mechanisms that explain how the intervention (or exposure) leads to the observed outcome. As we are not only interested in whether an intervention works, but how it works. ([@vanderweele_mediation_2016]).</p>
-<p>Mediation analysis provides an answer to this HOW question, by uncovering the pathways and mechanisms that explain the causal relationship between the exposure (e.g., intervention or treatment) and the outcome. By doing so, mediation analysis helps to open the black box, showing not only if an intervention works but how it works, and guiding more effective and targeted interventions.</p>
+<section id="what-is-a-directed-acyclic-graph-dag" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="what-is-a-directed-acyclic-graph-dag"><span class="header-section-number">2.1</span> What is a Directed Acyclic Graph (DAG)?</h2>
+<p>A Directed Acyclic Graph (DAG) is a visual tool to represent putative causal relationships between variables in observational research. In the case of etiological epidemiology, we are interested in assessing the causal effect of an exposure on an outcome. Before embarking on statistical analyses DAGs can help us map our prior knowledge and assumptions about the various mechanisms that influence or explain the causal effect we are interested in. DAGs can help to guide us in the design of our study, the choice of which data to collect, and in how to set up our statistical analysis to adequately control for known sources of bias and confounding.</p>
+<p>In preparation for our workshop on mediation analysis, it is important that you understand the basic concepts and notations used when drawing and communicating about our causal assumptions using DAGs.</p>
 </section>
-<section id="motivation-for-mediation-analysis" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="motivation-for-mediation-analysis"><span class="header-section-number">4.2</span> Motivation for mediation analysis</h2>
+<section id="simple-example" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="simple-example"><span class="header-section-number">2.2</span> Simple example</h2>
+<p>DAGs help us describe our hypotheses and assumptions about a system of causes and effects. Let’s think of a simple example:</p>
+<ul>
+<li><p>X represents a light switch (the cause)</p></li>
+<li><p>Y represents whether a light bulb is on or off (the effect)</p></li>
+</ul>
+<p>In observational epidemiology we often also see the cause referred to as the exposure or determinant. The effect is often referred to as the outcome.</p>
+<p>When we flip the switch (X):</p>
+<ul>
+<li><p>Switch up → Light on</p></li>
+<li><p>Switch down → Light off</p></li>
+</ul>
+<p>This simple cause-effect relationship can be drawn as: X → Y.</p>
+<p>DAGs consist of two basic elements:</p>
 <ol type="1">
-<li><p><strong>Explanation and Understanding</strong>:</p>
-<p>Unpacking how and why certain factors (e.g., physical activity) impact outcomes (e.g., diabetes risk) through intermediary variables (e.g., weight loss).</p>
-<p><em>Example</em>: Does body mass index mediate the relationship between diet and type 2 diabetes in mid-life?</p></li>
-<li><p><strong>Confirmation and Refutation of Theory</strong>:</p>
-<p>Testing theories about the mechanisms behind health outcomes and determining whether certain factors mediate the relationships between exposures and outcomes.</p>
-<p><em>Example</em>: Is the relationship between lower socioeconomic status and cardiovascular disease explained (mediated) through high allostatic load?</p></li>
-<li><p><strong>Refining Interventions</strong>:</p>
-<p>Using mediation analysis to improve the effectiveness of interventions by targeting key mediators, leading to better and more sustainable outcomes.</p>
-<p><em>Example</em>: Let’s consider the evidence from the landmark prevention trials. The Diabetes Prevention Programme <span class="citation" data-cites="knowler_reduction_2002">@knowler_reduction_2002</span>, The Diabetes Prevention Study <span class="citation" data-cites="tuomilehto_prevention_2001">@tuomilehto_prevention_2001</span>, and The Da Quin study <span class="citation" data-cites="pan_effects_1997">@pan_effects_1997</span>. These studies randomized high risk individuals to either metformin or a lifestyle intervention consisting of a physical activity or physical activity + diet. The main finding was a ~58% lower risk of incidence type 2 diabetes in the lifestyle intervention group compared to the metformin group.</p></li>
+<li><p><strong>Nodes</strong>: Points representing variables (like X and Y)</p></li>
+<li><p><strong>Edges</strong>: Arrows representing known or suspected causal relationships between variables (like X → Y)</p></li>
 </ol>
+<p>A&nbsp;<strong>directed path</strong>&nbsp;(often simply referred to as a path) is any arrow-based route between two variables on the graph.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-25957486d4ba206fe799" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-25957486d4ba206fe799">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>We might be interested in further refining the intervention so as to increase the magnitude of the effect. This might be done by altering or improving components of the intervention that target a particular mechanism for the outcome and discarding those components of which perhaps are not relevant for the outcome.</p>
-<p>When implementing the same lifestyle interventions in real world settings, lifestyle interventions show smaller effect and the long-term adoption and sustainability over time were some of the challenges to the effectiveness of these prevention efforts</p>
+</div>
+<p>Now let’s introduce another variable Z into the graph. The path is X→Y→Z.</p>
+<ul>
+<li><strong>Ancestor</strong>: A variable that influences another (X is an ancestor of Y)</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Descendant</strong>: A variable influenced by another (Z is a descendant of Y)</li>
+</ul>
+<p>Note that both X and Y are ancestors of Z, and both Y and Z are descendants of X. In other words, <strong>all</strong> variables that influence a given variable are its ancestors and <strong>all</strong> variables that are influenced by it are its descendants, even if they are only connected indirectly.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DiagrammeR)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grViz</span>(<span class="st">"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">digraph {</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">  graph []</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">  node [shape = plaintext]</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">    X [label = 'Lifestyle intervention']</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">    M [label = 'Weight loss']</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">    N [label = '?']</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">  Y [label = 'Type 2 diabetes']</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">  edge [minlen = 2]</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">    X-&gt;M</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">    M-&gt;Y</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">    N-&gt;M</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">   {rank = same; M; X; Y; }</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">   {rank = min; N; }</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-c2964597f6b85e652346" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-c2964597f6b85e652346">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can use DAGs to illustrate some <em>key</em> terminology in epidemiology.</p>
+</section>
+<section id="confounders" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="confounders"><span class="header-section-number">2.3</span> Confounders:</h2>
+<p>A confounder is a cause (ancestor) of both the exposure and the outcome of interest which is not on the causal pathway between the two. It is a problem in observational epidemiology because confounding may cause a spurious association between exposure and outcome. This means that we need to account for potential confounders before we can make a causal inference about the relationship between exposure and outcome. In a DAG, we can represent a confounder by a node (Z) with arrows pointing toward both X and Y, indicating that it is an ancestor of both the exposure X and the outcome Y.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="motivations-for-running-this-course" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="motivations-for-running-this-course"><span class="header-section-number">4.3</span> Motivations for running this course</h2>
-<p>The methodological framework for conducting <strong>mediation analysis</strong> has evolved rapidly in recent years, making it a crucial tool for understanding complex relationships in research. Initially rooted in basic regression techniques, mediation analysis has advanced into <strong>causal mediation analysis</strong>, enabling researchers to unravel the intricate pathways between exposures, mediators, and outcomes.</p>
-<p>This short course aims to introduce the <strong>basic statistical framework</strong>, key assumptions, and practical applications of both <strong>traditional</strong> and <strong>modern</strong> mediation analysis techniques. Through <strong>real-world data examples</strong>, we’ll explore how mediation analysis can enhance your research and understanding of causal relationships.</p>
-<p>Despite its growing importance, <strong>mediation analysis</strong> is often used incorrectly. A recent <strong>systematic review</strong> on the reporting quality of studies applying mediation analysis revealed that many studies provide incomplete reporting, which hinders both <strong>reproducibility</strong> and the <strong>translation</strong> of findings into practice ([@rrn_systematic_2022]).</p>
-<p>Our goal is for you to learn how to apply <strong>mediation analysis correctly</strong> and leverage it as a powerful tool to advance your research. By improving the quality and rigor of mediation analysis in your work, you can ensure more reliable findings and meaningful insights.</p>
+<section id="mediators" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="mediators"><span class="header-section-number">2.4</span> Mediators:</h2>
+<p>A mediator is a variable that lies on the causal pathway between the exposure (X) and the outcome (Y). In a DAG, it is a descendant of X and an ancestor of Y, meaning that X influences Y, at least in part, through the mediator (Z).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="colliders" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="colliders"><span class="header-section-number">2.5</span> Colliders:</h2>
+<p>A collider is a variable that is a consequence (is caused by) both the exposure and the outcome of interest. In a DAG, a collider has both edges pointing into its node. In the DAG below Z is a collider because it is a descendant of both the exposure X and the outcome Y.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It is important to identify potential colliders, because adjusting for or stratifying by a them (conditioning on a collider) can <strong>introduce</strong> a spurious association between the exposure and the outcome.</p>
+<p>Consider the relationship between Body Mass Index (BMI) and Type 2 Diabetes (T2D). Both BMI and T2D are causes of increased incidence of Myocardial Infarction (MI), making MI a <strong>collider</strong> in this DAG. If we were to study the causal effect of BMI on T2D only in people who have a history of MI, we would be conditioning on a collider. We might then find a spurious association (could be stronger, weaker or even inverse) between BMI and T2D. In order to avoid this introduction of bias we should avoid conditioning (selecting) on a collider.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="dags-must-be-acyclic" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="dags-must-be-acyclic"><span class="header-section-number">2.6</span> DAGs must be acyclic:</h2>
+<p>A DAG must be acyclic (the A in DAG), meaning that it does not contain any feedback loops. In other words, a variable cannot be its own descendant (not even via mediators). The examples discussed so far are all valid DAGs because they maintain this property. However, the following example is not a DAG, as it contains a cycle:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip: Read this reference for more background!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This brief introduction to DAGs follows an excellent <a href="https://www.jclinepi.com/article/S0895-4356(21)00240-7/fulltext">tutorial</a>. Read this reference to get a bit more background than we can cover here.</p>
+</div>
+</div>
+</section>
+<section id="create-your-own-dag" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="create-your-own-dag"><span class="header-section-number">2.7</span> Create your own DAG</h2>
+<p>There are a number of tools we can use to create and analyze DAGs.&nbsp;<a href="https://www.dagitty.net/">DAGitty</a>&nbsp;is a popular tool for working with DAGs. Notably, DAGitty has a graphical interface we can use to create, edit, and analyze DAGs directly in our web browser. We can access DAGitty in our browser by navigating to&nbsp;<a href="https://www.dagitty.net/" class="uri">https://www.dagitty.net/</a>&nbsp;and clicking on&nbsp;<code>Launch DAGitty online in your browser</code>.</p>
+<p>You can also use R package ggdag to create DAGs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the packages we will need below</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DAG called chain</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>chain <span class="ot">&lt;-</span> <span class="fu">dagify</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  y <span class="sc">~</span> x <span class="co"># The form is effect ~ cause</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the values stored in 'chain' to the screen</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>chain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dag {
+x
+y
+x -&gt; y
+}</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the 'chain' dag and print it to the screen</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdag</span>(chain)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Introduction-to-DAGs_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip: <strong>Use DAGs to map out your research question</strong>!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Drawing, understanding and communicating epidemiological considerations with DAGs can be complex. The best way to learn is by making your own DAGs representing a topic you work with or know well. For example, follow the steps in the exercise below and if you have time try it once more with other variables.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Excercise: draw a DAG
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose your research question is: <strong>What is the relationship between physical activity (PA) and Type 2 Diabetes (T2D)?</strong> We hypothesize that increased physical activity reduces the risk of developing T2D.</p>
+<ul>
+<li><p><strong>Exposure:</strong> Physical activity</p></li>
+<li><p><strong>Outcome:</strong> Type 2 Diabetes</p></li>
+</ul>
+<p>The dataset includes <strong>age, sex, ethnicity (Eth), physical activity (PA), Type 2 Diabetes (T2D) and history of CVD (CVD)</strong>. Using these variables, construct a <strong>Directed Acyclic Graph (DAG)</strong> to illustrate potential causal relationships and identify possible confounders, mediators and colliders. You may also consider using U to represent unknown factors.</p>
+<p>Compare and discuss your DAG with your peers to identify similarities, differences, and potential improvements.</p>
+<p><strong>How would the DAG change if you are just starting to plan a study?</strong></p>
+<p>During the study planning phase, the structure of the DAG might evolve based on additional considerations. For example:</p>
+<p><strong>Identifying further potential confounders</strong>: These are variables that may affect both the exposure (physical activity) and the outcome (Type 2 diabetes), and should therefore be measured and adjusted for. Potential confounders could include factors such as <strong>diet, neighborhood environment, income, and genetic predisposition</strong>.</p>
+<p><strong>Identifying furhter potential colliders</strong>: These are variables that are dependent on both the exposure (physical activity) and the outcome (Type 2 diabetes). We should avoid selecting (stratifying) or otherwise conditioning on colliders. <strong>Can you think of 1 or 2 additional potential colliders?</strong></p>
+</div>
+</div>
+</section>
+<section id="take-home-messages" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="take-home-messages"><span class="header-section-number">2.8</span> Take home messages</h2>
+<p>DAGs are a visual tool that helps us map out and communicate our assumptions about a causal relationships.</p>
+<p>The are very useful in the design and analysis phases of observational research, as they force researchers to explicitly state their assumptions about how various variables are causally linked to each other.</p>
+<p>DAGS help researchers to identify whether causal effects can be estimated, and which adjustments are necessary, optional or should be avoided to obtain unbiased results.</p>
+</section>
+<section id="recommended-reading" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="recommended-reading"><span class="header-section-number">2.9</span> <strong>Recommended reading</strong></h2>
+<p>Digitale, J.C. et al.&nbsp;(2022) Tutorial on directed acyclic graphs. Journal of Clinical Epidemiology, Volume 142, 264 - 267</p>
+<p>Rohrer, J. M. (2017). Thinking Clearly About Correlations and Causation: Graphical Causal Models for Observational Data.</p>
+<p>Pearl, J., &amp; Mackenzie, D. (2018). The book of why: the new science of cause and effect. Basic Books.</p>
+<p>Roberts, S. (2018). Robust, causal and incremental approaches to investigating linguistic adaptation. Frontiers in Psychology, 9, 166.</p>
 
 
 </section>
@@ -749,13 +905,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../sessions/welcome.html" class="pagination-link" aria-label="Mediation Analysis">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Mediation Analysis</span></span>
+      <a href="../preamble/precourse.html" class="pagination-link" aria-label="Pre-workshop tasks">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pre-workshop tasks</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../sessions/traditional-mediation-analysis.html" class="pagination-link" aria-label="Traditional mediation analysis">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Traditional mediation analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../sessions/welcome.html" class="pagination-link" aria-label="Mediation Analysis">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Mediation Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
