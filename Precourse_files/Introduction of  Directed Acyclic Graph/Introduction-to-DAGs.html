@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -98,65 +98,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="what-is-a-directed-acyclic-graph-dag" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-a-directed-acyclic-graph-dag">What is a Directed Acyclic Graph (DAG)?</h2>
-<p>A Directed Acyclic Graph (DAG) is a visual tool for representing causal relationships between variables. When we’re assessing the causal effect between an exposure and an outcome, drawing our assumptions in the form of a DAG can help us pick the right model without having to know much about the math behind it.</p>
-<p>How could DAG be used in Epidemioloical research?</p>
-<ul>
-<li><p>Identify the existence of confounding (<em>check exchangeability between exposure and unexposed)</em></p></li>
-<li><p>Identify which covariates need/not need to be adjusted (more is not always better)</p></li>
-<li><p>Illustration issues of selection and information bias</p></li>
-<li><p>Helpful in the stages of data collection, data analysis and interpretation</p></li>
-</ul>
+<p>A Directed Acyclic Graph (DAG) is a visual tool to represent putative causal relationships between variables in observational research. In the case of etiological epidemiology, we are interested in assessing the causal effect of an exposure on an outcome. Before embarking on statistical analyses DAGs can help us map our prior knowledge and assumptions about the various mechanisms that influence or explain the causal effect we are interested in. DAGs can help to guide us in the design of our study, the choice of which data to collect, and in how to set up our statistical analysis to adequately control for known sources of bias and confounding.</p>
+<p>In preparation for our workshop on mediation analysis, it is important that you understand the basic concepts and notations used when drawing and communicating about our causal assumptions using DAGs.</p>
 </section>
 <section id="simple-example" class="level2">
 <h2 class="anchored" data-anchor-id="simple-example">Simple example</h2>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: pakke 'dagitty' blev bygget under R version 4.4.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: pakke 'ggdag' blev bygget under R version 4.4.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Vedhæfter pakke: 'ggdag'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Det følgende objekt er maskeret fra 'package:stats':
-
-    filter</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: pakke 'stringr' blev bygget under R version 4.4.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ lubridate 1.9.3     ✔ tibble    3.2.1
-✔ purrr     1.0.2     ✔ tidyr     1.3.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks ggdag::filter(), stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-</div>
-<p>DAGs help us tell stories about causes and effects. Let’s think of a simple example:</p>
+<p>DAGs help us describe our hypotheses and assumptions about a system of causes and effects. Let’s think of a simple example:</p>
 <ul>
 <li><p>X represents a light switch (the cause)</p></li>
 <li><p>Y represents whether a light bulb is on or off (the effect)</p></li>
 </ul>
+<p>In observational epidemiology we often also see the cause referred to as the exposure or determinant. The effect is often referred to as the outcome.</p>
 <p>When we flip the switch (X):</p>
 <ul>
 <li><p>Switch up → Light on</p></li>
 <li><p>Switch down → Light off</p></li>
 </ul>
-<p>This simple cause-effect relationship can be drawn as: X → Y</p>
+<p>This simple cause-effect relationship can be drawn as: X → Y.</p>
 <p>DAGs consist of two basic elements:</p>
 <ol type="1">
-<li><p><strong>Nodes</strong>: Points representing variables (like x and y)</p></li>
-<li><p><strong>Edges</strong>: Arrows showing relationships between variables (like x → y)</p></li>
+<li><p><strong>Nodes</strong>: Points representing variables (like X and Y)</p></li>
+<li><p><strong>Edges</strong>: Arrows representing known or suspected causal relationships between variables (like X → Y)</p></li>
 </ol>
 <p>A&nbsp;<strong>directed path</strong>&nbsp;(often simply referred to as a path) is any arrow-based route between two variables on the graph.</p>
 <div class="cell">
@@ -168,14 +130,15 @@ Vedhæfter pakke: 'ggdag'</code></pre>
 </div>
 </div>
 </div>
-<p>Now let’s introduce another variable z into the graph. The path is x→y→z .</p>
+<p>Now let’s introduce another variable Z into the graph. The path is X→Y→Z.</p>
 <ul>
-<li><strong>Ancestor</strong>: A variable that influences another (x is an ancestor of y)</li>
+<li><strong>Ancestor</strong>: A variable that influences another (X is an ancestor of Y)</li>
 </ul>
 <!-- -->
 <ul>
-<li><strong>Descendant</strong>: A variable influenced by another (z is a descendant of y)</li>
+<li><strong>Descendant</strong>: A variable influenced by another (Z is a descendant of Y)</li>
 </ul>
+<p>Note that both X and Y are ancestors of Z, and both Y and Z are descendants of X. In other words, <strong>all</strong> variables that influence a given variable are its ancestors and <strong>all</strong> variables that are influenced by it are its descendants, even if they are only connected indirectly.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -185,26 +148,12 @@ Vedhæfter pakke: 'ggdag'</code></pre>
 </div>
 </div>
 </div>
-<p>We can use DAGs to illustrate some <em>key</em> termiology in epidemiology.</p>
+<p>We can use DAGs to illustrate some <em>key</em> terminology in epidemiology.</p>
 </section>
-<section id="confounder" class="level2">
-<h2 class="anchored" data-anchor-id="confounder"><em>confounder</em>:</h2>
-<p>A confounder is represented by a node (z) with arrows pointing toward both x and y, indicating it is an ancestor of both the exposure x and the response y.</p>
+<section id="confounders" class="level2">
+<h2 class="anchored" data-anchor-id="confounders">Confounders:</h2>
+<p>A confounder is a cause (ancestor) of both the exposure and the outcome of interest which is not on the causal pathway between the two. It is a problem in observational epidemiology because confounding may cause a spurious association between exposure and outcome. This means that we need to account for potential confounders before we can make a causal inference about the relationship between exposure and outcome. In a DAG, we can represent a confounder by a node (Z) with arrows pointing toward both X and Y, indicating that it is an ancestor of both the exposure X and the outcome Y.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the DAG called fork</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fork <span class="ot">&lt;-</span> <span class="fu">dagify</span>(</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">~</span> z,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  y <span class="sc">~</span> x,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  y <span class="sc">~</span> z,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">coords =</span> <span class="fu">list</span>(</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">z =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="dv">3</span>),</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">z =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">0</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>) </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the fork dag and print it to the screen</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdag</span>(fork) <span class="sc">+</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -214,8 +163,8 @@ Vedhæfter pakke: 'ggdag'</code></pre>
 </div>
 </div>
 </section>
-<section id="mediator" class="level2">
-<h2 class="anchored" data-anchor-id="mediator">mediator:</h2>
+<section id="mediators" class="level2">
+<h2 class="anchored" data-anchor-id="mediators">Mediators:</h2>
 <p>A mediator is a variable that lies on the causal pathway between the exposure (X) and the outcome (Y). In a DAG, it is a descendant of X and an ancestor of Y, meaning that X influences Y, at least in part, through the mediator (Z).</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -227,9 +176,9 @@ Vedhæfter pakke: 'ggdag'</code></pre>
 </div>
 </div>
 </section>
-<section id="collider" class="level2">
-<h2 class="anchored" data-anchor-id="collider">collider:</h2>
-<p>A collider is a variable with both edges pointing into the node. It is a descendent of both the exposure x and the response y.</p>
+<section id="colliders" class="level2">
+<h2 class="anchored" data-anchor-id="colliders">Colliders:</h2>
+<p>A collider is a variable that is a consequence (is caused by) both the exposure and the outcome of interest. In a DAG, a collider has both edges pointing into its node. In the DAG below Z is a collider because it is a descendant of both the exposure X and the outcome Y.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -239,8 +188,8 @@ Vedhæfter pakke: 'ggdag'</code></pre>
 </div>
 </div>
 </div>
-<p>Can you think of an example of collider stratification bias?</p>
-<p>Consider the relationship between body mass index (BMI), Type 2 Diabetes (T2D), and mortality. T2D lies on the pathway between BMI and mortality, meaning BMI can influence mortality through T2D. However, other unknown factors (U), such as genetic predisposition, may also affect the risk of developing T2D. Graphically, T2D is a descendant of both BMI and U, making it a <strong>collider</strong> when we analyze the causal effect of BMI on mortality.</p>
+<p>It is important to identify potential colliders, because adjusting for or stratifying by a them (conditioning on a collider) can <strong>introduce</strong> a spurious association between the exposure and the outcome.</p>
+<p>Consider the relationship between Body Mass Index (BMI) and Type 2 Diabetes (T2D). Both BMI and T2D are causes of increased incidence of Myocardial Infarction (MI), making MI a <strong>collider</strong> in this DAG. If we were to study the causal effect of BMI on T2D only in people who have a history of MI, we would be conditioning on a collider. We might then find a spurious association (could be stronger, weaker or even inverse) between BMI and T2D. In order to avoid this introduction of bias we should avoid conditioning (selecting) on a collider.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -250,8 +199,10 @@ Vedhæfter pakke: 'ggdag'</code></pre>
 </div>
 </div>
 </div>
-<p>Final Note:</p>
-<p>A DAG is acyclic, meaning it does not contain any feedback loops. In other words, a variable cannot be its own descendant. The examples discussed so far are all valid DAGs because they maintain this property. However, the following example is not a DAG, as it contains a cycle:</p>
+</section>
+<section id="dags-must-be-acyclic" class="level2">
+<h2 class="anchored" data-anchor-id="dags-must-be-acyclic">DAGs must be acyclic:</h2>
+<p>A DAG must be acyclic (the A in DAG), meaning that it does not contain any feedback loops. In other words, a variable cannot be its own descendant (not even via mediators). The examples discussed so far are all valid DAGs because they maintain this property. However, the following example is not a DAG, as it contains a cycle:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -261,24 +212,37 @@ Vedhæfter pakke: 'ggdag'</code></pre>
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip: Read this reference for more background!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This brief introduction to DAGs follows an excellent <a href="https://www.jclinepi.com/article/S0895-4356(21)00240-7/fulltext">tutorial</a>. Read this reference to get a bit more background than we can cover here.</p>
+</div>
+</div>
 </section>
 <section id="create-your-own-dag" class="level2">
 <h2 class="anchored" data-anchor-id="create-your-own-dag">Create your own DAG</h2>
-<p>There are a number of tools we can use to create and analyze DAGs.&nbsp;<a href="https://www.dagitty.net/">DAGitty</a>&nbsp;is a popular tool for creating and DAGs. Notably, DAGitty has a graphical interface we can use to create, edit, and analyze DAGs directly in our web browser. We can access DAGitty in our browser by navigating to&nbsp;<a href="https://www.dagitty.net/" class="uri">https://www.dagitty.net/</a>&nbsp;and clicking on&nbsp;<code>Launch DAGitty online in your browser</code>.</p>
+<p>There are a number of tools we can use to create and analyze DAGs.&nbsp;<a href="https://www.dagitty.net/">DAGitty</a>&nbsp;is a popular tool for working with DAGs. Notably, DAGitty has a graphical interface we can use to create, edit, and analyze DAGs directly in our web browser. We can access DAGitty in our browser by navigating to&nbsp;<a href="https://www.dagitty.net/" class="uri">https://www.dagitty.net/</a>&nbsp;and clicking on&nbsp;<code>Launch DAGitty online in your browser</code>.</p>
 <p>You can also use R package ggdag to create DAGs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the packages we will need below</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the packages we will need below</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DAG called chain</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>chain <span class="ot">&lt;-</span> <span class="fu">dagify</span>(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  y <span class="sc">~</span> x <span class="co"># The form is effect ~ cause</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>) </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the value stored in chain to the screen</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>chain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DAG called chain</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>chain <span class="ot">&lt;-</span> <span class="fu">dagify</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  y <span class="sc">~</span> x <span class="co"># The form is effect ~ cause</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the values stored in 'chain' to the screen</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>chain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>dag {
 x
@@ -286,8 +250,8 @@ y
 x -&gt; y
 }</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the chain dag and print it to the screen</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdag</span>(chain)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the 'chain' dag and print it to the screen</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdag</span>(chain)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -296,7 +260,19 @@ x -&gt; y
 </div>
 </div>
 </div>
-<p><strong>Use DAGs to help with your research question</strong></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip: <strong>Use DAGs to map out your research question</strong>!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Drawing, understanding and communicating epidemiological considerations with DAGs can be complex. The best way to learn is by making your own DAGs representing a topic you work with or know well. For example, follow the steps in the exercise below and if you have time try it once more with other variables.</p>
+</div>
+</div>
 <p>Suppose your research question is: <strong>What is the relationship between physical activity and Type 2 Diabetes (T2D)?</strong> We hypothesize that increased physical activity reduces the risk of developing T2D.</p>
 <ul>
 <li><p><strong>Exposure:</strong> Physical activity</p></li>
@@ -368,20 +344,20 @@ x -&gt; y
 <p>QUIZ:</p>
 <p>Which variables to adjust for if i am interested in the effect of X on Y?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tidy_ggdag <span class="ot">&lt;-</span> <span class="fu">dagify</span>(</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  y <span class="sc">~</span> x <span class="sc">+</span> z2 <span class="sc">+</span> w2 <span class="sc">+</span> w1,</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">~</span> z1 <span class="sc">+</span> w1 <span class="sc">+</span> w2,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  z1 <span class="sc">~</span> w1 <span class="sc">+</span> v,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  z2 <span class="sc">~</span> w2 <span class="sc">+</span> v,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  w1 <span class="sc">~</span> <span class="er">~</span>w2, <span class="co"># bidirected path</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">exposure =</span> <span class="st">"x"</span>,</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="st">"y"</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy_dagitty</span>()</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdag</span>(tidy_ggdag) <span class="sc">+</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tidy_ggdag <span class="ot">&lt;-</span> <span class="fu">dagify</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  y <span class="sc">~</span> x <span class="sc">+</span> z2 <span class="sc">+</span> w2 <span class="sc">+</span> w1,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">~</span> z1 <span class="sc">+</span> w1 <span class="sc">+</span> w2,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  z1 <span class="sc">~</span> w1 <span class="sc">+</span> v,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  z2 <span class="sc">~</span> w2 <span class="sc">+</span> v,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  w1 <span class="sc">~</span> <span class="er">~</span>w2, <span class="co"># bidirected path</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">exposure =</span> <span class="st">"x"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="st">"y"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy_dagitty</span>()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdag</span>(tidy_ggdag) <span class="sc">+</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -444,18 +420,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -487,7 +452,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -495,7 +482,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

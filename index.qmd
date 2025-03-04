@@ -10,12 +10,6 @@ The workshop requires some pre-course preparation to install R and R Studio as w
 
 The face-to-face workshop will consist of a combination of brief lectures and hands-on coding practice in R code-along sessions. We encourage students to discuss the materials and network during the entire Trainee Workshop. The instructors will be available to answer questions throughout the day.
 
-::: callout-note
-## Tips
-
-If you are a workshop attendee - please clone https://github.com/steno-aarhus/IDEG-mediation-course via RStudio before April 3rd 2025.
-:::
-
 🗓 April 3, 2025 🏨 Bangkok, Thailand
 
 ## Overall learning outcomes
@@ -25,6 +19,9 @@ If you are a workshop attendee - please clone https://github.com/steno-aarhus/ID
 This course introduces participants to the fundamental principles, analytical tools, and essential skills needed to understand and apply modern mediation analysis for investigating disease mechanisms
 :::
 
+
+
+
 The more specific learning outcomes include:
 
 -   **Explain** the theoretical concepts and statistical methods regarding traditional and modern mediation analysis applied to basic, clinical and epidemiological research on diabetes and endocrine diseases
@@ -33,23 +30,22 @@ The more specific learning outcomes include:
 -   **Interpret** results from mediation analysis and suggest relevant sensitivity analyses for mediation analyses
 -   **Discuss** the strengths, limitations and assumptions of traditional, causal and modern mediation analysis
 
+
 ### The target audience
 
 PhD students and postdoctoral researchers working with clinical and epidemiological studies of diabetes, its causes and consequencesits endocrinology, that are planning to conduct mediation analysis or that are interested in widening their analysis toolkit.
 
-### Prerequisites
+### ⚠️ Prerequisites
 
 To make the most of our training course in Bangkok, please complete the pre-course tasks before you arrive. This will ensure we can start our sessions smoothly and dive right into the content!
 
-<!-- add link to pre-course -->
+1. Finish the pre-course task: 
+[Precourse](/path/to/Precourse.qmd)
 
-::: callout-note
-## Practical information
+2  If you are interested in more networking with the speakers and want to learn more about their research, please check our previous 3-day course on mediation analyses: 
 
--   Please complete the Pre-course tasks before you start the course.
+https://github.com/steno-aarhus/mediation-analysis-course
 
--   If you are interested in more networking with the speakers and want to learn more about their research, please check our previous 3-day course on mediation analyses: https://github.com/steno-aarhus/mediation-analysis-course
-:::
 
 ## Schedule
 
@@ -69,47 +65,6 @@ We will combine lectures with code-along sessions, group work, and discussions.
 Instructors: Daniel Witte (DW), Jie Zhang (JZ)
 :::
 
-## ⚠️ Pre-Work
-
-If you are a workshop attendee and have any trouble with installation locally, please reach out to us directly!
-
-1️⃣ Install R (Latest Version) Download and install the latest version of R based on your operating system: https://cran.r-project.org/
-
-2️⃣ Install RStudio Visit RStudio Download Page: https://posit.co/products/open-source/rstudio/ Click "Download RStudio" and follow the instructions.
-
-3️⃣ Check Your R Version If you already have R installed, check your version to ensure compatibility:
-
-```{r}
-#| echo: true
-#| eval: false
-#| results: asis
-R.Version()
-```
-
-If your R version is 4.3.1 or later, you're good to go!
-
-4️⃣ Install Required R Packages To ensure you have all necessary packages, run the following command in R:
-
-```{r}
-#| echo: true
-#| eval: false
-install.packages("pak")
-pak::pkg_install("tidyverse")
-pak::pkg_install("DiagrammeR")
-pak::pkg_install("downlit")
-pak::pkg_install("furrr")
-pak::pkg_install("here")
-pak::pkg_install("knitr")
-pak::pkg_install("mediation")
-pak::pkg_install("NetCoupler")
-pak::pkg_install("rmarkdown")
-pak::pkg_install("survival")
-pak::pkg_install("xml2")
-pak::pkg_install("here")
-pak::pkg_install("BS1125/CMAverse")
-pak::pkg_install("ggdag")
-pak::pkg_install("ggplot2")
-```
 
 ## Building the course
 

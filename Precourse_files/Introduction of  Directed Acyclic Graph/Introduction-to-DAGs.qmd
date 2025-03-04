@@ -6,22 +6,13 @@ editor: visual
 
 ## What is a Directed Acyclic Graph (DAG)?
 
-A Directed Acyclic Graph (DAG) is a visual tool for representing causal relationships between variables.
-When we’re assessing the causal effect between an exposure and an outcome, drawing our assumptions in the form of a DAG can help us pick the right model without having to know much about the math behind it.
+A Directed Acyclic Graph (DAG) is a visual tool to represent putative causal relationships between variables in observational research. In the case of etiological epidemiology, we are interested in assessing the causal effect of an exposure on an outcome. Before embarking on statistical analyses DAGs can help us map our prior knowledge and assumptions about the various mechanisms that influence or explain the causal effect we are interested in. DAGs can help to guide us in the design of our study, the choice of which data to collect, and in how to set up our statistical analysis to adequately control for known sources of bias and confounding.
 
-How could DAG be used in Epidemioloical research?
+In preparation for our workshop on mediation analysis, it is important that you understand the basic concepts and notations used when drawing and communicating about our causal assumptions using DAGs.
 
--   Identify the existence of confounding (*check exchangeability between exposure and unexposed)*
+## Simple example
 
--   Identify which covariates need/not need to be adjusted (*more is not always better*)
-
--   Illustration issues of selection and information bias
-
--   Helpful in the stages of data collection, data analysis and interpretation
-
-## Simple example 
-
-```{r,echo=FALSE}
+```{r,echo=FALSE, message=FALSE, warning=FALSE}
 #  set theme of all DAGs to `theme_dag()`
 #| echo: false
 #| eval: false
@@ -32,11 +23,13 @@ library(tidyverse)
 theme_set(theme_dag())
 ```
 
-DAGs help us tell stories about causes and effects. Let's think of a simple example:
+DAGs help us describe our hypotheses and assumptions about a system of causes and effects. Let's think of a simple example:
 
 -   X represents a light switch (the cause)
 
 -   Y represents whether a light bulb is on or off (the effect)
+
+In observational epidemiology we often also see the cause referred to as the exposure or determinant. The effect is often referred to as the outcome.
 
 When we flip the switch (X):
 
@@ -44,13 +37,13 @@ When we flip the switch (X):
 
 -   Switch down → Light off
 
-This simple cause-effect relationship can be drawn as: X → Y
+This simple cause-effect relationship can be drawn as: X → Y.
 
 DAGs consist of two basic elements:
 
-1.  **Nodes**: Points representing variables (like x and y)
+1.  **Nodes**: Points representing variables (like X and Y)
 
-2.  **Edges**: Arrows showing relationships between variables (like x → y)
+2.  **Edges**: Arrows representing known or suspected causal relationships between variables (like X → Y)
 
 A **directed path** (often simply referred to as a path) is any arrow-based route between two variables on the graph.
 
@@ -70,14 +63,15 @@ ggdag(chain) + # Make sure to use a + sign, not a pipe
   theme_dag()
 ```
 
-Now let's introduce another variable z into the graph. The path is x→y→z .
+Now let's introduce another variable Z into the graph. The path is X→Y→Z.
 
--   **Ancestor**: A variable that influences another (x is an ancestor of y)
+-   **Ancestor**: A variable that influences another (X is an ancestor of Y)
 
-```{=html}
 <!-- -->
-```
--   **Descendant**: A variable influenced by another (z is a descendant of y)
+
+-   **Descendant**: A variable influenced by another (Z is a descendant of Y)
+
+Note that both X and Y are ancestors of Z, and both Y and Z are descendants of X. In other words, **all** variables that influence a given variable are its ancestors and **all** variables that are influenced by it are its descendants, even if they are only connected indirectly.
 
 ```{r,echo=FALSE}
 # Create the DAG called fork
@@ -95,11 +89,11 @@ ggdag(fork) +
   theme_dag()
 ```
 
-We can use DAGs to illustrate some *key* termiology in epidemiology.
+We can use DAGs to illustrate some *key* terminology in epidemiology.
 
-## *confounder*:   
+## Confounders:
 
-A confounder is represented by a node (z) with arrows pointing toward both x and y, indicating it is an ancestor of both the exposure x and the response y.
+A confounder is a cause (ancestor) of both the exposure and the outcome of interest which is not on the causal pathway between the two. It is a problem in observational epidemiology because confounding may cause a spurious association between exposure and outcome. This means that we need to account for potential confounders before we can make a causal inference about the relationship between exposure and outcome. In a DAG, we can represent a confounder by a node (Z) with arrows pointing toward both X and Y, indicating that it is an ancestor of both the exposure X and the outcome Y.
 
 ```{r, echo=FALSE}
 # Create the DAG called fork
@@ -118,7 +112,7 @@ ggdag(fork) +
   theme_dag()
 ```
 
-## mediator:   
+## Mediators:
 
 A mediator is a variable that lies on the causal pathway between the exposure (X) and the outcome (Y). In a DAG, it is a descendant of X and an ancestor of Y, meaning that X influences Y, at least in part, through the mediator (Z).
 
@@ -139,9 +133,9 @@ ggdag(chain) +
   theme_dag()
 ```
 
-## collider:   
+## Colliders:
 
-A collider is a variable with both edges pointing into the node. It is a descendent of both the exposure x and the response y.
+A collider is a variable that is a consequence (is caused by) both the exposure and the outcome of interest. In a DAG, a collider has both edges pointing into its node. In the DAG below Z is a collider because it is a descendant of both the exposure X and the outcome Y.
 
 ```{r,echo=FALSE}
 collider <- dagify(
@@ -159,38 +153,29 @@ ggdag(collider) +
   theme_dag()
 ```
 
-Can you think of an example of collider stratification bias?
+It is important to identify potential colliders, because adjusting for or stratifying by a them (conditioning on a collider) can **introduce** a spurious association between the exposure and the outcome.
 
-Consider the relationship between body mass index (BMI), Type 2 Diabetes (T2D), and mortality. T2D lies on the pathway between BMI and mortality, meaning BMI can influence mortality through T2D. However, other unknown factors (U), such as genetic predisposition, may also affect the risk of developing T2D. Graphically, T2D is a descendant of both BMI and U, making it a **collider** when we analyze the causal effect of BMI on mortality.
+Consider the relationship between Body Mass Index (BMI) and Type 2 Diabetes (T2D). Both BMI and T2D are causes of increased incidence of Myocardial Infarction (MI), making MI a **collider** in this DAG. If we were to study the causal effect of BMI on T2D only in people who have a history of MI, we would be conditioning on a collider. We might then find a spurious association (could be stronger, weaker or even inverse) between BMI and T2D. In order to avoid this introduction of bias we should avoid conditioning (selecting) on a collider.
 
 ```{r,echo=FALSE}
 collider <- dagify(
- T2D~ BMI,
- T2D ~ Death,
- Death ~ BMI,
- Death ~ U,
- T2D ~ U,
- exposure = "BMI",
- outcome = "Death",
- labels = c(
-   "BMI" = "BMI",
-   "T2D" = "T2D",
-   "Death" = "Death",
-   "U" = "Genes"
- ),
- coords = list(
-   x = c(BMI = 1, T2D = 2, Death = 3, U = 2),
-   y = c(BMI = 0, T2D = 1, Death = 0, U = 2)
- )
-)
+  MI ~ BMI,
+  MI ~ T2D,
+  T2D ~ BMI,
+  coords = list(
+    x = c(BMI = 1, MI = 2, T2D = 3),
+    y = c(BMI = 0, MI = 1, T2D = 0)
+  )
+) 
 
+# Plot the collider dag and print it to the screen
 ggdag(collider) +
- theme_dag()
+  theme_dag()
 ```
 
-Final Note:
+## DAGs must be acyclic:
 
-A DAG is acyclic, meaning it does not contain any feedback loops. In other words, a variable cannot be its own descendant. The examples discussed so far are all valid DAGs because they maintain this property. However, the following example is not a DAG, as it contains a cycle:
+A DAG must be acyclic (the A in DAG), meaning that it does not contain any feedback loops. In other words, a variable cannot be its own descendant (not even via mediators). The examples discussed so far are all valid DAGs because they maintain this property. However, the following example is not a DAG, as it contains a cycle:
 
 ```{r,echo=FALSE}
 cyclic <- dagify(
@@ -208,9 +193,15 @@ ggdag(cyclic) +
   theme_dag()
 ```
 
+::: callout-tip
+## Tip: Read this reference for more background!
+
+This brief introduction to DAGs follows an excellent [tutorial](https://www.jclinepi.com/article/S0895-4356(21)00240-7/fulltext). Read this reference to get a bit more background than we can cover here.
+:::
+
 ## Create your own DAG
 
-There are a number of tools we can use to create and analyze DAGs. [DAGitty](https://www.dagitty.net/) is a popular tool for creating and DAGs. Notably, DAGitty has a graphical interface we can use to create, edit, and analyze DAGs directly in our web browser. We can access DAGitty in our browser by navigating to <https://www.dagitty.net/> and clicking on `Launch DAGitty online in your browser`.
+There are a number of tools we can use to create and analyze DAGs. [DAGitty](https://www.dagitty.net/) is a popular tool for working with DAGs. Notably, DAGitty has a graphical interface we can use to create, edit, and analyze DAGs directly in our web browser. We can access DAGitty in our browser by navigating to <https://www.dagitty.net/> and clicking on `Launch DAGitty online in your browser`.
 
 You can also use R package ggdag to create DAGs.
 
@@ -226,165 +217,55 @@ library(ggplot2)
 chain <- dagify(
   y ~ x # The form is effect ~ cause
 ) 
-# Print the value stored in chain to the screen
+# Print the values stored in 'chain' to the screen
 chain
-# Plot the chain dag and print it to the screen
+# Plot the 'chain' dag and print it to the screen
 ggdag(chain)
 ```
 
-**Use DAGs to help with your research question**
+::: callout-tip
+## Tip: **Use DAGs to map out your research question**!
 
-Suppose your research question is: **What is the relationship between physical activity and Type 2 Diabetes (T2D)?** We hypothesize that increased physical activity reduces the risk of developing T2D.
+Drawing, understanding and communicating epidemiological considerations with DAGs can be complex. The best way to learn is by making your own DAGs representing a topic you work with or know well. For example, follow the steps in the exercise below and if you have time try it once more with other variables.
+:::
+
+::: callout-note
+## Excercise: draw a DAG
+
+Suppose your research question is: **What is the relationship between physical activity (PA) and Type 2 Diabetes (T2D)?** We hypothesize that increased physical activity reduces the risk of developing T2D.
 
 -   **Exposure:** Physical activity
 
 -   **Outcome:** Type 2 Diabetes
 
-The dataset includes **age, sex, ethnicity, physical activity, and T2D**. Using these variables, construct a **Directed Acyclic Graph (DAG)** to illustrate potential causal relationships and identify possible confounders or mediators. You may also consider using U to represent unknow factors.
+The dataset includes **age, sex, ethnicity (Eth), physical activity (PA), Type 2 Diabetes (T2D) and history of CVD (CVD)**. Using these variables, construct a **Directed Acyclic Graph (DAG)** to illustrate potential causal relationships and identify possible confounders, mediators and colliders. You may also consider using U to represent unknown factors.
 
-Compare and disscuss your DAG with your peers to identify similarities, differences, and potential improvements.
+Compare and discuss your DAG with your peers to identify similarities, differences, and potential improvements.
 
-**How would the DAG change if you are at study planning phase ?**
+**How would the DAG change if you are just starting to plan a study?**
 
 During the study planning phase, the structure of the DAG might evolve based on additional considerations. For example:
 
-**Identifying potential confounders**: These are variables that may affect both the exposure (physical activity) and the outcome (Type 2 diabetes), and should therefore be measured and adjusted for. Potential confounders could include factors such as **diet, neighborhood environment, income, and genetic predisposition**.
+**Identifying further potential confounders**: These are variables that may affect both the exposure (physical activity) and the outcome (Type 2 diabetes), and should therefore be measured and adjusted for. Potential confounders could include factors such as **diet, neighborhood environment, income, and genetic predisposition**.
 
-## Take home message
+**Identifying furhter potential colliders**: These are variables that are dependent on both the exposure (physical activity) and the outcome (Type 2 diabetes). We should avoid selecting (stratifying) or otherwise conditioning on colliders. **Can you think of 1 or 2 additional potential colliders?**
+:::
 
-DAGs require researchers to explicitly state the assumptions about causal links.
+## Take home messages
 
-DAGS help researchers identify whether causal effects can be estimated, and, what we need to control to obtain unbiased results.
+DAGs are a visual tool that helps us map out and communicate our assumptions about a causal relationships.
 
-The solution is not always as you thought it was...
+The are very useful in the design and analysis phases of observational research, as they force researchers to explicitly state their assumptions about how various variables are causally linked to each other.
 
-## d-Separation Rules
+DAGS help researchers to identify whether causal effects can be estimated, and which adjustments are necessary, optional or should be avoided to obtain unbiased results.
 
-If you are interested in Causal Inference, please continue with the materials of d-separation rules, which is essential to estimate average causal effects.
+## **Recommended reading**
 
-As we can see from the type 2 diabetes example, there are several confounding factors on the path from exposure (physical activity) to outcome (T2D), which confounded the relations and biased the estimate. Therefore, we would like to *deconfound* our estimates of effect by conditioning on variables. In the DAG, it means we block the backdoor path from x to y. There are different approaches to condition, such as restriction, matching, stratification, weighting.
+```         
 
-The rules of d-separation will help with with interpretations:
-
-Ruel 1: If there are no variables being conditioned on, a path is blocked if and only if two arrowheads on the path collide at some variable on the path.
-
-In this example, the path x → z ← u → y is BLOCKED because z is a collider.
-
-```{r,echo=FALSE}
-
-complex_collider <- dagify(
-  z ~ x,
-  y ~ x,
-  z ~ u,
-  y ~ u,
-  coords = list(
-    x = c(x = 1, u = 1, z = 2,  y = 4),
-    y = c(x = 1, u = -1, z = 0,  y = 0)
-  )
-)
-
-# Plot the complex collider DAG
-ggdag(complex_collider) +
-  theme_dag()
 ```
 
-Rule 2. Any path that contains a non-collider that has been *conditioned* on is blocked.
-
-In the example, there is a backdoor path: x ← z → y , which is an open path, Without conditioning on z, this path could introduce a spurious association between x and y. However, the backdoor path can be blocked by conditioning on z (through stratifying or adjustment). In epidemiology termss: conditioning on z removes the spurious association, making x and y independent.
-
-```{r,echo=FALSE}
-
-strata <- dagify(
-  x ~ z,
-  y ~ z,
-  coords = list(
-    x = c(x = 1, z = 2, y = 3),
-    y = c(x = 0, z = 1, y = 0)
-  )
-) 
-
-# Plot the strata dag and print it to the screen
-ggdag(strata) +
-  theme_dag()
-```
-
-Rule 3. A collider that has been conditioned on does not block a path.
-
-z is a collider in the example (2 arrows pointing at the variable z)
-
-It is a closed path, you *do not* need to condition on z. However, the path can be open by conditioning on Z.
-
-Epidemiology words: x and y becomes dependent (associated) by conditioning on Z as you open the backdoor path.
-
-```{r,echo=FALSE}
-collider <- dagify( 
-  z ~ x, 
-  z ~ y, 
-  coords = 
-  list( x = c(x = 1, z = 2, y = 3), 
-        y = c(x = 0, z = 1, y = 0) ) 
-  )
-
-# Plot the strata dag and print it to the screen
-ggdag(collider) +
-  theme_dag()
-```
-
-Rule 4. A collider that has a descendant that has been conditioned on does not block a path.
-
-In the figure below, the path `x` -\> `z` \<- `y` is open because `m` is a descendant of a collider (z) and it is being conditioned on.
-
-```{r,echo=FALSE}
-collider <- dagify( 
-  z ~ x, 
-  z ~ y, 
-  m ~ z, 
-  coords = 
-  list( x = c(x = 1, z = 2, m = 2,y = 3), 
-        y = c(x = 1, z = 1, m = 3, y = 1) ) 
-  )
-
-# Plot the strata dag and print it to the screen
-ggdag(collider) +
-  theme_dag()
-```
-
-QUIZ:
-
-Which variables to adjust for if i am interested in the effect of X on Y?
-
-```{r}
-tidy_ggdag <- dagify(
-  y ~ x + z2 + w2 + w1,
-  x ~ z1 + w1 + w2,
-  z1 ~ w1 + v,
-  z2 ~ w2 + v,
-  w1 ~ ~w2, # bidirected path
-  exposure = "x",
-  outcome = "y"
-) %>%
-  tidy_dagitty()
-
-
-ggdag(tidy_ggdag) +
-  theme_dag()
-```
-
-## Basic DAG terminology
-
-node: a variable
-
-edge: a causal relationship, represented by an arrow
-
-exposure: it is the variable you are interested to understand its causal effect, usually represented by X
-
-response: the outcome variable, usually represented by Y
-
-ancestors: nodes that are 'upstream' from a particular variable
-
-decendents: nodes that are 'downstream' from a particular variable
-
-# **Recommended reading**
+Digitale, J.C. et al. (2022) Tutorial on directed acyclic graphs. Journal of Clinical Epidemiology, Volume 142, 264 - 267
 
 Rohrer, J. M. (2017). Thinking Clearly About Correlations and Causation: Graphical Causal Models for Observational Data.
 
