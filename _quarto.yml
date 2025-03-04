@@ -17,11 +17,13 @@ book:
     - part: "Preamble"
       chapters:
       - preamble/precourse.qmd
+      -Introduction-to-DAGs.qmd
     - part: "Sessions"
       chapters:
       - sessions/welcome.qmd
       - sessions/motivation.qmd
       - sessions/traditional-mediation-analysis.qmd
+      - sessions/causal-mediation-analysis-introduction.qmd
   appendices:
     - appendix/welcome.qmd
   page-footer:
