@@ -1,0 +1,140 @@
+# Motivation
+
+What is your motivation for this course on mediation analysis?
+
+Spend 3 minutes talking to your neighbour and discuss your own
+motivations for participating in this course.
+
+## Mediation analysis in Epidemiology
+
+```{r setup}
+#| include: false 
+library(DiagrammeR)
+```
+
+Mediation analysis is the study of pathways and mechanisms through which
+an exposure or intervention impacts an outcome. In clinical and
+epidemiological research, the primary focus is often on determining
+whether a specific intervention has an effect on a disease or health
+outcome. Once this effect is established, the next natural question is
+to explore the "black box"—the underlying mechanisms that explain how
+the intervention (or exposure) leads to the observed outcome. As we are
+not only interested in whether an intervention works, but how it works.
+(\[\@vanderweele_mediation_2016\]).
+
+Mediation analysis provides an answer to this HOW question, by
+uncovering the pathways and mechanisms that explain the causal
+relationship between the exposure (e.g., intervention or treatment) and
+the outcome. By doing so, mediation analysis helps to open the black
+box, showing not only if an intervention works but how it works, and
+guiding more effective and targeted interventions.
+
+## Motivation for mediation analysis
+
+1.  **Explanation and Understanding**:
+
+    Unpacking how and why certain factors (e.g., physical activity)
+    impact outcomes (e.g., diabetes risk) through intermediary variables
+    (e.g., weight loss).
+
+    *Example*: Does body mass index mediate the relationship between
+    diet and type 2 diabetes in mid-life?
+
+2.  **Confirmation and Refutation of Theory**:
+
+    Testing theories about the mechanisms behind health outcomes and
+    determining whether certain factors mediate the relationships
+    between exposures and outcomes.
+
+    *Example*: Is the relationship between lower socioeconomic status
+    and cardiovascular disease explained (mediated) through high
+    allostatic load?
+
+3.  **Refining Interventions**:
+
+    Using mediation analysis to improve the effectiveness of
+    interventions by targeting key mediators, leading to better and more
+    sustainable outcomes.
+
+    *Example*: Let's consider the evidence from the landmark prevention
+    trials. The Diabetes Prevention Programme @knowler_reduction_2002,
+    The Diabetes Prevention Study @tuomilehto_prevention_2001, and The
+    Da Quin study @pan_effects_1997. These studies randomized high risk
+    individuals to either metformin or a lifestyle intervention
+    consisting of a physical activity or physical activity + diet. The
+    main finding was a \~58% lower risk of incidence type 2 diabetes in
+    the lifestyle intervention group compared to the metformin group.
+
+```{r, echo=FALSE}
+library(DiagrammeRsvg)
+graph <- grViz("
+digraph {
+  graph [rankdir = LR]  # Left to right graph
+  node [shape = plaintext] 
+  X [label = 'Lifestyle intervention'] 
+  M [label = 'Weight loss'] 
+  Y [label = 'Type 2 diabetes']
+  edge [minlen = 2]
+  X -> M
+  M -> Y
+}
+")
+graph
+```
+
+We might be interested in further refining the intervention so as to
+increase the magnitude of the effect. This might be done by altering or
+improving components of the intervention that target a particular
+mechanism for the outcome and discarding those components of which
+perhaps are not relevant for the outcome.
+
+When implementing the same lifestyle interventions in real world
+settings, lifestyle interventions show smaller effect and the long-term
+adoption and sustainability over time were some of the challenges to the
+effectiveness of these prevention efforts
+
+```{r}
+library(DiagrammeR)
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    X [label = 'Lifestyle intervention']
+    M [label = 'Weight loss']
+    N [label = '?']
+  Y [label = 'Type 2 diabetes']
+  edge [minlen = 2]
+    X->M
+    M->Y
+    N->M
+   {rank = same; M; X; Y; }
+   {rank = min; N; }
+}
+")
+```
+
+## Motivations for running this course
+
+The methodological framework for conducting **mediation analysis** has
+evolved rapidly in recent years, making it a crucial tool for
+understanding complex relationships in research. Initially rooted in
+basic regression techniques, mediation analysis has advanced into
+**causal mediation analysis**, enabling researchers to unravel the
+intricate pathways between exposures, mediators, and outcomes.
+
+This short course aims to introduce the **basic statistical framework**,
+key assumptions, and practical applications of both **traditional** and
+**modern** mediation analysis techniques. Through **real-world data
+examples**, we’ll explore how mediation analysis can enhance your
+research and understanding of causal relationships.
+
+Despite its growing importance, **mediation analysis** is often used
+incorrectly. A recent **systematic review** on the reporting quality of
+studies applying mediation analysis revealed that many studies provide
+incomplete reporting, which hinders both **reproducibility** and the
+**translation** of findings into practice (\[\@rrn_systematic_2022\]).
+
+Our goal is for you to learn how to apply **mediation analysis
+correctly** and leverage it as a powerful tool to advance your research.
+By improving the quality and rigor of mediation analysis in your work,
+you can ensure more reliable findings and meaningful insights.
