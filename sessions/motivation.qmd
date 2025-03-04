@@ -97,7 +97,7 @@ settings, lifestyle interventions show smaller effect and the long-term
 adoption and sustainability over time were some of the challenges to the
 effectiveness of these prevention efforts
 
-```{r}
+```{r,, echo=FALSE}
 library(DiagrammeR)
 grViz("
 digraph {

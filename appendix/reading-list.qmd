@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "reading"
 format: html
 editor: visual
 ---
@@ -36,12 +36,7 @@ Hayes, A. F. (2013). Introduction to mediation, moderation, and
 conditional process analysis: A regression-based approach. Guilford
 Press.
 
-**More (Adjustment) is Not Always Better: How Directed Acyclic Graphs
-Can Help Researchers Decide Which Covariates to Include in Models for
-the Causal Relationship Between an Exposure and an Outcome in
-Observational Research**
-<https://pmc.ncbi.nlm.nih.gov/articles/PMC8974490/>
-
-# 
-
-#
+More (Adjustment) is Not Always Better: How Directed Acyclic Graphs Can
+Help Researchers Decide Which Covariates to Include in Models for the
+Causal Relationship Between an Exposure and an Outcome in Observational
+Research <https://pmc.ncbi.nlm.nih.gov/articles/PMC8974490/>
