@@ -62,67 +62,67 @@
   {
     "objectID": "preamble/precourse.html",
     "href": "preamble/precourse.html",
-    "title": "1  Pre-course tasks",
+    "title": "1  Pre-workshop tasks",
     "section": "",
-    "text": "1.1 List of tasks\nIn order to participate in this course actively, you recommend you complete the pre-course tasks.\nThese tasks are designed to make it easier for everyone to start the course with everything ready to go.\nDepending on your skills and knowledge, these tasks could take between 1 to 2 hours to finish.\nIf you have any issues, please write us an email or ask during the registration on the morning of the first day of the course.\nHere’s a quick overview of the tasks you need to do. Specific details about them are found as you work through this section.",
+    "text": "1.1 List of tasks\nIn order to participate in this workshop actively, it is important that you complete the pre-workshop tasks.\nThese tasks are designed to make it easier for everyone to start the workshop with everything ready to go.\nDepending on your skills and knowledge, these tasks could take between 1 to 2 hours to finish.\nIf you have any issues, please write us an email or ask during the registration on the morning of the first day of the workshop.\nHere’s a quick overview of the tasks you need to do. Specific details about them are found as you work through this section.",
     "crumbs": [
       "Preamble",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-course tasks</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-workshop tasks</span>"
     ]
   },
   {
     "objectID": "preamble/precourse.html#list-of-tasks",
     "href": "preamble/precourse.html#list-of-tasks",
-    "title": "1  Pre-course tasks",
+    "title": "1  Pre-workshop tasks",
     "section": "",
     "text": "Note\n\n\n\n\nInstall the necessary programs and the right version of the programs.\nGet familiar with Directed Acyclic Graphs.\nDownload the data or the repository in Section 1.4\nRead the Code of Conduct",
     "crumbs": [
       "Preamble",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-course tasks</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-workshop tasks</span>"
     ]
   },
   {
     "objectID": "preamble/precourse.html#sec-intall-r-packages",
     "href": "preamble/precourse.html#sec-intall-r-packages",
-    "title": "1  Pre-course tasks",
-    "section": "1.2 1. Installing programs",
-    "text": "1.2 1. Installing programs\nIf you are a workshop attendee and have any trouble with installation locally, please reach out to us directly!\n1️⃣ Install R (Latest Version): If you have not already done so, please download and install the latest version of R based on your operating system:\nhttps://cran.r-project.org/\n2️⃣ Install RStudio: This is a separate program that provides an intuitive user interface with R.\nVisit RStudio Download Page: https://posit.co/products/open-source/rstudio/ Click “Download RStudio” and follow the instructions.\n3️⃣ Check Your R Version If you already have R installed, check your version to ensure compatibility: &gt;&gt;&gt;&gt;&gt;&gt;&gt; c0858882aefc0e9dc24c8e312fba09cea0bcba8d:Precourse_files/Precourse.qmd\nR.Version()\nIf your R version is 4.3.1 or later, you’re good to go!\n4️⃣ Install Required R Packages: To ensure you have all necessary packages, run the following command in R:\n\ninstall.packages(\"pak\")\npak::pkg_install(\"tidyverse\")\npak::pkg_install(\"DiagrammeR\")\npak::pkg_install(\"downlit\")\npak::pkg_install(\"furrr\")\npak::pkg_install(\"here\")\npak::pkg_install(\"knitr\")\npak::pkg_install(\"mediation\")\npak::pkg_install(\"NetCoupler\")\npak::pkg_install(\"rmarkdown\")\npak::pkg_install(\"survival\")\npak::pkg_install(\"xml2\")\npak::pkg_install(\"here\")\npak::pkg_install(\"BS1125/CMAverse\")\npak::pkg_install(\"ggdag\")\npak::pkg_install(\"ggplot2\")\n\nIf installation of a package does not work using the “pak” package, then use:\ninstall.packages(\"name-of-package\")\nIf you have issues with the CMA package, you could also try this:\ninstall.packages(\"devtools\")\ndevtools::install_github(\"BS1125/CMAverse\")",
+    "title": "1  Pre-workshop tasks",
+    "section": "1.2 Installing programs",
+    "text": "1.2 Installing programs\nIf you are a workshop attendee and have any trouble with installation locally, please reach out to us directly!\n1️⃣ Install R (Latest Version): If you have not already done so, please download and install the latest version of R based on your operating system:\nhttps://cran.r-project.org/\n2️⃣ Install RStudio: This is a separate program that provides an intuitive user interface with R.\nVisit RStudio Download Page: https://posit.co/products/open-source/rstudio/ Click “Download RStudio” and follow the instructions.\n3️⃣ Check Your R Version If you already have R installed, check your version to ensure compatibility:\nR.Version()\nIf your R version is 4.3.1 or later, you’re good to go!\n4️⃣ Install Required R Packages: To ensure you have all necessary packages, run the following command in R:\n\ninstall.packages(\"pak\")\npak::pkg_install(\"tidyverse\")\npak::pkg_install(\"DiagrammeR\")\npak::pkg_install(\"downlit\")\npak::pkg_install(\"furrr\")\npak::pkg_install(\"here\")\npak::pkg_install(\"knitr\")\npak::pkg_install(\"mediation\")\npak::pkg_install(\"NetCoupler\")\npak::pkg_install(\"rmarkdown\")\npak::pkg_install(\"survival\")\npak::pkg_install(\"xml2\")\npak::pkg_install(\"here\")\npak::pkg_install(\"BS1125/CMAverse\")\npak::pkg_install(\"ggdag\")\npak::pkg_install(\"ggplot2\")\n\nIf installation of a package does not work using the “pak” package, then use:\ninstall.packages(\"name-of-package\")\nIf you have issues with the CMA package, you could also try this:\ninstall.packages(\"devtools\")\ndevtools::install_github(\"BS1125/CMAverse\")",
     "crumbs": [
       "Preamble",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-course tasks</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-workshop tasks</span>"
     ]
   },
   {
-    "objectID": "preamble/precourse.html#sec-code-of-conduct",
-    "href": "preamble/precourse.html#sec-code-of-conduct",
-    "title": "1  Pre-course tasks",
-    "section": "1.3 2. DAG in pre-course",
-    "text": "1.3 2. DAG in pre-course\nWe designed an introduction to Directed Acyclic Graph, please get yourself familiar with this tool.\nlink: Introduction to DAGs",
+    "objectID": "preamble/precourse.html#brush-up-on-your-dag-knowledge-before-the-workshop",
+    "href": "preamble/precourse.html#brush-up-on-your-dag-knowledge-before-the-workshop",
+    "title": "1  Pre-workshop tasks",
+    "section": "1.3 Brush up on your DAG knowledge before the workshop",
+    "text": "1.3 Brush up on your DAG knowledge before the workshop\nSome concepts in the mediation workshop are explained using Directed Acyclic Graphs. It is important that you understand what they are and how we use them in observational epidemiology. We have put together a very general introduction to DAGs. If you have not worked with DAGs before, please take some time to familiarize yourself with this tool.\nlink: Introduction to DAGs",
     "crumbs": [
       "Preamble",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-course tasks</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-workshop tasks</span>"
     ]
   },
   {
     "objectID": "preamble/precourse.html#sec-download-data",
     "href": "preamble/precourse.html#sec-download-data",
-    "title": "1  Pre-course tasks",
-    "section": "1.4 3. Download the data and repository",
-    "text": "1.4 3. Download the data and repository\nYou can follow all the teaching material on this website. For the exercises, you will need to use the datasets we have created. You can either download the entire repository (recommended) or simply download the data from our github. We recommend that you do not do this before March 31, in the afternoon as we will making updates until then.\n\n1.4.1 Download repository\n\nOpen a new session of R in RStudio. If you are in a project, go out of that project.\nUsing RStudio’s New Project menu item: “File -&gt; New Project -&gt; Version control -&gt; Git”\nKeeping RStudio open, open your browser and go to our ??repository\nThen, Click on the green “code” icon and copy-paste\nNow go back to R and put in what you just copy-pasted under “Repository URL.” You should also select where this project should.\nClick “create project” and you should now have all materials there.\n\n\n\n1.4.2 Download the data\nIf you want to only download the course data. You can go to here for the Framingham, NHANES and simulated data. Click “download raw file” in the top right corner after you have clicked on the specific file.",
+    "title": "1  Pre-workshop tasks",
+    "section": "1.4 Download the data and repository",
+    "text": "1.4 Download the data and repository\nYou can follow all the teaching material on this website. For the exercises, you will need to use the datasets we have created. You can either download the entire repository (recommended) or simply download the data from our github. We recommend that you do not do this before March 31, in the afternoon as we will making updates until then.\n\n1.4.1 Download repository\n\nOpen a new session of R in RStudio. If you are in a project, go out of that project.\nUsing RStudio’s New Project menu item: “File -&gt; New Project -&gt; Version control -&gt; Git”\nKeeping RStudio open, open your browser and go to our repository\nThen, Click on the green “code” icon and copy-paste\nNow go back to R and put in what you just copy-pasted under “Repository URL.” You should also select where this project should.\nClick “create project” and you should now have all materials there.\n\n\n\n1.4.2 Download the data\nIf you want to only download the workshop data. You can go to here for the Framingham, NHANES and simulated data. Click “download raw file” in the top right corner after you have clicked on the specific file.",
     "crumbs": [
       "Preamble",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-course tasks</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-workshop tasks</span>"
     ]
   },
   {
-    "objectID": "preamble/precourse.html#code-of-conduct",
-    "href": "preamble/precourse.html#code-of-conduct",
-    "title": "1  Pre-course tasks",
-    "section": "1.5 4. Code of conduct",
-    "text": "1.5 4. Code of conduct\nWe are dedicated to providing a welcoming and supportive environment for all people, regardless of background or identity. As such, we do not tolerate behaviour that is disrespectful to our teachers or learners or that excludes, intimidates, or causes discomfort to others. We do not tolerate discrimination or harassment based on characteristics that include, but are not limited to, gender identity and expression, sexual orientation, disability, physical appearance, body size, citizenship, nationality, ethnic or social origin, pregnancy, familial status, veteran status, genetic information, religion or belief (or lack thereof), membership of a national minority, property, age, education, socio-economic status, technical choices, and experience level.\nEveryone who participates in this workshop’s activities is required to conform to this Code of Conduct. It applies to all spaces associated with this workshop including, but not limited to, group work, emails, and any online forums such as GitHub and X(Twitter). By participating, participants indicate their acceptance of the procedures by which the instructors and organizers resolves any Code of Conduct incidents.\nSee you at the course!",
+    "objectID": "preamble/precourse.html#sec-code-of-conduct",
+    "href": "preamble/precourse.html#sec-code-of-conduct",
+    "title": "1  Pre-workshop tasks",
+    "section": "1.5 Code of conduct",
+    "text": "1.5 Code of conduct\nWe are dedicated to providing a welcoming and supportive environment for all people, regardless of background or identity. As such, we do not tolerate behaviour that is disrespectful to our teachers or learners or that excludes, intimidates, or causes discomfort to others. We do not tolerate discrimination or harassment based on characteristics that include, but are not limited to, gender identity and expression, sexual orientation, disability, physical appearance, body size, citizenship, nationality, ethnic or social origin, pregnancy, familial status, veteran status, genetic information, religion or belief (or lack thereof), membership of a national minority, property, age, education, socio-economic status, technical choices, and experience level.\nEveryone who participates in this workshop’s activities is required to conform to this Code of Conduct. It applies to all spaces associated with this workshop including, but not limited to, group work, emails, and any online forums such as GitHub and X(Twitter). By participating, participants indicate their acceptance of the procedures by which the instructors and organizers resolves any Code of Conduct incidents.\n\n\n\n\n\n\nSee you at the workshop!\n\n\n\nWe look forward to meeting you at the workshop in Bangkok!",
     "crumbs": [
       "Preamble",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-course tasks</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-workshop tasks</span>"
     ]
   },
   {

@@ -1,5 +1,5 @@
 ---
-title: "Directed Acyclic Graph (DAG)"
+title: "Directed Acyclic Graphs (DAG)"
 format: html
 editor: visual
 ---
@@ -260,10 +260,6 @@ The are very useful in the design and analysis phases of observational research,
 DAGS help researchers to identify whether causal effects can be estimated, and which adjustments are necessary, optional or should be avoided to obtain unbiased results.
 
 ## **Recommended reading**
-
-```         
-
-```
 
 Digitale, J.C. et al. (2022) Tutorial on directed acyclic graphs. Journal of Clinical Epidemiology, Volume 142, 264 - 267
 
