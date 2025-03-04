@@ -325,9 +325,12 @@ For details of the mediate() package, please refer to @tingley_mediation_2014.
 
 ## Limitations of the traditional approach
 
+Traditional mediation analysis fails to adequately handle:
 -   Non-linearity
 -   Interactions
 -   Multiple mediators
+-   Confounding 
+
 
 ```{r}
 #| echo: false

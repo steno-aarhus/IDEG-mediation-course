@@ -78,6 +78,8 @@ If we want to infer a causal effect (i.e., what would have happened, had everyon
 
 
 ::: callout-note
+## Causal Assumptions
+
 ### Exchangeability
 
 The risk of the outcome in A = 1 would have been the same as the risk of the outcome in A = 0, had those in A = 1 received A = 0.
@@ -109,18 +111,19 @@ Image if we don't have anyone with A = 0 among those with L=1 (e.g. long educati
 ## Causal mediation analysis
 ::: callout-note
 ## recall the major limations of tranditional mediation methods: 
-
--   confounding assumptions 
--   non-lineariry and interactions
+-   Non-linearity
+-   Interactions
+-   Multiple mediators
+-   Confounding 
 :::
 
-Causal mediation analyses help you establish whether treatment *causes* the outcome because it *causes* the mediator. To do this, causal mediation seek to understand how the paths behave under circumstances different from the observed circumstances (e.g., interventions).
+
 
 Causal mediation analysis is an extension of the traditional approach by:
 
--   outlining all confounding assumptions needed
--   handling non-linearity and interaction
--   clearly defining estimands of interest
+-   Outlining all confounding assumptions needed
+-   Handling non-linearity and interaction
+-   Clearly defining estimands of interest
 
 
 ## Confounding assumptions
@@ -200,8 +203,6 @@ Causal mediation analysis can take this into account. It can do this using a reg
 -   then predict the outcome using the causal model and contrast the outcomes
 
 Additional approaches also exists, but we will not focus on these in this course.
-
-
 
 
 ## Defining estimands

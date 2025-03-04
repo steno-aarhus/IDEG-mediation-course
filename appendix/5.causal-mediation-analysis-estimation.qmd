@@ -33,8 +33,6 @@ other types and combinations of variables.
 
 ```{r}
 nhanes <- read_csv(here::here("data/NHANES.csv")) 
-
-
 # keep the variables used in the analyses 
 data <- nhanes %>% 
   dplyr::select(ID, 
@@ -340,9 +338,7 @@ TNDE can be obtained by this formula:
 
 $TNDE = (\sigma_1 + \sigma_3 * (\beta_0 + beta_1*a + \beta'_2*w))(a - a^*)$
 
-```         
-```
-
+       
 Here, the value of M is enabled to act (as opposed to the PNDE). The TNDE asks the question: "to what extent does x cause y via pathways other than through m, allowing m to boost up or tune down such effect at the same time?" @wang_g-computation_2015
 
 ### Total natural indirect effect
@@ -544,122 +540,4 @@ digraph {
   { rank = same; X0; X1; X2; Xt }
   { rank = same; M0; M1; M2; Mt; Y }
 }")
-```
-
-### G-computation
-
-Because of these limitations, we need to resort to a more general framework for mediation analysis utilizing causal diagrams and potential outcome languages.
-
-The G-computation algorithm was first introduced by Robins 1986 @robins_new_1986 for estimating time-varying exposure causal in the presence of time-varying confounders of exposure effects. When estimating total effect, g-computation is generally equivalent to inverse-probability-of-treatment weighting (IPTW). But in high-dimensional settings, g-computation is more powerful. G-computation (using g-formula) could also provide an intuitive method for decomposing the total effect.
-
-The basic idea of g-computation is to estimate the probability of the outcome under a hypothetical action (i.e., intervention).
-
-::: callout-note
-Ingredients: A, Y, and controls W
-
--   Step 1: Model the outcome as a function of A and W.
-
--   Step 2: Duplicate the initial dataset in two counterfactual datasets. In one world, set A=1; in the other, set A=0. All other variables keep the original values.
-
--   Step 3: Apply the function in step 1 to predict each individual's outcome in the two counterfactual datasets, then get potential outcomes Y1 and Y0.
-
--   Step 4: Aggregate these potential outcomes (e.g., average across all individuals) and contrast them (e.g, by taking the difference) to arrive at an estimate.
-:::
-
-We will now demonstrate how to conduct g-computation in a simulated dataset.
-
-```{r}
-datasim <- function(n) { 
-  # This small function simulates a dataset with n rows
-  # containing covariats, and action, an outcome and
-  # the underlying potential outcomes
-  x1 <- rbinom(n, size = 1, prob = 0.5) 
-  x2 <- rbinom(n, size = 1, prob = 0.65)
-  x3 <- rnorm(n, 0, 1)
-  x4 <- rnorm(n, 0, 1)
-  # The action (independent variable, treatment, exposure...)
-  # is a function of x2, x3, x4 and 
-  # the product of (ie, an interaction of) x2 and x4
-  A <- rbinom(n, size = 1, prob = plogis(-1.6 + 2.5*x2 + 2.2*x3 + 0.6*x4 + 0.4*x2*x4)) 
-  # Simulate the two potential outcomes
-  # as functions of x1, X2, X4 and the product of x2 and x4
-  
-  # Potential outcome if the action is 1
-  # note that here, we add 1
-  Y.1 <- rbinom(n, size = 1, prob = plogis(-0.7 + 1 - 0.15*x1 + 0.45*x2 + 0.20*x4 + 0.4*x2*x4)) 
-  # Potential outcome if the action is 0
-  # note that here, we do not add 1 so that there
-  # is a different the two potential outcomes (ie, an effect of A)
-  Y.0 <- rbinom(n, size = 1, prob = plogis(-0.7 + 0 - 0.15*x1 + 0.45*x2 + 0.20*x4 + 0.4*x2*x4)) 
-  
-  # Observed outcome 
-  # is the potential outcomes (Y.1 or Y.0)
-  # corresponding to action the individual experienced (A)
-  Y <- Y.1*A + Y.0*(1 - A) 
-  
-  # Return a data.frame as the output of this function
-  data.frame(x1, x2, x3, x4, A, Y, Y.1, Y.0) 
-} 
-
-
-
-set.seed(120110) # for reproducibility
-ObsData <- datasim(n = 500000) # really large sample
-TRUE_EY.1 <- mean(ObsData$Y.1); TRUE_EY.1  # mean outcome under A = 1
-TRUE_EY.0 <- mean(ObsData$Y.0); TRUE_EY.   # mean outcome under A = 0
-TRUE_ACE=TRUE_EY.TRUE_EY.1-TRUE_EY.0
-
-
-
-# Fit a logistic regression model predicting Y from the relevant confounders
-Q <- glm(Y ~ A + x2 + x4 + x2*x4, data = ObsData, family=binomial)
-
-
-# Copy the "actual" (simulated) data twice
-A1Data <- A0Data <- ObsData
-# In one world A equals 1 for everyone, in the other one it equals 0 for everyone
-# The rest of the data stays as is (for now)
-A1Data$A <- 1; A0Data$A <- 0
-head(ObsData); head(A1Data); head(A0Data)
-
-# Predict Y if everybody attends
-Y_A1 <- predict(Q, A1Data, type="response") 
-# Predict Y if nobody attends
-Y_A0 <- predict(Q, A0Data, type="response") 
-# Taking a look at the predictions
-data.frame(Y_A1=head(Y_A1), Y_A0=head(Y_A0), TRUE_Y=head(ObsData$Y)) |> round(digits = 2)
-
-# Mean outcomes in the two worlds
-pred_A1 <- mean(Y_A1); pred_A0 <- mean(Y_A0)
-
-# Marginal odds ratio
-MOR_gcomp <- (pred_A1*(1 - pred_A0))/((1 - pred_A1)*pred_A0)
-# ATE (risk difference)
-RD_gcomp <- pred_A1 - pred_A0
-c(MOR_gcomp, RD_gcomp) |> round(digits=3)
-```
-
-We recommend take the advantage of R packages to do the work (decomposition).
-
-```{r}
-set.seed(1)
-expit <- function(x) exp(x) / (1 + exp(x))
-n <- 10000
-w <- rnorm(n, mean = 1, sd = 0.2)
-a <- rbinom(n, 1, expit(0.3 + 0.5 * w))
-l <- rnorm(n, mean = 1 + a + 0.5 * w, sd = 0.5)
-m <- rbinom(n, 1, expit(1 + 2 * a - l + 2 * w))
-y <- rbinom(n, 1, expit(0.3 * a + 0.8 * m + 0.5 * a * m - 0.3 * l + 0.4 * w))
-data <- data.frame(a, m, y, w, l)
-
-library(CMAverse)
-
-res_gformula <- cmest(data = data, model = "gformula", outcome = "y", exposure = "a",
-                 mediator = "m", basec = c("w"), postc = "l", EMint = TRUE,
-                 mreg = list("logistic"), yreg = "logistic",
-                 postcreg = list("linear"),
-                 astar = 0, a = 1, mval = list(1), 
-                 estimation = "imputation", inference = "bootstrap", nboot = 2)
-
-summary(res_gformula)
 ```
