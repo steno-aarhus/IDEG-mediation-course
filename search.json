@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Mediation course",
     "section": "",
-    "text": "Welcome to the IDEG workshop on Mediation Analysis and Directed Acyclic Graphs\nDuring this short workshop, you will be introduced to traditional mediation approaches before exploring the theory of causal mediation, as a method to investigate disease mechanisms in the context of diabetes.\nWe hope this will be the beginning of your journey in mediation analysis and open the door to more theory-grounded studies in aetiological diabetes epidemiology! The workshop is offered as part of the International Diabetes Epidemiology Group (IDEG) Trainee Workshop in Bangkok, Thailand, on 3 April 2025.\nThe workshop requires some pre-course preparation to install R and R Studio as well as some necessary packages and data. Furthermore, for those unfamiliar with Directed Acyclic Graphs (DAGs), some introductory reading and exercises are included in the pre-course materials.\nThe face-to-face workshop will consist of a combination of brief lectures and hands-on coding practice in R code-along sessions. We encourage students to discuss the materials and network during the entire Trainee Workshop. The instructors will be available to answer questions throughout the day.\n🗓 April 3, 2025 🏨 Bangkok, Thailand",
+    "text": "Welcome to the IDEG workshop on Mediation Analysis and Directed Acyclic Graphs\nDuring this short workshop, you will be introduced to traditional mediation approaches before exploring the theory of causal mediation, as a method to investigate disease mechanisms in the context of diabetes.\nWe hope this will be the beginning of your journey in mediation analysis and open the door to more theory-grounded studies in aetiological diabetes epidemiology! The workshop is offered as part of the International Diabetes Epidemiology Group (IDEG) Trainee Workshop in Bangkok, Thailand, on 3 April 2025.\nThe workshop requires some pre-workshop preparation to install R and R Studio as well as some necessary packages and data. Furthermore, for those unfamiliar with Directed Acyclic Graphs (DAGs), some introductory reading and exercises are included in the pre-workshop materials.\nThe face-to-face workshop will consist of a combination of brief lectures and hands-on coding practice in R code-along sessions. We encourage students to discuss the materials and network during the entire Trainee Workshop. The instructors will be available to answer questions throughout the day.\n🗓 April 3, 2025 🏨 Bangkok, Thailand",
     "crumbs": [
       "Welcome to the IDEG workshop on Mediation Analysis and Directed Acyclic Graphs"
     ]
@@ -14,7 +14,7 @@
     "href": "index.html#overall-learning-outcomes",
     "title": "Mediation course",
     "section": "Overall learning outcomes",
-    "text": "Overall learning outcomes\n\n\n\n\n\n\nThe overall workshop objective\n\n\n\nThis course introduces participants to the fundamental principles, analytical tools, and essential skills needed to understand and apply modern mediation analysis for investigating disease mechanisms\n\n\nThe more specific learning outcomes include:\n\nExplain the theoretical concepts and statistical methods regarding traditional and modern mediation analysis applied to basic, clinical and epidemiological research on diabetes and endocrine diseases\nPerform traditional, causal and modern mediation analysis using R software\nPresent results from mediation analysis according to the current mediation analysis reporting guidelines\nInterpret results from mediation analysis and suggest relevant sensitivity analyses for mediation analyses\nDiscuss the strengths, limitations and assumptions of traditional, causal and modern mediation analysis\n\n\nThe target audience\nPhD students and postdoctoral researchers working with clinical and epidemiological studies of diabetes, its causes and consequencesits endocrinology, that are planning to conduct mediation analysis or that are interested in widening their analysis toolkit.\n\n\n⚠️ Prerequisites\nTo make the most of our training course in Bangkok, please complete the pre-course tasks before you arrive. This will ensure we can start our sessions smoothly and dive right into the content!\n\nFinish the pre-course task: Precourse\n\n2 If you are interested in more networking with the speakers and want to learn more about their research, please check our previous 3-day course on mediation analyses:\nhttps://github.com/steno-aarhus/mediation-analysis-course",
+    "text": "Overall learning outcomes\n\n\n\n\n\n\nThe overall workshop objective\n\n\n\nThis workshop introduces participants to the fundamental principles, analytical tools, and essential skills needed to understand and apply modern mediation analysis for investigating disease mechanisms\n\n\nThe more specific learning outcomes include:\n\nExplain the theoretical concepts and statistical methods regarding traditional and modern mediation analysis applied to basic, clinical and epidemiological research on diabetes and endocrine diseases\nPerform traditional, causal and modern mediation analysis using R software\nPresent results from mediation analysis according to the current mediation analysis reporting guidelines\nInterpret results from mediation analysis and suggest relevant sensitivity analyses for mediation analyses\nDiscuss the strengths, limitations and assumptions of traditional, causal and modern mediation analysis\n\n\nThe target audience\nPhD students and postdoctoral researchers working with clinical and epidemiological studies of diabetes, its causes and consequencesits endocrinology, that are planning to conduct mediation analysis or that are interested in widening their analysis toolkit.\n\n\n⚠️ Prerequisites\nTo make the most of our workshop in Bangkok, please complete the pre-workshop tasks before you arrive. This will ensure we can start our sessions smoothly and dive right into the content!\n\nFinish the Pre-Workshop Tasks\nGet familiar with Directed Acyclic Graphs",
     "crumbs": [
       "Welcome to the IDEG workshop on Mediation Analysis and Directed Acyclic Graphs"
     ]
@@ -24,17 +24,17 @@
     "href": "index.html#schedule",
     "title": "Mediation course",
     "section": "Schedule",
-    "text": "Schedule\nWe will combine lectures with code-along sessions, group work, and discussions.\n\nApril 3, 2025\n\n\n\n\n\nTime\nContent\n\n\n\n\n12.45-12.55\nIntroduction to the course and the topic (DW)\n\n\n12.55-13.15\nTraditional mediation analysis (DW)\n\n\n13.15-13.30\nCausal mediation analysis: introduction (DW)\n\n\n13.30-13.45\nCausal mediation analysis: estimates (JZ)\n\n\n13.45-14.00\nGroup work + Reflections (JZ)\n\n\n\nInstructors: Daniel Witte (DW), Jie Zhang (JZ)",
+    "text": "Schedule\nWe will combine lectures with code-along sessions, group work, and discussions.\n\nApril 3, 2025\n\n\n\n\n\nTime\nContent\n\n\n\n\n12.45-12.55\nIntroduction to the workshop and the topic (DW)\n\n\n12.55-13.15\nTraditional mediation analysis (DW)\n\n\n13.15-13.30\nCausal mediation analysis: introduction (DW)\n\n\n13.30-13.45\nCausal mediation analysis: estimates (JZ)\n\n\n13.45-14.00\nGroup work + Reflections (JZ)\n\n\n\nInstructors: Daniel Witte (DW), Jie Zhang (JZ)",
     "crumbs": [
       "Welcome to the IDEG workshop on Mediation Analysis and Directed Acyclic Graphs"
     ]
   },
   {
-    "objectID": "index.html#building-the-course",
-    "href": "index.html#building-the-course",
+    "objectID": "index.html#building-the-workshop",
+    "href": "index.html#building-the-workshop",
     "title": "Mediation course",
-    "section": "Building the course",
-    "text": "Building the course\nThe course material was created using Quarto to write the lessons and create the book format, GitHub to host the Git repository of the material, and GitHub Actions with Netlify to create and host the website. The original source material for this course is found on the steno-aarhus/mediation-analysis-course GitHub repository.",
+    "section": "Building the workshop",
+    "text": "Building the workshop\nThe worskhop material was created using Quarto to write the lessons and create the book format, GitHub to host the Git repository of the material, and GitHub Actions with Netlify to create and host the website. The materials for this workshop are adapted from the Mediation Analysis Course. You can find the full materials for that course on the steno-aarhus/mediation-analysis-course GitHub repository.",
     "crumbs": [
       "Welcome to the IDEG workshop on Mediation Analysis and Directed Acyclic Graphs"
     ]
@@ -44,7 +44,7 @@
     "href": "index.html#licensing",
     "title": "Mediation course",
     "section": "Re-use and licensing",
-    "text": "Re-use and licensing\n\nThe course is licensed under the Creative Commons Attribution 4.0 International License so the material can be used, re-used, and modified, as long as there is attribution to this source.",
+    "text": "Re-use and licensing\n\nThe workshop is licensed under the Creative Commons Attribution 4.0 International License so the material can be used, re-used, and modified, as long as there is attribution to this source.",
     "crumbs": [
       "Welcome to the IDEG workshop on Mediation Analysis and Directed Acyclic Graphs"
     ]
@@ -54,7 +54,7 @@
     "href": "index.html#acknowledgements",
     "title": "Mediation course",
     "section": "Acknowledgements",
-    "text": "Acknowledgements\nThis course is adapted from ‘Mediation Analysis Course’ developed by Daniel B. Ibsen, Omar Silverman, Jie Zhang from Steno Diabetes Center Aarhus in Denmark, and Nima Hejarzi and Ivan Diaz from the US, which is sponsored by the Danish Diabetes and Endocrine Academy.",
+    "text": "Acknowledgements\nThis workshop is adapted from the ‘Mediation Analysis Course’ developed by Daniel B. Ibsen, Omar Silverman, Jie Zhang from Steno Diabetes Center Aarhus in Denmark, and Nima Hejarzi and Ivan Diaz from the US, which was sponsored by the Danish Diabetes and Endocrine Academy.",
     "crumbs": [
       "Welcome to the IDEG workshop on Mediation Analysis and Directed Acyclic Graphs"
     ]
