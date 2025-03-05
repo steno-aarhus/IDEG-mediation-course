@@ -1,12 +1,10 @@
 # Welcome to the IDEG workshop on Mediation Analysis and Directed Acyclic Graphs {.unnumbered}
 
-
-
 During this short workshop, you will be introduced to traditional mediation approaches before exploring the theory of causal mediation, as a method to investigate disease mechanisms in the context of diabetes.
 
 We hope this will be the beginning of your journey in mediation analysis and open the door to more theory-grounded studies in aetiological diabetes epidemiology! The workshop is offered as part of the [International Diabetes Epidemiology Group (IDEG) Trainee Workshop](https://www.ideg-diabetes.org/idegtraineeworkshop) in Bangkok, Thailand, on 3 April 2025.
 
-The workshop requires some pre-course preparation to install R and R Studio as well as some necessary packages and data. Furthermore, for those unfamiliar with Directed Acyclic Graphs (DAGs), some introductory reading and exercises are included in the pre-course materials.
+The workshop requires some pre-workshop preparation to install R and R Studio as well as some necessary packages and data. Furthermore, for those unfamiliar with Directed Acyclic Graphs (DAGs), some introductory reading and exercises are included in the pre-workshop materials.
 
 The face-to-face workshop will consist of a combination of brief lectures and hands-on coding practice in R code-along sessions. We encourage students to discuss the materials and network during the entire Trainee Workshop. The instructors will be available to answer questions throughout the day.
 
@@ -16,11 +14,9 @@ The face-to-face workshop will consist of a combination of brief lectures and ha
 
 ::: callout-note
 ## The overall workshop objective
-This course introduces participants to the fundamental principles, analytical tools, and essential skills needed to understand and apply modern mediation analysis for investigating disease mechanisms
+
+This workshop introduces participants to the fundamental principles, analytical tools, and essential skills needed to understand and apply modern mediation analysis for investigating disease mechanisms
 :::
-
-
-
 
 The more specific learning outcomes include:
 
@@ -30,22 +26,16 @@ The more specific learning outcomes include:
 -   **Interpret** results from mediation analysis and suggest relevant sensitivity analyses for mediation analyses
 -   **Discuss** the strengths, limitations and assumptions of traditional, causal and modern mediation analysis
 
-
 ### The target audience
 
 PhD students and postdoctoral researchers working with clinical and epidemiological studies of diabetes, its causes and consequencesits endocrinology, that are planning to conduct mediation analysis or that are interested in widening their analysis toolkit.
 
 ### ⚠️ Prerequisites
 
-To make the most of our training course in Bangkok, please complete the pre-course tasks before you arrive. This will ensure we can start our sessions smoothly and dive right into the content!
+To make the most of our workshop in Bangkok, please complete the pre-workshop tasks before you arrive. This will ensure we can start our sessions smoothly and dive right into the content!
 
-1. Finish the pre-course task: 
-[Precourse](/path/to/Precourse.qmd)
-
-2  If you are interested in more networking with the speakers and want to learn more about their research, please check our previous 3-day course on mediation analyses: 
-
-https://github.com/steno-aarhus/mediation-analysis-course
-
+1.  Finish the [Pre-Workshop Tasks](/path/to/Precourse.qmd)
+2.  Get familiar with [Directed Acyclic Graphs](/preamble/Introduction-to-DAGs.qmd)
 
 ## Schedule
 
@@ -56,7 +46,7 @@ We will combine lectures with code-along sessions, group work, and discussions.
 
 | Time        | Content                                       |
 |-------------|-----------------------------------------------|
-| 12.45-12.55 | Introduction to the course and the topic (DW) |
+| 12.45-12.55 | Introduction to the workshop and the topic (DW) |
 | 12.55-13.15 | Traditional mediation analysis (DW)           |
 | 13.15-13.30 | Causal mediation analysis: introduction (DW)  |
 | 13.30-13.45 | Causal mediation analysis: estimates (JZ)     |
@@ -65,17 +55,16 @@ We will combine lectures with code-along sessions, group work, and discussions.
 Instructors: Daniel Witte (DW), Jie Zhang (JZ)
 :::
 
+## Building the workshop
 
-## Building the course
-
-The course material was created using [Quarto](https://quarto.org/) to write the lessons and create the book format, [GitHub](https://github.com/) to host the [Git](https://git-scm.com/) repository of the material, and [GitHub Actions](https://github.com/features/actions) with [Netlify](https://www.netlify.com/) to create and host the website. The original source material for this course is found on the [`steno-aarhus/mediation-analysis-course`](https://github.com/steno-aarhus/IDEG-mediation-course) GitHub repository.
+The worskhop material was created using [Quarto](https://quarto.org/) to write the lessons and create the book format, [GitHub](https://github.com/) to host the [Git](https://git-scm.com/) repository of the material, and [GitHub Actions](https://github.com/features/actions) with [Netlify](https://www.netlify.com/) to create and host the website. The materials for this workshop are adapted from the Mediation Analysis Course. You can find the full materials for that course on the [`steno-aarhus/mediation-analysis-course`](https://github.com/steno-aarhus/IDEG-mediation-course) GitHub repository.
 
 ## Re-use and licensing {#licensing}
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img src="https://i.creativecommons.org/l/by/4.0/80x15.png" alt="Creative Commons License" style="border-width:0"/></a>
 
-The course is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) so the material can be used, re-used, and modified, as long as there is attribution to this source.
+The workshop is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) so the material can be used, re-used, and modified, as long as there is attribution to this source.
 
 ## Acknowledgements
 
-This course is adapted from 'Mediation Analysis Course' developed by Daniel B. Ibsen, Omar Silverman, Jie Zhang from Steno Diabetes Center Aarhus in Denmark, and Nima Hejarzi and Ivan Diaz from the US, which is sponsored by the Danish Diabetes and Endocrine Academy.
+This workshop is adapted from the ['Mediation Analysis Course'](https://github.com/steno-aarhus/mediation-analysis-course) developed by Daniel B. Ibsen, Omar Silverman, Jie Zhang from Steno Diabetes Center Aarhus in Denmark, and Nima Hejarzi and Ivan Diaz from the US, which was sponsored by the Danish Diabetes and Endocrine Academy.
