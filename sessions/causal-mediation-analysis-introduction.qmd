@@ -525,8 +525,35 @@ PM <- TNIE / TE
 as.numeric(PM) * 100
 ```
 
-26% of the association between physical activity and pulse rate is
-mediated by M, BMI.
+21% of the association between physical activity and pulse rate is
+mediated by the mediator BMI.
+
+## Using R package
+
+We can easily conduct mediation analysis using R package once you
+understand the basic concepts of mediation.
+
+```{r}
+
+library(CMAverse)
+res_rb <- cmest(
+  data = data, 
+  model = "rb",     #rb means regression based 
+  outcome = "y",    #this is the name of outcome
+  exposure = "a",   #this is the name of exposure
+  mediator = "m",   #this is the name of mediator
+  basec = c("w1"),  #this is confounding factors, you can add more confounders here 
+  EMint = TRUE,     #whether include interaction, TRUE indicates to include 
+  mreg = list("linear"), #specify the mediator model, we use linear regression here 
+  yreg = "linear",  #specify the outcome model, we use linear regression here 
+  astar = 0,       # the level of exposure (not exposed)
+  a = 1,           # the level of exposure (exposed)
+  mval = list(27.8),  #specifiy the value of controlled mediator 
+  estimation = "paramfunc", #parameteric function 
+  inference = "delta"
+)
+summary(res_rb)
+```
 
 ## Defining estimands
 
