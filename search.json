@@ -236,22 +236,22 @@
     ]
   },
   {
-    "objectID": "sessions/welcome.html#important-things-before-the-course",
-    "href": "sessions/welcome.html#important-things-before-the-course",
+    "objectID": "sessions/welcome.html#important-things-before-the-workshop",
+    "href": "sessions/welcome.html#important-things-before-the-workshop",
     "title": "3  Mediation Analysis",
-    "section": "4.1 Important things before the course",
-    "text": "4.1 Important things before the course\nTo make the most of our training course in Bangkok, please complete the pre-course tasks before you arrive. This will ensure we can start our sessions smoothly and dive right into the content!",
+    "section": "4.1 Important things before the workshop",
+    "text": "4.1 Important things before the workshop\nTo make the most of our workshop in Bangkok, please complete the pre-workshop tasks before you arrive. This will ensure we can start our sessions smoothly and dive right into the content!",
     "crumbs": [
       "Sessions",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Mediation Analysis</span>"
     ]
   },
   {
-    "objectID": "sessions/welcome.html#course-outline-1",
-    "href": "sessions/welcome.html#course-outline-1",
+    "objectID": "sessions/welcome.html#workshop-outline-1",
+    "href": "sessions/welcome.html#workshop-outline-1",
     "title": "3  Mediation Analysis",
-    "section": "4.2 Course outline",
-    "text": "4.2 Course outline\n\nMotivation\nTraditional mediation analysis\nIntroduction to causal mediation analysis\nPerform causal mediation analysis using R software\nInterpret results from causal mediation analysis",
+    "section": "4.2 Workshop outline",
+    "text": "4.2 Workshop outline\n\nMotivation\nTraditional mediation analysis\nIntroduction to causal mediation analysis\nPerform causal mediation analysis using R software\nInterpret results from causal mediation analysis",
     "crumbs": [
       "Sessions",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Mediation Analysis</span>"
@@ -262,7 +262,7 @@
     "href": "sessions/welcome.html#acknowledgement",
     "title": "3  Mediation Analysis",
     "section": "4.3 Acknowledgement",
-    "text": "4.3 Acknowledgement\nThis course is developed based on ‘Mediation Analysis Course’ developed by Daniel B. Ibsen, Omar Silverman, Jie Zhang from Steno Diabetes Center Aarhus in Denmark, and Nima Hejarzi and Ivan Diaz from the US, which is sponsored by the Danish Diabetes and Endocrine Academy.\nThe repository contains the lesson, lecture, and assignment material for the course, including the website source files and other associated course administration files. You can always go to check the website to learn more about mediation.",
+    "text": "4.3 Acknowledgement\nThis workshop is adapted from the materials used in the ‘Mediation Analysis Course’ developed by Daniel B. Ibsen, Omar Silverman, Jie Zhang from Steno Diabetes Center Aarhus in Denmark, and Nima Hejarzi and Ivan Diaz from the US, which was sponsored by the Danish Diabetes and Endocrine Academy.\nThe repository contains the lesson, lecture, and assignment material for the workshop, including the website source files and other associated workshop administration files. You can always go to check the website to learn more about mediation.",
     "crumbs": [
       "Sessions",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Mediation Analysis</span>"
