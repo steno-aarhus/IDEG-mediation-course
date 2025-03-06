@@ -227,6 +227,7 @@ div.csl-indent {
   <li><a href="#mediation-analysis-in-epidemiology" id="toc-mediation-analysis-in-epidemiology" class="nav-link active" data-scroll-target="#mediation-analysis-in-epidemiology"><span class="header-section-number">4.1</span> Mediation analysis in Epidemiology</a></li>
   <li><a href="#motivation-for-mediation-analysis" id="toc-motivation-for-mediation-analysis" class="nav-link" data-scroll-target="#motivation-for-mediation-analysis"><span class="header-section-number">4.2</span> Motivation for mediation analysis</a></li>
   <li><a href="#motivations-for-running-this-workshop" id="toc-motivations-for-running-this-workshop" class="nav-link" data-scroll-target="#motivations-for-running-this-workshop"><span class="header-section-number">4.3</span> Motivations for running this workshop</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.4</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -286,16 +287,16 @@ What is your movitation for this workshop?
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-6cf35db37b0a3064d1e4" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-6cf35db37b0a3064d1e4">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-c07b9e5970e6b3126097" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-c07b9e5970e6b3126097">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We might be interested in further refining the intervention so as to increase the magnitude of the effect. This might be done by altering or improving components of the intervention that target a particular mechanism for the outcome and discarding those components of which perhaps are not relevant for the outcome.</p>
 <p>When implementing the same lifestyle interventions in real world settings, lifestyle interventions show smaller effect and the long-term adoption and sustainability over time were some of the challenges to the effectiveness of these prevention efforts</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-b899d5638806b9aec456" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-b899d5638806b9aec456">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-fc86b6ae053ba9269819" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-fc86b6ae053ba9269819">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -305,7 +306,9 @@ What is your movitation for this workshop?
 <p>This short workshop aims to introduce the <strong>basic statistical framework</strong>, key assumptions, and practical applications of both <strong>traditional</strong> and <strong>modern</strong> mediation analysis techniques. Through <strong>real-world data examples</strong>, we’ll explore how mediation analysis can enhance your research and understanding of causal relationships.</p>
 <p>Despite its growing importance, <strong>mediation analysis</strong> is often used incorrectly. A recent <strong>systematic review</strong> on the reporting quality of studies applying mediation analysis revealed that many studies provide incomplete reporting, which hinders both <strong>reproducibility</strong> and the <strong>translation</strong> of findings into practice <span class="citation" data-cites="rrn_systematic_2022">(<a href="#ref-rrn_systematic_2022" role="doc-biblioref">5</a>)</span> .</p>
 <p>Our goal is for you to learn how to apply <strong>mediation analysis correctly</strong> and leverage it as a powerful tool to advance your research. By improving the quality and rigor of mediation analysis in your work, you can ensure more reliable findings and meaningful insights.</p>
-<p>References</p>
+</section>
+<section id="references" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="references"><span class="header-section-number">4.4</span> References</h2>
 
 
 <div id="refs" class="references csl-bib-body" role="list">
