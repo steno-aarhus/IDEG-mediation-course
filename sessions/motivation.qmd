@@ -24,8 +24,8 @@ whether a specific intervention has an effect on a disease or health
 outcome. Once this effect is established, the next natural question is
 to explore the "black box"—the underlying mechanisms that explain how
 the intervention (or exposure) leads to the observed outcome. As we are
-not only interested in whether an intervention works, but how it works.
-(@vanderweele_mediation_2016).
+not only interested in whether an intervention works, but how it works
+@vanderweele_mediation_2016.
 
 Mediation analysis provides an answer to this HOW question, by
 uncovering the pathways and mechanisms that explain the causal
