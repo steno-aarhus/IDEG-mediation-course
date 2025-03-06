@@ -484,8 +484,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit. DAG under no mediator-outcome relation affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-12c70e9bee975ae66213" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-12c70e9bee975ae66213">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-0c2099c78d09219d1d86" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-0c2099c78d09219d1d86">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -493,8 +493,8 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-242a37303c0d795eb210" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-242a37303c0d795eb210">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-1b940a6625a75ab7a4a8" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-1b940a6625a75ab7a4a8">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
@@ -593,8 +593,8 @@ Multiple R-squared:  0.02101,   Adjusted R-squared:  0.02073
 F-statistic: 74.19 on 2 and 6913 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Here, we see that physical activity (a) is associated with lower pulse.</p>
-<p>Now, we run the model for the outcome, including an interaction.</p>
+<p>Here, we see that physical activity (a) is associated with lower pulse (y).</p>
+<p>Now, we run the model for the outcome, notice we have included an interaction term.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lm_y <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> a <span class="sc">+</span> m <span class="sc">+</span> a<span class="sc">:</span>m <span class="sc">+</span> w1 , <span class="at">data =</span> data)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -624,24 +624,11 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>In this model we can see:</p>
 <ul>
-<li>higher physical activity (a) decreases pulse, independent of the mediator (BMI)</li>
-<li>there is statistically significant interaction between physical activity (a) and BMI (m).</li>
-<li>BMI (m) is associated with higher pulse, independent of physical activity</li>
+<li><p>higher physical activity (a) decreases pulse, independent of the mediator (BMI)</p></li>
+<li><p>excess body weight (BMI) is associated with higher pulse, independent of physical activity</p></li>
+<li><p>there is statistically significant interaction between physical activity (a) and BMI (m)</p>
+<p>Based on the coefficients of these two models, we can now estimate the different effects.</p></li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-interaction terms
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-<p>Based on the coefficients of these two models, we can now estimate the different effects.</p>
 <p>The equations are from <span class="citation" data-cites="valeri_mediation_2013">@valeri_mediation_2013</span> and <span class="citation" data-cites="vanderweele_unification_2014">@vanderweele_unification_2014</span>.</p>
 <section id="controlled-direct-effect" class="level3" data-number="6.7.1">
 <h3 data-number="6.7.1" class="anchored" data-anchor-id="controlled-direct-effect"><span class="header-section-number">6.7.1</span> Controlled direct effect</h3>
@@ -649,7 +636,7 @@ interaction terms
 <p><span class="math inline">\(CDE(m) = (\sigma_1 + \sigma_3*m)(a - a^*)\)</span></p>
 <p><span class="math inline">\(a^*\)</span> is for a change from level <span class="math inline">\(a^*\)</span> (=control) to level <span class="math inline">\(a\)</span> (=intervention).</p>
 <p>For the controlled direct effect we set m to a specific value.</p>
-<p>Let’s look at the distribution of m.</p>
+<p>Let’s look at the distribution of m (BMI).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(m) <span class="sc">%&gt;%</span></span>
@@ -673,7 +660,7 @@ interaction terms
 <pre><code>[1] -2.14</code></pre>
 </div>
 </div>
-<p>The CDE is how much the outcome, here pulse rate, would change on average if the mediator, here BMI, were fixed at level (m = 27.8) uniformly in the population but the treatment, physical activity, was changed from 0 to 1.</p>
+<p>The CDE is how much the outcome, here the pulse, would change on average if the mediator, here BMI, were fixed at level (m = 27.8) uniformly in the population but the treatment, physical activity, was changed from 0 to 1.</p>
 <p>The CDE answer the question, <em>what would be the effect of A on Y, when fixing M at a specific value for everyone in the population</em> <span class="citation" data-cites="wang_g-computation_2015">@wang_g-computation_2015</span>?</p>
 </section>
 <section id="pure-natural-direct-effect" class="level3" data-number="6.7.2">
@@ -682,47 +669,52 @@ interaction terms
 <p><span class="math inline">\(PNDE = (\sigma_1 + \sigma_3 * (\beta_0 + \beta_1*a^* + \beta'_2*w))(a - a^*)\)</span></p>
 <p>We set the value for the confounder w1 for the interaction to be the mean value of w1.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mean_w1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(data<span class="sc">$</span>w1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mean_w1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(data<span class="sc">$</span>w1)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mean_w1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 47.17467</code></pre>
+</div>
 </div>
 <p>Then we calculate the PNDE.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>PNDE <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> (lm_m<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">0</span> <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> mean_w1))) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(PNDE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>PNDE <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> (lm_m<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">0</span> <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> mean_w1))) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(PNDE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.88</code></pre>
 </div>
 </div>
-<p>The PNDE is how much the outcome, pulse rate, would change if the treatment a, physical activity, was set at 1 versus 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
-<p>In other words, to what extent does red meat cause higher blood glucose via pathways other than through inflammation <span class="citation" data-cites="wang_g-computation_2015">@wang_g-computation_2015</span>.</p>
+<p>The PNDE is how much the outcome, pulse, would change if the treatment a, physical activity, was set at 1 versus 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
+<p>how pulse rate would change if the treatment (or exposure) physically active (a=1) was set at 1 versus 0, while for each individual the mediator (BMI) was kept at the level it would naturally be in the <strong>absense</strong> of physical activity(<strong>a=0</strong>).</p>
+<p>In other words, it measures the direct effect of physical activity on pulse rate that doesn’t work through changing BMI.</p>
 </section>
 <section id="total-natural-direct-effect" class="level3" data-number="6.7.3">
 <h3 data-number="6.7.3" class="anchored" data-anchor-id="total-natural-direct-effect"><span class="header-section-number">6.7.3</span> (Total) natural direct effect</h3>
 <p>TNDE can be obtained by this formula:</p>
 <p><span class="math inline">\(TNDE = (\sigma_1 + \sigma_3 * (\beta_0 + beta_1*a + \beta'_2*w))(a - a^*)\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>TNDE <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> (lm_m<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">1</span> <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> mean_w1))) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TNDE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>TNDE <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> (lm_m<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">1</span> <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> mean_w1))) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TNDE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.12</code></pre>
 </div>
 </div>
-<p>Here, the value of M is enabled to act (as opposed to the PNDE). Here we see a little higher blood glucose, and that is the extra contribution from inflammation.</p>
-<p>The TNDE asks the question: “to what extent does red meat cause higher blood glucose via pathways other than through inflammation, allowing inflammation to boost up or tune down such effect at the same time?” <span class="citation" data-cites="wang_g-computation_2015">@wang_g-computation_2015</span></p>
+<p>Here, the value of M is enabled to act (as opposed to the PNDE). Here we see a little lower pulse rate, this means we’re measuring the direct effect of physical activity on pulse rate while allowing BMI to be at the level it would naturally be with physical activity (<strong>a=1</strong>).</p>
+<p>The TNDE asks the question: “to what extent does physical activity cause lower pulse via pathways other than through BMI, allowing BMI to boost up or tune down such effect at the same time?” <span class="citation" data-cites="wang_g-computation_2015">@wang_g-computation_2015</span></p>
 </section>
 <section id="total-natural-indirect-effect" class="level3" data-number="6.7.4">
 <h3 data-number="6.7.4" class="anchored" data-anchor-id="total-natural-indirect-effect"><span class="header-section-number">6.7.4</span> Total natural indirect effect</h3>
 <p>The TNIE can be obtained by this formula:</p>
 <p><span class="math inline">\(TNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a)(a - a^*)\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>TNIE <span class="ot">&lt;-</span> ((lm_y<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">1</span>)) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TNIE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>TNIE <span class="ot">&lt;-</span> ((lm_y<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">1</span>)) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TNIE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.51</code></pre>
 </div>
 </div>
-<p>The TNIE is how much the outcome would change on average if the treatment was fixed at level a = 1 but the mediator was changed from the level it would take if a* = 0 to the level it would take if a =1 (physical active).</p>
+<p>The TNIE is how much the outcome would change on average if the treatment was fixed at level a = 1 but the mediator was changed from the level it would take if a* = 0 (physical inactive) to the level it would take if a =1 (physical active).</p>
 <p>Note that exposure has to have an effect on M otherwise this will be zero.</p>
 <p>The TNIE asks the question: to what extent does physical activity cause pulse via BMI and the possible interaction between physical activity and BMI in affecting pulse rate? In other words, the effect of exposure that ‘would be prevented if the exposure did not cause the mediator’ (i.e., the portion of the effect for which mediation is ‘necessary’) <span class="citation" data-cites="wang_g-computation_2015">@wang_g-computation_2015</span>.</p>
 <p>This is often the effect we are interested in in biomedical research for questions regarding mediation.</p>
@@ -732,24 +724,24 @@ interaction terms
 <p>The PNIE can be obtained by this formula:</p>
 <p><span class="math inline">\(PNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a^*)(a - a^*)\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>PNIE <span class="ot">&lt;-</span> ((lm_y<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">0</span>)) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(PNIE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>PNIE <span class="ot">&lt;-</span> ((lm_y<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">0</span>)) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(PNIE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.27</code></pre>
 </div>
 </div>
 <p>The PNIE is different from the TNIE because it does not include the interaction effect. We estimate the effect of red meat on inflammation and then subsequent effect of inflammation on blood glucose.</p>
-<p>The PNIE answer the question: “to what extent does physical activity cause higher blood glucose via inflammation only (i.e., due to red meat affecting inflammation and subsequently, inflammation affecting blood glucose), not accounting for the possible interaction between physical activity and BMI? In other words, the effect that the exposure would have had if ‘its only action were to cause the mediator’ (i.e., the portion of the effect for which mediation is ‘’sufficient’’)” <span class="citation" data-cites="wang_g-computation_2015">@wang_g-computation_2015</span>.</p>
+<p>The PNIE answer the question: “to what extent does physical activity cause lower pulse rate via BMI only (i.e., due to physical activity affecting BMI and subsequently, BMI affecting pulse rate), not accounting for the possible interaction between physical activity and BMI? In other words, the effect that the exposure would have had if ‘its only action were to cause the mediator’ (i.e., the portion of the effect for which mediation is ‘’sufficient’’)” <span class="citation" data-cites="wang_g-computation_2015">@wang_g-computation_2015</span>.</p>
 </section>
 <section id="total-effect" class="level3" data-number="6.7.6">
 <h3 data-number="6.7.6" class="anchored" data-anchor-id="total-effect"><span class="header-section-number">6.7.6</span> Total effect</h3>
 <p>The total effect can be decomposed as:</p>
 <p><span class="math inline">\(TE = PNDE + TNIE\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>TE <span class="ot">&lt;-</span> PNDE <span class="sc">+</span> TNIE</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>TE <span class="ot">&lt;-</span> PNDE <span class="sc">+</span> TNIE</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.39</code></pre>
 </div>
@@ -761,14 +753,14 @@ interaction terms
 <p>From this, we can calculate the proportion mediated.</p>
 <p><span class="math inline">\(PM = \frac{TNIE}{TE}\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>PM <span class="ot">&lt;-</span> TNIE <span class="sc">/</span> TE</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(PM) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>PM <span class="ot">&lt;-</span> TNIE <span class="sc">/</span> TE</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(PM) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 21.18849</code></pre>
 </div>
 </div>
-<p>26% of the association between red meat and blood glucose is mediated by M, inflammation.</p>
+<p>26% of the association between physical activity and pulse rate is mediated by M, BMI.</p>
 </section>
 </section>
 <section id="defining-estimands" class="level2" data-number="6.8">
