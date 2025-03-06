@@ -97,7 +97,7 @@
     "href": "preamble/precourse.html#brush-up-on-your-dag-knowledge-before-the-workshop",
     "title": "1  Pre-workshop tasks",
     "section": "1.3 Brush up on your DAG knowledge before the workshop",
-    "text": "1.3 Brush up on your DAG knowledge before the workshop\nSome concepts in the mediation workshop are explained using Directed Acyclic Graphs. It is important that you understand what they are and how we use them in observational epidemiology. We have put together a very general introduction to DAGs. If you have not worked with DAGs before, please take some time to familiarize yourself with this tool.\nlink: Introduction to DAGs",
+    "text": "1.3 Brush up on your DAG knowledge before the workshop\nSome concepts in the mediation workshop are explained using Directed Acyclic Graphs. It is important that you understand what they are and how we use them in observational epidemiology. We have put together a very general introduction to DAGs. If you have not worked with DAGs before, please take some time to go through this introduction to DAGs to familiarize yourself with them.",
     "crumbs": [
       "Preamble",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-workshop tasks</span>"
