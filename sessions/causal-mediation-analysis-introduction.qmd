@@ -99,7 +99,7 @@ observe the outcome under different treatments.
 When we only have a subset of the outcomes, we have an association. This
 is illustrated in @fig-causation-association.
 
-\![causation vs
+\![Causation vs
 association\](/images/causation-association.png){#fig-causation-association}
 
 ![Causation vs association. From
