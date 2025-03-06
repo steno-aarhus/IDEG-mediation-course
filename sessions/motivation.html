@@ -226,7 +226,7 @@ div.csl-indent {
   <ul>
   <li><a href="#mediation-analysis-in-epidemiology" id="toc-mediation-analysis-in-epidemiology" class="nav-link active" data-scroll-target="#mediation-analysis-in-epidemiology"><span class="header-section-number">4.1</span> Mediation analysis in Epidemiology</a></li>
   <li><a href="#motivation-for-mediation-analysis" id="toc-motivation-for-mediation-analysis" class="nav-link" data-scroll-target="#motivation-for-mediation-analysis"><span class="header-section-number">4.2</span> Motivation for mediation analysis</a></li>
-  <li><a href="#motivations-for-running-this-course" id="toc-motivations-for-running-this-course" class="nav-link" data-scroll-target="#motivations-for-running-this-course"><span class="header-section-number">4.3</span> Motivations for running this course</a></li>
+  <li><a href="#motivations-for-running-this-workshop" id="toc-motivations-for-running-this-workshop" class="nav-link" data-scroll-target="#motivations-for-running-this-workshop"><span class="header-section-number">4.3</span> Motivations for running this workshop</a></li>
   </ul>
 </nav>
     </div>
@@ -252,23 +252,23 @@ div.csl-indent {
 </header>
 
 
-<p>What is your motivation for this course on mediation analysis?</p>
+<p>What is your motivation for participating in this workshop on mediation analysis?</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-What is your movitation for this course?
+What is your movitation for this workshop?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Spend 3 minutes talking to your neighbour and discuss your own motivations for participating in this course.</p>
+<p>Spend 3 minutes talking to your neighbour and discuss your own motivations for participating in this workshop.</p>
 </div>
 </div>
 <section id="mediation-analysis-in-epidemiology" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="mediation-analysis-in-epidemiology"><span class="header-section-number">4.1</span> Mediation analysis in Epidemiology</h2>
-<p>Mediation analysis is the study of pathways and mechanisms through which an exposure or intervention impacts an outcome. In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome. Once this effect is established, the next natural question is to explore the “black box”—the underlying mechanisms that explain how the intervention (or exposure) leads to the observed outcome. As we are not only interested in whether an intervention works, but how it works. ([@vanderweele_mediation_2016]).</p>
+<p>Mediation analysis is the study of pathways and mechanisms through which an exposure or intervention impacts an outcome. In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome. Once this effect is established, the next natural question is to explore the “black box”—the underlying mechanisms that explain how the intervention (or exposure) leads to the observed outcome. As we are not only interested in whether an intervention works, but how it works. (<span class="citation" data-cites="vanderweele_mediation_2016">(<a href="#ref-vanderweele_mediation_2016" role="doc-biblioref">1</a>)</span>).</p>
 <p>Mediation analysis provides an answer to this HOW question, by uncovering the pathways and mechanisms that explain the causal relationship between the exposure (e.g., intervention or treatment) and the outcome. By doing so, mediation analysis helps to open the black box, showing not only if an intervention works but how it works, and guiding more effective and targeted interventions.</p>
 </section>
 <section id="motivation-for-mediation-analysis" class="level2" data-number="4.2">
@@ -282,40 +282,46 @@ What is your movitation for this course?
 <p><em>Example</em>: Is the relationship between lower socioeconomic status and cardiovascular disease explained (mediated) through high allostatic load?</p></li>
 <li><p><strong>Refining Interventions</strong>:</p>
 <p>Using mediation analysis to improve the effectiveness of interventions by targeting key mediators, leading to better and more sustainable outcomes.</p>
-<p><em>Example</em>: Let’s consider the evidence from the landmark prevention trials. The Diabetes Prevention Programme <span class="citation" data-cites="knowler_reduction_2002">(<a href="#ref-knowler_reduction_2002" role="doc-biblioref">1</a>)</span>, The Diabetes Prevention Study <span class="citation" data-cites="tuomilehto_prevention_2001">(<a href="#ref-tuomilehto_prevention_2001" role="doc-biblioref">2</a>)</span>, and The Da Quin study <span class="citation" data-cites="pan_effects_1997">(<a href="#ref-pan_effects_1997" role="doc-biblioref">3</a>)</span>. These studies randomized high risk individuals to either metformin or a lifestyle intervention consisting of a physical activity or physical activity + diet. The main finding was a ~58% lower risk of incidence type 2 diabetes in the lifestyle intervention group compared to the metformin group.</p></li>
+<p><em>Example</em>: Let’s consider the evidence from the landmark prevention trials. The Diabetes Prevention Programme <span class="citation" data-cites="knowler_reduction_2002">(<a href="#ref-knowler_reduction_2002" role="doc-biblioref">2</a>)</span>, The Diabetes Prevention Study <span class="citation" data-cites="tuomilehto_prevention_2001">(<a href="#ref-tuomilehto_prevention_2001" role="doc-biblioref">3</a>)</span>, and The Da Quin study <span class="citation" data-cites="pan_effects_1997">(<a href="#ref-pan_effects_1997" role="doc-biblioref">4</a>)</span>. These studies randomized high risk individuals to either metformin or a lifestyle intervention consisting of a physical activity or physical activity + diet. The main finding was a ~58% lower risk of incidence type 2 diabetes in the lifestyle intervention group compared to the metformin group.</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-cd15bc85cc4a09f59fd2" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-cd15bc85cc4a09f59fd2">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-d587bac6ad19a4b54202" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-d587bac6ad19a4b54202">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We might be interested in further refining the intervention so as to increase the magnitude of the effect. This might be done by altering or improving components of the intervention that target a particular mechanism for the outcome and discarding those components of which perhaps are not relevant for the outcome.</p>
 <p>When implementing the same lifestyle interventions in real world settings, lifestyle interventions show smaller effect and the long-term adoption and sustainability over time were some of the challenges to the effectiveness of these prevention efforts</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-e8f0bd20f24dc6bbd3e9" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-e8f0bd20f24dc6bbd3e9">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-def8667b46971da6258b" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-def8667b46971da6258b">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
-<section id="motivations-for-running-this-course" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="motivations-for-running-this-course"><span class="header-section-number">4.3</span> Motivations for running this course</h2>
+<section id="motivations-for-running-this-workshop" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="motivations-for-running-this-workshop"><span class="header-section-number">4.3</span> Motivations for running this workshop</h2>
 <p>The methodological framework for conducting <strong>mediation analysis</strong> has evolved rapidly in recent years, making it a crucial tool for understanding complex relationships in research. Initially rooted in basic regression techniques, mediation analysis has advanced into <strong>causal mediation analysis</strong>, enabling researchers to unravel the intricate pathways between exposures, mediators, and outcomes.</p>
-<p>This short course aims to introduce the <strong>basic statistical framework</strong>, key assumptions, and practical applications of both <strong>traditional</strong> and <strong>modern</strong> mediation analysis techniques. Through <strong>real-world data examples</strong>, we’ll explore how mediation analysis can enhance your research and understanding of causal relationships.</p>
-<p>Despite its growing importance, <strong>mediation analysis</strong> is often used incorrectly. A recent <strong>systematic review</strong> on the reporting quality of studies applying mediation analysis revealed that many studies provide incomplete reporting, which hinders both <strong>reproducibility</strong> and the <strong>translation</strong> of findings into practice ([@rrn_systematic_2022]).</p>
+<p>This short workshop aims to introduce the <strong>basic statistical framework</strong>, key assumptions, and practical applications of both <strong>traditional</strong> and <strong>modern</strong> mediation analysis techniques. Through <strong>real-world data examples</strong>, we’ll explore how mediation analysis can enhance your research and understanding of causal relationships.</p>
+<p>Despite its growing importance, <strong>mediation analysis</strong> is often used incorrectly. A recent <strong>systematic review</strong> on the reporting quality of studies applying mediation analysis revealed that many studies provide incomplete reporting, which hinders both <strong>reproducibility</strong> and the <strong>translation</strong> of findings into practice <span class="citation" data-cites="rrn_systematic_2022">(<a href="#ref-rrn_systematic_2022" role="doc-biblioref">5</a>)</span> .</p>
 <p>Our goal is for you to learn how to apply <strong>mediation analysis correctly</strong> and leverage it as a powerful tool to advance your research. By improving the quality and rigor of mediation analysis in your work, you can ensure more reliable findings and meaningful insights.</p>
 
 
 <div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-vanderweele_mediation_2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">VanderWeele TJ. Mediation <span>Analysis</span>: <span>A</span> <span>Practitioner</span>’s <span>Guide</span>. Annual Review of Public Health [Internet] 2016 [cited 2022 Aug 17];37:17–32. Available from: <a href="https://doi.org/10.1146/annurev-publhealth-032315-021402">https://doi.org/10.1146/annurev-publhealth-032315-021402</a></div>
+</div>
 <div id="ref-knowler_reduction_2002" class="csl-entry" role="listitem">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">Knowler WC, Barrett-Connor E, Fowler SE, Hamman RF, Lachin JM, Walker EA, Nathan DM, Diabetes Prevention Program Research Group. <a href="https://doi.org/10.1056/NEJMoa012512">Reduction in the incidence of type 2 diabetes with lifestyle intervention or metformin</a>. The New England Journal of Medicine 2002;346:393–403. </div>
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Knowler WC, Barrett-Connor E, Fowler SE, Hamman RF, Lachin JM, Walker EA, Nathan DM, Diabetes Prevention Program Research Group. <a href="https://doi.org/10.1056/NEJMoa012512">Reduction in the incidence of type 2 diabetes with lifestyle intervention or metformin</a>. The New England Journal of Medicine 2002;346:393–403. </div>
 </div>
 <div id="ref-tuomilehto_prevention_2001" class="csl-entry" role="listitem">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">Tuomilehto J, Lindström J, Eriksson JG, Valle TT, Hämäläinen H, Ilanne-Parikka P, Keinänen-Kiukaanniemi S, Laakso M, Louheranta A, Rastas M, et al. <a href="https://doi.org/10.1056/NEJM200105033441801">Prevention of type 2 diabetes mellitus by changes in lifestyle among subjects with impaired glucose tolerance</a>. The New England Journal of Medicine 2001;344:1343–50. </div>
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Tuomilehto J, Lindström J, Eriksson JG, Valle TT, Hämäläinen H, Ilanne-Parikka P, Keinänen-Kiukaanniemi S, Laakso M, Louheranta A, Rastas M, et al. <a href="https://doi.org/10.1056/NEJM200105033441801">Prevention of type 2 diabetes mellitus by changes in lifestyle among subjects with impaired glucose tolerance</a>. The New England Journal of Medicine 2001;344:1343–50. </div>
 </div>
 <div id="ref-pan_effects_1997" class="csl-entry" role="listitem">
-<div class="csl-left-margin">3. </div><div class="csl-right-inline">Pan XR, Li GW, Hu YH, Wang JX, Yang WY, An ZX, Hu ZX, Lin J, Xiao JZ, Cao HB, et al. <a href="https://doi.org/10.2337/diacare.20.4.537">Effects of diet and exercise in preventing <span>NIDDM</span> in people with impaired glucose tolerance. <span>The</span> <span>Da</span> <span>Qing</span> <span>IGT</span> and <span>Diabetes</span> <span>Study</span></a>. Diabetes Care 1997;20:537–44. </div>
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Pan XR, Li GW, Hu YH, Wang JX, Yang WY, An ZX, Hu ZX, Lin J, Xiao JZ, Cao HB, et al. <a href="https://doi.org/10.2337/diacare.20.4.537">Effects of diet and exercise in preventing <span>NIDDM</span> in people with impaired glucose tolerance. <span>The</span> <span>Da</span> <span>Qing</span> <span>IGT</span> and <span>Diabetes</span> <span>Study</span></a>. Diabetes Care 1997;20:537–44. </div>
+</div>
+<div id="ref-rrn_systematic_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Rrn R, Ag C, Mk B, Sm G, H L, Jh M. A <span>Systematic</span> <span>Review</span> of the <span>Reporting</span> <span>Quality</span> of <span>Observational</span> <span>Studies</span> <span>That</span> <span>Use</span> <span>Mediation</span> <span>Analyses</span>. Prevention science : the official journal of the Society for Prevention Research [Internet] 2022 [cited 2023 Sep 27];23. Available from: <a href="https://pubmed.ncbi.nlm.nih.gov/35167030/">https://pubmed.ncbi.nlm.nih.gov/35167030/</a></div>
 </div>
 </div>
 </section>
