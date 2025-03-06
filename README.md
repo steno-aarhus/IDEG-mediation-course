@@ -11,7 +11,7 @@ Trainee Workshop](https://www.ideg-diabetes.org/idegtraineeworkshop) in
 Bangkok, Thailand, on 3 April 2025.
 
 This repository contains the lesson, lecture, and assignment material
-for the course, including the website source files and other associated
+for the workshop, including the website source files and other associated
 course administration files.
 
 To install the packages needed to build this website, run:
