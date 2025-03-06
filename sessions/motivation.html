@@ -268,7 +268,7 @@ What is your movitation for this workshop?
 </div>
 <section id="mediation-analysis-in-epidemiology" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="mediation-analysis-in-epidemiology"><span class="header-section-number">4.1</span> Mediation analysis in Epidemiology</h2>
-<p>Mediation analysis is the study of pathways and mechanisms through which an exposure or intervention impacts an outcome. In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome. Once this effect is established, the next natural question is to explore the “black box”—the underlying mechanisms that explain how the intervention (or exposure) leads to the observed outcome. As we are not only interested in whether an intervention works, but how it works. (<span class="citation" data-cites="vanderweele_mediation_2016">(<a href="#ref-vanderweele_mediation_2016" role="doc-biblioref">1</a>)</span>).</p>
+<p>Mediation analysis is the study of pathways and mechanisms through which an exposure or intervention impacts an outcome. In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome. Once this effect is established, the next natural question is to explore the “black box”—the underlying mechanisms that explain how the intervention (or exposure) leads to the observed outcome. As we are not only interested in whether an intervention works, but how it works <span class="citation" data-cites="vanderweele_mediation_2016">(<a href="#ref-vanderweele_mediation_2016" role="doc-biblioref">1</a>)</span>.</p>
 <p>Mediation analysis provides an answer to this HOW question, by uncovering the pathways and mechanisms that explain the causal relationship between the exposure (e.g., intervention or treatment) and the outcome. By doing so, mediation analysis helps to open the black box, showing not only if an intervention works but how it works, and guiding more effective and targeted interventions.</p>
 </section>
 <section id="motivation-for-mediation-analysis" class="level2" data-number="4.2">
@@ -286,16 +286,16 @@ What is your movitation for this workshop?
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-d587bac6ad19a4b54202" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-d587bac6ad19a4b54202">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-bb44076a091bbabae69e" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-bb44076a091bbabae69e">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We might be interested in further refining the intervention so as to increase the magnitude of the effect. This might be done by altering or improving components of the intervention that target a particular mechanism for the outcome and discarding those components of which perhaps are not relevant for the outcome.</p>
 <p>When implementing the same lifestyle interventions in real world settings, lifestyle interventions show smaller effect and the long-term adoption and sustainability over time were some of the challenges to the effectiveness of these prevention efforts</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-def8667b46971da6258b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-def8667b46971da6258b">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-b7fd7463c18a472fbbce" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b7fd7463c18a472fbbce">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
