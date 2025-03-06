@@ -13,18 +13,18 @@ Time duration: 75 mins
 
 During this 75-minute workshop, you will learn about traditional mediation
 approaches before exploring the theory of causal mediation, accompanied
-by hands-on R coding practice. We hope this will be the beginning of
+by some hands-on R coding practice. We hope this will be the beginning of
 your journey in mediation analysis and open the door to more interesting
 research studies!
 
 ::: callout-note
 ## Learning outcomes
 
--   Understand the fundementals of mediation analysis
+-   Understand the fundamentals of mediation analysis
 
-    *What is mediation analyses?*
+    *What is mediation analysis?*
 
-    *Why and when to use mediation analyses?*
+    *Why and when to use mediation analysis?*
 
 -   Master the theoretical framework
 
