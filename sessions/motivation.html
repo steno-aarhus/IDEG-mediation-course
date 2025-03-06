@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -263,20 +282,20 @@ What is your movitation for this course?
 <p><em>Example</em>: Is the relationship between lower socioeconomic status and cardiovascular disease explained (mediated) through high allostatic load?</p></li>
 <li><p><strong>Refining Interventions</strong>:</p>
 <p>Using mediation analysis to improve the effectiveness of interventions by targeting key mediators, leading to better and more sustainable outcomes.</p>
-<p><em>Example</em>: Let’s consider the evidence from the landmark prevention trials. The Diabetes Prevention Programme <span class="citation" data-cites="knowler_reduction_2002">@knowler_reduction_2002</span>, The Diabetes Prevention Study <span class="citation" data-cites="tuomilehto_prevention_2001">@tuomilehto_prevention_2001</span>, and The Da Quin study <span class="citation" data-cites="pan_effects_1997">@pan_effects_1997</span>. These studies randomized high risk individuals to either metformin or a lifestyle intervention consisting of a physical activity or physical activity + diet. The main finding was a ~58% lower risk of incidence type 2 diabetes in the lifestyle intervention group compared to the metformin group.</p></li>
+<p><em>Example</em>: Let’s consider the evidence from the landmark prevention trials. The Diabetes Prevention Programme <span class="citation" data-cites="knowler_reduction_2002">(<a href="#ref-knowler_reduction_2002" role="doc-biblioref">1</a>)</span>, The Diabetes Prevention Study <span class="citation" data-cites="tuomilehto_prevention_2001">(<a href="#ref-tuomilehto_prevention_2001" role="doc-biblioref">2</a>)</span>, and The Da Quin study <span class="citation" data-cites="pan_effects_1997">(<a href="#ref-pan_effects_1997" role="doc-biblioref">3</a>)</span>. These studies randomized high risk individuals to either metformin or a lifestyle intervention consisting of a physical activity or physical activity + diet. The main finding was a ~58% lower risk of incidence type 2 diabetes in the lifestyle intervention group compared to the metformin group.</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-8ccd3a3b7085e914b221" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-8ccd3a3b7085e914b221">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-e60ce505a65392237758" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-e60ce505a65392237758">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We might be interested in further refining the intervention so as to increase the magnitude of the effect. This might be done by altering or improving components of the intervention that target a particular mechanism for the outcome and discarding those components of which perhaps are not relevant for the outcome.</p>
 <p>When implementing the same lifestyle interventions in real world settings, lifestyle interventions show smaller effect and the long-term adoption and sustainability over time were some of the challenges to the effectiveness of these prevention efforts</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-96a32fe8090b9feb9e1a" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-96a32fe8090b9feb9e1a">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-232207c2fcda28f3f713" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-232207c2fcda28f3f713">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -288,6 +307,17 @@ What is your movitation for this course?
 <p>Our goal is for you to learn how to apply <strong>mediation analysis correctly</strong> and leverage it as a powerful tool to advance your research. By improving the quality and rigor of mediation analysis in your work, you can ensure more reliable findings and meaningful insights.</p>
 
 
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-knowler_reduction_2002" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Knowler WC, Barrett-Connor E, Fowler SE, Hamman RF, Lachin JM, Walker EA, Nathan DM, Diabetes Prevention Program Research Group. <a href="https://doi.org/10.1056/NEJMoa012512">Reduction in the incidence of type 2 diabetes with lifestyle intervention or metformin</a>. The New England Journal of Medicine 2002;346:393–403. </div>
+</div>
+<div id="ref-tuomilehto_prevention_2001" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Tuomilehto J, Lindström J, Eriksson JG, Valle TT, Hämäläinen H, Ilanne-Parikka P, Keinänen-Kiukaanniemi S, Laakso M, Louheranta A, Rastas M, et al. <a href="https://doi.org/10.1056/NEJM200105033441801">Prevention of type 2 diabetes mellitus by changes in lifestyle among subjects with impaired glucose tolerance</a>. The New England Journal of Medicine 2001;344:1343–50. </div>
+</div>
+<div id="ref-pan_effects_1997" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Pan XR, Li GW, Hu YH, Wang JX, Yang WY, An ZX, Hu ZX, Lin J, Xiao JZ, Cao HB, et al. <a href="https://doi.org/10.2337/diacare.20.4.537">Effects of diet and exercise in preventing <span>NIDDM</span> in people with impaired glucose tolerance. <span>The</span> <span>Da</span> <span>Qing</span> <span>IGT</span> and <span>Diabetes</span> <span>Study</span></a>. Diabetes Care 1997;20:537–44. </div>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

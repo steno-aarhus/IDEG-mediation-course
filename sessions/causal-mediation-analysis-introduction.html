@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -382,7 +401,7 @@ Notation
 </section>
 <section id="definition-of-a-causal-effect" class="level3" data-number="6.1.3">
 <h3 data-number="6.1.3" class="anchored" data-anchor-id="definition-of-a-causal-effect"><span class="header-section-number">6.1.3</span> Definition of a causal effect</h3>
-<p>More formally we can now define a causal effect <span class="citation" data-cites="hernan_definition_2004">@hernan_definition_2004</span>:</p>
+<p>More formally we can now define a causal effect <span class="citation" data-cites="hernan_definition_2004">(<a href="#ref-hernan_definition_2004" role="doc-biblioref">1</a>)</span>:</p>
 <p><span class="math inline">\(E[Y^{a=1} = 1] - E[Y^{a=0} = 1] \ne 0\)</span></p>
 </section>
 </section>
@@ -396,7 +415,7 @@ Notation
 <img src="../images/causation-association.PNG" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-causation-association-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.1: Causation vs association. From <span class="citation" data-cites="hernan_definition_2004">@hernan_definition_2004</span>
+Figure&nbsp;6.1: Causation vs association. From <span class="citation" data-cites="hernan_definition_2004">(<a href="#ref-hernan_definition_2004" role="doc-biblioref">1</a>)</span>
 </figcaption>
 </figure>
 </div>
@@ -484,8 +503,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit. DAG under no mediator-outcome relation affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-38188125fd65727b59bc" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-38188125fd65727b59bc">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-5555acaaacfa4a1f7292" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-5555acaaacfa4a1f7292">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -493,8 +512,8 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-de21971ffaedd9634751" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-de21971ffaedd9634751">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-0d854928f87e2238eaff" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-0d854928f87e2238eaff">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
@@ -629,7 +648,7 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><p>there is statistically significant interaction between physical activity (a) and BMI (m)</p>
 <p>Based on the coefficients of these two models, we can now estimate the different effects.</p></li>
 </ul>
-<p>The equations are from <span class="citation" data-cites="valeri_mediation_2013">@valeri_mediation_2013</span> and <span class="citation" data-cites="vanderweele_unification_2014">@vanderweele_unification_2014</span>.</p>
+<p>The equations are from <span class="citation" data-cites="valeri_mediation_2013">(<a href="#ref-valeri_mediation_2013" role="doc-biblioref">2</a>)</span> and <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">3</a>)</span>.</p>
 <section id="controlled-direct-effect" class="level3" data-number="6.7.1">
 <h3 data-number="6.7.1" class="anchored" data-anchor-id="controlled-direct-effect"><span class="header-section-number">6.7.1</span> Controlled direct effect</h3>
 <p>The controlled direct effect can be obtained using this formula based on the regression coefficients:</p>
@@ -661,7 +680,7 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <p>The CDE is how much the outcome, here the pulse, would change on average if the mediator, here BMI, were fixed at level (m = 27.8) uniformly in the population but the treatment, physical activity, was changed from 0 to 1.</p>
-<p>The CDE answer the question, <em>what would be the effect of A on Y, when fixing M at a specific value for everyone in the population</em> <span class="citation" data-cites="wang_g-computation_2015">@wang_g-computation_2015</span>?</p>
+<p>The CDE answer the question, <em>what would be the effect of A on Y, when fixing M at a specific value for everyone in the population</em> <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">4</a>)</span>?</p>
 </section>
 <section id="pure-natural-direct-effect" class="level3" data-number="6.7.2">
 <h3 data-number="6.7.2" class="anchored" data-anchor-id="pure-natural-direct-effect"><span class="header-section-number">6.7.2</span> (Pure) natural direct effect</h3>
@@ -700,7 +719,7 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <p>Here, the value of M is enabled to act (as opposed to the PNDE). Here we see a little lower pulse rate, this means we’re measuring the direct effect of physical activity on pulse rate while allowing BMI to be at the level it would naturally be with physical activity (<strong>a=1</strong>).</p>
-<p>The TNDE asks the question: “to what extent does physical activity cause lower pulse via pathways other than through BMI, allowing BMI to boost up or tune down such effect at the same time?” <span class="citation" data-cites="wang_g-computation_2015">@wang_g-computation_2015</span></p>
+<p>The TNDE asks the question: “to what extent does physical activity cause lower pulse via pathways other than through BMI, allowing BMI to boost up or tune down such effect at the same time?” <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">4</a>)</span></p>
 </section>
 <section id="total-natural-indirect-effect" class="level3" data-number="6.7.4">
 <h3 data-number="6.7.4" class="anchored" data-anchor-id="total-natural-indirect-effect"><span class="header-section-number">6.7.4</span> Total natural indirect effect</h3>
@@ -716,7 +735,7 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>The TNIE is how much the outcome would change on average if the treatment was fixed at level a = 1 but the mediator was changed from the level it would take if a* = 0 (physical inactive) to the level it would take if a =1 (physical active).</p>
 <p>Note that exposure has to have an effect on M otherwise this will be zero.</p>
-<p>The TNIE asks the question: to what extent does physical activity cause pulse via BMI and the possible interaction between physical activity and BMI in affecting pulse rate? In other words, the effect of exposure that ‘would be prevented if the exposure did not cause the mediator’ (i.e., the portion of the effect for which mediation is ‘necessary’) <span class="citation" data-cites="wang_g-computation_2015">@wang_g-computation_2015</span>.</p>
+<p>The TNIE asks the question: to what extent does physical activity cause pulse via BMI and the possible interaction between physical activity and BMI in affecting pulse rate? In other words, the effect of exposure that ‘would be prevented if the exposure did not cause the mediator’ (i.e., the portion of the effect for which mediation is ‘necessary’) <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">4</a>)</span>.</p>
 <p>This is often the effect we are interested in in biomedical research for questions regarding mediation.</p>
 </section>
 <section id="pure-natural-indirect-effect" class="level3" data-number="6.7.5">
@@ -732,7 +751,7 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <p>The PNIE is different from the TNIE because it does not include the interaction effect. We estimate the effect of red meat on inflammation and then subsequent effect of inflammation on blood glucose.</p>
-<p>The PNIE answer the question: “to what extent does physical activity cause lower pulse rate via BMI only (i.e., due to physical activity affecting BMI and subsequently, BMI affecting pulse rate), not accounting for the possible interaction between physical activity and BMI? In other words, the effect that the exposure would have had if ‘its only action were to cause the mediator’ (i.e., the portion of the effect for which mediation is ‘’sufficient’’)” <span class="citation" data-cites="wang_g-computation_2015">@wang_g-computation_2015</span>.</p>
+<p>The PNIE answer the question: “to what extent does physical activity cause lower pulse rate via BMI only (i.e., due to physical activity affecting BMI and subsequently, BMI affecting pulse rate), not accounting for the possible interaction between physical activity and BMI? In other words, the effect that the exposure would have had if ‘its only action were to cause the mediator’ (i.e., the portion of the effect for which mediation is ‘’sufficient’’)” <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">4</a>)</span>.</p>
 </section>
 <section id="total-effect" class="level3" data-number="6.7.6">
 <h3 data-number="6.7.6" class="anchored" data-anchor-id="total-effect"><span class="header-section-number">6.7.6</span> Total effect</h3>
@@ -826,7 +845,7 @@ Notation
 </section>
 <section id="interaction-effects" class="level3" data-number="6.8.6">
 <h3 data-number="6.8.6" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">6.8.6</span> Interaction effects</h3>
-<p>More information on the interaction effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">@vanderweele_unification_2014</span>.</p>
+<p>More information on the interaction effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">3</a>)</span>.</p>
 <p>Reference interaction:</p>
 <p><span class="math inline">\(INT_{ref} = PNDE - CDE\)</span></p>
 <p>Mediation interaction:</p>
@@ -837,7 +856,7 @@ Notation
 <p>Using the causal inference framework also allow for effect decomposition, even when there are interaction and non-linearity.</p>
 <p>Effect decomposition is important when we want to assess relative contributions such as the proportion mediated and eliminated.</p>
 <p>TE = PNDE + TNIE = TNDE + PNIE</p>
-<p>More information about decomposition of effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">@vanderweele_unification_2014</span>.</p>
+<p>More information about decomposition of effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">3</a>)</span>.</p>
 </section>
 <section id="proportions" class="level3" data-number="6.8.8">
 <h3 data-number="6.8.8" class="anchored" data-anchor-id="proportions"><span class="header-section-number">6.8.8</span> Proportions</h3>
@@ -851,6 +870,20 @@ Notation
 <h2 data-number="6.9" class="anchored" data-anchor-id="references"><span class="header-section-number">6.9</span> References</h2>
 
 
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-hernan_definition_2004" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Hernan MA. A definition of causal effect for epidemiological research. Journal of Epidemiology &amp; Community Health [Internet] 2004 [cited 2024 May 6];58:265–71. Available from: <a href="https://jech.bmj.com/lookup/doi/10.1136/jech.2002.006361">https://jech.bmj.com/lookup/doi/10.1136/jech.2002.006361</a></div>
+</div>
+<div id="ref-valeri_mediation_2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Valeri L, VanderWeele TJ. Mediation analysis allowing for exposure-mediator interactions and causal interpretation: Theoretical assumptions and implementation with <span>SAS</span> and <span>SPSS</span> macros. Psychological methods [Internet] 2013 [cited 2024 May 14];18:137–50. Available from: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3659198/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3659198/</a></div>
+</div>
+<div id="ref-vanderweele_unification_2014" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">VanderWeele TJ. A unification of mediation and interaction: A four-way decomposition. Epidemiology (Cambridge, Mass) [Internet] 2014 [cited 2024 May 14];25:749–61. Available from: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4220271/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4220271/</a></div>
+</div>
+<div id="ref-wang_g-computation_2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Wang A, Arah OA. G-computation demonstration in causal mediation analysis. European Journal of Epidemiology [Internet] 2015 [cited 2023 Jun 20];30:1119–27. Available from: <a href="https://doi.org/10.1007/s10654-015-0100-z">https://doi.org/10.1007/s10654-015-0100-z</a></div>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

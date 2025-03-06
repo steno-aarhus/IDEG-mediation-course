@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -329,20 +348,20 @@ Objective of this session
 <p>Overall relationship between A and Y:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-dc1db36d253d7a4742be" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-dc1db36d253d7a4742be">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c\"]\n  { rank = same; A; Y }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-776ec95614cc00690584" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-776ec95614cc00690584">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c\"]\n  { rank = same; A; Y }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Relationship between A and Y through M:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-735032919ed1dbb36c46" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-735032919ed1dbb36c46">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c*\", xlabel = \"c\"]\n    A->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-ad455bf2024af82f4fdb" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-ad455bf2024af82f4fdb">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c*\", xlabel = \"c\"]\n    A->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="traditional-approaches-for-mediation-analysis" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="traditional-approaches-for-mediation-analysis"><span class="header-section-number">5.1</span> Traditional approaches for mediation analysis</h2>
-<p>The two traditional approaches to mediation analysis are <strong>the difference method</strong> and <strong>the product method</strong>; also known as the Baron &amp; Kenny-method <span class="citation" data-cites="baron_moderatormediator_1986">@baron_moderatormediator_1986</span>.</p>
+<p>The two traditional approaches to mediation analysis are <strong>the difference method</strong> and <strong>the product method</strong>; also known as the Baron &amp; Kenny-method <span class="citation" data-cites="baron_moderatormediator_1986">(<a href="#ref-baron_moderatormediator_1986" role="doc-biblioref">1</a>)</span>.</p>
 <p>The traditional approach use these equations for mediator and outcome (for the case of a continuous mediator and a continuous outcome)</p>
 <p>Mediator-model:</p>
 <p><span class="math inline">\(E(M|A=a, C=c) = \beta_0 + \beta_1a + \beta_2c\)</span> (3.1)</p>
@@ -367,8 +386,8 @@ Objective of this session
 <p>How much does BMI explain the relation between physical activity and pulse rate?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-41dfa8fa08116dedc82b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-41dfa8fa08116dedc82b">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c*\", xlabel = \"c\"]\n    X->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-42d0b71e1ec678748371" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-42d0b71e1ec678748371">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c*\", xlabel = \"c\"]\n    X->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -470,7 +489,7 @@ dbl (45): ID, Age, AgeMonths, HHIncomeMid, Poverty, HomeRooms, Weight, Lengt...
 </section>
 <section id="method-1-baron-kenny-the-product-method" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="method-1-baron-kenny-the-product-method"><span class="header-section-number">5.3</span> Method 1: Baron &amp; Kenny (the product method)</h2>
-<p>According to Baron and Kenny (1986) <span class="citation" data-cites="baron_moderatormediator_1986">@baron_moderatormediator_1986</span>, the following criteria need to be satisfied for a variable to be considered a mediator:</p>
+<p>According to Baron and Kenny (1986) <span class="citation" data-cites="baron_moderatormediator_1986">(<a href="#ref-baron_moderatormediator_1986" role="doc-biblioref">1</a>)</span>, the following criteria need to be satisfied for a variable to be considered a mediator:</p>
 <ol type="1">
 <li>The exposure should be associated with the mediator.</li>
 <li>In the model for the outcome that includes both the exposure and mediator: the mediator should be associated with the outcome.</li>
@@ -685,8 +704,8 @@ Group work - 5 minutes
 <section id="use-mediation-packages" class="level3" data-number="5.4.1">
 <h3 data-number="5.4.1" class="anchored" data-anchor-id="use-mediation-packages"><span class="header-section-number">5.4.1</span> Use mediation packages</h3>
 <p>Now we have estimated the direct and indirect effect using the product and the difference methods.You might have noticed what you got so far are only point estimates, but what if you want to see if this mediation effect is statistically significant (different from zero or not)?</p>
-<p>To do so, there are two main approaches: the Sobel test <span class="citation" data-cites="sobel_asymptotic_1982">@sobel_asymptotic_1982</span> and bootstrapping <span class="citation" data-cites="preacher_spss_2004">@preacher_spss_2004</span>.</p>
-<p>Here we will demonstrate that we can use the mediate() function in ‘mediation’ package <span class="citation" data-cites="tingley_mediation_2014">@tingley_mediation_2014</span> to conduct mediation analysis. One of the very good options to conduct mediation analysis using the mediation package is we can get confidence interval by bootstrapping.</p>
+<p>To do so, there are two main approaches: the Sobel test <span class="citation" data-cites="sobel_asymptotic_1982">(<a href="#ref-sobel_asymptotic_1982" role="doc-biblioref">2</a>)</span> and bootstrapping <span class="citation" data-cites="preacher_spss_2004">(<a href="#ref-preacher_spss_2004" role="doc-biblioref">3</a>)</span>.</p>
+<p>Here we will demonstrate that we can use the mediate() function in ‘mediation’ package <span class="citation" data-cites="tingley_mediation_2014">(<a href="#ref-tingley_mediation_2014" role="doc-biblioref">4</a>)</span> to conduct mediation analysis. One of the very good options to conduct mediation analysis using the mediation package is we can get confidence interval by bootstrapping.</p>
 <p>Let’s load up the R packages.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mediation) <span class="co"># Mediation package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -781,7 +800,7 @@ Simulations: 10 </code></pre>
 </div>
 </div>
 </div>
-<p>For details of the mediate() package, please refer to <span class="citation" data-cites="tingley_mediation_2014">@tingley_mediation_2014</span>.</p>
+<p>For details of the mediate() package, please refer to <span class="citation" data-cites="tingley_mediation_2014">(<a href="#ref-tingley_mediation_2014" role="doc-biblioref">4</a>)</span>.</p>
 </section>
 </section>
 <section id="limitations-of-the-traditional-approach" class="level2" data-number="5.5">
@@ -793,8 +812,8 @@ Simulations: 10 </code></pre>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-1e61e98e01181260a0e8" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-1e61e98e01181260a0e8">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"Inflammation\"]\n    Y [label = \"Lipid metabolism\"]\n    N[label = \"Insulin sensitivity\"]\n    A[label = \"Fasting insulin\"]\n  edge [minlen = 1.5]\n    X->Y \n    X->M \n    M->Y \n    X->N    \n    N->Y\n    X->A    \n    A->Y\n  { rank = same; X; N; Y; }\n  { rank = min; M;}\n  { rank = max; A;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-825e51b44cbe0fec4d8b" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-825e51b44cbe0fec4d8b">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"Inflammation\"]\n    Y [label = \"Lipid metabolism\"]\n    N[label = \"Insulin sensitivity\"]\n    A[label = \"Fasting insulin\"]\n  edge [minlen = 1.5]\n    X->Y \n    X->M \n    M->Y \n    X->N    \n    N->Y\n    X->A    \n    A->Y\n  { rank = same; X; N; Y; }\n  { rank = min; M;}\n  { rank = max; A;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -812,6 +831,20 @@ Simulations: 10 </code></pre>
 <h2 data-number="5.7" class="anchored" data-anchor-id="references"><span class="header-section-number">5.7</span> References</h2>
 
 
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-baron_moderatormediator_1986" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Baron RM, Kenny DA. <a href="https://doi.org/10.1037/0022-3514.51.6.1173">The moderator–mediator variable distinction in social psychological research: <span>Conceptual</span>, strategic, and statistical considerations</a>. Journal of Personality and Social Psychology 1986;51:1173–82. </div>
+</div>
+<div id="ref-sobel_asymptotic_1982" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Sobel ME. Asymptotic <span>Confidence</span> <span>Intervals</span> for <span>Indirect</span> <span>Effects</span> in <span>Structural</span> <span>Equation</span> <span>Models</span>. Sociological Methodology [Internet] 1982 [cited 2024 May 27];13:290–312. Available from: <a href="https://www.jstor.org/stable/270723">https://www.jstor.org/stable/270723</a></div>
+</div>
+<div id="ref-preacher_spss_2004" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Preacher KJ, Hayes AF. <span>SPSS</span> and <span>SAS</span> procedures for estimating indirect effects in simple mediation models. Behavior Research Methods, Instruments, &amp; Computers [Internet] 2004 [cited 2024 May 27];36:717–31. Available from: <a href="https://doi.org/10.3758/BF03206553">https://doi.org/10.3758/BF03206553</a></div>
+</div>
+<div id="ref-tingley_mediation_2014" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Tingley D, Yamamoto T, Hirose K, Keele L, Imai K. <strong>Mediation</strong> : <em>R</em> <span>Package</span> for <span>Causal</span> <span>Mediation</span> <span>Analysis</span>. Journal of Statistical Software [Internet] 2014 [cited 2024 May 27];59. Available from: <a href="http://www.jstatsoft.org/v59/i05/">http://www.jstatsoft.org/v59/i05/</a></div>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
