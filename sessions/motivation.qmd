@@ -142,3 +142,5 @@ Our goal is for you to learn how to apply **mediation analysis
 correctly** and leverage it as a powerful tool to advance your research.
 By improving the quality and rigor of mediation analysis in your work,
 you can ensure more reliable findings and meaningful insights.
+
+References
