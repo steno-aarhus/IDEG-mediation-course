@@ -31,7 +31,7 @@ book:
       - text: "License: CC BY 4.0"
 
 bibliography:
-  - includes/reference.bib
+  - includes/papers.bib
 csl: includes/the-american-journal-of-clinical-nutrition.csl
 
 
