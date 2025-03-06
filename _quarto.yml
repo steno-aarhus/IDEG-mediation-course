@@ -10,7 +10,6 @@ book:
     - Jie Zhang
     - Daniel Witte
   date: last-modified
-  bibliography: references.bib
   repo-url: https://github.com/steno-aarhus/IDEG-mediation-course
   site-url: https://steno-aarhus.github.io/IDEG-mediation-course
   chapters:
