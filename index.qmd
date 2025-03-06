@@ -34,7 +34,7 @@ PhD students and postdoctoral researchers working with clinical and epidemiologi
 
 To make the most of our workshop in Bangkok, please complete the pre-workshop tasks before you arrive. This will ensure we can start our sessions smoothly and dive right into the content!
 
-1.  Finish the [Pre-Workshop Tasks](/path/to/Precourse.qmd)
+1.  Finish the [Pre-Workshop Tasks](/preamble/Precourse.qmd)
 2.  Get familiar with [Directed Acyclic Graphs](/preamble/Introduction-to-DAGs.qmd)
 
 ## Schedule
