@@ -208,7 +208,7 @@
     "href": "preamble/Introduction-to-DAGs.html#recommended-reading",
     "title": "2  Directed Acyclic Graphs (DAG)",
     "section": "2.9 Recommended reading",
-    "text": "2.9 Recommended reading\nDigitale, J.C. et al. (2022) Tutorial on directed acyclic graphs. Journal of Clinical Epidemiology, Volume 142, 264 - 267\nRohrer, J. M. (2017). Thinking Clearly About Correlations and Causation: Graphical Causal Models for Observational Data.\nPearl, J., & Mackenzie, D. (2018). The book of why: the new science of cause and effect. Basic Books.\nRoberts, S. (2018). Robust, causal and incremental approaches to investigating linguistic adaptation. Frontiers in Psychology, 9, 166.",
+    "text": "2.9 Recommended reading\nIf you are interested in learning more about DAGs, here is the list. Have fun reading!\n\n\n\n\n\n\nNote\n\n\n\n\nPearl, J. (2009). Causality: Models, Reasoning, and Inference. Cambridge University Press.\nPearl, J., & Mackenzie, D. (2018). The book of why: the new science of cause and effect. Basic Books.\nHernán MA & Robins JM. Causal Inference: What If. Boca Raton: Chapman & Hall/CRC, 2020.\nDigitale, J.C. et al. (2022) Tutorial on directed acyclic graphs. Journal of Clinical Epidemiology, Volume 142, 264 - 267\nRohrer, J. M. (2017). Thinking Clearly About Correlations and Causation: Graphical Causal Models for Observational Data.",
     "crumbs": [
       "Preamble",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Directed Acyclic Graphs (DAG)</span>"
