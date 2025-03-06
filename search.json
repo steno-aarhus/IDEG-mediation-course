@@ -10,16 +10,6 @@
     ]
   },
   {
-    "objectID": "index.html#overall-learning-outcomes",
-    "href": "index.html#overall-learning-outcomes",
-    "title": "IDEG Mediation Workshop",
-    "section": "Overall learning outcomes",
-    "text": "Overall learning outcomes\n\n\n\n\n\n\nThe overall workshop objective\n\n\n\nThis workshop introduces participants to the fundamental principles, analytical tools, and essential skills needed to understand and apply modern mediation analysis for investigating disease mechanisms\n\n\nThe more specific learning outcomes include:\n\nExplain the theoretical concepts and statistical methods regarding traditional and modern mediation analysis applied to basic, clinical and epidemiological research on diabetes and endocrine diseases\nPerform traditional, causal and modern mediation analysis using R software\nPresent results from mediation analysis according to the current mediation analysis reporting guidelines\nInterpret results from mediation analysis and suggest relevant sensitivity analyses for mediation analyses\nDiscuss the strengths, limitations and assumptions of traditional, causal and modern mediation analysis\n\n\nThe target audience\nPhD students and postdoctoral researchers working with clinical and epidemiological studies of diabetes, its causes and consequencesits endocrinology, that are planning to conduct mediation analysis or that are interested in widening their analysis toolkit.\n\n\n⚠️ Prerequisites\nTo make the most of our workshop in Bangkok, please complete the pre-workshop tasks before you arrive. This will ensure we can start our sessions smoothly and dive right into the content!\n\nFinish the Pre-Workshop Tasks\nGet familiar with Directed Acyclic Graphs",
-    "crumbs": [
-      "Welcome to the IDEG workshop on Mediation Analysis and Directed Acyclic Graphs"
-    ]
-  },
-  {
     "objectID": "index.html#schedule",
     "href": "index.html#schedule",
     "title": "IDEG Mediation Workshop",
