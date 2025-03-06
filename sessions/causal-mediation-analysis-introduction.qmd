@@ -232,7 +232,7 @@ From the DAG rules, we have a special problem that we cannot solve with
 traditional regression approaches. If we adjust for W2 we open a
 backdoor path by adjusting for the collider
 $W1 \rightarrow W2 \leftarrow A$. We will work on how to solve this
-problem later in the course.
+problem later in the workshop.
 
 ## Non-linearity and interactions
 
@@ -262,7 +262,7 @@ sophisticated approaches. Specifically, it can:
     -   Comparing predicted outcomes to understand causal mechanisms
 
 Additional approaches also exists, but we will not focus on these in
-this course.
+this workshop.
 
 ## Defining estimands
 

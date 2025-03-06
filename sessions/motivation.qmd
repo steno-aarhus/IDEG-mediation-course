@@ -1,12 +1,12 @@
 # Motivation
 
-What is your motivation for this course on mediation analysis?
+What is your motivation for participating in this workshop on mediation analysis?
 
 ::: callout-note
-## What is your movitation for this course?
+## What is your movitation for this workshop?
 
 Spend 3 minutes talking to your neighbour and discuss your own
-motivations for participating in this course.
+motivations for participating in this workshop.
 :::
 
 ## Mediation analysis in Epidemiology
@@ -117,7 +117,7 @@ digraph {
 ")
 ```
 
-## Motivations for running this course
+## Motivations for running this workshop
 
 The methodological framework for conducting **mediation analysis** has
 evolved rapidly in recent years, making it a crucial tool for
@@ -126,7 +126,7 @@ basic regression techniques, mediation analysis has advanced into
 **causal mediation analysis**, enabling researchers to unravel the
 intricate pathways between exposures, mediators, and outcomes.
 
-This short course aims to introduce the **basic statistical framework**,
+This short workshop aims to introduce the **basic statistical framework**,
 key assumptions, and practical applications of both **traditional** and
 **modern** mediation analysis techniques. Through **real-world data
 examples**, we’ll explore how mediation analysis can enhance your

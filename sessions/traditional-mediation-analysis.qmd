@@ -120,7 +120,7 @@ digraph {
 ::: callout-note
 ## Example Dataset: A Brief Overview
 
-We'll explore the relationship between physical activity and pulse in the National Health and Nutrition Examination Survey (NHANES) dataset, which has been modified for this course with simulated variables.
+We'll explore the relationship between physical activity and pulse in the National Health and Nutrition Examination Survey (NHANES) dataset, which has been modified for this workshop with simulated variables.
 
 To try this out in practice, we load the NHANES dataset, only keep the variables we need for the example.
 
