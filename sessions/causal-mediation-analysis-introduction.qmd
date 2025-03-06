@@ -13,14 +13,14 @@ analysis.
 
 ## What is a cause?
 
-We employ constantly in our daily lives. Consider a simple example: when
-you press a light switch, you expect the light to turn on. Or in another
-scenario, you anticipate that performing action A will result in outcome
-Y. In some instances, we can identify deterministic relationships where
-action A will lead to outcome Y. While these straightforward
-cause-and-effect relationships are intuitive and help us navigate the
-world, they become significantly more complex when we explore health
-outcomes.
+We employ causal inference constantly in our daily lives. Consider a
+simple example: when you press a light switch, you expect the light to
+turn on. Or in another scenario, you anticipate that performing action A
+will result in outcome Y. In some instances, we can identify
+deterministic relationships where action A will lead to outcome Y. While
+these straightforward cause-and-effect relationships are intuitive and
+help us navigate the world, they become significantly more complex when
+we explore health outcomes.
 
 ::: callout-note
 ## Notation
@@ -39,8 +39,8 @@ outcome had everyone, counter to the fact, received treatment a = 0)
 
 ### Individual causal effect
 
-When investigating health outcomes, we would ideally want to know if
-**you** do X, then Y will happen. We could have a specific question:
+When investigating health outcomes, we would ideally want to know if you
+**do X**, then Y will happen. We could have a specific question:
 
 > Will eating more red meat give me higher blood glucose in 1 year?
 
@@ -76,6 +76,13 @@ population received treatment a = 1.
 $Pr[Y^{a=1}]$ the proportion of subjects that would have developed the
 outcome Y had all subjects in the population of interest received
 treatment a = 1.
+
+$E[Y^{a=0}]$ the average counterfactual outcome, had all subjects in the
+population received no treatment a = 0.
+
+$Pr[Y^{a=0}]$ the proportion of subjects that would have developed the
+outcome Y had all subjects in the population of interest received no
+treatment a = 0.
 :::
 
 ### Definition of a causal effect
@@ -99,48 +106,50 @@ If we want to infer a causal effect (i.e., what would have happened, had
 everyone done A=1 vs A=0), we need three assumptions to be fulfilled:
 
 -   Exchangeability
+
 -   Consistency
+
 -   Positivity
 
-::: callout-note
-## Causal Assumptions
+    ::: callout-note
+    ## Causal Assumptions
 
-### Exchangeability
+    -   Exchangeability
 
-The risk of the outcome in A = 1 would have been the same as the risk of
-the outcome in A = 0, had those in A = 1 received A = 0.
+    The risk of the outcome in A = 1 would have been the same as the
+    risk of the outcome in A = 0, had those in A = 1 received A = 0.
 
-Think about a randomized trial where you, by mistake, give the
-intervention to the other group. The effect should be the same as the
-one you would have observed had the groups been correct.
+    Think about a randomized trial where you, by mistake, give the
+    intervention to the other group. The effect should be the same as
+    the one you would have observed had the groups been correct.
 
-We can also have conditional exchangeability. The risk is similar in
-subsets of the population. That could be within the levels of a variable
-W (e.g., education).
+    We can also have conditional exchangeability. The risk is similar in
+    subsets of the population. That could be within the levels of a
+    variable W (e.g., education).
 
-### Consistency
+    -   Consistency
 
-The treatments under comparison are well-defined and correspond to the
-versions of treatment observed in the data:
+    The treatments under comparison are well-defined and correspond to
+    the versions of treatment observed in the data:
 
--   Precise definition of $Y^a$ via a
--   Link counterfactual outcomes with observed outcomes
+    -   Precise definition of $Y^a$ via a
+    -   Link counterfactual outcomes with observed outcomes
 
-$Y^a = Y$ for every individual with A = a.
+    $Y^a = Y$ for every individual with A = a.
 
-The observed outcome for all treated equals the outcome if they had
-received the treatment.
+    The observed outcome for all treated equals the outcome if they had
+    received the treatment.
 
-### Positivity
+    -   Positivity
 
-The probability of receiving every value of treatment conditional on L
-is greater than zero. In other words, there must be a probability of
-being assigned to each treatment level.
+    The probability of receiving every value of treatment conditional on
+    L is greater than zero. In other words, there must be a probability
+    of being assigned to each treatment level.
 
-Image if we don't have anyone with A = 0 among those with L=1 (e.g. long
-education), then we cannot estimate the conditional probability of the
-outcome.
-:::
+    Image if we don't have anyone with A = 0 among those with L=1 (e.g.
+    long education), then we cannot estimate the conditional probability
+    of the outcome.
+    :::
 
 ## Causal mediation analysis
 
@@ -149,16 +158,18 @@ outcome.
 
 -   Non-linearity
 -   Interactions
--   Multiple mediators
 -   Confounding
+-   Multiple mediators
 :::
 
 Causal mediation analysis is an extension of the traditional approach
 by:
 
+::: callout-note
 -   Outlining all confounding assumptions needed
 -   Handling non-linearity and interaction
 -   Clearly defining estimands of interest
+:::
 
 ## Confounding assumptions
 
@@ -197,7 +208,8 @@ In addition, we can have a more complicated situation where the
 treatment also impacts another mediator that is also a mediator-outcome
 confounder.
 
-DAG where the mediator-outcome relation is affected by treatment:
+Below DAG shows where the mediator-outcome relation is affected by
+treatment:
 
 ```{r}
 #| echo: false
@@ -245,26 +257,18 @@ sophisticated approaches. Specifically, it can:
 
 -   Utilize regression-based methods and alternative causal inference
     techniques like g-computation
-
-```{=html}
-<!-- -->
-```
--    Fundamentally differ from traditional approaches by:
-
+-   Fundamentally differ from traditional approaches by:
     -   Constructing a comprehensive causal model that explicitly
         incorporates non-linear relationships and interaction effects
-
-    -   Artificially *manipulating* the data to set the treatment
-        **and** the mediator to certain values
-
+    -   Artificially manipulating the data to set the treatment and the
+        mediator to certain values
     -   Predicting outcomes using the developed causal model
-
     -   Comparing predicted outcomes to understand causal mechanisms
 
-Additional approaches also exists, but we will not focus on these in
-this course.
+Note: additional approaches also exists, but we will not focus on these
+in this course.
 
-## Causal mediation estimation 
+## Causal mediation estimation
 
 Counterfactual-based direct and indirect effects can be estimated from
 regression models, provided that the no confounding assumption hold. To
@@ -278,6 +282,246 @@ $E(M|A = a, W = w) = \beta_0 + \beta_1a + \beta'_2w$
 Model for the outcome:
 
 $E(Y|A = a, M = m, W = w) = \sigma_0 + \sigma_1a + \sigma_2m + \sigma_3am + \sigma'_4w$
+
+From these two regression models we can estimate the CDE, NDE and NIE.
+
+## Example
+
+The example here include a continuous treatment, mediator and outcome.
+We use these equations on an additive scale because it is easier to
+explain the intuition behind the estimands. Similar equations exist for
+other types and combinations of variables.
+
+```{r, echo = FALSE}
+library(tidyverse)
+```
+
+```{r}
+# This includes readr, or use library(readr) specifically
+nhanes <- read_csv(here::here("data/NHANES.csv")) 
+# keep the variables used in the analyses 
+data <- nhanes %>% 
+  dplyr::select(ID, 
+                w1 = Age, 
+                w2 = Gender, 
+                w3 = Education, 
+                w4 = Smoke100, 
+                a = PhysActive,  # this is the exposure
+                m = BMI,         # this is the mediator
+                y = Pulse,       # this is the outcome
+                y2 = Diabetes ) %>% 
+  na.omit()
+```
+
+We can now run a model for the mediator only adjusting for a single
+variable. In practice you would adjust for many more variables to
+satisfy the confounding assumptions.
+
+```{r}
+lm_m <- lm(m ~ a + w1 , data = data)
+summary(lm_m)
+```
+
+Here, we see that physical activity (a) is associated with lower pulse.
+
+Now, we run the model for the outcome, including an interaction.
+
+```{r}
+lm_y <- lm(y ~ a + m + a:m + w1 , data = data)
+summary(lm_y)
+```
+
+In this model we can see:
+
+-   higher physical activity (a) decreases pulse, independent of the
+    mediator (BMI)
+-   there is statistically significant interaction between physical
+    activity (a) and BMI (m).
+-   BMI (m) is associated with higher pulse, independent of physical
+    activity
+
+::: callout-note
+## interaction terms
+:::
+
+Based on the coefficients of these two models, we can now estimate the
+different effects.
+
+The equations are from @valeri_mediation_2013 and
+@vanderweele_unification_2014.
+
+### Controlled direct effect
+
+The controlled direct effect can be obtained using this formula based on
+the regression coefficients:
+
+$CDE(m) = (\sigma_1 + \sigma_3*m)(a - a^*)$
+
+$a^*$ is for a change from level $a^*$ (=control) to level $a$
+(=intervention).
+
+For the controlled direct effect we set m to a specific value.
+
+Let's look at the distribution of m.
+
+```{r}
+data %>%
+  select(m) %>%
+  summary()
+
+median_m <- round(median(data$m), digits = 1)
+```
+
+In this example we will set it to the median of BMI, at `r median_m`
+which is a low level. You can also try to set BMI to 25kg/m2.
+
+```{r}
+CDE_m <- (lm_y$coefficients[2] + lm_y$coefficients[5] * median_m) * (1 - 0)
+round(as.numeric(CDE_m), digits = 2)
+```
+
+The CDE is how much the outcome, here pulse rate, would change on
+average if the mediator, here BMI, were fixed at level (m =
+`r median_m`) uniformly in the population but the treatment, physical
+activity, was changed from 0 to 1.
+
+The CDE answer the question, *what would be the effect of A on Y, when
+fixing M at a specific value for everyone in the population*
+@wang_g-computation_2015?
+
+### (Pure) natural direct effect
+
+PNDE can be obtained using this formula:
+
+$PNDE = (\sigma_1 + \sigma_3 * (\beta_0 + \beta_1*a^* + \beta'_2*w))(a - a^*)$
+
+We set the value for the confounder w1 for the interaction to be the
+mean value of w1.
+
+```{r}
+mean_w1 <- mean(data$w1)
+```
+
+Then we calculate the PNDE.
+
+```{r}
+PNDE <- (lm_y$coefficients[2] + (lm_y$coefficients[5] * (lm_m$coefficients[1] + lm_m$coefficients[2] * 0 + lm_m$coefficients[3] * mean_w1))) * (1 - 0)
+round(as.numeric(PNDE), digits = 2)
+```
+
+The PNDE is how much the outcome, pulse rate, would change if the
+treatment a, physical activity, was set at 1 versus 0 but for each
+individual the mediator was kept at the level it would have taken, for
+that individual, in the absence of the exposure.
+
+In other words, to what extent does red meat cause higher blood glucose
+via pathways other than through inflammation @wang_g-computation_2015.
+
+### (Total) natural direct effect
+
+TNDE can be obtained by this formula:
+
+$TNDE = (\sigma_1 + \sigma_3 * (\beta_0 + beta_1*a + \beta'_2*w))(a - a^*)$
+
+```{r}
+TNDE <- (lm_y$coefficients[2] + (lm_y$coefficients[5] * (lm_m$coefficients[1] + lm_m$coefficients[2] * 1 + lm_m$coefficients[3] * mean_w1))) * (1 - 0)
+
+round(as.numeric(TNDE), digits = 2)
+```
+
+Here, the value of M is enabled to act (as opposed to the PNDE). Here we
+see a little higher blood glucose, and that is the extra contribution
+from inflammation.
+
+The TNDE asks the question: "to what extent does red meat cause higher
+blood glucose via pathways other than through inflammation, allowing
+inflammation to boost up or tune down such effect at the same time?"
+@wang_g-computation_2015
+
+### Total natural indirect effect
+
+The TNIE can be obtained by this formula:
+
+$TNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a)(a - a^*)$
+
+```{r}
+TNIE <- ((lm_y$coefficients[3] * lm_m$coefficients[2]) + (lm_y$coefficients[5] * lm_m$coefficients[2] * 1)) * (1 - 0)
+
+round(as.numeric(TNIE), digits = 2)
+```
+
+The TNIE is how much the outcome would change on average if the
+treatment was fixed at level a = 1 but the mediator was changed from the
+level it would take if a\* = 0 to the level it would take if a =1
+(physical active).
+
+Note that exposure has to have an effect on M otherwise this will be
+zero.
+
+The TNIE asks the question: to what extent does physical activity cause
+pulse via BMI and the possible interaction between physical activity and
+BMI in affecting pulse rate? In other words, the effect of exposure that
+'would be prevented if the exposure did not cause the mediator' (i.e.,
+the portion of the effect for which mediation is 'necessary')
+@wang_g-computation_2015.
+
+This is often the effect we are interested in in biomedical research for
+questions regarding mediation.
+
+### Pure natural indirect effect
+
+The PNIE can be obtained by this formula:
+
+$PNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a^*)(a - a^*)$
+
+```{r}
+PNIE <- ((lm_y$coefficients[3] * lm_m$coefficients[2]) + (lm_y$coefficients[5] * lm_m$coefficients[2] * 0)) * (1 - 0)
+
+round(as.numeric(PNIE), digits = 2)
+```
+
+The PNIE is different from the TNIE because it does not include the
+interaction effect. We estimate the effect of red meat on inflammation
+and then subsequent effect of inflammation on blood glucose.
+
+The PNIE answer the question: "to what extent does physical activity
+cause higher blood glucose via inflammation only (i.e., due to red meat
+affecting inflammation and subsequently, inflammation affecting blood
+glucose), not accounting for the possible interaction between physical
+activity and BMI? In other words, the effect that the exposure would
+have had if 'its only action were to cause the mediator' (i.e., the
+portion of the effect for which mediation is ''sufficient'')"
+@wang_g-computation_2015.
+
+### Total effect
+
+The total effect can be decomposed as:
+
+$TE = PNDE + TNIE$
+
+```{r}
+TE <- PNDE + TNIE
+
+round(as.numeric(TE), digits = 2)
+```
+
+This is the overall effect of red meat on blood glucose levels. Higher
+red meat is associated with higher blood glucose.
+
+### Proportion mediation
+
+From this, we can calculate the proportion mediated.
+
+$PM = \frac{TNIE}{TE}$
+
+```{r}
+PM <- TNIE / TE
+
+as.numeric(PM) * 100
+```
+
+26% of the association between red meat and blood glucose is mediated by
+M, inflammation.
 
 ## Defining estimands
 
