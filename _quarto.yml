@@ -5,7 +5,7 @@ project:
   #   - slides/*.html
 
 book:
-  title: "Mediation course"
+  title: "Mediation workshop"
   author: 
     - Jie Zhang
     - Daniel Witte
