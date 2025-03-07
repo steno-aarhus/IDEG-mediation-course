@@ -1,15 +1,5 @@
 # Motivation
 
-What is your motivation for participating in this workshop on mediation
-analysis?
-
-::: callout-note
-## What is your movitation for this workshop?
-
-Spend 3 minutes talking to your neighbour and discuss your own
-motivations for participating in this workshop.
-:::
-
 ## Mediation analysis in Epidemiology
 
 ```{r setup}
@@ -52,23 +42,21 @@ guiding more effective and targeted interventions.
     between exposures and outcomes.
 
     *Example*: Is the relationship between lower socioeconomic status
-    and cardiovascular disease explained (mediated) through high
-    allostatic load?
+    and cardiovascular disease explained (mediated) through high lipid levels?
 
 3.  **Refining Interventions**:
 
-    Using mediation analysis to improve the effectiveness of
-    interventions by targeting key mediators, leading to better and more
-    sustainable outcomes.
+    Mediation analysis may help us to improve the effectiveness of
+    interventions by allowing us to target key mediators.
 
-    *Example*: Let's consider the evidence from the landmark prevention
-    trials. The Diabetes Prevention Programme @knowler_reduction_2002,
+    *Example*: Let's consider the evidence from the landmark diabetes prevention
+    trials: The Diabetes Prevention Programme @knowler_reduction_2002,
     The Diabetes Prevention Study @tuomilehto_prevention_2001, and The
-    Da Quin study @pan_effects_1997. These studies randomized high risk
-    individuals to either metformin or a lifestyle intervention
-    consisting of a physical activity or physical activity + diet. The
+    Da Qin study @pan_effects_1997. These studies randomized high diabetes risk
+    individuals to either a lifestyle intervention
+    (consisting of diet modfication in combination with physical activity) or routine health advice and care. The
     main finding was a \~58% lower risk of incidence type 2 diabetes in
-    the lifestyle intervention group compared to the metformin group.
+    the lifestyle intervention group compared to the routine care group.
 
 ```{r, echo=FALSE}
 graph <- grViz("
@@ -87,15 +75,8 @@ graph
 ```
 
 We might be interested in further refining the intervention so as to
-increase the magnitude of the effect. This might be done by altering or
-improving components of the intervention that target a particular
-mechanism for the outcome and discarding those components of which
-perhaps are not relevant for the outcome.
+increase the magnitude of the effect. It would be interesting to know if the lifestyle changes reduce the risk of diabetes only because they lower BMI (effect mediated through BMI) or if lifestyle has a direct impact on diabetes risk that does not require any change in BMI. This may help us understand how important BMI targets are in future lifestyle modification programs.
 
-When implementing the same lifestyle interventions in real world
-settings, lifestyle interventions show smaller effect and the long-term
-adoption and sustainability over time were some of the challenges to the
-effectiveness of these prevention efforts
 
 ```{r,, echo=FALSE}
 library(DiagrammeR)
@@ -116,6 +97,14 @@ digraph {
 }
 ")
 ```
+
+::: callout-note
+## Can you find a relevant mediation question in your own research?
+
+Spend 3 minutes talking to your neighbour and discuss an mediation question that may be relevant in your own
+research.
+:::
+
 
 ## Motivations for running this workshop
 
@@ -142,5 +131,7 @@ Our goal is for you to learn how to apply **mediation analysis
 correctly** and leverage it as a powerful tool to advance your research.
 By improving the quality and rigor of mediation analysis in your work,
 you can ensure more reliable findings and meaningful insights.
+
+
 
 ## References
