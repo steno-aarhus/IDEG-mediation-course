@@ -253,20 +253,6 @@ div.csl-indent {
 </header>
 
 
-<p>What is your motivation for participating in this workshop on mediation analysis?</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What is your movitation for this workshop?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Spend 3 minutes talking to your neighbour and discuss your own motivations for participating in this workshop.</p>
-</div>
-</div>
 <section id="mediation-analysis-in-epidemiology" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="mediation-analysis-in-epidemiology"><span class="header-section-number">4.1</span> Mediation analysis in Epidemiology</h2>
 <p>Mediation analysis is the study of pathways and mechanisms through which an exposure or intervention impacts an outcome. In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome. Once this effect is established, the next natural question is to explore the “black box”—the underlying mechanisms that explain how the intervention (or exposure) leads to the observed outcome. As we are not only interested in whether an intervention works, but how it works <span class="citation" data-cites="vanderweele_mediation_2016">(<a href="#ref-vanderweele_mediation_2016" role="doc-biblioref">1</a>)</span>.</p>
@@ -280,23 +266,35 @@ What is your movitation for this workshop?
 <p><em>Example</em>: Does body mass index mediate the relationship between diet and type 2 diabetes in mid-life?</p></li>
 <li><p><strong>Confirmation and Refutation of Theory</strong>:</p>
 <p>Testing theories about the mechanisms behind health outcomes and determining whether certain factors mediate the relationships between exposures and outcomes.</p>
-<p><em>Example</em>: Is the relationship between lower socioeconomic status and cardiovascular disease explained (mediated) through high allostatic load?</p></li>
+<p><em>Example</em>: Is the relationship between lower socioeconomic status and cardiovascular disease explained (mediated) through high lipid levels?</p></li>
 <li><p><strong>Refining Interventions</strong>:</p>
-<p>Using mediation analysis to improve the effectiveness of interventions by targeting key mediators, leading to better and more sustainable outcomes.</p>
-<p><em>Example</em>: Let’s consider the evidence from the landmark prevention trials. The Diabetes Prevention Programme <span class="citation" data-cites="knowler_reduction_2002">(<a href="#ref-knowler_reduction_2002" role="doc-biblioref">2</a>)</span>, The Diabetes Prevention Study <span class="citation" data-cites="tuomilehto_prevention_2001">(<a href="#ref-tuomilehto_prevention_2001" role="doc-biblioref">3</a>)</span>, and The Da Quin study <span class="citation" data-cites="pan_effects_1997">(<a href="#ref-pan_effects_1997" role="doc-biblioref">4</a>)</span>. These studies randomized high risk individuals to either metformin or a lifestyle intervention consisting of a physical activity or physical activity + diet. The main finding was a ~58% lower risk of incidence type 2 diabetes in the lifestyle intervention group compared to the metformin group.</p></li>
+<p>Mediation analysis may help us to improve the effectiveness of interventions by allowing us to target key mediators.</p>
+<p><em>Example</em>: Let’s consider the evidence from the landmark diabetes prevention trials: The Diabetes Prevention Programme <span class="citation" data-cites="knowler_reduction_2002">(<a href="#ref-knowler_reduction_2002" role="doc-biblioref">2</a>)</span>, The Diabetes Prevention Study <span class="citation" data-cites="tuomilehto_prevention_2001">(<a href="#ref-tuomilehto_prevention_2001" role="doc-biblioref">3</a>)</span>, and The Da Qin study <span class="citation" data-cites="pan_effects_1997">(<a href="#ref-pan_effects_1997" role="doc-biblioref">4</a>)</span>. These studies randomized high diabetes risk individuals to either a lifestyle intervention (consisting of diet modfication in combination with physical activity) or routine health advice and care. The main finding was a ~58% lower risk of incidence type 2 diabetes in the lifestyle intervention group compared to the routine care group.</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-5d140a678b47dff5ac42" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-5d140a678b47dff5ac42">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-34a7ebbb38a2b689c824" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-34a7ebbb38a2b689c824">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p>We might be interested in further refining the intervention so as to increase the magnitude of the effect. This might be done by altering or improving components of the intervention that target a particular mechanism for the outcome and discarding those components of which perhaps are not relevant for the outcome.</p>
-<p>When implementing the same lifestyle interventions in real world settings, lifestyle interventions show smaller effect and the long-term adoption and sustainability over time were some of the challenges to the effectiveness of these prevention efforts</p>
+<p>We might be interested in further refining the intervention so as to increase the magnitude of the effect. It would be interesting to know if the lifestyle changes reduce the risk of diabetes only because they lower BMI (effect mediated through BMI) or if lifestyle has a direct impact on diabetes risk that does not require any change in BMI. This may help us understand how important BMI targets are in future lifestyle modification programs.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-d47af99e2313324d0e33" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-d47af99e2313324d0e33">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-d65e8e785a7edb912275" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-d65e8e785a7edb912275">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Can you find a relevant mediation question in your own research?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Spend 3 minutes talking to your neighbour and discuss an mediation question that may be relevant in your own research.</p>
 </div>
 </div>
 </section>
