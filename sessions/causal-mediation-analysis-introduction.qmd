@@ -484,7 +484,7 @@ sophisticated approaches. Specifically, it can:
 -   Decomposition of effects: Counterfactual methods allow for more
     nuanced decomposition of total effects into direct and indirect
     effects, especially in the presence of treatment-mediator
-    interactions
+    interactions.
 
 -   Counterfactual frameworks extend more naturally to settings with
     multiple mediators
