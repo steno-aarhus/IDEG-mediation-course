@@ -520,8 +520,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-98c836ea9547be4c3ba2" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-98c836ea9547be4c3ba2">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-5c9e3810363a55e48086" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-5c9e3810363a55e48086">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -529,8 +529,8 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-7173447d8b2e660544d8" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-7173447d8b2e660544d8">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-ab57e2770383804d99f9" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-ab57e2770383804d99f9">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
@@ -599,7 +599,7 @@ Decomposition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TE = PNDE + TNIE this decomposition usually is for research question: ‘is there a mediated effect?’ or ‘is the causal effect mediated by the proposed mediator?’</p>
+<p>TE = PNDE + TNIE this decomposition usually is for research question: ‘is there a mediated effect?’ or ‘is the causal effect mediated by the proposed mediator?’ <span class="citation" data-cites="nguyen2021clarifying">(<a href="#ref-nguyen2021clarifying" role="doc-biblioref"><strong>nguyen2021clarifying?</strong></a>)</span></p>
 </div>
 </div>
 </section>
@@ -622,7 +622,7 @@ Decomposition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TE = PNIE + TNDE this decomposition usually is for research question: ‘does the exposure influence the outcome in other ways, not through this mediator?’</p>
+<p>TE = PNIE + TNDE this decomposition usually is for research question: ‘does the exposure influence the outcome in other ways, not through this mediator?’ <span class="citation" data-cites="nguyen2021clarifying">(<a href="#ref-nguyen2021clarifying" role="doc-biblioref"><strong>nguyen2021clarifying?</strong></a>)</span></p>
 </div>
 </div>
 </section>
@@ -974,22 +974,22 @@ Number of Fisher Scoring iterations: 2
 Direct counterfactual imputation estimation with 
  bootstrap standard errors, percentile confidence intervals and p-values 
  
-             Estimate Std.error  95% CIL 95% CIU  P.val    
-cde          -2.13520   0.24937 -2.28839  -1.482 &lt;2e-16 ***
-pnde         -1.88739   0.24963 -2.05621  -1.272 &lt;2e-16 ***
-tnde         -2.12378   0.24896 -2.27535  -1.461 &lt;2e-16 ***
-pnie         -0.27028   0.07059 -0.41023  -0.154 &lt;2e-16 ***
-tnie         -0.50667   0.06404 -0.62438  -0.402 &lt;2e-16 ***
-te           -2.39406   0.21516 -2.55514  -1.850 &lt;2e-16 ***
-intref        0.24781   0.09302  0.13752   0.448 &lt;2e-16 ***
-intmed       -0.23639   0.07323 -0.37408  -0.123 &lt;2e-16 ***
-cde(prop)     0.89187   0.04780  0.79242   0.961 &lt;2e-16 ***
-intref(prop) -0.10351   0.04510 -0.21340  -0.065 &lt;2e-16 ***
-intmed(prop)  0.09874   0.03551  0.05756   0.178 &lt;2e-16 ***
-pnie(prop)    0.11289   0.04211  0.07358   0.214 &lt;2e-16 ***
-pm            0.21164   0.04428  0.16878   0.313 &lt;2e-16 ***
-int          -0.00477   0.01214 -0.03642   0.002    0.4    
-pe            0.10812   0.04780  0.03863   0.208 &lt;2e-16 ***
+               Estimate  Std.error    95% CIL 95% CIU  P.val    
+cde          -2.1352022  0.2232183 -2.4705517  -1.793 &lt;2e-16 ***
+pnde         -1.8983877  0.2509170 -2.2538392  -1.497 &lt;2e-16 ***
+tnde         -2.1347830  0.2212147 -2.4548210  -1.791 &lt;2e-16 ***
+pnie         -0.2702775  0.0671809 -0.3821416  -0.151 &lt;2e-16 ***
+tnie         -0.5066728  0.0904623 -0.6361043  -0.392 &lt;2e-16 ***
+te           -2.4050605  0.2303537 -2.7341480  -2.098 &lt;2e-16 ***
+intref        0.2368144  0.0954574  0.1064196   0.419 &lt;2e-16 ***
+intmed       -0.2363953  0.0862268 -0.3597793  -0.097 &lt;2e-16 ***
+cde(prop)     0.8877956  0.0326492  0.8438746   0.946 &lt;2e-16 ***
+intref(prop) -0.0984651  0.0442902 -0.1850916  -0.046 &lt;2e-16 ***
+intmed(prop)  0.0982908  0.0402630  0.0421821   0.159 &lt;2e-16 ***
+pnie(prop)    0.1123787  0.0280212  0.0664970   0.158 &lt;2e-16 ***
+pm            0.2106695  0.0449044  0.1627800   0.294 &lt;2e-16 ***
+int          -0.0001743  0.0083350 -0.0290346   0.001    0.2    
+pe            0.1122044  0.0326492  0.0535829   0.156 &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
