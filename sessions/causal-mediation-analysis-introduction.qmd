@@ -7,6 +7,11 @@ library(here)
 library(DiagrammeR)
 ```
 
+In this session we will go over fundamental concepts of causal inference
+in general and then focus more specifically on causal mediation
+analysis.
+
+::: callout-note
 ## Objective of this session
 
 -   Foundational concepts in causal inference
@@ -14,10 +19,7 @@ library(DiagrammeR)
 -   Core causal assumptions
 -   Causal mediation effects
 -   Practical implementation using R
-
-In this session we will go over fundamental concepts of causal inference
-in general and then focus more specifically on causal mediation
-analysis.
+:::
 
 ### Recall the major limitations of traditional mediation methods:
 
@@ -26,7 +28,7 @@ analysis.
 -   Confounding
 -   Multiple mediators
 
-### Causal mediation analysis is an extension of the traditional approach by:
+### Causal mediation analysis is an extension of the traditional approach:
 
 -   Outlining all confounding assumptions needed
 -   Handling non-linearity and interaction
@@ -44,21 +46,6 @@ these straightforward cause-and-effect relationships are intuitive and
 help us navigate the world, they become significantly more complex when
 we explore health outcomes.
 
-::: callout-note
-## Notation
-
-A = received treatment/intervention/exposure (e.g., 1 = intervention, 0
-= no intervention)
-
-Y = observed outcome (e.g., 1 = developed the outcome, 0 = no outcome)
-
-$Y^{a=1}$ = Counterfactual outcome under treatment a=1 (i.e., the
-outcome had everyone, counter to the fact, received treatment a = 1)
-
-$Y^{a=0}$ = Counterfactual outcome under treatment a =0 (i.e., the
-outcome had everyone, counter to the fact, received treatment a = 0)
-:::
-
 ### Individual causal effect
 
 When investigating health outcomes, we would ideally want to know if you
@@ -73,6 +60,21 @@ your blood glucose levels again. If there is a difference between your
 two outcomes, then we say there is a causal effect.
 
 But we can never do this in the real world.
+
+::: callout-note
+## Notation
+
+A = received treatment/intervention/exposure (e.g., 1 = intervention, 0
+= no intervention)
+
+Y = observed outcome (e.g., 1 = developed the outcome, 0 = no outcome)
+
+$Y^{a=1}$ = Counterfactual outcome under treatment a=1 (i.e., the
+outcome had everyone, counter to the fact, received treatment a = 1)
+
+$Y^{a=0}$ = Counterfactual outcome under treatment a =0 (i.e., the
+outcome had everyone, counter to the fact, received treatment a = 0)
+:::
 
 ### Average causal effect
 
