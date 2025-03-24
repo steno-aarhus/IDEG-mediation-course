@@ -302,7 +302,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#casual-mediation-effects" id="toc-casual-mediation-effects" class="nav-link" data-scroll-target="#casual-mediation-effects"><span class="header-section-number">6.4</span> Casual Mediation Effects</a>
   <ul class="collapse">
-  <li><a href="#defining-estimands" id="toc-defining-estimands" class="nav-link" data-scroll-target="#defining-estimands"><span class="header-section-number">6.4.1</span> Defining estimands</a></li>
+  <li><a href="#better-definitions" id="toc-better-definitions" class="nav-link" data-scroll-target="#better-definitions"><span class="header-section-number">6.4.1</span> Better Definitions</a></li>
   <li><a href="#controlled-direct-effect" id="toc-controlled-direct-effect" class="nav-link" data-scroll-target="#controlled-direct-effect"><span class="header-section-number">6.4.2</span> Controlled direct effect</a></li>
   <li><a href="#pure-natural-direct-effect" id="toc-pure-natural-direct-effect" class="nav-link" data-scroll-target="#pure-natural-direct-effect"><span class="header-section-number">6.4.3</span> (Pure) Natural direct effect</a></li>
   <li><a href="#total-natural-indirect-effect" id="toc-total-natural-indirect-effect" class="nav-link" data-scroll-target="#total-natural-indirect-effect"><span class="header-section-number">6.4.4</span> (Total) Natural indirect effect</a></li>
@@ -425,7 +425,7 @@ Notation
 </blockquote>
 <p>We can randomely assigning one group to consume more red meat and the other group to consume more of something else over 1 year. Then we compare the average blood glucose levels after 1 year in each of the groups. If there is a difference, we could say there is an average causal effect.</p>
 <p>More formally we can now define a causal effect <span class="citation" data-cites="hernan_definition_2004">(<a href="#ref-hernan_definition_2004" role="doc-biblioref">1</a>)</span>:</p>
-<p>$$E[Y^{a=1} = 1] - E[Y^{a=0} = 1] \ne 0$</p>
+<p>$E[Y^{a=1} = 1] - E[Y^{a=0} = 1] $</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -450,7 +450,7 @@ Notation
 <p>When we want to understand not just <strong>if</strong>, but <strong>how</strong> red meat consumption affects blood glucose, we need to consider mediating factors. For example:</p>
 <p>Will eating more red meat increase my body fat percentage, which in turn increases my blood glucose levels?</p>
 <p>This requires us to decompose the total effect into direct and indirect pathways. For natural mediation effects, we need to consider scenarios that cross between different possible worlds, such as:</p>
-<p>What would my blood glucose level be if I ate more red meat (treatment = 1), BUT my body fat percentage remained at the level it would have been had I NOT eaten more red meat (mediator at level from treatment = 0)?</p>
+<p>What would my blood glucose level be if I ate more red meat (treatment = 1), BUT my body fat percentage remained at the level it would have been had I NOT eaten more red meat (mediator at level from treatment = 0)? This is then compared to what my blood glucose would be if both my red meat consumption AND my body fat percentage were at their treated levels (treatment = 1, mediator at level from treatment = 1).</p>
 <p>These <strong>cross-world counterfactuals</strong> combine elements from two incompatible realities. They cannot be directly observed even in principle, which creates fundamental identification challenges.</p>
 </section>
 <section id="core-causal-assumptions" class="level2" data-number="6.3">
@@ -462,7 +462,7 @@ Notation
 <div id="fig-causation-association" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-causation-association-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="sessions/images/causation-association.png" class="img-fluid figure-img">
+<img src="images/causation-association.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-causation-association-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6.1: Association versus Causation: When we observe only a subset of the outcomes across exposure groups, we have an association rather than causation.
@@ -496,7 +496,7 @@ Note
 <li>Link counterfactual outcomes with observed outcomes</li>
 </ul>
 <p><span class="math inline">\(Y^a = Y\)</span> for every individual with A = a.</p>
-<p>The observed outcome for all treated equals the outcome if they had received the treatment.</p>
+<p>The observed outcome for all treated equals the outcome if they had received the treatment (the potential outcome).</p>
 <ul>
 <li>Positivity</li>
 </ul>
@@ -520,8 +520,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-5c9e3810363a55e48086" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-5c9e3810363a55e48086">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-f4022cce45af09aa9c3c" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-f4022cce45af09aa9c3c">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -529,8 +529,8 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-ab57e2770383804d99f9" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-ab57e2770383804d99f9">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-37093b50a9e18bef0a26" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-37093b50a9e18bef0a26">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
@@ -538,8 +538,10 @@ Note
 </section>
 <section id="casual-mediation-effects" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="casual-mediation-effects"><span class="header-section-number">6.4</span> Casual Mediation Effects</h2>
-<section id="defining-estimands" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="defining-estimands"><span class="header-section-number">6.4.1</span> Defining estimands</h3>
+<section id="better-definitions" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="better-definitions"><span class="header-section-number">6.4.1</span> Better Definitions</h3>
+<section id="defining-estimands" class="level4" data-number="6.4.1.1">
+<h4 data-number="6.4.1.1" class="anchored" data-anchor-id="defining-estimands"><span class="header-section-number">6.4.1.1</span> Defining estimands</h4>
 <p>Imagine we have a hypothetical randomized controlled trial where we give participants treatment or no treatment on a specific outcome Y.</p>
 <p><span class="math inline">\(Y^{a=1} - Y^{a=0}\)</span></p>
 <p>For mediation, we are also interested in the effect of a mediator on this pathway. Now image that we also intervene on the mediator in a new hypothetical randomized controlled trial.</p>
@@ -568,6 +570,7 @@ Notation
 <li>natural indirect effect (NIE)</li>
 </ul>
 </section>
+</section>
 <section id="controlled-direct-effect" class="level3" data-number="6.4.2">
 <h3 data-number="6.4.2" class="anchored" data-anchor-id="controlled-direct-effect"><span class="header-section-number">6.4.2</span> Controlled direct effect</h3>
 <p>The effect of A on Y not mediated through M. Fixing the value of M to m.</p>
@@ -581,7 +584,7 @@ Notation
 <p>The effect that would remain, if we were to disable the pathway from exposure to mediator.</p>
 <p><span class="math inline">\(Y^{a=1,M_a=0}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
 <p>The PNDE is how much the outcome would change if the exposure was set at a = 1 versus a* = 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
-<p>Note that the word “natural” refers to the nested counterfactual, the level the mediator would have taken in the absence of exposure. What it would naturally have been in the absence of exposure.</p>
+<p>Note that the word “natural” refers to the nested counterfactual, the level the mediator would have taken in the absence of exposure.</p>
 </section>
 <section id="total-natural-indirect-effect" class="level3" data-number="6.4.4">
 <h3 data-number="6.4.4" class="anchored" data-anchor-id="total-natural-indirect-effect"><span class="header-section-number">6.4.4</span> (Total) Natural indirect effect</h3>
@@ -605,12 +608,12 @@ Decomposition
 </section>
 <section id="total-natural-direct-effect" class="level3" data-number="6.4.5">
 <h3 data-number="6.4.5" class="anchored" data-anchor-id="total-natural-direct-effect"><span class="header-section-number">6.4.5</span> Total natural direct effect</h3>
-<p><span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=1}\)</span></p>
+<p>TNDE = <span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=1}\)</span></p>
 <p>Note, different from above in that the mediator is kept at the level it would have taken in the <strong>presence</strong> of the exposure.</p>
 </section>
 <section id="pure-natural-indirect-effect" class="level3" data-number="6.4.6">
 <h3 data-number="6.4.6" class="anchored" data-anchor-id="pure-natural-indirect-effect"><span class="header-section-number">6.4.6</span> Pure natural indirect effect</h3>
-<p><span class="math inline">\(Y^{a=0,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
+<p>PNIE = <span class="math inline">\(Y^{a=0,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
 <p>Note, this is different from the TNIE in that the exposure is set to no intervention.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -646,7 +649,7 @@ Decomposition
 <p>Proportion mediated:</p>
 <p><span class="math inline">\(PM = NIE / TE\)</span></p>
 <p>Proportion eliminated:</p>
-<p><span class="math inline">\(PE = (TE-CDE(m)) / TE\)</span></p>
+<p><span class="math inline">\(PE = (TE-CDE) / TE\)</span></p>
 </section>
 </section>
 <section id="causal-mediation-estimation-approaches" class="level2" data-number="6.5">
@@ -665,7 +668,7 @@ Decomposition
 <p>Neither the product method nor the difference method in traditional mediation analysis can effectively account for interaction effects or non-linear relationships between variables. Traditional methods also lack attention to confounding and temporallity.</p>
 <p>Causal mediation analysis addresses these limitations through more sophisticated approaches. Specifically, it can:</p>
 <ul>
-<li><p>Constructing a comprehensive causal model that explicitly incorporates non-linear relationships and interaction effects. Counterfactual approaches can better handle complex, non-parametric relationships</p></li>
+<li><p>Constructing a comprehensive causal model that explicitly incorporates non-linear relationships and interaction effects. Counterfactual approaches can better handle complex, non-parametric relationships.</p></li>
 <li><p>Decomposition of effects: Counterfactual methods allow for more nuanced decomposition of total effects into direct and indirect effects, especially in the presence of treatment-mediator interactions</p></li>
 <li><p>Counterfactual frameworks extend more naturally to settings with multiple mediators</p></li>
 </ul>
@@ -674,21 +677,8 @@ Decomposition
 <h2 data-number="6.7" class="anchored" data-anchor-id="practical-examples-using-r-package"><span class="header-section-number">6.7</span> Practical Examples using R package</h2>
 <p>We can easily conduct mediation analysis using R package once you understand the basic concepts of mediation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This includes readr, or use library(readr) specifically</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>nhanes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/NHANES.csv"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This includes readr, or use library(readr) specifically</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>nhanes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/NHANES.csv"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 10000 Columns: 76
 ── Column specification ────────────────────────────────────────────────────────
@@ -699,26 +689,26 @@ dbl (45): ID, Age, AgeMonths, HHIncomeMid, Poverty, HomeRooms, Weight, Lengt...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> nhanes <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(ID,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">w1 =</span> Age,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">w2 =</span> Gender,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">w3 =</span> Education,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">w4 =</span> Smoke100,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">a =</span> PhysActive,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">m =</span> BMI, </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> Pulse, </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">y2 =</span> Diabetes)  <span class="sc">%&gt;%</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> nhanes <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(ID,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">w1 =</span> Age,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">w2 =</span> Gender,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">w3 =</span> Education,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">w4 =</span> Smoke100,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">a =</span> PhysActive,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">m =</span> BMI, </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> Pulse, </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">y2 =</span> Diabetes)  <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>First, load the library:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(CMAverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(CMAverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we can plot the DAG based on the research question:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmdag</span>(<span class="at">outcome =</span> <span class="st">"y"</span>, <span class="at">exposure =</span> <span class="st">"a"</span>, <span class="at">mediator =</span> <span class="fu">c</span>(<span class="st">"m"</span>), </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">basec =</span> <span class="fu">c</span>(<span class="st">"W1"</span>, <span class="st">"W2"</span>, <span class="st">"W3"</span>, <span class="st">"W4"</span>), <span class="at">postc =</span> <span class="cn">NULL</span>, <span class="at">node =</span> <span class="cn">FALSE</span>, <span class="at">text_col =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmdag</span>(<span class="at">outcome =</span> <span class="st">"y"</span>, <span class="at">exposure =</span> <span class="st">"a"</span>, <span class="at">mediator =</span> <span class="fu">c</span>(<span class="st">"m"</span>), </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">basec =</span> <span class="fu">c</span>(<span class="st">"W1"</span>, <span class="st">"W2"</span>, <span class="st">"W3"</span>, <span class="st">"W4"</span>), <span class="at">postc =</span> <span class="cn">NULL</span>, <span class="at">node =</span> <span class="cn">FALSE</span>, <span class="at">text_col =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -729,29 +719,29 @@ dbl (45): ID, Age, AgeMonths, HHIncomeMid, Poverty, HomeRooms, Weight, Lengt...
 </div>
 <p>Then we can start estimate causal mediation effects using the function ‘cmest’.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>res_rb <span class="ot">&lt;-</span> <span class="fu">cmest</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data, </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"rb"</span>,     <span class="co">#rb means regression based </span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="st">"y"</span>,    <span class="co">#this is the name of outcome</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">exposure =</span> <span class="st">"a"</span>,   <span class="co">#this is the name of exposure</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mediator =</span> <span class="st">"m"</span>,   <span class="co">#this is the name of mediator</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">basec =</span> <span class="fu">c</span>(<span class="st">"w1"</span>),  <span class="co">#this is confounding factors, you can add more confounders here </span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">EMint =</span> <span class="cn">TRUE</span>,     <span class="co">#whether include interaction, TRUE indicates to include </span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">mreg =</span> <span class="fu">list</span>(<span class="st">"linear"</span>), <span class="co">#specify the mediator model, we use linear regression here </span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">yreg =</span> <span class="st">"linear"</span>,  <span class="co">#specify the outcome model, we use linear regression here </span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">astar =</span> <span class="dv">0</span>,       <span class="co"># the level of exposure (not exposed)</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="dv">1</span>,           <span class="co"># the level of exposure (exposed)</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">mval =</span> <span class="fu">list</span>(<span class="fl">27.8</span>),  <span class="co">#specifiy the value of controlled mediator </span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimation =</span> <span class="st">"paramfunc"</span>, <span class="co">#parameteric function </span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">inference =</span> <span class="st">"delta"</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>res_rb <span class="ot">&lt;-</span> <span class="fu">cmest</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"rb"</span>,     <span class="co">#rb means regression based </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="st">"y"</span>,    <span class="co">#this is the name of outcome</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">exposure =</span> <span class="st">"a"</span>,   <span class="co">#this is the name of exposure</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mediator =</span> <span class="st">"m"</span>,   <span class="co">#this is the name of mediator</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">basec =</span> <span class="fu">c</span>(<span class="st">"w1"</span>),  <span class="co">#this is confounding factors, you can add more confounders here </span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">EMint =</span> <span class="cn">TRUE</span>,     <span class="co">#whether include interaction, TRUE indicates to include </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">mreg =</span> <span class="fu">list</span>(<span class="st">"linear"</span>), <span class="co">#specify the mediator model, we use linear regression here </span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">yreg =</span> <span class="st">"linear"</span>,  <span class="co">#specify the outcome model, we use linear regression here </span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">astar =</span> <span class="dv">0</span>,       <span class="co"># the level of exposure (not exposed)</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="dv">1</span>,           <span class="co"># the level of exposure (exposed)</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">mval =</span> <span class="fu">list</span>(<span class="fl">27.8</span>),  <span class="co">#specifiy the value of controlled mediator </span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimation =</span> <span class="st">"paramfunc"</span>, <span class="co">#parameteric function </span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">inference =</span> <span class="st">"delta"</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in estinf(): a is not a value of the exposure; Yes is used</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in estinf(): astar is not a value of the exposure; No is used</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res_rb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res_rb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Causal Mediation Analysis
 
@@ -847,22 +837,22 @@ $basecval[[1]]
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sim_rb <span class="ot">&lt;-</span> <span class="fu">cmest</span>(</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data, </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"rb"</span>,     <span class="co">#rb means regression based </span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="st">"y"</span>,    <span class="co">#this is the name of outcome</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">exposure =</span> <span class="st">"a"</span>,   <span class="co">#this is the name of exposure</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mediator =</span> <span class="st">"m"</span>,   <span class="co">#this is the name of mediator</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">basec =</span> <span class="fu">c</span>(<span class="st">"w1"</span>),  <span class="co">#this is confounding factors, you can add more confounders here </span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">EMint =</span> <span class="cn">TRUE</span>,     <span class="co">#whether include interaction, TRUE indicates to include </span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">mreg =</span> <span class="fu">list</span>(<span class="st">"linear"</span>), <span class="co">#specify the mediator model, we use linear regression here </span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">yreg =</span> <span class="st">"linear"</span>,  <span class="co">#specify the outcome model, we use linear regression here </span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">astar =</span> <span class="dv">0</span>,       <span class="co"># the level of exposure (not exposed)</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="dv">1</span>,           <span class="co"># the level of exposure (exposed)</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">mval =</span> <span class="fu">list</span>(<span class="fl">27.8</span>),  <span class="co">#specifiy the value of controlled mediator </span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimation =</span> <span class="st">"imputation"</span>,  <span class="do">## use imputation</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">inference =</span> <span class="st">"bootstrap"</span>,</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">nboot =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sim_rb <span class="ot">&lt;-</span> <span class="fu">cmest</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"rb"</span>,     <span class="co">#rb means regression based </span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="st">"y"</span>,    <span class="co">#this is the name of outcome</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">exposure =</span> <span class="st">"a"</span>,   <span class="co">#this is the name of exposure</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mediator =</span> <span class="st">"m"</span>,   <span class="co">#this is the name of mediator</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">basec =</span> <span class="fu">c</span>(<span class="st">"w1"</span>),  <span class="co">#this is confounding factors, you can add more confounders here </span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">EMint =</span> <span class="cn">TRUE</span>,     <span class="co">#whether include interaction, TRUE indicates to include </span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">mreg =</span> <span class="fu">list</span>(<span class="st">"linear"</span>), <span class="co">#specify the mediator model, we use linear regression here </span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">yreg =</span> <span class="st">"linear"</span>,  <span class="co">#specify the outcome model, we use linear regression here </span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">astar =</span> <span class="dv">0</span>,       <span class="co"># the level of exposure (not exposed)</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="dv">1</span>,           <span class="co"># the level of exposure (exposed)</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">mval =</span> <span class="fu">list</span>(<span class="fl">27.8</span>),  <span class="co">#specifiy the value of controlled mediator </span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimation =</span> <span class="st">"imputation"</span>,  <span class="do">## use imputation</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">inference =</span> <span class="st">"bootstrap"</span>,</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">nboot =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   |                                                                            
@@ -917,7 +907,7 @@ $basecval[[1]]
   |                                                                            
   |======================================================================| 100%</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sim_rb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sim_rb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Causal Mediation Analysis
 
@@ -974,22 +964,22 @@ Number of Fisher Scoring iterations: 2
 Direct counterfactual imputation estimation with 
  bootstrap standard errors, percentile confidence intervals and p-values 
  
-               Estimate  Std.error    95% CIL 95% CIU  P.val    
-cde          -2.1352022  0.2232183 -2.4705517  -1.793 &lt;2e-16 ***
-pnde         -1.8983877  0.2509170 -2.2538392  -1.497 &lt;2e-16 ***
-tnde         -2.1347830  0.2212147 -2.4548210  -1.791 &lt;2e-16 ***
-pnie         -0.2702775  0.0671809 -0.3821416  -0.151 &lt;2e-16 ***
-tnie         -0.5066728  0.0904623 -0.6361043  -0.392 &lt;2e-16 ***
-te           -2.4050605  0.2303537 -2.7341480  -2.098 &lt;2e-16 ***
-intref        0.2368144  0.0954574  0.1064196   0.419 &lt;2e-16 ***
-intmed       -0.2363953  0.0862268 -0.3597793  -0.097 &lt;2e-16 ***
-cde(prop)     0.8877956  0.0326492  0.8438746   0.946 &lt;2e-16 ***
-intref(prop) -0.0984651  0.0442902 -0.1850916  -0.046 &lt;2e-16 ***
-intmed(prop)  0.0982908  0.0402630  0.0421821   0.159 &lt;2e-16 ***
-pnie(prop)    0.1123787  0.0280212  0.0664970   0.158 &lt;2e-16 ***
-pm            0.2106695  0.0449044  0.1627800   0.294 &lt;2e-16 ***
-int          -0.0001743  0.0083350 -0.0290346   0.001    0.2    
-pe            0.1122044  0.0326492  0.0535829   0.156 &lt;2e-16 ***
+              Estimate Std.error   95% CIL 95% CIU  P.val    
+cde          -2.135202  0.234016 -2.475688  -1.621 &lt;2e-16 ***
+pnde         -1.888208  0.229663 -2.217826  -1.412 &lt;2e-16 ***
+tnde         -2.124604  0.234536 -2.461971  -1.613 &lt;2e-16 ***
+pnie         -0.270278  0.082243 -0.410499  -0.131 &lt;2e-16 ***
+tnie         -0.506673  0.070744 -0.598585  -0.368 &lt;2e-16 ***
+te           -2.394881  0.226203 -2.634835  -1.855 &lt;2e-16 ***
+intref        0.246994  0.101562  0.102522   0.422 &lt;2e-16 ***
+intmed       -0.236395  0.093172 -0.407655  -0.097 &lt;2e-16 ***
+cde(prop)     0.891569  0.041607  0.820823   0.964 &lt;2e-16 ***
+intref(prop) -0.103134  0.045619 -0.195121  -0.042 &lt;2e-16 ***
+intmed(prop)  0.098709  0.040666  0.040018   0.170 &lt;2e-16 ***
+pnie(prop)    0.112856  0.035731  0.054420   0.179 &lt;2e-16 ***
+pm            0.211565  0.033453  0.145987   0.256 &lt;2e-16 ***
+int          -0.004426  0.010147 -0.031576   0.004    0.3    
+pe            0.108431  0.041607  0.036158   0.179 &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1008,8 +998,8 @@ $mval[[1]]
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcmest</span>(res_rb) <span class="sc">+</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.text.x =</span> ggplot2<span class="sc">::</span><span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">30</span>, <span class="at">vjust =</span> <span class="fl">0.8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcmest</span>(res_rb) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.text.x =</span> ggplot2<span class="sc">::</span><span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">30</span>, <span class="at">vjust =</span> <span class="fl">0.8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1024,8 +1014,8 @@ $mval[[1]]
 <p>You can also estimate causal mediation effects using regression-based models by implementing the calculation steps manually</p>
 <p>We can now run a model for the mediator only adjusting for a single variable. In practice you would adjust for many more variables to satisfy the confounding assumptions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lm_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(m <span class="sc">~</span> a <span class="sc">+</span> w1 , <span class="at">data =</span> data) </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>lm_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(m <span class="sc">~</span> a <span class="sc">+</span> w1 , <span class="at">data =</span> data) </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1051,8 +1041,8 @@ F-statistic: 74.19 on 2 and 6913 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Here, we see that physical activity (a) is associated with lower BMI(m).</p>
 <p>Now, we run the model for the outcome, notice we have included an interaction term.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lm_y <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> a <span class="sc">+</span> m <span class="sc">+</span> a<span class="sc">:</span>m <span class="sc">+</span> w1 , <span class="at">data =</span> data) </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lm_y <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> a <span class="sc">+</span> m <span class="sc">+</span> a<span class="sc">:</span>m <span class="sc">+</span> w1 , <span class="at">data =</span> data) </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1093,9 +1083,9 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>For the controlled direct effect we set m to a specific value.</p>
 <p>Let’s look at the distribution of m (BMI).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span>  </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(m) <span class="sc">%&gt;%</span>   </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span>  </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(m) <span class="sc">%&gt;%</span>   </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       m        
  Min.   :15.02  
@@ -1105,12 +1095,12 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
  3rd Qu.:32.22  
  Max.   :81.25  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>median_m <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">median</span>(data<span class="sc">$</span>m), <span class="at">digits =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>median_m <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">median</span>(data<span class="sc">$</span>m), <span class="at">digits =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this example we will set it to the median of BMI, at 27.8 which is a low level. You can also try to set BMI to 25kg/m2.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>CDE_m <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> median_m) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(CDE_m), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>CDE_m <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> median_m) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(CDE_m), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.14</code></pre>
 </div>
@@ -1124,16 +1114,16 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><span class="math inline">\(PNDE = (\sigma_1 + \sigma_3 * (\beta_0 + \beta_1*a^* + \beta'_2*w))(a - a^*)\)</span></p>
 <p>We set the value for the confounder w1 for the interaction to be the mean value of w1.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>mean_w1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(data<span class="sc">$</span>w1) </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>mean_w1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>mean_w1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(data<span class="sc">$</span>w1) </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>mean_w1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 47.17467</code></pre>
 </div>
 </div>
 <p>Then we calculate the PNDE.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>PNDE <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> (lm_m<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">0</span> <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> mean_w1))) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(PNDE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>PNDE <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> (lm_m<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">0</span> <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> mean_w1))) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(PNDE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.88</code></pre>
 </div>
@@ -1147,8 +1137,8 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>TNDE can be obtained by this formula:</p>
 <p><span class="math inline">\(TNDE = (\sigma_1 + \sigma_3 * (\beta_0 + beta_1*a + \beta'_2*w))(a - a^*)\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>TNDE <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> (lm_m<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">1</span> <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> mean_w1))) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)  </span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TNDE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>TNDE <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> (lm_m<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">1</span> <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> mean_w1))) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)  </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TNDE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.12</code></pre>
 </div>
@@ -1161,8 +1151,8 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The TNIE can be obtained by this formula:</p>
 <p><span class="math inline">\(TNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a)(a - a^*)\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>TNIE <span class="ot">&lt;-</span> ((lm_y<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">1</span>)) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)  </span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TNIE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>TNIE <span class="ot">&lt;-</span> ((lm_y<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">1</span>)) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)  </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TNIE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.51</code></pre>
 </div>
@@ -1177,8 +1167,8 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The PNIE can be obtained by this formula:</p>
 <p><span class="math inline">\(PNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a^*)(a - a^*)\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>PNIE <span class="ot">&lt;-</span> ((lm_y<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">0</span>)) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)  </span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(PNIE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>PNIE <span class="ot">&lt;-</span> ((lm_y<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">0</span>)) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)  </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(PNIE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.27</code></pre>
 </div>
@@ -1191,8 +1181,8 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The total effect can be decomposed as:</p>
 <p><span class="math inline">\(TE = PNDE + TNIE\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>TE <span class="ot">&lt;-</span> PNDE <span class="sc">+</span> TNIE  </span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>TE <span class="ot">&lt;-</span> PNDE <span class="sc">+</span> TNIE  </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.39</code></pre>
 </div>
@@ -1204,8 +1194,8 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>From this, we can calculate the proportion mediated.</p>
 <p><span class="math inline">\(PM = \frac{TNIE}{TE}\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>PM <span class="ot">&lt;-</span> TNIE <span class="sc">/</span> TE  </span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(PM) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>PM <span class="ot">&lt;-</span> TNIE <span class="sc">/</span> TE  </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(PM) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 21.18849</code></pre>
 </div>
