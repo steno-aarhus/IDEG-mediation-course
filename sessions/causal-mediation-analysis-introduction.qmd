@@ -144,6 +144,11 @@ observe the outcome under different treatments.
 When we only have a subset of the outcomes, we have an association. This
 is illustrated in @fig-causation-association.
 
+![Association versus Causation: When we observe only a subset of the
+outcomes across exposure groups, we have an association rather than
+causation.](sessions/images/causation-association.png){#fig-causation-association}
+
+::: callout-note
 -   Causal Assumptions
 
     -   Exchangeability
@@ -181,6 +186,7 @@ is illustrated in @fig-causation-association.
     Image if we don't have anyone with A = 0 among those with L=1 (e.g.
     long education), then we cannot estimate the conditional probability
     of the outcome.
+:::
 
 ### Confounding assumptions in Causal Mediation Analysis
 
@@ -352,13 +358,6 @@ Note that the word "natural" refers to the nested counterfactual, the
 level the mediator would have taken in the absence of exposure. What it
 would naturally have been in the absence of exposure.
 
-### Total natural direct effect
-
-$Y^{a=1,M_a=1}$ - $Y^{a=0,M_a=1}$
-
-Note, different from above in that the mediator is kept at the level it
-would have taken in the **presence** of the exposure.
-
 ### (Total) Natural indirect effect
 
 The effect of the mediator pathway.
@@ -372,12 +371,35 @@ it would take if a\* = 0 to the level it would take if a = 1.
 Note that exposure has to have an effect on M otherwise this will be
 zero.
 
+::: callout-note
+## Decomposition
+
+TE = PNDE + TNIE this decomposition usually is for research question:
+'is there a mediated effect?' or 'is the causal effect mediated by the
+proposed mediator?'
+:::
+
+### Total natural direct effect
+
+$Y^{a=1,M_a=1}$ - $Y^{a=0,M_a=1}$
+
+Note, different from above in that the mediator is kept at the level it
+would have taken in the **presence** of the exposure.
+
 ### Pure natural indirect effect
 
 $Y^{a=0,M_a=1}$ - $Y^{a=0,M_a=0}$
 
 Note, this is different from the TNIE in that the exposure is set to no
 intervention.
+
+::: callout-note
+## Decomposition
+
+TE = PNIE + TNDE this decomposition usually is for research question:
+'does the exposure influence the outcome in other ways, not through this
+mediator?'
+:::
 
 ### Interaction effects
 
@@ -432,7 +454,14 @@ $E(Y|A = a, M = m, W = w) = \sigma_0 + \sigma_1a + \sigma_2m + \sigma_3am + \sig
 
 From these two regression models we can estimate the CDE, NDE and NIE.
 
-## Non-linearity and interactions
+While regression-based approaches are commonly used, several alternative
+estimation methods are available, including Inverse probability
+weighting (IPW), G-computation, and structural equation models (SEM).
+
+Note: additional approaches also exists, but we will not focus on these
+in this course.
+
+## Why Causal Mediation Analysis?
 
 Neither the product method nor the difference method in traditional
 mediation analysis can effectively account for interaction effects or
@@ -450,9 +479,6 @@ sophisticated approaches. Specifically, it can:
         mediator to certain values
     -   Predicting outcomes using the developed causal model
     -   Comparing predicted outcomes to understand causal mechanisms
-
-Note: additional approaches also exists, but we will not focus on these
-in this course.
 
 ## Practical Examples using R package
 
@@ -476,8 +502,23 @@ data <- nhanes %>%
                 na.omit()
 ```
 
+First, load the library:
+
 ```{r}
 library(CMAverse)
+```
+
+Next, we can plot the DAG based on the research question:
+
+```{r}
+cmdag(outcome = "y", exposure = "a", mediator = c("m"), 
+      basec = c("W1", "W2", "W3", "W4"), postc = NULL, node = FALSE, text_col = "black")
+```
+
+Then we can start estimate causal mediation effects using the function
+'cmest'.
+
+```{r}
 res_rb <- cmest(
   data = data, 
   model = "rb",     #rb means regression based 
@@ -497,12 +538,35 @@ res_rb <- cmest(
 summary(res_rb)
 ```
 
+```{r}
+sim_rb <- cmest(
+  data = data, 
+  model = "rb",     #rb means regression based 
+  outcome = "y",    #this is the name of outcome
+  exposure = "a",   #this is the name of exposure
+  mediator = "m",   #this is the name of mediator
+  basec = c("w1"),  #this is confounding factors, you can add more confounders here 
+  EMint = TRUE,     #whether include interaction, TRUE indicates to include 
+  mreg = list("linear"), #specify the mediator model, we use linear regression here 
+  yreg = "linear",  #specify the outcome model, we use linear regression here 
+  astar = 0,       # the level of exposure (not exposed)
+  a = 1,           # the level of exposure (exposed)
+  mval = list(27.8),  #specifiy the value of controlled mediator 
+  estimation = "imputation",  ## use imputation
+  inference = "bootstrap",
+  nboot = 20)
+summary(sim_rb)
+```
+
+```{r}
+ggcmest(res_rb) +
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 30, vjust = 0.8))
+```
+
 ## Example-not using R package
 
-The example here include a continuous treatment, mediator and outcome.
-We use these equations on an additive scale because it is easier to
-explain the intuition behind the estimands. Similar equations exist for
-other types and combinations of variables.
+You can also estimate causal mediation effects using regression-based
+models by implementing the calculation steps manually
 
 ```{r, echo = FALSE}
 library(tidyverse)
