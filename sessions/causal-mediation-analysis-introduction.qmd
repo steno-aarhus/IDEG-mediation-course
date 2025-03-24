@@ -465,7 +465,8 @@ in this course.
 
 Neither the product method nor the difference method in traditional
 mediation analysis can effectively account for interaction effects or
-non-linear relationships between variables.
+non-linear relationships between variables. Traditional methods also
+lack attention to confounding and temporallity.
 
 Causal mediation analysis addresses these limitations through more
 sophisticated approaches. Specifically, it can:
