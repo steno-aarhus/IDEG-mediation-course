@@ -287,39 +287,45 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-a-cause" id="toc-what-is-a-cause" class="nav-link active" data-scroll-target="#what-is-a-cause"><span class="header-section-number">6.1</span> What is a cause?</a>
+  <li><a href="#recall-the-major-limitations-of-traditional-mediation-methods" id="toc-recall-the-major-limitations-of-traditional-mediation-methods" class="nav-link active" data-scroll-target="#recall-the-major-limitations-of-traditional-mediation-methods"><span class="header-section-number">6.0.1</span> Recall the major limitations of traditional mediation methods:</a></li>
+  <li><a href="#causal-mediation-analysis-is-an-extension-of-the-traditional-approach" id="toc-causal-mediation-analysis-is-an-extension-of-the-traditional-approach" class="nav-link" data-scroll-target="#causal-mediation-analysis-is-an-extension-of-the-traditional-approach"><span class="header-section-number">6.0.2</span> Causal mediation analysis is an extension of the traditional approach:</a></li>
+  <li><a href="#what-is-a-cause" id="toc-what-is-a-cause" class="nav-link" data-scroll-target="#what-is-a-cause"><span class="header-section-number">6.1</span> What is a cause?</a>
   <ul class="collapse">
   <li><a href="#individual-causal-effect" id="toc-individual-causal-effect" class="nav-link" data-scroll-target="#individual-causal-effect"><span class="header-section-number">6.1.1</span> Individual causal effect</a></li>
   <li><a href="#average-causal-effect" id="toc-average-causal-effect" class="nav-link" data-scroll-target="#average-causal-effect"><span class="header-section-number">6.1.2</span> Average causal effect</a></li>
-  <li><a href="#causal-mediation-effect" id="toc-causal-mediation-effect" class="nav-link" data-scroll-target="#causal-mediation-effect"><span class="header-section-number">6.1.3</span> Causal mediation effect</a></li>
   </ul></li>
-  <li><a href="#causal-mediation-analysis" id="toc-causal-mediation-analysis" class="nav-link" data-scroll-target="#causal-mediation-analysis"><span class="header-section-number">6.3</span> Causal mediation analysis</a></li>
-  <li><a href="#confounding-assumptions" id="toc-confounding-assumptions" class="nav-link" data-scroll-target="#confounding-assumptions"><span class="header-section-number">6.4</span> Confounding assumptions</a></li>
-  <li><a href="#non-linearity-and-interactions" id="toc-non-linearity-and-interactions" class="nav-link" data-scroll-target="#non-linearity-and-interactions"><span class="header-section-number">6.5</span> Non-linearity and interactions</a></li>
-  <li><a href="#causal-mediation-estimation" id="toc-causal-mediation-estimation" class="nav-link" data-scroll-target="#causal-mediation-estimation"><span class="header-section-number">6.6</span> Causal mediation estimation</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">6.7</span> Example</a>
+  <li><a href="#from-causal-effects-to-causal-mediation" id="toc-from-causal-effects-to-causal-mediation" class="nav-link" data-scroll-target="#from-causal-effects-to-causal-mediation"><span class="header-section-number">6.2</span> From Causal effects to Causal mediation</a></li>
+  <li><a href="#core-causal-assumptions" id="toc-core-causal-assumptions" class="nav-link" data-scroll-target="#core-causal-assumptions"><span class="header-section-number">6.3</span> Core Causal Assumptions</a>
   <ul class="collapse">
-  <li><a href="#controlled-direct-effect" id="toc-controlled-direct-effect" class="nav-link" data-scroll-target="#controlled-direct-effect"><span class="header-section-number">6.7.1</span> Controlled direct effect</a></li>
-  <li><a href="#pure-natural-direct-effect" id="toc-pure-natural-direct-effect" class="nav-link" data-scroll-target="#pure-natural-direct-effect"><span class="header-section-number">6.7.2</span> (Pure) natural direct effect</a></li>
-  <li><a href="#total-natural-direct-effect" id="toc-total-natural-direct-effect" class="nav-link" data-scroll-target="#total-natural-direct-effect"><span class="header-section-number">6.7.3</span> (Total) natural direct effect</a></li>
-  <li><a href="#total-natural-indirect-effect" id="toc-total-natural-indirect-effect" class="nav-link" data-scroll-target="#total-natural-indirect-effect"><span class="header-section-number">6.7.4</span> Total natural indirect effect</a></li>
-  <li><a href="#pure-natural-indirect-effect" id="toc-pure-natural-indirect-effect" class="nav-link" data-scroll-target="#pure-natural-indirect-effect"><span class="header-section-number">6.7.5</span> Pure natural indirect effect</a></li>
-  <li><a href="#total-effect" id="toc-total-effect" class="nav-link" data-scroll-target="#total-effect"><span class="header-section-number">6.7.6</span> Total effect</a></li>
-  <li><a href="#proportion-mediation" id="toc-proportion-mediation" class="nav-link" data-scroll-target="#proportion-mediation"><span class="header-section-number">6.7.7</span> Proportion mediation</a></li>
+  <li><a href="#association-vs-causation" id="toc-association-vs-causation" class="nav-link" data-scroll-target="#association-vs-causation"><span class="header-section-number">6.3.1</span> Association vs Causation</a></li>
+  <li><a href="#confounding-assumptions-in-causal-mediation-analysis" id="toc-confounding-assumptions-in-causal-mediation-analysis" class="nav-link" data-scroll-target="#confounding-assumptions-in-causal-mediation-analysis"><span class="header-section-number">6.3.2</span> Confounding assumptions in Causal Mediation Analysis</a></li>
   </ul></li>
-  <li><a href="#using-r-package" id="toc-using-r-package" class="nav-link" data-scroll-target="#using-r-package"><span class="header-section-number">6.8</span> Using R package</a></li>
-  <li><a href="#defining-estimands" id="toc-defining-estimands" class="nav-link" data-scroll-target="#defining-estimands"><span class="header-section-number">6.9</span> Defining estimands</a>
+  <li><a href="#casual-mediation-effects" id="toc-casual-mediation-effects" class="nav-link" data-scroll-target="#casual-mediation-effects"><span class="header-section-number">6.4</span> Casual Mediation Effects</a>
   <ul class="collapse">
-  <li><a href="#controlled-direct-effect-1" id="toc-controlled-direct-effect-1" class="nav-link" data-scroll-target="#controlled-direct-effect-1"><span class="header-section-number">6.9.1</span> Controlled direct effect</a></li>
-  <li><a href="#pure-natural-direct-effect-1" id="toc-pure-natural-direct-effect-1" class="nav-link" data-scroll-target="#pure-natural-direct-effect-1"><span class="header-section-number">6.9.2</span> (Pure) Natural direct effect</a></li>
-  <li><a href="#total-natural-direct-effect-1" id="toc-total-natural-direct-effect-1" class="nav-link" data-scroll-target="#total-natural-direct-effect-1"><span class="header-section-number">6.9.3</span> Total natural direct effect</a></li>
-  <li><a href="#total-natural-indirect-effect-1" id="toc-total-natural-indirect-effect-1" class="nav-link" data-scroll-target="#total-natural-indirect-effect-1"><span class="header-section-number">6.9.4</span> (Total) Natural indirect effect</a></li>
-  <li><a href="#pure-natural-indirect-effect-1" id="toc-pure-natural-indirect-effect-1" class="nav-link" data-scroll-target="#pure-natural-indirect-effect-1"><span class="header-section-number">6.9.5</span> Pure natural indirect effect</a></li>
-  <li><a href="#interaction-effects" id="toc-interaction-effects" class="nav-link" data-scroll-target="#interaction-effects"><span class="header-section-number">6.9.6</span> Interaction effects</a></li>
-  <li><a href="#effect-decomposition" id="toc-effect-decomposition" class="nav-link" data-scroll-target="#effect-decomposition"><span class="header-section-number">6.9.7</span> Effect decomposition</a></li>
-  <li><a href="#proportions" id="toc-proportions" class="nav-link" data-scroll-target="#proportions"><span class="header-section-number">6.9.8</span> Proportions</a></li>
+  <li><a href="#defining-estimands" id="toc-defining-estimands" class="nav-link" data-scroll-target="#defining-estimands"><span class="header-section-number">6.4.1</span> Defining estimands</a></li>
+  <li><a href="#controlled-direct-effect" id="toc-controlled-direct-effect" class="nav-link" data-scroll-target="#controlled-direct-effect"><span class="header-section-number">6.4.2</span> Controlled direct effect</a></li>
+  <li><a href="#pure-natural-direct-effect" id="toc-pure-natural-direct-effect" class="nav-link" data-scroll-target="#pure-natural-direct-effect"><span class="header-section-number">6.4.3</span> (Pure) Natural direct effect</a></li>
+  <li><a href="#total-natural-direct-effect" id="toc-total-natural-direct-effect" class="nav-link" data-scroll-target="#total-natural-direct-effect"><span class="header-section-number">6.4.4</span> Total natural direct effect</a></li>
+  <li><a href="#total-natural-indirect-effect" id="toc-total-natural-indirect-effect" class="nav-link" data-scroll-target="#total-natural-indirect-effect"><span class="header-section-number">6.4.5</span> (Total) Natural indirect effect</a></li>
+  <li><a href="#pure-natural-indirect-effect" id="toc-pure-natural-indirect-effect" class="nav-link" data-scroll-target="#pure-natural-indirect-effect"><span class="header-section-number">6.4.6</span> Pure natural indirect effect</a></li>
+  <li><a href="#interaction-effects" id="toc-interaction-effects" class="nav-link" data-scroll-target="#interaction-effects"><span class="header-section-number">6.4.7</span> Interaction effects</a></li>
+  <li><a href="#effect-decomposition" id="toc-effect-decomposition" class="nav-link" data-scroll-target="#effect-decomposition"><span class="header-section-number">6.4.8</span> Effect decomposition</a></li>
+  <li><a href="#proportions" id="toc-proportions" class="nav-link" data-scroll-target="#proportions"><span class="header-section-number">6.4.9</span> Proportions</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6.10</span> References</a></li>
+  <li><a href="#causal-mediation-estimation-approaches" id="toc-causal-mediation-estimation-approaches" class="nav-link" data-scroll-target="#causal-mediation-estimation-approaches"><span class="header-section-number">6.5</span> Causal Mediation Estimation Approaches</a></li>
+  <li><a href="#non-linearity-and-interactions" id="toc-non-linearity-and-interactions" class="nav-link" data-scroll-target="#non-linearity-and-interactions"><span class="header-section-number">6.6</span> Non-linearity and interactions</a></li>
+  <li><a href="#practical-examples-using-r-package" id="toc-practical-examples-using-r-package" class="nav-link" data-scroll-target="#practical-examples-using-r-package"><span class="header-section-number">6.7</span> Practical Examples using R package</a></li>
+  <li><a href="#example-not-using-r-package" id="toc-example-not-using-r-package" class="nav-link" data-scroll-target="#example-not-using-r-package"><span class="header-section-number">6.8</span> Example-not using R package</a>
+  <ul class="collapse">
+  <li><a href="#controlled-direct-effect-1" id="toc-controlled-direct-effect-1" class="nav-link" data-scroll-target="#controlled-direct-effect-1"><span class="header-section-number">6.8.1</span> Controlled direct effect</a></li>
+  <li><a href="#pure-natural-direct-effect-1" id="toc-pure-natural-direct-effect-1" class="nav-link" data-scroll-target="#pure-natural-direct-effect-1"><span class="header-section-number">6.8.2</span> (Pure) natural direct effect</a></li>
+  <li><a href="#total-natural-direct-effect-1" id="toc-total-natural-direct-effect-1" class="nav-link" data-scroll-target="#total-natural-direct-effect-1"><span class="header-section-number">6.8.3</span> (Total) natural direct effect</a></li>
+  <li><a href="#total-natural-indirect-effect-1" id="toc-total-natural-indirect-effect-1" class="nav-link" data-scroll-target="#total-natural-indirect-effect-1"><span class="header-section-number">6.8.4</span> Total natural indirect effect</a></li>
+  <li><a href="#pure-natural-indirect-effect-1" id="toc-pure-natural-indirect-effect-1" class="nav-link" data-scroll-target="#pure-natural-indirect-effect-1"><span class="header-section-number">6.8.5</span> Pure natural indirect effect</a></li>
+  <li><a href="#total-effect" id="toc-total-effect" class="nav-link" data-scroll-target="#total-effect"><span class="header-section-number">6.8.6</span> Total effect</a></li>
+  <li><a href="#proportion-mediation" id="toc-proportion-mediation" class="nav-link" data-scroll-target="#proportion-mediation"><span class="header-section-number">6.8.7</span> Proportion mediation</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6.9</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -346,9 +352,54 @@ window.Quarto = {
 
 
 <p>In this session we will go over fundamental concepts of causal inference in general and then focus more specifically on causal mediation analysis.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Objective of this session
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Foundational concepts in causal inference</li>
+<li>From causal effects to causal mediation</li>
+<li>Core causal assumptions</li>
+<li>Causal mediation effects</li>
+<li>Practical implementation using R</li>
+</ul>
+</div>
+</div>
+<section id="recall-the-major-limitations-of-traditional-mediation-methods" class="level3" data-number="6.0.1">
+<h3 data-number="6.0.1" class="anchored" data-anchor-id="recall-the-major-limitations-of-traditional-mediation-methods"><span class="header-section-number">6.0.1</span> Recall the major limitations of traditional mediation methods:</h3>
+<ul>
+<li>Non-linearity</li>
+<li>Interactions</li>
+<li>Confounding</li>
+<li>Multiple mediators</li>
+</ul>
+</section>
+<section id="causal-mediation-analysis-is-an-extension-of-the-traditional-approach" class="level3" data-number="6.0.2">
+<h3 data-number="6.0.2" class="anchored" data-anchor-id="causal-mediation-analysis-is-an-extension-of-the-traditional-approach"><span class="header-section-number">6.0.2</span> Causal mediation analysis is an extension of the traditional approach:</h3>
+<ul>
+<li>Outlining all confounding assumptions needed</li>
+<li>Handling non-linearity and interaction</li>
+<li>Clearly defining estimands of interest</li>
+<li>Different effect decompositions</li>
+</ul>
+</section>
 <section id="what-is-a-cause" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="what-is-a-cause"><span class="header-section-number">6.1</span> What is a cause?</h2>
 <p>We employ causal inference constantly in our daily lives. Consider a simple example: when you press a light switch, you expect the light to turn on. Or in another scenario, you anticipate that performing action A will result in outcome Y. In some instances, we can identify deterministic relationships where action A will lead to outcome Y. While these straightforward cause-and-effect relationships are intuitive and help us navigate the world, they become significantly more complex when we explore health outcomes.</p>
+<section id="individual-causal-effect" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="individual-causal-effect"><span class="header-section-number">6.1.1</span> Individual causal effect</h3>
+<p>When investigating health outcomes, we would ideally want to know if you <strong>do X</strong>, then Y will happen. We could have a specific question:</p>
+<blockquote class="blockquote">
+<p>Will eating more red meat give me higher blood glucose in 1 year?</p>
+</blockquote>
+<p>To answer this question we would ideally have you consume more red meat over 1 year and measure your blood glucose levels. Then, we would turn back time, and make you eat something else over 1 year and then measure your blood glucose levels again. If there is a difference between your two outcomes, then we say there is a causal effect.</p>
+<p>But we can never do this in the real world.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -365,14 +416,6 @@ Notation
 <p><span class="math inline">\(Y^{a=0}\)</span> = Counterfactual outcome under treatment a =0 (i.e., the outcome had everyone, counter to the fact, received treatment a = 0)</p>
 </div>
 </div>
-<section id="individual-causal-effect" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="individual-causal-effect"><span class="header-section-number">6.1.1</span> Individual causal effect</h3>
-<p>When investigating health outcomes, we would ideally want to know if you <strong>do X</strong>, then Y will happen. We could have a specific question:</p>
-<blockquote class="blockquote">
-<p>Will eating more red meat give me higher blood glucose in 1 year?</p>
-</blockquote>
-<p>To answer this question we would ideally have you consume more red meat over 1 year and measure your blood glucose levels. Then, we would turn back time, and make you eat something else over 1 year and then measure your blood glucose levels again. If there is a difference between your two outcomes, then we say there is a causal effect.</p>
-<p>But we can never do this in the real world.</p>
 </section>
 <section id="average-causal-effect" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="average-causal-effect"><span class="header-section-number">6.1.2</span> Average causal effect</h3>
@@ -383,14 +426,6 @@ Notation
 <p>We can randomely assigning one group to consume more red meat and the other group to consume more of something else over 1 year. Then we compare the average blood glucose levels after 1 year in each of the groups. If there is a difference, we could say there is an average causal effect.</p>
 <p>More formally we can now define a causal effect <span class="citation" data-cites="hernan_definition_2004">(<a href="#ref-hernan_definition_2004" role="doc-biblioref">1</a>)</span>:</p>
 <p>$$E[Y^{a=1} = 1] - E[Y^{a=0} = 1] \ne 0$</p>
-</section>
-<section id="causal-mediation-effect" class="level3" data-number="6.1.3">
-<h3 data-number="6.1.3" class="anchored"><span class="header-section-number">6.1.3</span> Causal mediation effect</h3>
-<p>When we want to understand not just <strong>if</strong>, but <strong>how</strong> red meat consumption affects blood glucose, we need to consider mediating factors. For example:</p>
-<p>Will eating more red meat increase my body fat percentage, which in turn increases my blood glucose levels?</p>
-<p>This requires us to decompose the total effect into direct and indirect pathways. For natural mediation effects, we need to consider scenarios that cross between different possible worlds, such as:</p>
-<p>What would my blood glucose level be if I ate more red meat (treatment = 1), BUT my body fat percentage remained at the level it would have been had I NOT eaten more red meat (mediator at level from treatment = 0)?</p>
-<p>These <strong>cross-world counterfactuals</strong> combine elements from two incompatible realities. They cannot be directly observed even in principle, which creates fundamental identification challenges.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -408,20 +443,24 @@ Notation
 <p><span class="math inline">\(Pr[Y^{a=0}]\)</span> the proportion of subjects that would have developed the outcome Y had all subjects in the population of interest received no treatment a = 0.</p>
 </div>
 </div>
-<ul>
-<li><div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Association vs causation
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+</section>
+<section id="from-causal-effects-to-causal-mediation" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="from-causal-effects-to-causal-mediation"><span class="header-section-number">6.2</span> From Causal effects to Causal mediation</h2>
+<p>When we want to understand not just <strong>if</strong>, but <strong>how</strong> red meat consumption affects blood glucose, we need to consider mediating factors. For example:</p>
+<p>Will eating more red meat increase my body fat percentage, which in turn increases my blood glucose levels?</p>
+<p>This requires us to decompose the total effect into direct and indirect pathways. For natural mediation effects, we need to consider scenarios that cross between different possible worlds, such as:</p>
+<p>What would my blood glucose level be if I ate more red meat (treatment = 1), BUT my body fat percentage remained at the level it would have been had I NOT eaten more red meat (mediator at level from treatment = 0)?</p>
+<p>These <strong>cross-world counterfactuals</strong> combine elements from two incompatible realities. They cannot be directly observed even in principle, which creates fundamental identification challenges.</p>
+</section>
+<section id="core-causal-assumptions" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="core-causal-assumptions"><span class="header-section-number">6.3</span> Core Causal Assumptions</h2>
+<section id="association-vs-causation" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="association-vs-causation"><span class="header-section-number">6.3.1</span> Association vs Causation</h3>
 <p>What makes it complicated to estimate a causal effect is that we cannot observe the outcome under different treatments.</p>
 <p>When we only have a subset of the outcomes, we have an association. This is illustrated in <span class="quarto-unresolved-ref">?fig-causation-association</span>.</p>
-<h2 id="causal-assumptions" data-number="6.2" class="anchored" data-anchor-id="causal-mediation-effect"><span class="header-section-number">6.2</span> Causal Assumptions</h2>
+<ul>
+<li><p>Causal Assumptions</p>
 <ul>
 <li>Exchangeability</li>
 </ul>
@@ -442,58 +481,25 @@ Association vs causation
 <li>Positivity</li>
 </ul>
 <p>The probability of receiving every value of treatment conditional on L is greater than zero. In other words, there must be a probability of being assigned to each treatment level.</p>
-<p>Image if we don’t have anyone with A = 0 among those with L=1 (e.g. long education), then we cannot estimate the conditional probability of the outcome.</p>
-</div>
-</div></li>
+<p>Image if we don’t have anyone with A = 0 among those with L=1 (e.g. long education), then we cannot estimate the conditional probability of the outcome.</p></li>
 </ul>
 </section>
-</section>
-<section id="causal-mediation-analysis" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="causal-mediation-analysis"><span class="header-section-number">6.3</span> Causal mediation analysis</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="confounding-assumptions-in-causal-mediation-analysis" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="confounding-assumptions-in-causal-mediation-analysis"><span class="header-section-number">6.3.2</span> Confounding assumptions in Causal Mediation Analysis</h3>
+<p>Confounding assumptions are critical for valid causal inferences in mediation analysis. These assumptions specify the conditions under which we can interpret our estimates as truly causal rather than merely associational.</p>
+<div>
+<ol type="1">
+<li><p>no unmeasured exposure-outcome confounding</p></li>
+<li><p>no unmeasured exposure-mediator confounding</p></li>
+<li><p>no unmeasured mediator-outcome confounding</p></li>
+<li><p><em>mediator-outcome confounding not affected by the exposure/treatment (post-treatment confounder or intermediate confounder)</em></p></li>
+</ol>
 </div>
-<div class="callout-title-container flex-fill">
-recall the major limations of tranditional mediation methods:
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Non-linearity</li>
-<li>Interactions</li>
-<li>Confounding</li>
-<li>Multiple mediators</li>
-</ul>
-</div>
-</div>
-<p>Causal mediation analysis is an extension of the traditional approach by:</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Outlining all confounding assumptions needed</li>
-<li>Handling non-linearity and interaction</li>
-<li>Clearly defining estimands of interest</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="confounding-assumptions" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="confounding-assumptions"><span class="header-section-number">6.4</span> Confounding assumptions</h2>
-<p>By using DAGs, the assumptions about confounding are made much more explicit. DAG under no mediator-outcome relation affected by treatment:</p>
+<p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-62f48a32f484208ae7cd" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-62f48a32f484208ae7cd">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-562925a0eabe68bbaae4" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-562925a0eabe68bbaae4">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -501,14 +507,111 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-015b61b576e44cc6f2b3" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-015b61b576e44cc6f2b3">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-1c3872584dc3d9a0872d" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-1c3872584dc3d9a0872d">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
 </section>
-<section id="non-linearity-and-interactions" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="non-linearity-and-interactions"><span class="header-section-number">6.5</span> Non-linearity and interactions</h2>
+</section>
+<section id="casual-mediation-effects" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="casual-mediation-effects"><span class="header-section-number">6.4</span> Casual Mediation Effects</h2>
+<section id="defining-estimands" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="defining-estimands"><span class="header-section-number">6.4.1</span> Defining estimands</h3>
+<p>Imagine we have a hypothetical randomized controlled trial where we give participants treatment or no treatment on a specific outcome Y.</p>
+<p><span class="math inline">\(Y^{a=1} - Y^{a=0}\)</span></p>
+<p>For mediation, we are also interested in the effect of a mediator on this pathway. Now image that we also intervene on the mediator in a new hypothetical randomized controlled trial.</p>
+<p><span class="math inline">\(Y^{m=1} - Y^{m=0}\)</span></p>
+<p>Now consider if we, in the same trial, could intervene on both because we are interested in whether treatment <em>causes</em> the outcome because it <em>causes</em> the mediator.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Notation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(Y^a\)</span> = a subject’s outcome if treatment A were set, possible contrary to fact, to a</p>
+<p><span class="math inline">\(M^a\)</span> = a subject’s value of the mediator if the exposure A were set to the value of a</p>
+<p><span class="math inline">\(Y^{a,m}\)</span> = a subject’s outcome if A were set to a and M were set to m</p>
+<p><span class="math inline">\(Y^{a,M_a}\)</span> = a subject’s outcome if A were set to a and M were set the value m would have had had a been set to a. Note, this is a nested counterfactual</p>
+</div>
+</div>
+<p>We can now define these estimands:</p>
+<ul>
+<li>the controlled direct effect (CDE)</li>
+<li>natural direct effect (NDE)</li>
+<li>natural indirect effect (NIE)</li>
+</ul>
+</section>
+<section id="controlled-direct-effect" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="controlled-direct-effect"><span class="header-section-number">6.4.2</span> Controlled direct effect</h3>
+<p>The effect of A on Y not mediated through M. Fixing the value of M to m.</p>
+<p><span class="math inline">\(Y^{a=1,m}\)</span> - <span class="math inline">\(Y^{a=0,m}\)</span></p>
+<p>We intervene on <span class="math inline">\(a\)</span> but fix <span class="math inline">\(m\)</span> to a certain value. The CDE is how much the outcome would change on average if the mediator were fixed at level m uniformly in the population but the treatment were changed from 0 to 1.</p>
+<p>This could be relevant in the context of a change in a policy that impacted the mediator for everyone. For instance, if air pollution was a mediator between physical activity and cardiovascular disease risk. If a new policy would change the level of air pollution for all while we implement an intervention to increase biking in the city.</p>
+<p>This effect is not used that often. But can be highly relevant in some situations.</p>
+</section>
+<section id="pure-natural-direct-effect" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="pure-natural-direct-effect"><span class="header-section-number">6.4.3</span> (Pure) Natural direct effect</h3>
+<p>The effect that would remain, if we were to disable the pathway from exposure to mediator.</p>
+<p><span class="math inline">\(Y^{a=1,M_a=0}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
+<p>The PNDE is how much the outcome would change if the exposure was set at a = 1 versus a* = 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
+<p>Note that the word “natural” refers to the nested counterfactual, the level the mediator would have taken in the absence of exposure. What it would naturally have been in the absence of exposure.</p>
+</section>
+<section id="total-natural-direct-effect" class="level3" data-number="6.4.4">
+<h3 data-number="6.4.4" class="anchored" data-anchor-id="total-natural-direct-effect"><span class="header-section-number">6.4.4</span> Total natural direct effect</h3>
+<p><span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=1}\)</span></p>
+<p>Note, different from above in that the mediator is kept at the level it would have taken in the <strong>presence</strong> of the exposure.</p>
+</section>
+<section id="total-natural-indirect-effect" class="level3" data-number="6.4.5">
+<h3 data-number="6.4.5" class="anchored" data-anchor-id="total-natural-indirect-effect"><span class="header-section-number">6.4.5</span> (Total) Natural indirect effect</h3>
+<p>The effect of the mediator pathway.</p>
+<p><span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=1,M_a=0}\)</span></p>
+<p>The NIE is how much the outcome would change on average if the exposure were fixed at level a = 1 but the mediator were changed from the level it would take if a* = 0 to the level it would take if a = 1.</p>
+<p>Note that exposure has to have an effect on M otherwise this will be zero.</p>
+</section>
+<section id="pure-natural-indirect-effect" class="level3" data-number="6.4.6">
+<h3 data-number="6.4.6" class="anchored" data-anchor-id="pure-natural-indirect-effect"><span class="header-section-number">6.4.6</span> Pure natural indirect effect</h3>
+<p><span class="math inline">\(Y^{a=0,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
+<p>Note, this is different from the TNIE in that the exposure is set to no intervention.</p>
+</section>
+<section id="interaction-effects" class="level3" data-number="6.4.7">
+<h3 data-number="6.4.7" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">6.4.7</span> Interaction effects</h3>
+<p>More information on the interaction effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">2</a>)</span>.</p>
+<p>Reference interaction:</p>
+<p><span class="math inline">\(INT_{ref} = PNDE - CDE\)</span></p>
+<p>Mediation interaction:</p>
+<p><span class="math inline">\(INT_{med} = TNIE - PNIE\)</span></p>
+</section>
+<section id="effect-decomposition" class="level3" data-number="6.4.8">
+<h3 data-number="6.4.8" class="anchored" data-anchor-id="effect-decomposition"><span class="header-section-number">6.4.8</span> Effect decomposition</h3>
+<p>Using the causal inference framework also allow for effect decomposition, even when there are interaction and non-linearity.</p>
+<p>Effect decomposition is important when we want to assess relative contributions such as the proportion mediated and eliminated.</p>
+<p>TE = PNDE + TNIE = TNDE + PNIE</p>
+<p>More information about decomposition of effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">2</a>)</span>.</p>
+</section>
+<section id="proportions" class="level3" data-number="6.4.9">
+<h3 data-number="6.4.9" class="anchored" data-anchor-id="proportions"><span class="header-section-number">6.4.9</span> Proportions</h3>
+<p>Proportion mediated:</p>
+<p><span class="math inline">\(PM = NIE / TE\)</span></p>
+<p>Proportion eliminated:</p>
+<p><span class="math inline">\(PE = (TE-CDE(m)) / TE\)</span></p>
+</section>
+</section>
+<section id="causal-mediation-estimation-approaches" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="causal-mediation-estimation-approaches"><span class="header-section-number">6.5</span> Causal Mediation Estimation Approaches</h2>
+<p>Counterfactual-based direct and indirect effects can be estimated from regression models, provided that the no confounding assumption hold. To be able to do so, we need a model for the mediator and a model for the outcome.</p>
+<p>Model for the mediator:</p>
+<p><span class="math inline">\(E(M|A = a, W = w) = \beta_0 + \beta_1a + \beta'_2w\)</span></p>
+<p>Model for the outcome:</p>
+<p><span class="math inline">\(E(Y|A = a, M = m, W = w) = \sigma_0 + \sigma_1a + \sigma_2m + \sigma_3am + \sigma'_4w\)</span></p>
+<p>From these two regression models we can estimate the CDE, NDE and NIE.</p>
+</section>
+<section id="non-linearity-and-interactions" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="non-linearity-and-interactions"><span class="header-section-number">6.6</span> Non-linearity and interactions</h2>
 <p>Neither the product method nor the difference method in traditional mediation analysis can effectively account for interaction effects or non-linear relationships between variables.</p>
 <p>Causal mediation analysis addresses these limitations through more sophisticated approaches. Specifically, it can:</p>
 <ul>
@@ -523,19 +626,11 @@ Note
 </ul>
 <p>Note: additional approaches also exists, but we will not focus on these in this course.</p>
 </section>
-<section id="causal-mediation-estimation" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="causal-mediation-estimation"><span class="header-section-number">6.6</span> Causal mediation estimation</h2>
-<p>Counterfactual-based direct and indirect effects can be estimated from regression models, provided that the no confounding assumption hold. To be able to do so, we need a model for the mediator and a model for the outcome.</p>
-<p>Model for the mediator:</p>
-<p><span class="math inline">\(E(M|A = a, W = w) = \beta_0 + \beta_1a + \beta'_2w\)</span></p>
-<p>Model for the outcome:</p>
-<p><span class="math inline">\(E(Y|A = a, M = m, W = w) = \sigma_0 + \sigma_1a + \sigma_2m + \sigma_3am + \sigma'_4w\)</span></p>
-<p>From these two regression models we can estimate the CDE, NDE and NIE.</p>
-</section>
-<section id="example" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="example"><span class="header-section-number">6.7</span> Example</h2>
-<p>The example here include a continuous treatment, mediator and outcome. We use these equations on an additive scale because it is easier to explain the intuition behind the estimands. Similar equations exist for other types and combinations of variables.</p>
+<section id="practical-examples-using-r-package" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="practical-examples-using-r-package"><span class="header-section-number">6.7</span> Practical Examples using R package</h2>
+<p>We can easily conduct mediation analysis using R package once you understand the basic concepts of mediation.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -548,10 +643,8 @@ Note
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This includes readr, or use library(readr) specifically</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>nhanes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/NHANES.csv"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This includes readr, or use library(readr) specifically</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>nhanes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/NHANES.csv"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 10000 Columns: 76
 ── Column specification ────────────────────────────────────────────────────────
@@ -562,243 +655,43 @@ dbl (45): ID, Age, AgeMonths, HHIncomeMid, Poverty, HomeRooms, Weight, Lengt...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># keep the variables used in the analyses </span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> nhanes <span class="sc">%&gt;%</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(ID, </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">w1 =</span> Age, </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">w2 =</span> Gender, </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">w3 =</span> Education, </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">w4 =</span> Smoke100, </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">a =</span> PhysActive,  <span class="co"># this is the exposure</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">m =</span> BMI,         <span class="co"># this is the mediator</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> Pulse,       <span class="co"># this is the outcome</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">y2 =</span> Diabetes ) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> nhanes <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(ID,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">w1 =</span> Age,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">w2 =</span> Gender,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">w3 =</span> Education,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">w4 =</span> Smoke100,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">a =</span> PhysActive,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">m =</span> BMI, </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> Pulse, </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">y2 =</span> Diabetes)  <span class="sc">%&gt;%</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can now run a model for the mediator only adjusting for a single variable. In practice you would adjust for many more variables to satisfy the confounding assumptions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lm_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(m <span class="sc">~</span> a <span class="sc">+</span> w1 , <span class="at">data =</span> data)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = m ~ a + w1, data = data)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--14.741  -4.578  -1.086   3.421  51.417 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 29.440321   0.267707 109.972   &lt;2e-16 ***
-aYes        -1.883085   0.162184 -11.611   &lt;2e-16 ***
-w1           0.007546   0.004793   1.575    0.115    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 6.627 on 6913 degrees of freedom
-Multiple R-squared:  0.02101,   Adjusted R-squared:  0.02073 
-F-statistic: 74.19 on 2 and 6913 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-</div>
-<p>Here, we see that physical activity (a) is associated with lower pulse (y).</p>
-<p>Now, we run the model for the outcome, notice we have included an interaction term.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lm_y <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> a <span class="sc">+</span> m <span class="sc">+</span> a<span class="sc">:</span>m <span class="sc">+</span> w1 , <span class="at">data =</span> data)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = y ~ a + m + a:m + w1, data = data)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--32.464  -8.254  -1.007   7.254  68.847 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 75.200976   0.954088  78.820  &lt; 2e-16 ***
-aYes        -5.625108   1.252664  -4.491 7.22e-06 ***
-m            0.143529   0.028201   5.090 3.68e-07 ***
-w1          -0.122102   0.008402 -14.533  &lt; 2e-16 ***
-aYes:m       0.125536   0.042449   2.957  0.00311 ** 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 11.61 on 6911 degrees of freedom
-Multiple R-squared:  0.04701,   Adjusted R-squared:  0.04646 
-F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-</div>
-<p>In this model we can see:</p>
-<ul>
-<li><p>higher physical activity (a) decreases pulse, independent of the mediator (BMI)</p></li>
-<li><p>excess body weight (BMI) is associated with higher pulse, independent of physical activity</p></li>
-<li><p>there is statistically significant interaction between physical activity (a) and BMI (m)</p>
-<p>Based on the coefficients of these two models, we can now estimate the different effects.</p></li>
-</ul>
-<p>The equations are from <span class="citation" data-cites="valeri_mediation_2013">(<a href="#ref-valeri_mediation_2013" role="doc-biblioref">2</a>)</span> and <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">3</a>)</span>.</p>
-<section id="controlled-direct-effect" class="level3" data-number="6.7.1">
-<h3 data-number="6.7.1" class="anchored" data-anchor-id="controlled-direct-effect"><span class="header-section-number">6.7.1</span> Controlled direct effect</h3>
-<p>The controlled direct effect can be obtained using this formula based on the regression coefficients:</p>
-<p><span class="math inline">\(CDE(m) = (\sigma_1 + \sigma_3*m)(a - a^*)\)</span></p>
-<p><span class="math inline">\(a^*\)</span> is for a change from level <span class="math inline">\(a^*\)</span> (=control) to level <span class="math inline">\(a\)</span> (=intervention).</p>
-<p>For the controlled direct effect we set m to a specific value.</p>
-<p>Let’s look at the distribution of m (BMI).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(m) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       m        
- Min.   :15.02  
- 1st Qu.:24.10  
- Median :27.80  
- Mean   :28.80  
- 3rd Qu.:32.22  
- Max.   :81.25  </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>median_m <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">median</span>(data<span class="sc">$</span>m), <span class="at">digits =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In this example we will set it to the median of BMI, at 27.8 which is a low level. You can also try to set BMI to 25kg/m2.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>CDE_m <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> median_m) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(CDE_m), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.14</code></pre>
-</div>
-</div>
-<p>The CDE is how much the outcome, here the pulse, would change on average if the mediator, here BMI, were fixed at level (m = 27.8) uniformly in the population but the treatment, physical activity, was changed from 0 to 1.</p>
-<p>The CDE answer the question, <em>what would be the effect of A on Y, when fixing M at a specific value for everyone in the population</em> <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">4</a>)</span>?</p>
-</section>
-<section id="pure-natural-direct-effect" class="level3" data-number="6.7.2">
-<h3 data-number="6.7.2" class="anchored" data-anchor-id="pure-natural-direct-effect"><span class="header-section-number">6.7.2</span> (Pure) natural direct effect</h3>
-<p>PNDE can be obtained using this formula:</p>
-<p><span class="math inline">\(PNDE = (\sigma_1 + \sigma_3 * (\beta_0 + \beta_1*a^* + \beta'_2*w))(a - a^*)\)</span></p>
-<p>We set the value for the confounder w1 for the interaction to be the mean value of w1.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mean_w1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(data<span class="sc">$</span>w1)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mean_w1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 47.17467</code></pre>
-</div>
-</div>
-<p>Then we calculate the PNDE.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>PNDE <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> (lm_m<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">0</span> <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> mean_w1))) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(PNDE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -1.88</code></pre>
-</div>
-</div>
-<p>The PNDE is how much the outcome, pulse, would change if the treatment a, physical activity, was set at 1 versus 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
-<p>how pulse rate would change if the treatment (or exposure) physically active (a=1) was set at 1 versus 0, while for each individual the mediator (BMI) was kept at the level it would naturally be in the <strong>absense</strong> of physical activity(<strong>a=0</strong>).</p>
-<p>In other words, it measures the direct effect of physical activity on pulse rate that doesn’t work through changing BMI.</p>
-</section>
-<section id="total-natural-direct-effect" class="level3" data-number="6.7.3">
-<h3 data-number="6.7.3" class="anchored" data-anchor-id="total-natural-direct-effect"><span class="header-section-number">6.7.3</span> (Total) natural direct effect</h3>
-<p>TNDE can be obtained by this formula:</p>
-<p><span class="math inline">\(TNDE = (\sigma_1 + \sigma_3 * (\beta_0 + beta_1*a + \beta'_2*w))(a - a^*)\)</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>TNDE <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> (lm_m<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">1</span> <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> mean_w1))) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TNDE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.12</code></pre>
-</div>
-</div>
-<p>Here, the value of M is enabled to act (as opposed to the PNDE). Here we see a little lower pulse rate, this means we’re measuring the direct effect of physical activity on pulse rate while allowing BMI to be at the level it would naturally be with physical activity (<strong>a=1</strong>).</p>
-<p>The TNDE asks the question: “to what extent does physical activity cause lower pulse via pathways other than through BMI, allowing BMI to boost up or tune down such effect at the same time?” <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">4</a>)</span></p>
-</section>
-<section id="total-natural-indirect-effect" class="level3" data-number="6.7.4">
-<h3 data-number="6.7.4" class="anchored" data-anchor-id="total-natural-indirect-effect"><span class="header-section-number">6.7.4</span> Total natural indirect effect</h3>
-<p>The TNIE can be obtained by this formula:</p>
-<p><span class="math inline">\(TNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a)(a - a^*)\)</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>TNIE <span class="ot">&lt;-</span> ((lm_y<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">1</span>)) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TNIE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.51</code></pre>
-</div>
-</div>
-<p>The TNIE is how much the outcome would change on average if the treatment was fixed at level a = 1 but the mediator was changed from the level it would take if a* = 0 (physical inactive) to the level it would take if a =1 (physical active).</p>
-<p>Note that exposure has to have an effect on M otherwise this will be zero.</p>
-<p>The TNIE asks the question: to what extent does physical activity cause pulse via BMI and the possible interaction between physical activity and BMI in affecting pulse rate? In other words, the effect of exposure that ‘would be prevented if the exposure did not cause the mediator’ (i.e., the portion of the effect for which mediation is ‘necessary’) <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">4</a>)</span>.</p>
-<p>This is often the effect we are interested in in biomedical research for questions regarding mediation.</p>
-</section>
-<section id="pure-natural-indirect-effect" class="level3" data-number="6.7.5">
-<h3 data-number="6.7.5" class="anchored" data-anchor-id="pure-natural-indirect-effect"><span class="header-section-number">6.7.5</span> Pure natural indirect effect</h3>
-<p>The PNIE can be obtained by this formula:</p>
-<p><span class="math inline">\(PNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a^*)(a - a^*)\)</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>PNIE <span class="ot">&lt;-</span> ((lm_y<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">0</span>)) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(PNIE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.27</code></pre>
-</div>
-</div>
-<p>The PNIE is different from the TNIE because it does not include the interaction effect. We estimate the effect of red meat on inflammation and then subsequent effect of inflammation on blood glucose.</p>
-<p>The PNIE answer the question: “to what extent does physical activity cause lower pulse rate via BMI only (i.e., due to physical activity affecting BMI and subsequently, BMI affecting pulse rate), not accounting for the possible interaction between physical activity and BMI? In other words, the effect that the exposure would have had if ‘its only action were to cause the mediator’ (i.e., the portion of the effect for which mediation is ‘’sufficient’’)” <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">4</a>)</span>.</p>
-</section>
-<section id="total-effect" class="level3" data-number="6.7.6">
-<h3 data-number="6.7.6" class="anchored" data-anchor-id="total-effect"><span class="header-section-number">6.7.6</span> Total effect</h3>
-<p>The total effect can be decomposed as:</p>
-<p><span class="math inline">\(TE = PNDE + TNIE\)</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>TE <span class="ot">&lt;-</span> PNDE <span class="sc">+</span> TNIE</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.39</code></pre>
-</div>
-</div>
-<p>This is the overall effect of red meat on blood glucose levels. Higher red meat is associated with higher blood glucose.</p>
-</section>
-<section id="proportion-mediation" class="level3" data-number="6.7.7">
-<h3 data-number="6.7.7" class="anchored" data-anchor-id="proportion-mediation"><span class="header-section-number">6.7.7</span> Proportion mediation</h3>
-<p>From this, we can calculate the proportion mediated.</p>
-<p><span class="math inline">\(PM = \frac{TNIE}{TE}\)</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>PM <span class="ot">&lt;-</span> TNIE <span class="sc">/</span> TE</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(PM) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 21.18849</code></pre>
-</div>
-</div>
-<p>21% of the association between physical activity and pulse rate is mediated by the mediator BMI.</p>
-</section>
-</section>
-<section id="using-r-package" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="using-r-package"><span class="header-section-number">6.8</span> Using R package</h2>
-<p>We can easily conduct mediation analysis using R package once you understand the basic concepts of mediation.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(CMAverse)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>res_rb <span class="ot">&lt;-</span> <span class="fu">cmest</span>(</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data, </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"rb"</span>,     <span class="co">#rb means regression based </span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="st">"y"</span>,    <span class="co">#this is the name of outcome</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">exposure =</span> <span class="st">"a"</span>,   <span class="co">#this is the name of exposure</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">mediator =</span> <span class="st">"m"</span>,   <span class="co">#this is the name of mediator</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">basec =</span> <span class="fu">c</span>(<span class="st">"w1"</span>),  <span class="co">#this is confounding factors, you can add more confounders here </span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">EMint =</span> <span class="cn">TRUE</span>,     <span class="co">#whether include interaction, TRUE indicates to include </span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">mreg =</span> <span class="fu">list</span>(<span class="st">"linear"</span>), <span class="co">#specify the mediator model, we use linear regression here </span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">yreg =</span> <span class="st">"linear"</span>,  <span class="co">#specify the outcome model, we use linear regression here </span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">astar =</span> <span class="dv">0</span>,       <span class="co"># the level of exposure (not exposed)</span></span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="dv">1</span>,           <span class="co"># the level of exposure (exposed)</span></span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">mval =</span> <span class="fu">list</span>(<span class="fl">27.8</span>),  <span class="co">#specifiy the value of controlled mediator </span></span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimation =</span> <span class="st">"paramfunc"</span>, <span class="co">#parameteric function </span></span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">inference =</span> <span class="st">"delta"</span></span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(CMAverse)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>res_rb <span class="ot">&lt;-</span> <span class="fu">cmest</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"rb"</span>,     <span class="co">#rb means regression based </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="st">"y"</span>,    <span class="co">#this is the name of outcome</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">exposure =</span> <span class="st">"a"</span>,   <span class="co">#this is the name of exposure</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">mediator =</span> <span class="st">"m"</span>,   <span class="co">#this is the name of mediator</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">basec =</span> <span class="fu">c</span>(<span class="st">"w1"</span>),  <span class="co">#this is confounding factors, you can add more confounders here </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">EMint =</span> <span class="cn">TRUE</span>,     <span class="co">#whether include interaction, TRUE indicates to include </span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">mreg =</span> <span class="fu">list</span>(<span class="st">"linear"</span>), <span class="co">#specify the mediator model, we use linear regression here </span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">yreg =</span> <span class="st">"linear"</span>,  <span class="co">#specify the outcome model, we use linear regression here </span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">astar =</span> <span class="dv">0</span>,       <span class="co"># the level of exposure (not exposed)</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="dv">1</span>,           <span class="co"># the level of exposure (exposed)</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">mval =</span> <span class="fu">list</span>(<span class="fl">27.8</span>),  <span class="co">#specifiy the value of controlled mediator </span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimation =</span> <span class="st">"paramfunc"</span>, <span class="co">#parameteric function </span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">inference =</span> <span class="st">"delta"</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in estinf(): a is not a value of the exposure; Yes is used</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in estinf(): astar is not a value of the exposure; No is used</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res_rb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res_rb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Causal Mediation Analysis
 
@@ -894,103 +787,213 @@ $basecval[[1]]
 </div>
 </div>
 </section>
-<section id="defining-estimands" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="defining-estimands"><span class="header-section-number">6.9</span> Defining estimands</h2>
-<p>Imagine we have a hypothetical randomized controlled trial where we give participants treatment or no treatment on a specific outcome Y.</p>
-<p><span class="math inline">\(Y^{a=1} - Y^{a=0}\)</span></p>
-<p>For mediation, we are also interested in the effect of a mediator on this pathway. Now image that we also intervene on the mediator in a new hypothetical randomized controlled trial.</p>
-<p><span class="math inline">\(Y^{m=1} - Y^{m=0}\)</span></p>
-<p>Now consider if we, in the same trial, could intervene on both because we are interested in whether treatment <em>causes</em> the outcome because it <em>causes</em> the mediator.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="example-not-using-r-package" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="example-not-using-r-package"><span class="header-section-number">6.8</span> Example-not using R package</h2>
+<p>The example here include a continuous treatment, mediator and outcome. We use these equations on an additive scale because it is easier to explain the intuition behind the estimands. Similar equations exist for other types and combinations of variables.</p>
+<p>We can now run a model for the mediator only adjusting for a single variable. In practice you would adjust for many more variables to satisfy the confounding assumptions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lm_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(m <span class="sc">~</span> a <span class="sc">+</span> w1 , <span class="at">data =</span> data) </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = m ~ a + w1, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-14.741  -4.578  -1.086   3.421  51.417 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 29.440321   0.267707 109.972   &lt;2e-16 ***
+aYes        -1.883085   0.162184 -11.611   &lt;2e-16 ***
+w1           0.007546   0.004793   1.575    0.115    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 6.627 on 6913 degrees of freedom
+Multiple R-squared:  0.02101,   Adjusted R-squared:  0.02073 
+F-statistic: 74.19 on 2 and 6913 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="callout-title-container flex-fill">
-Notation
+</div>
+<p>Here, we see that physical activity (a) is associated with lower BMI(m).</p>
+<p>Now, we run the model for the outcome, notice we have included an interaction term.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lm_y <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> a <span class="sc">+</span> m <span class="sc">+</span> a<span class="sc">:</span>m <span class="sc">+</span> w1 , <span class="at">data =</span> data) </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = y ~ a + m + a:m + w1, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-32.464  -8.254  -1.007   7.254  68.847 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 75.200976   0.954088  78.820  &lt; 2e-16 ***
+aYes        -5.625108   1.252664  -4.491 7.22e-06 ***
+m            0.143529   0.028201   5.090 3.68e-07 ***
+w1          -0.122102   0.008402 -14.533  &lt; 2e-16 ***
+aYes:m       0.125536   0.042449   2.957  0.00311 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 11.61 on 6911 degrees of freedom
+Multiple R-squared:  0.04701,   Adjusted R-squared:  0.04646 
+F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(Y^a\)</span> = a subject’s outcome if treatment A were set, possible contrary to fact, to a</p>
-<p><span class="math inline">\(M^a\)</span> = a subject’s value of the mediator if the exposure A were set to the value of a</p>
-<p><span class="math inline">\(Y^{a,m}\)</span> = a subject’s outcome if A were set to a and M were set to m</p>
-<p><span class="math inline">\(Y^{a,M_a}\)</span> = a subject’s outcome if A were set to a and M were set the value m would have had had a been set to a. Note, this is a nested counterfactual</p>
-</div>
-</div>
-<p>We can now define these estimands:</p>
+<p>In this model we can see:</p>
 <ul>
-<li>the controlled direct effect (CDE)</li>
-<li>natural direct effect (NDE)</li>
-<li>natural indirect effect (NIE)</li>
+<li><p>higher physical activity (a) decreases pulse, independent of the mediator (BMI)</p></li>
+<li><p>excess body weight (BMI) is associated with higher pulse, independent of physical activity</p></li>
+<li><p>there is statistically significant interaction between physical activity (a) and BMI (m)</p>
+<p>Based on the coefficients of these two models, we can now estimate the different effects.</p></li>
 </ul>
-<section id="controlled-direct-effect-1" class="level3" data-number="6.9.1">
-<h3 data-number="6.9.1" class="anchored" data-anchor-id="controlled-direct-effect-1"><span class="header-section-number">6.9.1</span> Controlled direct effect</h3>
-<p>The effect of A on Y not mediated through M. Fixing the value of M to m.</p>
-<p><span class="math inline">\(Y^{a=1,m}\)</span> - <span class="math inline">\(Y^{a=0,m}\)</span></p>
-<p>We intervene on <span class="math inline">\(a\)</span> but fix <span class="math inline">\(m\)</span> to a certain value. The CDE is how much the outcome would change on average if the mediator were fixed at level m uniformly in the population but the treatment were changed from 0 to 1.</p>
-<p>This could be relevant in the context of a change in a policy that impacted the mediator for everyone. For instance, if air pollution was a mediator between physical activity and cardiovascular disease risk. If a new policy would change the level of air pollution for all while we implement an intervention to increase biking in the city.</p>
-<p>This effect is not used that often. But can be highly relevant in some situations.</p>
+<p>The equations are from <span class="citation" data-cites="valeri_mediation_2013">(<a href="#ref-valeri_mediation_2013" role="doc-biblioref">3</a>)</span> and <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">2</a>)</span>.</p>
+<section id="controlled-direct-effect-1" class="level3" data-number="6.8.1">
+<h3 data-number="6.8.1" class="anchored" data-anchor-id="controlled-direct-effect-1"><span class="header-section-number">6.8.1</span> Controlled direct effect</h3>
+<p>The controlled direct effect can be obtained using this formula based on the regression coefficients:</p>
+<p><span class="math inline">\(CDE(m) = (\sigma_1 + \sigma_3*m)(a - a^*)\)</span></p>
+<p><span class="math inline">\(a^*\)</span> is for a change from level <span class="math inline">\(a^*\)</span> (=control) to level <span class="math inline">\(a\)</span> (=intervention).</p>
+<p>For the controlled direct effect we set m to a specific value.</p>
+<p>Let’s look at the distribution of m (BMI).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span>  </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(m) <span class="sc">%&gt;%</span>   </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       m        
+ Min.   :15.02  
+ 1st Qu.:24.10  
+ Median :27.80  
+ Mean   :28.80  
+ 3rd Qu.:32.22  
+ Max.   :81.25  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>median_m <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">median</span>(data<span class="sc">$</span>m), <span class="at">digits =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this example we will set it to the median of BMI, at 27.8 which is a low level. You can also try to set BMI to 25kg/m2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>CDE_m <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> median_m) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(CDE_m), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.14</code></pre>
+</div>
+</div>
+<p>The CDE is how much the outcome, here the pulse, would change on average if the mediator, here BMI, were fixed at level (m = 27.8) uniformly in the population but the treatment, physical activity, was changed from 0 to 1.</p>
+<p>The CDE answer the question, <em>what would be the effect of A on Y, when fixing M at a specific value for everyone in the population</em> <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">4</a>)</span>?</p>
 </section>
-<section id="pure-natural-direct-effect-1" class="level3" data-number="6.9.2">
-<h3 data-number="6.9.2" class="anchored" data-anchor-id="pure-natural-direct-effect-1"><span class="header-section-number">6.9.2</span> (Pure) Natural direct effect</h3>
-<p>The effect that would remain, if we were to disable the pathway from exposure to mediator.</p>
-<p><span class="math inline">\(Y^{a=1,M_a=0}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
-<p>The PNDE is how much the outcome would change if the exposure was set at a = 1 versus a* = 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
-<p>Note that the word “natural” refers to the nested counterfactual, the level the mediator would have taken in the absence of exposure. What it would naturally have been in the absence of exposure.</p>
+<section id="pure-natural-direct-effect-1" class="level3" data-number="6.8.2">
+<h3 data-number="6.8.2" class="anchored" data-anchor-id="pure-natural-direct-effect-1"><span class="header-section-number">6.8.2</span> (Pure) natural direct effect</h3>
+<p>PNDE can be obtained using this formula:</p>
+<p><span class="math inline">\(PNDE = (\sigma_1 + \sigma_3 * (\beta_0 + \beta_1*a^* + \beta'_2*w))(a - a^*)\)</span></p>
+<p>We set the value for the confounder w1 for the interaction to be the mean value of w1.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mean_w1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(data<span class="sc">$</span>w1) </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>mean_w1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 47.17467</code></pre>
+</div>
+</div>
+<p>Then we calculate the PNDE.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>PNDE <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> (lm_m<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">0</span> <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> mean_w1))) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(PNDE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.88</code></pre>
+</div>
+</div>
+<p>The PNDE is how much the outcome, pulse, would change if the treatment a, physical activity, was set at 1 versus 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
+<p>how pulse rate would change if the treatment (or exposure) physically active (a=1) was set at 1 versus 0, while for each individual the mediator (BMI) was kept at the level it would naturally be in the <strong>absense</strong> of physical activity(<strong>a=0</strong>).</p>
+<p>In other words, it measures the direct effect of physical activity on pulse rate that doesn’t work through changing BMI.</p>
 </section>
-<section id="total-natural-direct-effect-1" class="level3" data-number="6.9.3">
-<h3 data-number="6.9.3" class="anchored" data-anchor-id="total-natural-direct-effect-1"><span class="header-section-number">6.9.3</span> Total natural direct effect</h3>
-<p><span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=1}\)</span></p>
-<p>Note, different from above in that the mediator is kept at the level it would have taken in the <strong>presence</strong> of the exposure.</p>
+<section id="total-natural-direct-effect-1" class="level3" data-number="6.8.3">
+<h3 data-number="6.8.3" class="anchored" data-anchor-id="total-natural-direct-effect-1"><span class="header-section-number">6.8.3</span> (Total) natural direct effect</h3>
+<p>TNDE can be obtained by this formula:</p>
+<p><span class="math inline">\(TNDE = (\sigma_1 + \sigma_3 * (\beta_0 + beta_1*a + \beta'_2*w))(a - a^*)\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>TNDE <span class="ot">&lt;-</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> (lm_m<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">1</span> <span class="sc">+</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> mean_w1))) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)  </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TNDE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.12</code></pre>
+</div>
+</div>
+<p>Here, the value of M is enabled to act (as opposed to the PNDE). Here we see a little lower pulse rate, this means we’re measuring the direct effect of physical activity on pulse rate while allowing BMI to be at the level it would naturally be with physical activity (<strong>a=1</strong>).</p>
+<p>The TNDE asks the question: “to what extent does physical activity cause lower pulse via pathways other than through BMI, allowing BMI to boost up or tune down such effect at the same time?” <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">4</a>)</span></p>
 </section>
-<section id="total-natural-indirect-effect-1" class="level3" data-number="6.9.4">
-<h3 data-number="6.9.4" class="anchored" data-anchor-id="total-natural-indirect-effect-1"><span class="header-section-number">6.9.4</span> (Total) Natural indirect effect</h3>
-<p>The effect of the mediator pathway.</p>
-<p><span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=1,M_a=0}\)</span></p>
-<p>The NIE is how much the outcome would change on average if the exposure were fixed at level a = 1 but the mediator were changed from the level it would take if a* = 0 to the level it would take if a = 1.</p>
+<section id="total-natural-indirect-effect-1" class="level3" data-number="6.8.4">
+<h3 data-number="6.8.4" class="anchored" data-anchor-id="total-natural-indirect-effect-1"><span class="header-section-number">6.8.4</span> Total natural indirect effect</h3>
+<p>The TNIE can be obtained by this formula:</p>
+<p><span class="math inline">\(TNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a)(a - a^*)\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>TNIE <span class="ot">&lt;-</span> ((lm_y<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">1</span>)) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)  </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TNIE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.51</code></pre>
+</div>
+</div>
+<p>The TNIE is how much the outcome would change on average if the treatment was fixed at level a = 1 but the mediator was changed from the level it would take if a* = 0 (physical inactive) to the level it would take if a =1 (physical active).</p>
 <p>Note that exposure has to have an effect on M otherwise this will be zero.</p>
+<p>The TNIE asks the question: to what extent does physical activity cause pulse via BMI and the possible interaction between physical activity and BMI in affecting pulse rate? In other words, the effect of exposure that ‘would be prevented if the exposure did not cause the mediator’ (i.e., the portion of the effect for which mediation is ‘necessary’) <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">4</a>)</span>.</p>
+<p>This is often the effect we are interested in in biomedical research for questions regarding mediation.</p>
 </section>
-<section id="pure-natural-indirect-effect-1" class="level3" data-number="6.9.5">
-<h3 data-number="6.9.5" class="anchored" data-anchor-id="pure-natural-indirect-effect-1"><span class="header-section-number">6.9.5</span> Pure natural indirect effect</h3>
-<p><span class="math inline">\(Y^{a=0,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
-<p>Note, this is different from the TNIE in that the exposure is set to no intervention.</p>
+<section id="pure-natural-indirect-effect-1" class="level3" data-number="6.8.5">
+<h3 data-number="6.8.5" class="anchored" data-anchor-id="pure-natural-indirect-effect-1"><span class="header-section-number">6.8.5</span> Pure natural indirect effect</h3>
+<p>The PNIE can be obtained by this formula:</p>
+<p><span class="math inline">\(PNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a^*)(a - a^*)\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>PNIE <span class="ot">&lt;-</span> ((lm_y<span class="sc">$</span>coefficients[<span class="dv">3</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">+</span> (lm_y<span class="sc">$</span>coefficients[<span class="dv">5</span>] <span class="sc">*</span> lm_m<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">0</span>)) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">0</span>)  </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(PNIE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.27</code></pre>
+</div>
+</div>
+<p>The PNIE is different from the TNIE because it does not include the interaction effect. We estimate the effect of red meat on inflammation and then subsequent effect of inflammation on blood glucose.</p>
+<p>The PNIE answer the question: “to what extent does physical activity cause lower pulse rate via BMI only (i.e., due to physical activity affecting BMI and subsequently, BMI affecting pulse rate), not accounting for the possible interaction between physical activity and BMI? In other words, the effect that the exposure would have had if ‘its only action were to cause the mediator’ (i.e., the portion of the effect for which mediation is ‘’sufficient’’)” <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">4</a>)</span>.</p>
 </section>
-<section id="interaction-effects" class="level3" data-number="6.9.6">
-<h3 data-number="6.9.6" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">6.9.6</span> Interaction effects</h3>
-<p>More information on the interaction effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">3</a>)</span>.</p>
-<p>Reference interaction:</p>
-<p><span class="math inline">\(INT_{ref} = PNDE - CDE\)</span></p>
-<p>Mediation interaction:</p>
-<p><span class="math inline">\(INT_{med} = TNIE - PNIE\)</span></p>
+<section id="total-effect" class="level3" data-number="6.8.6">
+<h3 data-number="6.8.6" class="anchored" data-anchor-id="total-effect"><span class="header-section-number">6.8.6</span> Total effect</h3>
+<p>The total effect can be decomposed as:</p>
+<p><span class="math inline">\(TE = PNDE + TNIE\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>TE <span class="ot">&lt;-</span> PNDE <span class="sc">+</span> TNIE  </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">as.numeric</span>(TE), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.39</code></pre>
+</div>
+</div>
+<p>This is the overall effect of red meat on blood glucose levels. Higher red meat is associated with higher blood glucose.</p>
 </section>
-<section id="effect-decomposition" class="level3" data-number="6.9.7">
-<h3 data-number="6.9.7" class="anchored" data-anchor-id="effect-decomposition"><span class="header-section-number">6.9.7</span> Effect decomposition</h3>
-<p>Using the causal inference framework also allow for effect decomposition, even when there are interaction and non-linearity.</p>
-<p>Effect decomposition is important when we want to assess relative contributions such as the proportion mediated and eliminated.</p>
-<p>TE = PNDE + TNIE = TNDE + PNIE</p>
-<p>More information about decomposition of effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">3</a>)</span>.</p>
+<section id="proportion-mediation" class="level3" data-number="6.8.7">
+<h3 data-number="6.8.7" class="anchored" data-anchor-id="proportion-mediation"><span class="header-section-number">6.8.7</span> Proportion mediation</h3>
+<p>From this, we can calculate the proportion mediated.</p>
+<p><span class="math inline">\(PM = \frac{TNIE}{TE}\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>PM <span class="ot">&lt;-</span> TNIE <span class="sc">/</span> TE  </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(PM) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21.18849</code></pre>
+</div>
+</div>
+<p>21% of the association between physical activity and pulse rate is mediated by the mediator BMI.</p>
 </section>
-<section id="proportions" class="level3" data-number="6.9.8">
-<h3 data-number="6.9.8" class="anchored" data-anchor-id="proportions"><span class="header-section-number">6.9.8</span> Proportions</h3>
-<p>Proportion mediated:</p>
-<p><span class="math inline">\(PM = NIE / TE\)</span></p>
-<p>Proportion eliminated:</p>
-<p><span class="math inline">\(PE = (TE-CDE(m)) / TE\)</span></p>
 </section>
-</section>
-<section id="references" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="references"><span class="header-section-number">6.10</span> References</h2>
+<section id="references" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="references"><span class="header-section-number">6.9</span> References</h2>
 
 
 <div id="refs" class="references csl-bib-body" role="list">
 <div id="ref-hernan_definition_2004" class="csl-entry" role="listitem">
 <div class="csl-left-margin">1. </div><div class="csl-right-inline">Hernan MA. A definition of causal effect for epidemiological research. Journal of Epidemiology &amp; Community Health [Internet] 2004 [cited 2024 May 6];58:265–71. Available from: <a href="https://jech.bmj.com/lookup/doi/10.1136/jech.2002.006361">https://jech.bmj.com/lookup/doi/10.1136/jech.2002.006361</a></div>
 </div>
-<div id="ref-valeri_mediation_2013" class="csl-entry" role="listitem">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">Valeri L, VanderWeele TJ. Mediation analysis allowing for exposure-mediator interactions and causal interpretation: Theoretical assumptions and implementation with <span>SAS</span> and <span>SPSS</span> macros. Psychological methods [Internet] 2013 [cited 2024 May 14];18:137–50. Available from: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3659198/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3659198/</a></div>
-</div>
 <div id="ref-vanderweele_unification_2014" class="csl-entry" role="listitem">
-<div class="csl-left-margin">3. </div><div class="csl-right-inline">VanderWeele TJ. A unification of mediation and interaction: A four-way decomposition. Epidemiology (Cambridge, Mass) [Internet] 2014 [cited 2024 May 14];25:749–61. Available from: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4220271/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4220271/</a></div>
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">VanderWeele TJ. A unification of mediation and interaction: A four-way decomposition. Epidemiology (Cambridge, Mass) [Internet] 2014 [cited 2024 May 14];25:749–61. Available from: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4220271/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4220271/</a></div>
+</div>
+<div id="ref-valeri_mediation_2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Valeri L, VanderWeele TJ. Mediation analysis allowing for exposure-mediator interactions and causal interpretation: Theoretical assumptions and implementation with <span>SAS</span> and <span>SPSS</span> macros. Psychological methods [Internet] 2013 [cited 2024 May 14];18:137–50. Available from: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3659198/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3659198/</a></div>
 </div>
 <div id="ref-wang_g-computation_2015" class="csl-entry" role="listitem">
 <div class="csl-left-margin">4. </div><div class="csl-right-inline">Wang A, Arah OA. G-computation demonstration in causal mediation analysis. European Journal of Epidemiology [Internet] 2015 [cited 2023 Jun 20];30:1119–27. Available from: <a href="https://doi.org/10.1007/s10654-015-0100-z">https://doi.org/10.1007/s10654-015-0100-z</a></div>
