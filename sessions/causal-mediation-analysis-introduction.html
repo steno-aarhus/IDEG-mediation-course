@@ -520,8 +520,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-f4022cce45af09aa9c3c" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f4022cce45af09aa9c3c">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-986ccef0da98afa82685" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-986ccef0da98afa82685">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -529,8 +529,8 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-37093b50a9e18bef0a26" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-37093b50a9e18bef0a26">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-a656bb7c570586f00646" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a656bb7c570586f00646">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
@@ -669,7 +669,7 @@ Decomposition
 <p>Causal mediation analysis addresses these limitations through more sophisticated approaches. Specifically, it can:</p>
 <ul>
 <li><p>Constructing a comprehensive causal model that explicitly incorporates non-linear relationships and interaction effects. Counterfactual approaches can better handle complex, non-parametric relationships.</p></li>
-<li><p>Decomposition of effects: Counterfactual methods allow for more nuanced decomposition of total effects into direct and indirect effects, especially in the presence of treatment-mediator interactions</p></li>
+<li><p>Decomposition of effects: Counterfactual methods allow for more nuanced decomposition of total effects into direct and indirect effects, especially in the presence of treatment-mediator interactions.</p></li>
 <li><p>Counterfactual frameworks extend more naturally to settings with multiple mediators</p></li>
 </ul>
 </section>
@@ -965,21 +965,21 @@ Direct counterfactual imputation estimation with
  bootstrap standard errors, percentile confidence intervals and p-values 
  
               Estimate Std.error   95% CIL 95% CIU  P.val    
-cde          -2.135202  0.234016 -2.475688  -1.621 &lt;2e-16 ***
-pnde         -1.888208  0.229663 -2.217826  -1.412 &lt;2e-16 ***
-tnde         -2.124604  0.234536 -2.461971  -1.613 &lt;2e-16 ***
-pnie         -0.270278  0.082243 -0.410499  -0.131 &lt;2e-16 ***
-tnie         -0.506673  0.070744 -0.598585  -0.368 &lt;2e-16 ***
-te           -2.394881  0.226203 -2.634835  -1.855 &lt;2e-16 ***
-intref        0.246994  0.101562  0.102522   0.422 &lt;2e-16 ***
-intmed       -0.236395  0.093172 -0.407655  -0.097 &lt;2e-16 ***
-cde(prop)     0.891569  0.041607  0.820823   0.964 &lt;2e-16 ***
-intref(prop) -0.103134  0.045619 -0.195121  -0.042 &lt;2e-16 ***
-intmed(prop)  0.098709  0.040666  0.040018   0.170 &lt;2e-16 ***
-pnie(prop)    0.112856  0.035731  0.054420   0.179 &lt;2e-16 ***
-pm            0.211565  0.033453  0.145987   0.256 &lt;2e-16 ***
-int          -0.004426  0.010147 -0.031576   0.004    0.3    
-pe            0.108431  0.041607  0.036158   0.179 &lt;2e-16 ***
+cde          -2.135202  0.222703 -2.560926  -1.772 &lt;2e-16 ***
+pnde         -1.878971  0.236094 -2.335832  -1.449 &lt;2e-16 ***
+tnde         -2.115366  0.222209 -2.554307  -1.741 &lt;2e-16 ***
+pnie         -0.270278  0.067179 -0.396321  -0.178 &lt;2e-16 ***
+tnie         -0.506673  0.071873 -0.668040  -0.431 &lt;2e-16 ***
+te           -2.385644  0.232129 -2.881275  -1.948 &lt;2e-16 ***
+intref        0.256231  0.083198  0.134092   0.398 &lt;2e-16 ***
+intmed       -0.236395  0.083238 -0.417814  -0.131 &lt;2e-16 ***
+cde(prop)     0.895021  0.032381  0.832189   0.943 &lt;2e-16 ***
+intref(prop) -0.107406  0.038543 -0.181608  -0.050 &lt;2e-16 ***
+intmed(prop)  0.099091  0.037421  0.048780   0.175 &lt;2e-16 ***
+pnie(prop)    0.113293  0.027018  0.073268   0.169 &lt;2e-16 ***
+pm            0.212384  0.034363  0.167371   0.280 &lt;2e-16 ***
+int          -0.008315  0.011001 -0.027193   0.012    0.6    
+pe            0.104979  0.032381  0.057399   0.168 &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
