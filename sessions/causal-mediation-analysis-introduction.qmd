@@ -5,6 +5,7 @@
 #| cache: false
 library(here)
 library(DiagrammeR)
+library(tidyverse)
 ```
 
 In this session we will go over fundamental concepts of causal inference
@@ -91,7 +92,7 @@ causal effect.
 
 More formally we can now define a causal effect @hernan_definition_2004:
 
-\$\$E\[Y\^{a=1} = 1\] - E\[Y\^{a=0} = 1\] \\ne 0\$
+\$E\[Y\^{a=1} = 1\] - E\[Y\^{a=0} = 1\] \$
 
 ::: callout-note
 ## Notation
@@ -129,6 +130,9 @@ that cross between different possible worlds, such as:
 What would my blood glucose level be if I ate more red meat (treatment =
 1), BUT my body fat percentage remained at the level it would have been
 had I NOT eaten more red meat (mediator at level from treatment = 0)?
+This is then compared to what my blood glucose would be if both my red
+meat consumption AND my body fat percentage were at their treated levels
+(treatment = 1, mediator at level from treatment = 1).
 
 These **cross-world counterfactuals** combine elements from two
 incompatible realities. They cannot be directly observed even in
@@ -146,7 +150,7 @@ is illustrated in @fig-causation-association.
 
 ![Association versus Causation: When we observe only a subset of the
 outcomes across exposure groups, we have an association rather than
-causation.](sessions/images/causation-association.png){#fig-causation-association}
+causation.](images/causation-association.png){#fig-causation-association}
 
 ::: callout-note
 -   Causal Assumptions
@@ -175,7 +179,7 @@ causation.](sessions/images/causation-association.png){#fig-causation-associatio
     $Y^a = Y$ for every individual with A = a.
 
     The observed outcome for all treated equals the outcome if they had
-    received the treatment.
+    received the treatment (the potential outcome).
 
     -   Positivity
 
@@ -283,7 +287,9 @@ problem later in the course.
 
 ## Casual Mediation Effects
 
-### Defining estimands
+### Better Definitions
+
+#### Defining estimands
 
 Imagine we have a hypothetical randomized controlled trial where we give
 participants treatment or no treatment on a specific outcome Y.
@@ -355,8 +361,7 @@ the level it would have taken, for that individual, in the absence of
 the exposure.
 
 Note that the word "natural" refers to the nested counterfactual, the
-level the mediator would have taken in the absence of exposure. What it
-would naturally have been in the absence of exposure.
+level the mediator would have taken in the absence of exposure.
 
 ### (Total) Natural indirect effect
 
@@ -381,14 +386,14 @@ proposed mediator?' @nguyen2021clarifying
 
 ### Total natural direct effect
 
-$Y^{a=1,M_a=1}$ - $Y^{a=0,M_a=1}$
+TNDE = $Y^{a=1,M_a=1}$ - $Y^{a=0,M_a=1}$
 
 Note, different from above in that the mediator is kept at the level it
 would have taken in the **presence** of the exposure.
 
 ### Pure natural indirect effect
 
-$Y^{a=0,M_a=1}$ - $Y^{a=0,M_a=0}$
+PNIE = $Y^{a=0,M_a=1}$ - $Y^{a=0,M_a=0}$
 
 Note, this is different from the TNIE in that the exposure is set to no
 intervention.
@@ -435,7 +440,7 @@ $PM = NIE / TE$
 
 Proportion eliminated:
 
-$PE = (TE-CDE(m)) / TE$
+$PE = (TE-CDE) / TE$
 
 ## Causal Mediation Estimation Approaches
 
@@ -474,7 +479,7 @@ sophisticated approaches. Specifically, it can:
 -   Constructing a comprehensive causal model that explicitly
     incorporates non-linear relationships and interaction effects.
     Counterfactual approaches can better handle complex, non-parametric
-    relationships
+    relationships.
 
 -   Decomposition of effects: Counterfactual methods allow for more
     nuanced decomposition of total effects into direct and indirect
@@ -490,7 +495,6 @@ We can easily conduct mediation analysis using R package once you
 understand the basic concepts of mediation.
 
 ```{r}
-library(tidyverse)
 # This includes readr, or use library(readr) specifically
 nhanes <- read_csv(here::here("data/NHANES.csv")) 
 data <- nhanes %>%
