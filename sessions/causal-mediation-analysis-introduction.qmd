@@ -470,15 +470,18 @@ non-linear relationships between variables.
 Causal mediation analysis addresses these limitations through more
 sophisticated approaches. Specifically, it can:
 
--   Utilize regression-based methods and alternative causal inference
-    techniques like g-computation
--   Fundamentally differ from traditional approaches by:
-    -   Constructing a comprehensive causal model that explicitly
-        incorporates non-linear relationships and interaction effects
-    -   Artificially manipulating the data to set the treatment and the
-        mediator to certain values
-    -   Predicting outcomes using the developed causal model
-    -   Comparing predicted outcomes to understand causal mechanisms
+-   Constructing a comprehensive causal model that explicitly
+    incorporates non-linear relationships and interaction effects.
+    Counterfactual approaches can better handle complex, non-parametric
+    relationships
+
+-   Decomposition of effects: Counterfactual methods allow for more
+    nuanced decomposition of total effects into direct and indirect
+    effects, especially in the presence of treatment-mediator
+    interactions
+
+-   Counterfactual frameworks extend more naturally to settings with
+    multiple mediators
 
 ## Practical Examples using R package
 
@@ -675,7 +678,7 @@ in the absence of the exposure.
 how pulse rate would change if the treatment (or exposure) physically
 active (a=1) was set at 1 versus 0, while for each individual the
 mediator (BMI) was kept at the level it would naturally be in the
-**absense** of physical activity(**a=0**).
+**abcense** of physical activity(**a=0**).
 
 In other words, it measures the direct effect of physical activity on
 pulse rate that doesn't work through changing BMI.
