@@ -376,7 +376,7 @@ zero.
 
 TE = PNDE + TNIE this decomposition usually is for research question:
 'is there a mediated effect?' or 'is the causal effect mediated by the
-proposed mediator?'
+proposed mediator?' @nguyen2021clarifying
 :::
 
 ### Total natural direct effect
@@ -398,7 +398,7 @@ intervention.
 
 TE = PNIE + TNDE this decomposition usually is for research question:
 'does the exposure influence the outcome in other ways, not through this
-mediator?'
+mediator?' @nguyen2021clarifying
 :::
 
 ### Interaction effects
