@@ -67,7 +67,28 @@ causal effect.
 
 More formally we can now define a causal effect @hernan_definition_2004:
 
-$E[Y^{a=1} = 1] - E[Y^{a=0} = 1] \ne 0$
+\$\$E\[Y\^{a=1} = 1\] - E\[Y\^{a=0} = 1\] \\ne 0\$
+
+### Causal mediation effect
+
+When we want to understand not just **if**, but **how** red meat
+consumption affects blood glucose, we need to consider mediating
+factors. For example:
+
+Will eating more red meat increase my body fat percentage, which in turn
+increases my blood glucose levels?
+
+This requires us to decompose the total effect into direct and indirect
+pathways. For natural mediation effects, we need to consider scenarios
+that cross between different possible worlds, such as:
+
+What would my blood glucose level be if I ate more red meat (treatment =
+1), BUT my body fat percentage remained at the level it would have been
+had I NOT eaten more red meat (mediator at level from treatment = 0)?
+
+These **cross-world counterfactuals** combine elements from two
+incompatible realities. They cannot be directly observed even in
+principle, which creates fundamental identification challenges.
 
 ::: callout-note
 ## Notation
