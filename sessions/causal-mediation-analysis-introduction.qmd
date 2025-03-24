@@ -134,7 +134,7 @@ principle, which creates fundamental identification challenges.
 
 ## Core Causal Assumptions
 
-## Association vs Causation 
+### Association vs Causation
 
 What makes it complicated to estimate a causal effect is that we cannot
 observe the outcome under different treatments.
@@ -180,7 +180,7 @@ is illustrated in @fig-causation-association.
     long education), then we cannot estimate the conditional probability
     of the outcome.
 
-### Confounding assumptions in Causal Mediation Analysis 
+### Confounding assumptions in Causal Mediation Analysis
 
 Confounding assumptions are critical for valid causal inferences in
 mediation analysis. These assumptions specify the conditions under which
@@ -189,10 +189,12 @@ associational.
 
 <div>
 
- 1. no unmeasured exposure-outcome confounding
+1.  no unmeasured exposure-outcome confounding
 
 2.  no unmeasured exposure-mediator confounding
+
 3.  no unmeasured mediator-outcome confounding
+
 4.  *mediator-outcome confounding not affected by the exposure/treatment
     (post-treatment confounder or intermediate confounder)*
 
@@ -456,7 +458,23 @@ We can easily conduct mediation analysis using R package once you
 understand the basic concepts of mediation.
 
 ```{r}
+library(tidyverse)
+# This includes readr, or use library(readr) specifically
+nhanes <- read_csv(here::here("data/NHANES.csv")) 
+data <- nhanes %>%
+  dplyr::select(ID,
+                w1 = Age,
+                w2 = Gender,
+                w3 = Education,
+                w4 = Smoke100,
+                a = PhysActive,
+                m = BMI, 
+                y = Pulse, 
+                y2 = Diabetes)  %>%
+                na.omit()
+```
 
+```{r}
 library(CMAverse)
 res_rb <- cmest(
   data = data, 
@@ -484,26 +502,27 @@ We use these equations on an additive scale because it is easier to
 explain the intuition behind the estimands. Similar equations exist for
 other types and combinations of variables.
 
-```{r, echo = FALSE} library(tidyverse)}
-```
-
-```{r} # This includes readr, or use library(readr) specifically nhanes <- read_csv(here::here("data/NHANES.csv"))  # keep the variables used in the analyses  data <- nhanes %>%    dplyr::select(ID,                  w1 = Age,                  w2 = Gender,                  w3 = Education,                  w4 = Smoke100,                  a = PhysActive,  # this is the exposure                 m = BMI,         # this is the mediator                 y = Pulse,       # this is the outcome                 y2 = Diabetes ) %>%    na.omit()}
+```{r, echo = FALSE}
+library(tidyverse)
 ```
 
 We can now run a model for the mediator only adjusting for a single
 variable. In practice you would adjust for many more variables to
 satisfy the confounding assumptions.
 
-```{r} lm_m <- lm(m ~ a + w1 , data = data) summary(lm_m)}
+```{r}
+lm_m <- lm(m ~ a + w1 , data = data) 
+summary(lm_m)
 ```
 
-Here, we see that physical activity (a) is associated with lower pulse
-(y).
+Here, we see that physical activity (a) is associated with lower BMI(m).
 
 Now, we run the model for the outcome, notice we have included an
 interaction term.
 
-```{r} lm_y <- lm(y ~ a + m + a:m + w1 , data = data) summary(lm_y)}
+```{r}
+lm_y <- lm(y ~ a + m + a:m + w1 , data = data) 
+summary(lm_y)
 ```
 
 In this model we can see:
@@ -537,13 +556,19 @@ For the controlled direct effect we set m to a specific value.
 
 Let's look at the distribution of m (BMI).
 
-```{r} data %>%   select(m) %>%   summary()  median_m <- round(median(data$m), digits = 1)}
+```{r}
+data %>%  
+  select(m) %>%   
+  summary()  
+median_m <- round(median(data$m), digits = 1)
 ```
 
 In this example we will set it to the median of BMI, at `r median_m`
 which is a low level. You can also try to set BMI to 25kg/m2.
 
-```{r} CDE_m <- (lm_y$coefficients[2] + lm_y$coefficients[5] * median_m) * (1 - 0) round(as.numeric(CDE_m), digits = 2)}
+```{r}
+CDE_m <- (lm_y$coefficients[2] + lm_y$coefficients[5] * median_m) * (1 - 0)
+round(as.numeric(CDE_m), digits = 2)
 ```
 
 The CDE is how much the outcome, here the pulse, would change on average
@@ -564,12 +589,16 @@ $PNDE = (\sigma_1 + \sigma_3 * (\beta_0 + \beta_1*a^* + \beta'_2*w))(a - a^*)$
 We set the value for the confounder w1 for the interaction to be the
 mean value of w1.
 
-```{r} mean_w1 <- mean(data$w1) mean_w1}
+```{r}
+mean_w1 <- mean(data$w1) 
+mean_w1
 ```
 
 Then we calculate the PNDE.
 
-```{r} PNDE <- (lm_y$coefficients[2] + (lm_y$coefficients[5] * (lm_m$coefficients[1] + lm_m$coefficients[2] * 0 + lm_m$coefficients[3] * mean_w1))) * (1 - 0) round(as.numeric(PNDE), digits = 2)}
+```{r}
+PNDE <- (lm_y$coefficients[2] + (lm_y$coefficients[5] * (lm_m$coefficients[1] + lm_m$coefficients[2] * 0 + lm_m$coefficients[3] * mean_w1))) * (1 - 0)
+round(as.numeric(PNDE), digits = 2)
 ```
 
 The PNDE is how much the outcome, pulse, would change if the treatment
@@ -591,7 +620,9 @@ TNDE can be obtained by this formula:
 
 $TNDE = (\sigma_1 + \sigma_3 * (\beta_0 + beta_1*a + \beta'_2*w))(a - a^*)$
 
-```{r} TNDE <- (lm_y$coefficients[2] + (lm_y$coefficients[5] * (lm_m$coefficients[1] + lm_m$coefficients[2] * 1 + lm_m$coefficients[3] * mean_w1))) * (1 - 0)  round(as.numeric(TNDE), digits = 2)}
+```{r}
+TNDE <- (lm_y$coefficients[2] + (lm_y$coefficients[5] * (lm_m$coefficients[1] + lm_m$coefficients[2] * 1 + lm_m$coefficients[3] * mean_w1))) * (1 - 0)  
+round(as.numeric(TNDE), digits = 2)
 ```
 
 Here, the value of M is enabled to act (as opposed to the PNDE). Here we
@@ -609,7 +640,9 @@ The TNIE can be obtained by this formula:
 
 $TNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a)(a - a^*)$
 
-```{r} TNIE <- ((lm_y$coefficients[3] * lm_m$coefficients[2]) + (lm_y$coefficients[5] * lm_m$coefficients[2] * 1)) * (1 - 0)  round(as.numeric(TNIE), digits = 2)}
+```{r}
+TNIE <- ((lm_y$coefficients[3] * lm_m$coefficients[2]) + (lm_y$coefficients[5] * lm_m$coefficients[2] * 1)) * (1 - 0)  
+round(as.numeric(TNIE), digits = 2)
 ```
 
 The TNIE is how much the outcome would change on average if the
@@ -636,7 +669,9 @@ The PNIE can be obtained by this formula:
 
 $PNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a^*)(a - a^*)$
 
-```{r} PNIE <- ((lm_y$coefficients[3] * lm_m$coefficients[2]) + (lm_y$coefficients[5] * lm_m$coefficients[2] * 0)) * (1 - 0)  round(as.numeric(PNIE), digits = 2)}
+```{r}
+PNIE <- ((lm_y$coefficients[3] * lm_m$coefficients[2]) + (lm_y$coefficients[5] * lm_m$coefficients[2] * 0)) * (1 - 0)  
+round(as.numeric(PNIE), digits = 2)
 ```
 
 The PNIE is different from the TNIE because it does not include the
@@ -657,7 +692,9 @@ The total effect can be decomposed as:
 
 $TE = PNDE + TNIE$
 
-```{r} TE <- PNDE + TNIE  round(as.numeric(TE), digits = 2)}
+```{r}
+TE <- PNDE + TNIE  
+round(as.numeric(TE), digits = 2)
 ```
 
 This is the overall effect of red meat on blood glucose levels. Higher
@@ -669,7 +706,9 @@ From this, we can calculate the proportion mediated.
 
 $PM = \frac{TNIE}{TE}$
 
-```{r} PM <- TNIE / TE  as.numeric(PM) * 100}
+```{r}
+PM <- TNIE / TE  
+as.numeric(PM) * 100
 ```
 
 21% of the association between physical activity and pulse rate is
