@@ -291,6 +291,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#individual-causal-effect" id="toc-individual-causal-effect" class="nav-link" data-scroll-target="#individual-causal-effect"><span class="header-section-number">6.1.1</span> Individual causal effect</a></li>
   <li><a href="#average-causal-effect" id="toc-average-causal-effect" class="nav-link" data-scroll-target="#average-causal-effect"><span class="header-section-number">6.1.2</span> Average causal effect</a></li>
+  <li><a href="#causal-mediation-effect" id="toc-causal-mediation-effect" class="nav-link" data-scroll-target="#causal-mediation-effect"><span class="header-section-number">6.1.3</span> Causal mediation effect</a></li>
   </ul></li>
   <li><a href="#causal-mediation-analysis" id="toc-causal-mediation-analysis" class="nav-link" data-scroll-target="#causal-mediation-analysis"><span class="header-section-number">6.3</span> Causal mediation analysis</a></li>
   <li><a href="#confounding-assumptions" id="toc-confounding-assumptions" class="nav-link" data-scroll-target="#confounding-assumptions"><span class="header-section-number">6.4</span> Confounding assumptions</a></li>
@@ -374,14 +375,22 @@ Notation
 <p>But we can never do this in the real world.</p>
 </section>
 <section id="average-causal-effect" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored"><span class="header-section-number">6.1.2</span> Average causal effect</h3>
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="average-causal-effect"><span class="header-section-number">6.1.2</span> Average causal effect</h3>
 <p>Instead, we can perform a randomized controlled trial. We now ask a slightly different question:</p>
 <blockquote class="blockquote">
 <p>Will eating more red meat give adults higher blood glucose in 1 year?</p>
 </blockquote>
 <p>We can randomely assigning one group to consume more red meat and the other group to consume more of something else over 1 year. Then we compare the average blood glucose levels after 1 year in each of the groups. If there is a difference, we could say there is an average causal effect.</p>
 <p>More formally we can now define a causal effect <span class="citation" data-cites="hernan_definition_2004">(<a href="#ref-hernan_definition_2004" role="doc-biblioref">1</a>)</span>:</p>
-<p><span class="math inline">\(E[Y^{a=1} = 1] - E[Y^{a=0} = 1] \ne 0\)</span></p>
+<p>$$E[Y^{a=1} = 1] - E[Y^{a=0} = 1] \ne 0$</p>
+</section>
+<section id="causal-mediation-effect" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored"><span class="header-section-number">6.1.3</span> Causal mediation effect</h3>
+<p>When we want to understand not just <strong>if</strong>, but <strong>how</strong> red meat consumption affects blood glucose, we need to consider mediating factors. For example:</p>
+<p>Will eating more red meat increase my body fat percentage, which in turn increases my blood glucose levels?</p>
+<p>This requires us to decompose the total effect into direct and indirect pathways. For natural mediation effects, we need to consider scenarios that cross between different possible worlds, such as:</p>
+<p>What would my blood glucose level be if I ate more red meat (treatment = 1), BUT my body fat percentage remained at the level it would have been had I NOT eaten more red meat (mediator at level from treatment = 0)?</p>
+<p>These <strong>cross-world counterfactuals</strong> combine elements from two incompatible realities. They cannot be directly observed even in principle, which creates fundamental identification challenges.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -412,7 +421,7 @@ Association vs causation
 <div class="callout-body-container callout-body">
 <p>What makes it complicated to estimate a causal effect is that we cannot observe the outcome under different treatments.</p>
 <p>When we only have a subset of the outcomes, we have an association. This is illustrated in <span class="quarto-unresolved-ref">?fig-causation-association</span>.</p>
-<h2 id="causal-assumptions" data-number="6.2" class="anchored" data-anchor-id="average-causal-effect"><span class="header-section-number">6.2</span> Causal Assumptions</h2>
+<h2 id="causal-assumptions" data-number="6.2" class="anchored" data-anchor-id="causal-mediation-effect"><span class="header-section-number">6.2</span> Causal Assumptions</h2>
 <ul>
 <li>Exchangeability</li>
 </ul>
@@ -483,8 +492,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit. DAG under no mediator-outcome relation affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-8f3369c57497552455eb" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-8f3369c57497552455eb">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-62f48a32f484208ae7cd" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-62f48a32f484208ae7cd">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -492,8 +501,8 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-4c87fd51f3880425a299" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-4c87fd51f3880425a299">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-015b61b576e44cc6f2b3" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-015b61b576e44cc6f2b3">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
