@@ -530,14 +530,14 @@ Note
 <li><p>no unmeasured exposure-outcome confounding</p></li>
 <li><p>no unmeasured exposure-mediator confounding</p></li>
 <li><p>no unmeasured mediator-outcome confounding</p></li>
-<li><p><em>mediator-outcome confounding not affected by the exposure/treatment (post-treatment confounder or intermediate confounder)</em></p></li>
+<li><p>mediator-outcome confounding not affected by the exposure/treatment (post-treatment confounder or intermediate confounder)</p></li>
 </ol>
 </div>
 <p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-d4ca26c7674f1b8771f4" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-d4ca26c7674f1b8771f4">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-ef3e136d6a263c7423a1" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-ef3e136d6a263c7423a1">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -545,8 +545,8 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-022b662fadb8f6085367" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-022b662fadb8f6085367">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-112ae0f5300aff132bb3" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-112ae0f5300aff132bb3">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
@@ -603,7 +603,7 @@ Notation
 <p>The effect of A on Y not mediated through M. Fixing the value of M to m.</p>
 <p><span class="math inline">\(Y^{a=1,m}\)</span> - <span class="math inline">\(Y^{a=0,m}\)</span></p>
 <p>We intervene on <span class="math inline">\(a\)</span> but fix <span class="math inline">\(m\)</span> to a certain value. The CDE is how much the outcome would change on average if the mediator were fixed at level m uniformly in the population but the treatment were changed from 0 to 1.</p>
-<p>This could be relevant in the context of a change in a policy that impacted the mediator for everyone. For instance, if air pollution was a mediator between physical activity and cardiovascular disease risk. If a new policy would change the level of air pollution for all while we implement an intervention to increase biking in the city.</p>
+<p>This could be relevant in the context of a change in a policy that impacted the mediator for everyone. For instance, if air pollution was a mediator between physical activity and cardiovaular disease risk. If a new policy would change the level of air pollution for all while we implement an intervention to increase biking in the city.</p>
 <p>This effect is not used that often. But can be highly relevant in some situations.</p>
 </section>
 <section id="pure-natural-direct-effect" class="level3" data-number="6.5.3">
@@ -693,6 +693,23 @@ Decomposition
 <section id="practical-examples-using-r-package" class="level2" data-number="6.7">
 <h2 data-number="6.7" class="anchored" data-anchor-id="practical-examples-using-r-package"><span class="header-section-number">6.7</span> Practical Examples using R package</h2>
 <p>We can easily conduct mediation analysis using R package once you understand the basic concepts of mediation.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Before you run the analytical models
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>make a DAG display the assumed causal model</li>
+<li>check the confounding assumptions for each path</li>
+<li>ensure the temporal ordering of the variables</li>
+</ul>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This includes readr, or use library(readr) specifically</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>nhanes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/NHANES.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -986,21 +1003,21 @@ Direct counterfactual imputation estimation with
  bootstrap standard errors, percentile confidence intervals and p-values 
  
               Estimate Std.error   95% CIL 95% CIU  P.val    
-cde          -2.135202  0.361105 -2.679035  -1.415 &lt;2e-16 ***
-pnde         -1.895369  0.403546 -2.566543  -1.152 &lt;2e-16 ***
-tnde         -2.131764  0.364787 -2.680047  -1.399 &lt;2e-16 ***
-pnie         -0.270278  0.057524 -0.360878  -0.153 &lt;2e-16 ***
-tnie         -0.506673  0.087436 -0.677344  -0.377 &lt;2e-16 ***
-te           -2.402041  0.366200 -3.002783  -1.687 &lt;2e-16 ***
-intref        0.239834  0.110708  0.039482   0.435 &lt;2e-16 ***
-intmed       -0.236395  0.099033 -0.385526  -0.038 &lt;2e-16 ***
-cde(prop)     0.888911  0.036104  0.818058   0.949 &lt;2e-16 ***
-intref(prop) -0.099846  0.051882 -0.199492  -0.014 &lt;2e-16 ***
-intmed(prop)  0.098414  0.046597  0.013450   0.171 &lt;2e-16 ***
-pnie(prop)    0.112520  0.034418  0.063675   0.184 &lt;2e-16 ***
-pm            0.210934  0.061005  0.131453   0.348 &lt;2e-16 ***
-int          -0.001431  0.009751 -0.029862   0.002    0.4    
-pe            0.111089  0.036104  0.050876   0.182 &lt;2e-16 ***
+cde          -2.135202  0.342920 -2.603677  -1.403 &lt;2e-16 ***
+pnde         -1.893694  0.317961 -2.311375  -1.269 &lt;2e-16 ***
+tnde         -2.130089  0.340106 -2.595242  -1.401 &lt;2e-16 ***
+pnie         -0.270278  0.069821 -0.383762  -0.160 &lt;2e-16 ***
+tnie         -0.506673  0.079200 -0.627490  -0.386 &lt;2e-16 ***
+te           -2.400367  0.322774 -2.845422  -1.715 &lt;2e-16 ***
+intref        0.241508  0.084735  0.129584   0.388 &lt;2e-16 ***
+intmed       -0.236395  0.080521 -0.361509  -0.127 &lt;2e-16 ***
+cde(prop)     0.889532  0.040396  0.804388   0.946 &lt;2e-16 ***
+intref(prop) -0.100613  0.034207 -0.166515  -0.055 &lt;2e-16 ***
+intmed(prop)  0.098483  0.032414  0.052091   0.155 &lt;2e-16 ***
+pnie(prop)    0.112598  0.037848  0.063925   0.198 &lt;2e-16 ***
+pm            0.211081  0.040284  0.148978   0.279 &lt;2e-16 ***
+int          -0.002130  0.005243 -0.012895   0.004    0.4    
+pe            0.110468  0.040396  0.054150   0.196 &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
