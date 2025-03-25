@@ -119,19 +119,18 @@ When we want to understand not just **if**, but **how** red meat
 consumption affects blood glucose, we need to consider mediating
 factors. For example:
 
-Will eating more red meat increase my body fat percentage, which in turn
-increases my blood glucose levels?
+Will take the pill reduce my BMI, which in turn decrease the risk of
+T2D?
 
 This requires us to decompose the total effect into direct and indirect
 pathways. For natural mediation effects, we need to consider scenarios
 that cross between different possible worlds, such as:
 
-What would my blood glucose level be if I ate more red meat (treatment =
-1), BUT my body fat percentage remained at the level it would have been
-had I NOT eaten more red meat (mediator at level from treatment = 0)?
-This is then compared to what my blood glucose would be if both my red
-meat consumption AND my body fat percentage were at their treated levels
-(treatment = 1, mediator at level from treatment = 1).
+What would my risk of getting T2D if I take the pill (treatment = 1),
+BUT my BMI remained at the level it would have been had I NOT take the
+pill (mediator at level from treatment = 0)? This is then compared to
+what would the risk of T2D would be if I had taken the pill, and the BMI
+were at the level of treatment?
 
 These **cross-world counterfactuals** combine elements from two
 incompatible realities. They cannot be directly observed even in
