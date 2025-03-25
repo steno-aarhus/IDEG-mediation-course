@@ -52,7 +52,7 @@ we explore health outcomes.
 When investigating health outcomes, we would ideally want to know if you
 **do X**, then Y will happen. We could have a specific question:
 
-> Will take the magin pill reduce my risk of developing T2D in 5 years?
+> Will take the magic pill reduce my risk of developing T2D in 5 years?
 
 To answer this question we would ideally have you take the magic pill
 over 5 years and diagnose whether you get T2D. Then, we would turn back
@@ -119,22 +119,38 @@ When we want to understand not just **if**, but **how** red meat
 consumption affects blood glucose, we need to consider mediating
 factors. For example:
 
-Will take the pill reduce my BMI, which in turn decrease the risk of
-T2D?
-
-This requires us to decompose the total effect into direct and indirect
-pathways. For natural mediation effects, we need to consider scenarios
-that cross between different possible worlds, such as:
-
-What would my risk of getting T2D if I take the pill (treatment = 1),
-BUT my BMI remained at the level it would have been had I NOT take the
-pill (mediator at level from treatment = 0)? This is then compared to
-what would the risk of T2D would be if I had taken the pill, and the BMI
-were at the level of treatment?
+Will taking the pill reduce my BMI, which in turn decreases the risk of
+T2D? This requires us to decompose the total effect into direct and
+indirect pathways. For natural mediation effects, we need to consider
+scenarios that cross between different possible worlds, such as: What
+would my risk of getting T2D be if I take the pill (treatment = 1), BUT
+my BMI remained at the level it would have been had I NOT taken the pill
+(mediator at level from treatment = 0), compared to the risk of T2D if I
+had taken the pill, and my BMI were at the level it would naturally
+reach under treatment (treatment =1).
 
 These **cross-world counterfactuals** combine elements from two
 incompatible realities. They cannot be directly observed even in
 principle, which creates fundamental identification challenges.
+
+```{r}
+#| echo: false
+grViz("
+digraph {
+  rankdir = LR;
+  node [shape = box];
+  
+  Pill [label = 'Pill'];
+  BMI [label = 'BMI'];
+  T2D [label = 'T2D'];
+
+  Pill -> T2D [label = 'Direct Effect'];
+  Pill -> BMI [label = 'a'];
+  BMI -> T2D [label = 'b'];
+}
+")
+
+```
 
 ![cross-world
 counterfacturals](/images/decompose.png){#fig-decompose}
