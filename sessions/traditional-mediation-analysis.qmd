@@ -31,13 +31,17 @@ Overall relationship between A and Y:
 
 grViz("
 digraph {
-  graph []
+  graph [label='X: exposure, Y: outcome\nU: set of all confounders\nc: total effect of X on Y', labelloc='b', fontsize=8]
   node [shape = plaintext]
-    A [label = 'A']
+    X [label = 'X']
     Y [label = 'Y']
+    U [label = 'U']
   edge [minlen = 1.5]
-    A->Y [label = 'c']
-  { rank = same; A; Y }
+    X->Y [label = 'c']
+    U->X [label = '']
+    U->Y [label = '']
+  { rank = same; X; Y }
+  { rank = max; U;}
 }")
 ```
 
@@ -48,18 +52,23 @@ Relationship between A and Y through M:
 
 grViz("
 digraph {
-  graph []
+  graph [label='X: exposure, Y: outcome\nM: mediator, U: set of all confounders\na: effect of X on M\nb: effect of M on Y\nc*: direct effect of X on Y\n ab: indirect effect of X on Y\n c: total effect of X on Y (=ab+c)', labelloc='b', fontsize=8]
   node [shape = plaintext]
-    A [label = 'A']
+    X [label = 'X']
     M [label = 'M']
     Y [label = 'Y']
+    U [label = 'U']
   edge [minlen = 1.5]
-    A->Y [label = 'c*', xlabel = 'c']
-    A->M [taillabel = 'a']
+    X->Y [xlabel = 'c', label = 'c*']
+    X->M [xlabel = 'a']
     M->Y [label = 'b']
-  { rank = same; A; Y }
+    U->X [label = '']
+    U->Y [label = '']
+  { rank = same; X; Y }
   { rank = min; M;}
+  { rank = max; U;}
 }")
+
 ```
 
 ## Traditional approaches for mediation analysis
@@ -73,15 +82,15 @@ The traditional approach use these equations for mediator and outcome
 
 Mediator-model:
 
-$E(M|A=a, C=c) = \beta_0 + \beta_1a + \beta_2c$ (3.1)
+$E(M|X=x, U=u) = \beta_0 + \beta_1a + \beta_2c$ (3.1)
 
 Outcome model with adjustment for mediator:
 
-$E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c$ (3.2)
+$E(Y|X=x, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta4c$ (3.2)
 
 Outcome model without adjustment for mediator:
 
-$E(Y|A=a, C=c) = \theta_0' + \theta_1'a + \theta4'c$ (3.3)
+$E(Y|X=x, U=u) = \theta_0' + \theta_1'a + \theta4'c$ (3.3)
 
 Note:
 
