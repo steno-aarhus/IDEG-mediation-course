@@ -52,13 +52,13 @@ we explore health outcomes.
 When investigating health outcomes, we would ideally want to know if you
 **do X**, then Y will happen. We could have a specific question:
 
-> Will eating more red meat give me higher blood glucose in 1 year?
+> Will take the magin pill reduce my risk of developing T2D in 5 years?
 
-To answer this question we would ideally have you consume more red meat
-over 1 year and measure your blood glucose levels. Then, we would turn
-back time, and make you eat something else over 1 year and then measure
-your blood glucose levels again. If there is a difference between your
-two outcomes, then we say there is a causal effect.
+To answer this question we would ideally have you take the magic pill
+over 5 years and diagnose whether you get T2D. Then, we would turn back
+time, and make you do not take the pill and then diagnose T2D. If there
+is a difference between your two outcomes, then we say there is a causal
+effect.
 
 But we can never do this in the real world.
 
