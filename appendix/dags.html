@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Mediation Analysis – IDEG Mediation Workshop</title>
+<title>Appendix A — DAGs – IDEG Mediation Workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../sessions/motivation.html" rel="next">
-<link href="../preamble/Introduction-to-DAGs.html" rel="prev">
+<link href="../appendix/reading-list.html" rel="next">
+<link href="../sessions/causal-mediation-analysis-introduction.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,6 +68,11 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="../site_libs/viz-1.8.2/viz.js"></script>
+<link href="../site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="../site_libs/grViz-binding-1.0.11/grViz.js"></script>
 
 
 </head>
@@ -81,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sessions/welcome.html">Sessions</a></li><li class="breadcrumb-item"><a href="../sessions/welcome.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Mediation Analysis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendix/dags.html">Appendices</a></li><li class="breadcrumb-item"><a href="../appendix/dags.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">DAGs</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,7 +154,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sessions/welcome.html" class="sidebar-item-text sidebar-link active">
+  <a href="../sessions/welcome.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Mediation Analysis</span></span></a>
   </div>
 </li>
@@ -184,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendix/dags.html" class="sidebar-item-text sidebar-link">
+  <a href="../appendix/dags.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">DAGs</span></span></a>
   </div>
 </li>
@@ -201,27 +206,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome"><span class="header-section-number">3.1</span> Welcome</a></li>
-  <li><a href="#course-outline" id="toc-course-outline" class="nav-link" data-scroll-target="#course-outline"><span class="header-section-number">4</span> Course Outline</a>
-  <ul class="collapse">
-  <li><a href="#important-things-before-the-course" id="toc-important-things-before-the-course" class="nav-link" data-scroll-target="#important-things-before-the-course"><span class="header-section-number">4.1</span> Important things before the course</a></li>
-  <li><a href="#course-outline-1" id="toc-course-outline-1" class="nav-link" data-scroll-target="#course-outline-1"><span class="header-section-number">4.2</span> Course outline</a></li>
-  <li><a href="#acknowledgement" id="toc-acknowledgement" class="nav-link" data-scroll-target="#acknowledgement"><span class="header-section-number">4.3</span> Acknowledgement</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sessions/welcome.html">Sessions</a></li><li class="breadcrumb-item"><a href="../sessions/welcome.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Mediation Analysis</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendix/dags.html">Appendices</a></li><li class="breadcrumb-item"><a href="../appendix/dags.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">DAGs</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Mediation Analysis</span></h1>
+<h1 class="title">Appendix A — DAGs</h1>
 </div>
 
 
@@ -238,63 +231,34 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="welcome"><span class="header-section-number">3.1</span> Welcome</h2>
-<p>Welcome to the short workshop on Directed Acyclic Graphs (DAGs) and mediation analysis!</p>
-<p>Instrctors: Daniel Witte, Jie Zhang</p>
-<p>Time duration: 75 mins</p>
-</section>
-<section id="course-outline" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Course Outline</h1>
-<p>During this 75-minute course, you will learn about traditional mediation approaches before exploring the theory of causal mediation, accompanied by hands-on R coding practice. We hope this will be the beginning of your journey in mediation analysis and open the door to more interesting research studies!</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Learning outcomes
+<p>Overall relationship between A and Y:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-328a927bda0d43fa0efc" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-328a927bda0d43fa0efc">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c\"]\n  { rank = same; A; Y }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><p>Understand the fundementals of mediation analysis</p>
-<p><em>What is mediation analyses?</em></p>
-<p><em>Why and when to use mediation analyses?</em></p></li>
-<li><p>Master the theoretical framework</p>
-<p><em>Understand traditional mediation concepts</em></p>
-<p><em>Learn principles of causal mediation analysis</em></p></li>
-<li><p>Conduct practical analyses using R software</p>
-<p><em>Perform traditional mediation and causal mediation analysis</em></p>
-<p><em>Apply appropriate statistical methods</em></p></li>
-<li><p>Interpret and communicate results</p>
-<p><em>Analyze outputs from mediation analyses</em></p>
-<p><em>Draw meaningful conclusions from results</em></p></li>
-</ul>
+<p>Relationship between A and Y through M:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-b9e87380caa981220f96" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b9e87380caa981220f96">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c*\", xlabel = \"c\"]\n    A->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<section id="important-things-before-the-course" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="important-things-before-the-course"><span class="header-section-number">4.1</span> Important things before the course</h2>
-<p>To make the most of our training course in Bangkok, please complete the pre-course tasks before you arrive. This will ensure we can start our sessions smoothly and dive right into the content!</p>
-</section>
-<section id="course-outline-1" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="course-outline-1"><span class="header-section-number">4.2</span> Course outline</h2>
-<ul>
-<li>Motivation</li>
-<li>Traditional mediation analysis</li>
-<li>Introduction to causal mediation analysis</li>
-<li>Perform causal mediation analysis using R software</li>
-<li>Interpret results from causal mediation analysis</li>
-</ul>
-</section>
-<section id="acknowledgement" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="acknowledgement"><span class="header-section-number">4.3</span> Acknowledgement</h2>
-<p>This course is developed based on <a href="https://analysis-of-mechanisms.netlify.app/">‘Mediation Analysis Course’</a> developed by Daniel B. Ibsen, Omar Silverman, Jie Zhang from Steno Diabetes Center Aarhus in Denmark, and Nima Hejarzi and Ivan Diaz from the US, which is sponsored by the Danish Diabetes and Endocrine Academy.</p>
-<p>The repository contains the lesson, lecture, and assignment material for the course, including the website source files and other associated course administration files. You can always go to check the website to learn more about mediation.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-72976d84264b987991fc" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-72976d84264b987991fc">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c*\", xlabel = \"c\"]\n    X->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-af398ef0c205426b2e9c" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-af398ef0c205426b2e9c">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -716,13 +680,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../preamble/Introduction-to-DAGs.html" class="pagination-link" aria-label="Directed Acyclic Graphs (DAG)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Directed Acyclic Graphs (DAG)</span></span>
+      <a href="../sessions/causal-mediation-analysis-introduction.html" class="pagination-link" aria-label="Introduction to causal mediation analysis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to causal mediation analysis</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../sessions/motivation.html" class="pagination-link" aria-label="Motivation">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Motivation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../appendix/reading-list.html" class="pagination-link" aria-label="reading">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">reading</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
