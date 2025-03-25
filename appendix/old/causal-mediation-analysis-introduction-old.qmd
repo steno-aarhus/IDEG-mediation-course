@@ -117,7 +117,7 @@ What makes it complicated to estimate a causal effect is that we cannot observe 
 
 When we only have a subset of the outcomes, we have an association. This is illustrated in @fig-causation-association.
 
-![Causation vs association. From @hernan_definition_2004](/images/causation-association.PNG){#fig-causation-association}
+![Causation vs association. From @hernan_definition_2004](/images/causation-association.png){#fig-causation-association}
 
 If we want to infer a causal effect (i.e., what would have happened, had everyone done A=1 vs A=0), we need three assumptions to be fulfilled:
 
