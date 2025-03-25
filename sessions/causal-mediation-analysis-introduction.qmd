@@ -209,8 +209,8 @@ associational.
 
 3.  no unmeasured mediator-outcome confounding
 
-4.  *mediator-outcome confounding not affected by the exposure/treatment
-    (post-treatment confounder or intermediate confounder)*
+4.  mediator-outcome confounding not affected by the exposure/treatment
+    (post-treatment confounder or intermediate confounder)
 
 </div>
 
@@ -367,7 +367,7 @@ m uniformly in the population but the treatment were changed from 0 to
 
 This could be relevant in the context of a change in a policy that
 impacted the mediator for everyone. For instance, if air pollution was a
-mediator between physical activity and cardiovascular disease risk. If a
+mediator between physical activity and cardiovaular disease risk. If a
 new policy would change the level of air pollution for all while we
 implement an intervention to increase biking in the city.
 
@@ -497,6 +497,14 @@ sophisticated approaches. Specifically, it can:
 
 We can easily conduct mediation analysis using R package once you
 understand the basic concepts of mediation.
+
+::: callout-note
+## Before you run the analytical models
+
+-   make a DAG display the assumed causal model
+-   check the confounding assumptions for each path
+-   ensure the temporal ordering of the variables
+:::
 
 ```{r}
 # This includes readr, or use library(readr) specifically
