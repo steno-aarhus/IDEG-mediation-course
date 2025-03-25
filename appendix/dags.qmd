@@ -1,0 +1,92 @@
+---
+title: "DAGs"
+format: html
+editor: visual
+---
+
+```{r}
+#| include: false
+#| screenshot: true
+library(here)
+library(DiagrammeR)
+library(tidyverse)
+library(dplyr)
+```
+
+Overall relationship between A and Y:
+
+```{r echo=FALSE}
+#| echo: false
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    A [label = 'A']
+    Y [label = 'Y']
+  edge [minlen = 1.5]
+    A->Y [label = 'c']
+  { rank = same; A; Y }
+}")
+```
+
+Relationship between A and Y through M:
+
+```{r echo=FALSE}
+#| echo: false
+
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    A [label = 'A']
+    M [label = 'M']
+    Y [label = 'Y']
+  edge [minlen = 1.5]
+    A->Y [label = 'c*', xlabel = 'c']
+    A->M [taillabel = 'a']
+    M->Y [label = 'b']
+  { rank = same; A; Y }
+  { rank = min; M;}
+}")
+```
+
+```{r echo=FALSE}
+#| echo: false
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    X [label = 'Physical activity']
+    M [label = 'BMI']
+    Y [label = 'Pulse']
+  edge [minlen = 1.5]
+    X->Y [label = 'c*', xlabel = 'c']
+    X->M [taillabel = 'a']
+    M->Y [label = 'b']
+  { rank = same; X; Y }
+  { rank = min; M;}
+}")
+```
+
+```{r}
+#| echo: false
+
+grViz("
+digraph {
+  graph []
+  node [shape = plaintext]
+    W [label = 'W']
+    A [label = 'A']
+    M [label = 'M']
+    Y [label = 'Y']
+  edge [minlen = 2]
+    A->M
+    M->Y
+    A->Y
+    W->A
+    W->Y
+    W->M
+{rank = same; W; A; M; Y; }
+}
+")
+```
