@@ -301,12 +301,12 @@ window.Quarto = {
   <li><a href="#average-causal-effect" id="toc-average-causal-effect" class="nav-link" data-scroll-target="#average-causal-effect"><span class="header-section-number">6.1.2</span> Average causal effect</a></li>
   </ul></li>
   <li><a href="#from-causal-effects-to-causal-mediation" id="toc-from-causal-effects-to-causal-mediation" class="nav-link" data-scroll-target="#from-causal-effects-to-causal-mediation"><span class="header-section-number">6.2</span> From Causal effects to Causal mediation</a></li>
-  <li><a href="#core-causal-assumptions" id="toc-core-causal-assumptions" class="nav-link" data-scroll-target="#core-causal-assumptions"><span class="header-section-number">6.3</span> Core Causal Assumptions</a>
+  <li><a href="#causal-mediation-estimation-approaches" id="toc-causal-mediation-estimation-approaches" class="nav-link" data-scroll-target="#causal-mediation-estimation-approaches"><span class="header-section-number">6.3</span> Causal Mediation Estimation Approaches</a></li>
+  <li><a href="#core-causal-assumptions" id="toc-core-causal-assumptions" class="nav-link" data-scroll-target="#core-causal-assumptions"><span class="header-section-number">6.4</span> Core Causal Assumptions</a>
   <ul class="collapse">
-  <li><a href="#association-vs-causation" id="toc-association-vs-causation" class="nav-link" data-scroll-target="#association-vs-causation"><span class="header-section-number">6.3.1</span> Association vs Causation</a></li>
-  <li><a href="#confounding-assumptions-in-causal-mediation-analysis" id="toc-confounding-assumptions-in-causal-mediation-analysis" class="nav-link" data-scroll-target="#confounding-assumptions-in-causal-mediation-analysis"><span class="header-section-number">6.3.2</span> Confounding assumptions in Causal Mediation Analysis</a></li>
+  <li><a href="#association-vs-causation" id="toc-association-vs-causation" class="nav-link" data-scroll-target="#association-vs-causation"><span class="header-section-number">6.4.1</span> Association vs Causation</a></li>
+  <li><a href="#confounding-assumptions-in-causal-mediation-analysis" id="toc-confounding-assumptions-in-causal-mediation-analysis" class="nav-link" data-scroll-target="#confounding-assumptions-in-causal-mediation-analysis"><span class="header-section-number">6.4.2</span> Confounding assumptions in Causal Mediation Analysis</a></li>
   </ul></li>
-  <li><a href="#causal-mediation-estimation-approaches" id="toc-causal-mediation-estimation-approaches" class="nav-link" data-scroll-target="#causal-mediation-estimation-approaches"><span class="header-section-number">6.4</span> Causal Mediation Estimation Approaches</a></li>
   <li><a href="#casual-mediation-effects" id="toc-casual-mediation-effects" class="nav-link" data-scroll-target="#casual-mediation-effects"><span class="header-section-number">6.5</span> Casual Mediation Effects</a>
   <ul class="collapse">
   <li><a href="#defining-estimands" id="toc-defining-estimands" class="nav-link" data-scroll-target="#defining-estimands"><span class="header-section-number">6.5.1</span> Defining estimands</a></li>
@@ -425,7 +425,7 @@ Notation
 </blockquote>
 <p>We can randomly assigning one group to take the pill, and the other group not to take the pill over 5 years. Then we compare the average risk of T2D after 5 year in each of the groups. If there is a difference, we could say there is an average causal effect.</p>
 <p>More formally we can now define a causal effect <span class="citation" data-cites="hernan_definition_2004">(<a href="#ref-hernan_definition_2004" role="doc-biblioref">1</a>)</span>:</p>
-<p>$E[Y^{a=1} = 1] - E[Y^{a=0} = 1] $</p>
+<p>$E[Y^{a=1} = 1]-E[Y^{a=0} = 1] $</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -447,15 +447,14 @@ Notation
 </section>
 <section id="from-causal-effects-to-causal-mediation" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="from-causal-effects-to-causal-mediation"><span class="header-section-number">6.2</span> From Causal effects to Causal mediation</h2>
-<p>When we want to understand not just <strong>if</strong>, but <strong>how</strong> red meat consumption affects blood glucose, we need to consider mediating factors. For example:</p>
-<p>Will taking the pill reduce my BMI, which in turn decreases the risk of T2D? This requires us to decompose the total effect into direct and indirect pathways. For natural mediation effects, we need to consider scenarios that cross between different possible worlds, such as: What would my risk of getting T2D be if I take the pill (treatment = 1), BUT my BMI remained at the level it would have been had I NOT taken the pill (mediator at level from treatment = 0), compared to the risk of T2D if I had taken the pill, and my BMI were at the level it would naturally reach under treatment (treatment =1).</p>
-<p>These <strong>cross-world counterfactuals</strong> combine elements from two incompatible realities. They cannot be directly observed even in principle, which creates fundamental identification challenges.</p>
+<p>When we want to understand not just <strong>if</strong>, but <strong>how</strong> the magic pill affects risk of T2D, we need to consider mediating factors. For example:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-073de3160996b1cd88f5" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-073de3160996b1cd88f5">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-ae98a495563e23c78fef" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-ae98a495563e23c78fef">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
+<p>Will taking the pill reduce my BMI, which in turn decreases the risk of T2D? This requires us to decompose the total effect into direct and indirect pathways.</p>
 <div id="fig-decompose" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-decompose-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -466,11 +465,39 @@ Figure&nbsp;6.1: cross-world counterfacturals
 </figcaption>
 </figure>
 </div>
+<p>For mediation effects, we need to consider scenarios that cross between different possible worlds, such as: What would my risk of getting T2D be if I take the pill (treatment = 1), BUT my BMI remained at the level it would have been had I NOT taken the pill (mediator at level from treatment = 0), compared to the risk of T2D if I had taken the pill, and my BMI were at the level it would naturally reach under treatment (treatment =1).</p>
+<p>These <strong>cross-world counterfactuals</strong> combine elements from two incompatible realities. They cannot be directly observed even in principle, which creates fundamental identification challenges.</p>
 </section>
-<section id="core-causal-assumptions" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="core-causal-assumptions"><span class="header-section-number">6.3</span> Core Causal Assumptions</h2>
-<section id="association-vs-causation" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="association-vs-causation"><span class="header-section-number">6.3.1</span> Association vs Causation</h3>
+<section id="causal-mediation-estimation-approaches" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="causal-mediation-estimation-approaches"><span class="header-section-number">6.3</span> Causal Mediation Estimation Approaches</h2>
+<p>Counterfactual-based direct and indirect effects can be estimated from regression models, provided that the no confounding assumption hold. To be able to do so, we need a model for the mediator and a model for the outcome.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Causal approaches define effects using the counterfactural framework, before estimating th effects using statistical methods.</p>
+</div>
+</div>
+<p>Model for the mediator:</p>
+<p><span class="math inline">\(E(M|A = a, W = w) = \beta_0 + \beta_1a + \beta'_2w\)</span></p>
+<p>Model for the outcome:</p>
+<p><span class="math inline">\(E(Y|A = a, M = m, W = w) = \sigma_0 + \sigma_1a + \sigma_2m + \sigma_3am + \sigma'_4w\)</span></p>
+<p>From these two regression models we can estimate the direct and indirect effect.</p>
+<p>Direct effect: <span class="math inline">\(E[(Y(a=1,M_a=0))\)</span> - <span class="math inline">\(Y(a=0,M_a=0))]\)</span></p>
+<p>Indirect effect: <span class="math inline">\(E[(Y(a=1,M_a=1))\)</span> - <span class="math inline">\(Y(a=1,M_a=0))]\)</span></p>
+<p>While regression-based approaches are commonly used, several alternative estimation methods are available, including Inverse probability weighting (IPW), G-computation, and structural equation models (SEM).</p>
+<p>Note: additional approaches also exists, but we will not focus on these in this course.</p>
+</section>
+<section id="core-causal-assumptions" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="core-causal-assumptions"><span class="header-section-number">6.4</span> Core Causal Assumptions</h2>
+<section id="association-vs-causation" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="association-vs-causation"><span class="header-section-number">6.4.1</span> Association vs Causation</h3>
 <p>What makes it complicated to estimate a causal effect is that we cannot observe the outcome under different treatments.</p>
 <p>When we only have a subset of the outcomes, we have an association. This is illustrated in <a href="#fig-causation-association" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>.</p>
 <div id="fig-causation-association" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -520,8 +547,8 @@ Note
 </div>
 </div>
 </section>
-<section id="confounding-assumptions-in-causal-mediation-analysis" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="confounding-assumptions-in-causal-mediation-analysis"><span class="header-section-number">6.3.2</span> Confounding assumptions in Causal Mediation Analysis</h3>
+<section id="confounding-assumptions-in-causal-mediation-analysis" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="confounding-assumptions-in-causal-mediation-analysis"><span class="header-section-number">6.4.2</span> Confounding assumptions in Causal Mediation Analysis</h3>
 <p>Confounding assumptions are critical for valid causal inferences in mediation analysis. These assumptions specify the conditions under which we can interpret our estimates as truly causal rather than merely associational.</p>
 <div>
 <ol type="1">
@@ -534,8 +561,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-16bce1aa43139f3c5356" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-16bce1aa43139f3c5356">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-e6b6886dd61d59e33e20" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-e6b6886dd61d59e33e20">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -543,37 +570,12 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-7adfa1a6e42920cd6b49" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-7adfa1a6e42920cd6b49">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-aef27d570fd3b7634117" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-aef27d570fd3b7634117">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
+<p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>.</p>
 </section>
-</section>
-<section id="causal-mediation-estimation-approaches" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="causal-mediation-estimation-approaches"><span class="header-section-number">6.4</span> Causal Mediation Estimation Approaches</h2>
-<p>Counterfactual-based direct and indirect effects can be estimated from regression models, provided that the no confounding assumption hold. To be able to do so, we need a model for the mediator and a model for the outcome.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Causal approaches define effects using the counterfactural framework, before estimating th effects using statistical methods.</p>
-</div>
-</div>
-<p>Model for the mediator:</p>
-<p><span class="math inline">\(E(M|A = a, W = w) = \beta_0 + \beta_1a + \beta'_2w\)</span></p>
-<p>Model for the outcome:</p>
-<p><span class="math inline">\(E(Y|A = a, M = m, W = w) = \sigma_0 + \sigma_1a + \sigma_2m + \sigma_3am + \sigma'_4w\)</span></p>
-<p>From these two regression models we can estimate the direct and indirect effect.</p>
-<p>Direct effect: <span class="math inline">\(E[(Y(a=1,M_a=0))\)</span> - <span class="math inline">\(Y(a=0,M_a=0))]\)</span> Indirect effect: <span class="math inline">\(E[(Y(a=1,M_a=1))\)</span> - <span class="math inline">\(Y(a=1,M_a=0))]\)</span></p>
-<p>While regression-based approaches are commonly used, several alternative estimation methods are available, including Inverse probability weighting (IPW), G-computation, and structural equation models (SEM).</p>
-<p>Note: additional approaches also exists, but we will not focus on these in this course.</p>
 </section>
 <section id="casual-mediation-effects" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="casual-mediation-effects"><span class="header-section-number">6.5</span> Casual Mediation Effects</h2>
@@ -1012,21 +1014,21 @@ Direct counterfactual imputation estimation with
  bootstrap standard errors, percentile confidence intervals and p-values 
  
               Estimate Std.error   95% CIL 95% CIU  P.val    
-cde          -2.135202  0.247756 -2.539495  -1.696 &lt;2e-16 ***
-pnde         -1.875541  0.245408 -2.242912  -1.464 &lt;2e-16 ***
-tnde         -2.111936  0.245378 -2.510748  -1.679 &lt;2e-16 ***
-pnie         -0.270278  0.077664 -0.442467  -0.161 &lt;2e-16 ***
-tnie         -0.506673  0.077904 -0.660219  -0.408 &lt;2e-16 ***
-te           -2.382214  0.222088 -2.789946  -2.038 &lt;2e-16 ***
-intref        0.259661  0.076459  0.153711   0.396 &lt;2e-16 ***
-intmed       -0.236395  0.078152 -0.393463  -0.142 &lt;2e-16 ***
-cde(prop)     0.896310  0.036030  0.823203   0.949 &lt;2e-16 ***
-intref(prop) -0.109000  0.033332 -0.171882  -0.064 &lt;2e-16 ***
-intmed(prop)  0.099233  0.033866  0.059459   0.164 &lt;2e-16 ***
-pnie(prop)    0.113456  0.035648  0.061956   0.185 &lt;2e-16 ***
-pm            0.212690  0.041224  0.156975   0.291 &lt;2e-16 ***
-int          -0.009766  0.005154 -0.015252   0.004    0.2    
-pe            0.103690  0.036030  0.050934   0.177 &lt;2e-16 ***
+cde          -2.135202  0.260614 -2.550428  -1.710 &lt;2e-16 ***
+pnde         -1.879983  0.248792 -2.272254  -1.423 &lt;2e-16 ***
+tnde         -2.116378  0.251437 -2.539421  -1.716 &lt;2e-16 ***
+pnie         -0.270278  0.068555 -0.409034  -0.191 &lt;2e-16 ***
+tnie         -0.506673  0.065886 -0.660669  -0.447 &lt;2e-16 ***
+te           -2.386655  0.229125 -2.816690  -2.021 &lt;2e-16 ***
+intref        0.255220  0.065299  0.136077   0.360 &lt;2e-16 ***
+intmed       -0.236395  0.067940 -0.349264  -0.127 &lt;2e-16 ***
+cde(prop)     0.894642  0.036680  0.816890   0.933 &lt;2e-16 ***
+intref(prop) -0.106936  0.027749 -0.149116  -0.056 &lt;2e-16 ***
+intmed(prop)  0.099049  0.030191  0.051201   0.152 &lt;2e-16 ***
+pnie(prop)    0.113245  0.033098  0.075316   0.181 &lt;2e-16 ***
+pm            0.212294  0.038797  0.168563   0.304 &lt;2e-16 ***
+int          -0.007887  0.007807 -0.015204   0.012    0.6    
+pe            0.105358  0.036680  0.067150   0.183 &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
