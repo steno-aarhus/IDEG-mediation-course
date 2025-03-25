@@ -354,15 +354,15 @@ Objective of this session
 <p>Overall relationship between A and Y:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-07311be67d7946e3ad29" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-07311be67d7946e3ad29">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c\"]\n  { rank = same; A; Y }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-b43d07d31d0734facb32" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b43d07d31d0734facb32">{"x":{"diagram":"\ndigraph {\n  graph [label=\"X: exposure, Y: outcome\nU: set of all confounders\nc: total effect of X on Y\", labelloc=\"b\", fontsize=8]\n  node [shape = plaintext]\n    X [label = \"X\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c\"]\n    U->X [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; X; Y }\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Relationship between A and Y through M:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-2805a64eefdcdbfbf2d4" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-2805a64eefdcdbfbf2d4">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c*\", xlabel = \"c\"]\n    A->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-7e3c4545f9ca132a5609" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-7e3c4545f9ca132a5609">{"x":{"diagram":"\ndigraph {\n  graph [label=\"X: exposure, Y: outcome\nM: mediator, U: set of all confounders\na: effect of X on M\nb: effect of M on Y\nc*: direct effect of X on Y\n ab: indirect effect of X on Y\n c: total effect of X on Y (=ab+c)\", labelloc=\"b\", fontsize=8]\n  node [shape = plaintext]\n    X [label = \"X\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    X->Y [xlabel = \"c\", label = \"c*\"]\n    X->M [xlabel = \"a\"]\n    M->Y [label = \"b\"]\n    U->X [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="traditional-approaches-for-mediation-analysis" class="level2" data-number="5.1">
@@ -370,11 +370,11 @@ Objective of this session
 <p>The two traditional approaches to mediation analysis are <strong>the difference method</strong> and <strong>the product method</strong>; also known as the Baron &amp; Kenny-method <span class="citation" data-cites="baron_moderatormediator_1986">(<a href="#ref-baron_moderatormediator_1986" role="doc-biblioref">1</a>)</span>.</p>
 <p>The traditional approach use these equations for mediator and outcome (for the case of a continuous mediator and a continuous outcome)</p>
 <p>Mediator-model:</p>
-<p><span class="math inline">\(E(M|A=a, C=c) = \beta_0 + \beta_1a + \beta_2c\)</span> (3.1)</p>
+<p><span class="math inline">\(E(M|X=x, U=u) = \beta_0 + \beta_1a + \beta_2c\)</span> (3.1)</p>
 <p>Outcome model with adjustment for mediator:</p>
-<p><span class="math inline">\(E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c\)</span> (3.2)</p>
+<p><span class="math inline">\(E(Y|X=x, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta4c\)</span> (3.2)</p>
 <p>Outcome model without adjustment for mediator:</p>
-<p><span class="math inline">\(E(Y|A=a, C=c) = \theta_0' + \theta_1'a + \theta4'c\)</span> (3.3)</p>
+<p><span class="math inline">\(E(Y|X=x, U=u) = \theta_0' + \theta_1'a + \theta4'c\)</span> (3.3)</p>
 <p>Note:</p>
 <ul>
 <li><p>total effect=<span class="math inline">\(\theta_1'\)</span> , that is the total effect of the independent variable on the dependent variable</p></li>
@@ -392,8 +392,8 @@ Objective of this session
 <p>How much does BMI explain the relation between physical activity and pulse rate?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-9a0270005b3128d134a9" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-9a0270005b3128d134a9">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c*\", xlabel = \"c\"]\n    X->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-1ad54cdfca99afcc4938" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-1ad54cdfca99afcc4938">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c*\", xlabel = \"c\"]\n    X->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -818,8 +818,8 @@ Simulations: 10 </code></pre>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-f694a7ac7aff6f858efa" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f694a7ac7aff6f858efa">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"Inflammation\"]\n    Y [label = \"Lipid metabolism\"]\n    N[label = \"Insulin sensitivity\"]\n    A[label = \"Fasting insulin\"]\n  edge [minlen = 1.5]\n    X->Y \n    X->M \n    M->Y \n    X->N    \n    N->Y\n    X->A    \n    A->Y\n  { rank = same; X; N; Y; }\n  { rank = min; M;}\n  { rank = max; A;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-496fba45f5b838014097" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-496fba45f5b838014097">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"Inflammation\"]\n    Y [label = \"Lipid metabolism\"]\n    N[label = \"Insulin sensitivity\"]\n    A[label = \"Fasting insulin\"]\n  edge [minlen = 1.5]\n    X->Y \n    X->M \n    M->Y \n    X->N    \n    N->Y\n    X->A    \n    A->Y\n  { rank = same; X; N; Y; }\n  { rank = min; M;}\n  { rank = max; A;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
