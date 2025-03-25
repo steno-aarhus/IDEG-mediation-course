@@ -458,8 +458,8 @@ Notation
 <p>These <strong>cross-world counterfactuals</strong> combine elements from two incompatible realities. They cannot be directly observed even in principle, which creates fundamental identification challenges.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-bf55953aa3abfa6a3666" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-bf55953aa3abfa6a3666">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-0febc6794cd8e98c95af" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-0febc6794cd8e98c95af">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="fig-decompose" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -540,8 +540,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-948130a35b4dd68d117f" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-948130a35b4dd68d117f">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-dc7326987e13f4537667" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-dc7326987e13f4537667">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -549,8 +549,8 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-49c628121bcd8db5e52f" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-49c628121bcd8db5e52f">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-8459be7886bd2bb3670f" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-8459be7886bd2bb3670f">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
@@ -559,11 +559,25 @@ Note
 <section id="causal-mediation-estimation-approaches" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="causal-mediation-estimation-approaches"><span class="header-section-number">6.4</span> Causal Mediation Estimation Approaches</h2>
 <p>Counterfactual-based direct and indirect effects can be estimated from regression models, provided that the no confounding assumption hold. To be able to do so, we need a model for the mediator and a model for the outcome.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Causal approaches define effects using the counterfactural framework, before estimating th effects using statistical methods.</p>
+</div>
+</div>
 <p>Model for the mediator:</p>
 <p><span class="math inline">\(E(M|A = a, W = w) = \beta_0 + \beta_1a + \beta'_2w\)</span></p>
 <p>Model for the outcome:</p>
 <p><span class="math inline">\(E(Y|A = a, M = m, W = w) = \sigma_0 + \sigma_1a + \sigma_2m + \sigma_3am + \sigma'_4w\)</span></p>
-<p>From these two regression models we can estimate the CDE, NDE and NIE.</p>
+<p>From these two regression models we can estimate the direct and indirect effect.</p>
+<p>Direct effect: <span class="math inline">\(E[(Y(a=1,M_a=0))\)</span> - <span class="math inline">\(Y(a=0,M_a=0))]\)</span> Indirect effect: <span class="math inline">\(E[(Y(a=1,M_a=1))\)</span> - <span class="math inline">\(Y(a=1,M_a=0))]\)</span></p>
 <p>While regression-based approaches are commonly used, several alternative estimation methods are available, including Inverse probability weighting (IPW), G-computation, and structural equation models (SEM).</p>
 <p>Note: additional approaches also exists, but we will not focus on these in this course.</p>
 </section>
@@ -1007,21 +1021,21 @@ Direct counterfactual imputation estimation with
  bootstrap standard errors, percentile confidence intervals and p-values 
  
               Estimate Std.error   95% CIL 95% CIU  P.val    
-cde          -2.135202  0.341154 -2.625357  -1.573 &lt;2e-16 ***
-pnde         -1.880655  0.305850 -2.314848  -1.379 &lt;2e-16 ***
-tnde         -2.117050  0.332890 -2.585474  -1.560 &lt;2e-16 ***
-pnie         -0.270278  0.073231 -0.396637  -0.187 &lt;2e-16 ***
-tnie         -0.506673  0.080022 -0.629918  -0.337 &lt;2e-16 ***
-te           -2.387328  0.323424 -2.814198  -1.899 &lt;2e-16 ***
-intref        0.254547  0.099921  0.067512   0.389 &lt;2e-16 ***
-intmed       -0.236395  0.096467 -0.371707  -0.058 &lt;2e-16 ***
-cde(prop)     0.894390  0.038499  0.827877   0.945 &lt;2e-16 ***
-intref(prop) -0.106624  0.041502 -0.168928  -0.028 &lt;2e-16 ***
-intmed(prop)  0.099021  0.041849  0.025924   0.173 &lt;2e-16 ***
-pnie(prop)    0.113213  0.035716  0.069890   0.179 &lt;2e-16 ***
-pm            0.212234  0.038833  0.154784   0.283 &lt;2e-16 ***
-int          -0.007603  0.006563 -0.019352   0.006    0.1 .  
-pe            0.105610  0.038499  0.054513   0.172 &lt;2e-16 ***
+cde          -2.135202  0.325048 -2.634008  -1.586 &lt;2e-16 ***
+pnde         -1.873320  0.294899 -2.342301  -1.351 &lt;2e-16 ***
+tnde         -2.109715  0.324393 -2.629688  -1.578 &lt;2e-16 ***
+pnie         -0.270278  0.072661 -0.405072  -0.142 &lt;2e-16 ***
+tnie         -0.506673  0.075646 -0.621256  -0.379 &lt;2e-16 ***
+te           -2.379993  0.309247 -2.873874  -1.836 &lt;2e-16 ***
+intref        0.261882  0.102351  0.113345   0.430 &lt;2e-16 ***
+intmed       -0.236395  0.097708 -0.408228  -0.102 &lt;2e-16 ***
+cde(prop)     0.897147  0.038033  0.828836   0.951 &lt;2e-16 ***
+intref(prop) -0.110035  0.041330 -0.173839  -0.051 &lt;2e-16 ***
+intmed(prop)  0.099326  0.039486  0.045727   0.172 &lt;2e-16 ***
+pnie(prop)    0.113562  0.035954  0.062668   0.177 &lt;2e-16 ***
+pm            0.212888  0.036713  0.160131   0.292 &lt;2e-16 ***
+int          -0.010709  0.006798 -0.020064   0.002    0.2    
+pe            0.102853  0.038033  0.049157   0.171 &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
