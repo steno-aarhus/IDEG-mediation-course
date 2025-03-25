@@ -526,8 +526,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-27c61613889f488295ad" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-27c61613889f488295ad">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-ea943cbeb02086aad1ca" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-ea943cbeb02086aad1ca">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -535,8 +535,8 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-c0b015d381221e31a956" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-c0b015d381221e31a956">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-785e1a569abd72627728" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-785e1a569abd72627728">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
@@ -971,21 +971,21 @@ Direct counterfactual imputation estimation with
  bootstrap standard errors, percentile confidence intervals and p-values 
  
               Estimate Std.error   95% CIL 95% CIU  P.val    
-cde          -2.135202  0.276171 -2.454388  -1.620 &lt;2e-16 ***
-pnde         -1.881937  0.284432 -2.258066  -1.383 &lt;2e-16 ***
-tnde         -2.118333  0.277217 -2.436199  -1.604 &lt;2e-16 ***
-pnie         -0.270278  0.056142 -0.343507  -0.182 &lt;2e-16 ***
-tnie         -0.506673  0.077050 -0.646184  -0.397 &lt;2e-16 ***
-te           -2.388610  0.275039 -2.737461  -1.857 &lt;2e-16 ***
-intref        0.253265  0.098682  0.134219   0.479 &lt;2e-16 ***
-intmed       -0.236395  0.090866 -0.426929  -0.135 &lt;2e-16 ***
-cde(prop)     0.893910  0.029640  0.853038   0.950 &lt;2e-16 ***
-intref(prop) -0.106030  0.042545 -0.192758  -0.051 &lt;2e-16 ***
-intmed(prop)  0.098968  0.039388  0.050636   0.173 &lt;2e-16 ***
-pnie(prop)    0.113153  0.027436  0.076513   0.156 &lt;2e-16 ***
-pm            0.212120  0.041732  0.158823   0.288 &lt;2e-16 ***
-int          -0.007063  0.009103 -0.026801   0.004    0.3    
-pe            0.106090  0.029640  0.050222   0.147 &lt;2e-16 ***
+cde          -2.135202  0.261001 -2.753675  -1.832 &lt;2e-16 ***
+pnde         -1.888821  0.282615 -2.513522  -1.514 &lt;2e-16 ***
+tnde         -2.125217  0.265520 -2.759146  -1.815 &lt;2e-16 ***
+pnie         -0.270278  0.076295 -0.420482  -0.151 &lt;2e-16 ***
+tnie         -0.506673  0.082090 -0.706752  -0.410 &lt;2e-16 ***
+te           -2.395494  0.275493 -3.017923  -2.087 &lt;2e-16 ***
+intref        0.246381  0.106582  0.042858   0.448    0.1 .  
+intmed       -0.236395  0.100168 -0.406402  -0.038    0.1 .  
+cde(prop)     0.891341  0.030545  0.842770   0.943 &lt;2e-16 ***
+intref(prop) -0.102852  0.046543 -0.186133  -0.020    0.1 .  
+intmed(prop)  0.098683  0.043485  0.018151   0.170    0.1 .  
+pnie(prop)    0.112827  0.029492  0.063396   0.164 &lt;2e-16 ***
+pm            0.211511  0.038604  0.155486   0.285 &lt;2e-16 ***
+int          -0.004168  0.006646 -0.021186   0.002    0.4    
+pe            0.108659  0.030545  0.057493   0.157 &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
