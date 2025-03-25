@@ -149,7 +149,6 @@ digraph {
   BMI -> T2D [label = 'b'];
 }
 ")
-
 ```
 
 ![cross-world
@@ -309,6 +308,11 @@ regression models, provided that the no confounding assumption hold. To
 be able to do so, we need a model for the mediator and a model for the
 outcome.
 
+::: callout-note
+Causal approaches define effects using the counterfactural framework,
+before estimating th effects using statistical methods.
+:::
+
 Model for the mediator:
 
 $E(M|A = a, W = w) = \beta_0 + \beta_1a + \beta'_2w$
@@ -317,7 +321,11 @@ Model for the outcome:
 
 $E(Y|A = a, M = m, W = w) = \sigma_0 + \sigma_1a + \sigma_2m + \sigma_3am + \sigma'_4w$
 
-From these two regression models we can estimate the CDE, NDE and NIE.
+From these two regression models we can estimate the direct and indirect
+effect.
+
+Direct effect: $E[(Y(a=1,M_a=0))$ - $Y(a=0,M_a=0))]$ Indirect effect:
+$E[(Y(a=1,M_a=1))$ - $Y(a=1,M_a=0))]$
 
 While regression-based approaches are commonly used, several alternative
 estimation methods are available, including Inverse probability
