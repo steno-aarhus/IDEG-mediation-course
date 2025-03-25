@@ -309,15 +309,9 @@ window.Quarto = {
   <li><a href="#causal-mediation-estimation-approaches" id="toc-causal-mediation-estimation-approaches" class="nav-link" data-scroll-target="#causal-mediation-estimation-approaches"><span class="header-section-number">6.4</span> Causal Mediation Estimation Approaches</a></li>
   <li><a href="#casual-mediation-effects" id="toc-casual-mediation-effects" class="nav-link" data-scroll-target="#casual-mediation-effects"><span class="header-section-number">6.5</span> Casual Mediation Effects</a>
   <ul class="collapse">
-  <li><a href="#better-definitions" id="toc-better-definitions" class="nav-link" data-scroll-target="#better-definitions"><span class="header-section-number">6.5.1</span> Better Definitions</a></li>
-  <li><a href="#controlled-direct-effect" id="toc-controlled-direct-effect" class="nav-link" data-scroll-target="#controlled-direct-effect"><span class="header-section-number">6.5.2</span> Controlled direct effect</a></li>
-  <li><a href="#pure-natural-direct-effect" id="toc-pure-natural-direct-effect" class="nav-link" data-scroll-target="#pure-natural-direct-effect"><span class="header-section-number">6.5.3</span> (Pure) Natural direct effect</a></li>
-  <li><a href="#total-natural-indirect-effect" id="toc-total-natural-indirect-effect" class="nav-link" data-scroll-target="#total-natural-indirect-effect"><span class="header-section-number">6.5.4</span> (Total) Natural indirect effect</a></li>
-  <li><a href="#total-natural-direct-effect" id="toc-total-natural-direct-effect" class="nav-link" data-scroll-target="#total-natural-direct-effect"><span class="header-section-number">6.5.5</span> Total natural direct effect</a></li>
-  <li><a href="#pure-natural-indirect-effect" id="toc-pure-natural-indirect-effect" class="nav-link" data-scroll-target="#pure-natural-indirect-effect"><span class="header-section-number">6.5.6</span> Pure natural indirect effect</a></li>
-  <li><a href="#interaction-effects" id="toc-interaction-effects" class="nav-link" data-scroll-target="#interaction-effects"><span class="header-section-number">6.5.7</span> Interaction effects</a></li>
-  <li><a href="#effect-decomposition" id="toc-effect-decomposition" class="nav-link" data-scroll-target="#effect-decomposition"><span class="header-section-number">6.5.8</span> Effect decomposition</a></li>
-  <li><a href="#proportions" id="toc-proportions" class="nav-link" data-scroll-target="#proportions"><span class="header-section-number">6.5.9</span> Proportions</a></li>
+  <li><a href="#defining-estimands" id="toc-defining-estimands" class="nav-link" data-scroll-target="#defining-estimands"><span class="header-section-number">6.5.1</span> Defining estimands</a></li>
+  <li><a href="#effect-decomposition" id="toc-effect-decomposition" class="nav-link" data-scroll-target="#effect-decomposition"><span class="header-section-number">6.5.2</span> Effect decomposition</a></li>
+  <li><a href="#proportions" id="toc-proportions" class="nav-link" data-scroll-target="#proportions"><span class="header-section-number">6.5.3</span> Proportions</a></li>
   </ul></li>
   <li><a href="#why-causal-mediation-analysis" id="toc-why-causal-mediation-analysis" class="nav-link" data-scroll-target="#why-causal-mediation-analysis"><span class="header-section-number">6.6</span> Why Causal Mediation Analysis?</a></li>
   <li><a href="#practical-examples-using-r-package" id="toc-practical-examples-using-r-package" class="nav-link" data-scroll-target="#practical-examples-using-r-package"><span class="header-section-number">6.7</span> Practical Examples using R package</a></li>
@@ -458,8 +452,8 @@ Notation
 <p>These <strong>cross-world counterfactuals</strong> combine elements from two incompatible realities. They cannot be directly observed even in principle, which creates fundamental identification challenges.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-0febc6794cd8e98c95af" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-0febc6794cd8e98c95af">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-073de3160996b1cd88f5" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-073de3160996b1cd88f5">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="fig-decompose" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -540,8 +534,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-dc7326987e13f4537667" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-dc7326987e13f4537667">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-16bce1aa43139f3c5356" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-16bce1aa43139f3c5356">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -549,8 +543,8 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-8459be7886bd2bb3670f" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-8459be7886bd2bb3670f">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-7adfa1a6e42920cd6b49" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-7adfa1a6e42920cd6b49">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>. We will work on how to solve this problem later in the course.</p>
@@ -583,10 +577,8 @@ Note
 </section>
 <section id="casual-mediation-effects" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="casual-mediation-effects"><span class="header-section-number">6.5</span> Casual Mediation Effects</h2>
-<section id="better-definitions" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="better-definitions"><span class="header-section-number">6.5.1</span> Better Definitions</h3>
-<section id="defining-estimands" class="level4" data-number="6.5.1.1">
-<h4 data-number="6.5.1.1" class="anchored" data-anchor-id="defining-estimands"><span class="header-section-number">6.5.1.1</span> Defining estimands</h4>
+<section id="defining-estimands" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="defining-estimands"><span class="header-section-number">6.5.1</span> Defining estimands</h3>
 <p>Imagine we have a hypothetical randomized controlled trial where we give participants treatment or no treatment on a specific outcome Y.</p>
 <p><span class="math inline">\(Y^{a=1} - Y^{a=0}\)</span></p>
 <p>For mediation, we are also interested in the effect of a mediator on this pathway. Now image that we also intervene on the mediator in a new hypothetical randomized controlled trial.</p>
@@ -614,25 +606,23 @@ Notation
 <li>natural direct effect (NDE)</li>
 <li>natural indirect effect (NIE)</li>
 </ul>
-</section>
-</section>
-<section id="controlled-direct-effect" class="level3" data-number="6.5.2">
-<h3 data-number="6.5.2" class="anchored" data-anchor-id="controlled-direct-effect"><span class="header-section-number">6.5.2</span> Controlled direct effect</h3>
+<section id="controlled-direct-effect" class="level4" data-number="6.5.1.1">
+<h4 data-number="6.5.1.1" class="anchored" data-anchor-id="controlled-direct-effect"><span class="header-section-number">6.5.1.1</span> Controlled direct effect</h4>
 <p>The effect of A on Y not mediated through M. Fixing the value of M to m.</p>
 <p><span class="math inline">\(Y^{a=1,m}\)</span> - <span class="math inline">\(Y^{a=0,m}\)</span></p>
 <p>We intervene on <span class="math inline">\(a\)</span> but fix <span class="math inline">\(m\)</span> to a certain value. The CDE is how much the outcome would change on average if the mediator were fixed at level m uniformly in the population but the treatment were changed from 0 to 1.</p>
 <p>This could be relevant in the context of a change in a policy that impacted the mediator for everyone. For instance, if air pollution was a mediator between physical activity and cardiovaular disease risk. If a new policy would change the level of air pollution for all while we implement an intervention to increase biking in the city.</p>
 <p>This effect is not used that often. But can be highly relevant in some situations.</p>
 </section>
-<section id="pure-natural-direct-effect" class="level3" data-number="6.5.3">
-<h3 data-number="6.5.3" class="anchored" data-anchor-id="pure-natural-direct-effect"><span class="header-section-number">6.5.3</span> (Pure) Natural direct effect</h3>
+<section id="pure-natural-direct-effect" class="level4" data-number="6.5.1.2">
+<h4 data-number="6.5.1.2" class="anchored" data-anchor-id="pure-natural-direct-effect"><span class="header-section-number">6.5.1.2</span> (Pure) Natural direct effect</h4>
 <p>The effect that would remain, if we were to disable the pathway from exposure to mediator.</p>
 <p><span class="math inline">\(Y^{a=1,M_a=0}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
 <p>The PNDE is how much the outcome would change if the exposure was set at a = 1 versus a* = 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
 <p>Note that the word “natural” refers to the nested counterfactual, the level the mediator would have taken in the absence of exposure.</p>
 </section>
-<section id="total-natural-indirect-effect" class="level3" data-number="6.5.4">
-<h3 data-number="6.5.4" class="anchored" data-anchor-id="total-natural-indirect-effect"><span class="header-section-number">6.5.4</span> (Total) Natural indirect effect</h3>
+<section id="total-natural-indirect-effect" class="level4" data-number="6.5.1.3">
+<h4 data-number="6.5.1.3" class="anchored" data-anchor-id="total-natural-indirect-effect"><span class="header-section-number">6.5.1.3</span> (Total) Natural indirect effect</h4>
 <p>The effect of the mediator pathway.</p>
 <p><span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=1,M_a=0}\)</span></p>
 <p>The NIE is how much the outcome would change on average if the exposure were fixed at level a = 1 but the mediator were changed from the level it would take if a* = 0 to the level it would take if a = 1.</p>
@@ -651,13 +641,13 @@ Decomposition
 </div>
 </div>
 </section>
-<section id="total-natural-direct-effect" class="level3" data-number="6.5.5">
-<h3 data-number="6.5.5" class="anchored" data-anchor-id="total-natural-direct-effect"><span class="header-section-number">6.5.5</span> Total natural direct effect</h3>
+<section id="total-natural-direct-effect" class="level4" data-number="6.5.1.4">
+<h4 data-number="6.5.1.4" class="anchored" data-anchor-id="total-natural-direct-effect"><span class="header-section-number">6.5.1.4</span> Total natural direct effect</h4>
 <p>TNDE = <span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=1}\)</span></p>
 <p>Note, different from above in that the mediator is kept at the level it would have taken in the <strong>presence</strong> of the exposure.</p>
 </section>
-<section id="pure-natural-indirect-effect" class="level3" data-number="6.5.6">
-<h3 data-number="6.5.6" class="anchored" data-anchor-id="pure-natural-indirect-effect"><span class="header-section-number">6.5.6</span> Pure natural indirect effect</h3>
+<section id="pure-natural-indirect-effect" class="level4" data-number="6.5.1.5">
+<h4 data-number="6.5.1.5" class="anchored" data-anchor-id="pure-natural-indirect-effect"><span class="header-section-number">6.5.1.5</span> Pure natural indirect effect</h4>
 <p>PNIE = <span class="math inline">\(Y^{a=0,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
 <p>Note, this is different from the TNIE in that the exposure is set to no intervention.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -675,23 +665,24 @@ Decomposition
 </div>
 <p><span class="citation" data-cites="article">(<a href="#ref-article" role="doc-biblioref"><strong>article?</strong></a>)</span>{nguyen2021clarifying,</p>
 </section>
-<section id="interaction-effects" class="level3" data-number="6.5.7">
-<h3 data-number="6.5.7" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">6.5.7</span> Interaction effects</h3>
+<section id="interaction-effects" class="level4" data-number="6.5.1.6">
+<h4 data-number="6.5.1.6" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">6.5.1.6</span> Interaction effects</h4>
 <p>More information on the interaction effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">3</a>)</span>.</p>
 <p>Reference interaction:</p>
 <p><span class="math inline">\(INT_{ref} = PNDE - CDE\)</span></p>
 <p>Mediation interaction:</p>
 <p><span class="math inline">\(INT_{med} = TNIE - PNIE\)</span></p>
 </section>
-<section id="effect-decomposition" class="level3" data-number="6.5.8">
-<h3 data-number="6.5.8" class="anchored" data-anchor-id="effect-decomposition"><span class="header-section-number">6.5.8</span> Effect decomposition</h3>
+</section>
+<section id="effect-decomposition" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="effect-decomposition"><span class="header-section-number">6.5.2</span> Effect decomposition</h3>
 <p>Using the causal inference framework also allow for effect decomposition, even when there are interaction and non-linearity.</p>
 <p>Effect decomposition is important when we want to assess relative contributions such as the proportion mediated and eliminated.</p>
 <p>TE = PNDE + TNIE = TNDE + PNIE</p>
 <p>More information about decomposition of effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">3</a>)</span>.</p>
 </section>
-<section id="proportions" class="level3" data-number="6.5.9">
-<h3 data-number="6.5.9" class="anchored" data-anchor-id="proportions"><span class="header-section-number">6.5.9</span> Proportions</h3>
+<section id="proportions" class="level3" data-number="6.5.3">
+<h3 data-number="6.5.3" class="anchored" data-anchor-id="proportions"><span class="header-section-number">6.5.3</span> Proportions</h3>
 <p>Proportion mediated:</p>
 <p><span class="math inline">\(PM = NIE / TE\)</span></p>
 <p>Proportion eliminated:</p>
@@ -1021,21 +1012,21 @@ Direct counterfactual imputation estimation with
  bootstrap standard errors, percentile confidence intervals and p-values 
  
               Estimate Std.error   95% CIL 95% CIU  P.val    
-cde          -2.135202  0.325048 -2.634008  -1.586 &lt;2e-16 ***
-pnde         -1.873320  0.294899 -2.342301  -1.351 &lt;2e-16 ***
-tnde         -2.109715  0.324393 -2.629688  -1.578 &lt;2e-16 ***
-pnie         -0.270278  0.072661 -0.405072  -0.142 &lt;2e-16 ***
-tnie         -0.506673  0.075646 -0.621256  -0.379 &lt;2e-16 ***
-te           -2.379993  0.309247 -2.873874  -1.836 &lt;2e-16 ***
-intref        0.261882  0.102351  0.113345   0.430 &lt;2e-16 ***
-intmed       -0.236395  0.097708 -0.408228  -0.102 &lt;2e-16 ***
-cde(prop)     0.897147  0.038033  0.828836   0.951 &lt;2e-16 ***
-intref(prop) -0.110035  0.041330 -0.173839  -0.051 &lt;2e-16 ***
-intmed(prop)  0.099326  0.039486  0.045727   0.172 &lt;2e-16 ***
-pnie(prop)    0.113562  0.035954  0.062668   0.177 &lt;2e-16 ***
-pm            0.212888  0.036713  0.160131   0.292 &lt;2e-16 ***
-int          -0.010709  0.006798 -0.020064   0.002    0.2    
-pe            0.102853  0.038033  0.049157   0.171 &lt;2e-16 ***
+cde          -2.135202  0.247756 -2.539495  -1.696 &lt;2e-16 ***
+pnde         -1.875541  0.245408 -2.242912  -1.464 &lt;2e-16 ***
+tnde         -2.111936  0.245378 -2.510748  -1.679 &lt;2e-16 ***
+pnie         -0.270278  0.077664 -0.442467  -0.161 &lt;2e-16 ***
+tnie         -0.506673  0.077904 -0.660219  -0.408 &lt;2e-16 ***
+te           -2.382214  0.222088 -2.789946  -2.038 &lt;2e-16 ***
+intref        0.259661  0.076459  0.153711   0.396 &lt;2e-16 ***
+intmed       -0.236395  0.078152 -0.393463  -0.142 &lt;2e-16 ***
+cde(prop)     0.896310  0.036030  0.823203   0.949 &lt;2e-16 ***
+intref(prop) -0.109000  0.033332 -0.171882  -0.064 &lt;2e-16 ***
+intmed(prop)  0.099233  0.033866  0.059459   0.164 &lt;2e-16 ***
+pnie(prop)    0.113456  0.035648  0.061956   0.185 &lt;2e-16 ***
+pm            0.212690  0.041224  0.156975   0.291 &lt;2e-16 ***
+int          -0.009766  0.005154 -0.015252   0.004    0.2    
+pe            0.103690  0.036030  0.050934   0.177 &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
