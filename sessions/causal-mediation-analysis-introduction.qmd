@@ -336,9 +336,7 @@ in this course.
 
 ## Casual Mediation Effects
 
-### Better Definitions
-
-#### Defining estimands
+### Defining estimands
 
 Imagine we have a hypothetical randomized controlled trial where we give
 participants treatment or no treatment on a specific outcome Y.
@@ -377,7 +375,7 @@ We can now define these estimands:
 -   natural direct effect (NDE)
 -   natural indirect effect (NIE)
 
-### Controlled direct effect
+#### Controlled direct effect
 
 The effect of A on Y not mediated through M. Fixing the value of M to m.
 
@@ -397,7 +395,7 @@ implement an intervention to increase biking in the city.
 This effect is not used that often. But can be highly relevant in some
 situations.
 
-### (Pure) Natural direct effect
+#### (Pure) Natural direct effect
 
 The effect that would remain, if we were to disable the pathway from
 exposure to mediator.
@@ -412,7 +410,7 @@ the exposure.
 Note that the word "natural" refers to the nested counterfactual, the
 level the mediator would have taken in the absence of exposure.
 
-### (Total) Natural indirect effect
+#### (Total) Natural indirect effect
 
 The effect of the mediator pathway.
 
@@ -433,14 +431,14 @@ TE = PNDE + TNIE this decomposition usually is for research question:
 proposed mediator?' @nguyen2021clarifying
 :::
 
-### Total natural direct effect
+#### Total natural direct effect
 
 TNDE = $Y^{a=1,M_a=1}$ - $Y^{a=0,M_a=1}$
 
 Note, different from above in that the mediator is kept at the level it
 would have taken in the **presence** of the exposure.
 
-### Pure natural indirect effect
+#### Pure natural indirect effect
 
 PNIE = $Y^{a=0,M_a=1}$ - $Y^{a=0,M_a=0}$
 
@@ -457,7 +455,7 @@ mediator?' @nguyen2021clarifying
 
 @article{nguyen2021clarifying,
 
-### Interaction effects
+#### Interaction effects
 
 More information on the interaction effects can be found in
 @vanderweele_unification_2014.
