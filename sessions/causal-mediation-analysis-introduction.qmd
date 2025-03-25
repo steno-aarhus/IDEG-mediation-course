@@ -139,7 +139,7 @@ incompatible realities. They cannot be directly observed even in
 principle, which creates fundamental identification challenges.
 
 ![cross-world
-counterfacturals](images/decompose.png){#fig-decompose}
+counterfacturals](/images/decompose.png){#fig-decompose}
 
 ## Core Causal Assumptions
 
