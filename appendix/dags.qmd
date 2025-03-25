@@ -29,6 +29,8 @@ digraph {
 }")
 ```
 
+A: Exposure; Y: Outcome; c: path from exposure (A) to outcome (Y)
+
 Relationship between A and Y through M:
 
 ```{r echo=FALSE}
@@ -50,6 +52,14 @@ digraph {
 }")
 ```
 
+A: Exposure; Y: Outcome; M: Mediator of interest c: total path from
+exposure (A) to outcome (Y); c\*: direct path from exposure (A) to
+outcome (Y); a: path from exposure (A) to mediator (M); b: path from
+mediator (M) to outcome (Y)
+
+Example: How much does body mass index explain the relaitonship between
+physical activity and pulse rate?
+
 ```{r echo=FALSE}
 #| echo: false
 grViz("
@@ -68,6 +78,10 @@ digraph {
 }")
 ```
 
+c: total path from physical activity to pulse rate; c\*: direct path
+from physical activity to pulse rate; a: path from physical activity to
+BMI; b: path from BMI to pulse rate
+
 ```{r}
 #| echo: false
 
@@ -75,7 +89,7 @@ grViz("
 digraph {
   graph []
   node [shape = plaintext]
-    W [label = 'W']
+    C [label = 'C']
     A [label = 'A']
     M [label = 'M']
     Y [label = 'Y']
@@ -83,10 +97,13 @@ digraph {
     A->M
     M->Y
     A->Y
-    W->A
-    W->Y
-    W->M
-{rank = same; W; A; M; Y; }
+    C->A
+    C->Y
+    C->M
+{rank = same; C; A; M; Y; }
 }
 ")
 ```
+
+A: Exposure; Y: Outcome; M: Mediator; C: confounding factors on the
+pathways
