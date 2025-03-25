@@ -153,7 +153,7 @@ is illustrated in @fig-causation-association.
 
 ![Association versus Causation: When we observe only a subset of the
 outcomes across exposure groups, we have an association rather than
-causation.](images/causation-association.png){#fig-causation-association}
+causation.](/images/causation-association.png){#fig-causation-association}
 
 ::: callout-note
 -   Causal Assumptions
@@ -501,18 +501,19 @@ understand the basic concepts of mediation.
 
 ```{r}
 # This includes readr, or use library(readr) specifically
-nhanes <- read_csv(here::here("data/NHANES.csv")) 
+nhanes <- read_csv(here::here("data/NHANES.csv"))
 data <- nhanes %>%
   dplyr::select(ID,
-                w1 = Age,
-                w2 = Gender,
-                w3 = Education,
-                w4 = Smoke100,
-                a = PhysActive,
-                m = BMI, 
-                y = Pulse, 
-                y2 = Diabetes)  %>%
-                na.omit()
+    w1 = Age,
+    w2 = Gender,
+    w3 = Education,
+    w4 = Smoke100,
+    a = PhysActive,
+    m = BMI,
+    y = Pulse,
+    y2 = Diabetes
+  ) %>%
+  na.omit()
 ```
 
 First, load the library:
@@ -524,8 +525,10 @@ library(CMAverse)
 Next, we can plot the DAG based on the research question:
 
 ```{r}
-cmdag(outcome = "y", exposure = "a", mediator = c("m"), 
-      basec = c("W1", "W2", "W3", "W4"), postc = NULL, node = FALSE, text_col = "black")
+cmdag(
+  outcome = "y", exposure = "a", mediator = c("m"),
+  basec = c("W1", "W2", "W3", "W4"), postc = NULL, node = FALSE, text_col = "black"
+)
 ```
 
 Then we can start estimate causal mediation effects using the function
@@ -533,19 +536,19 @@ Then we can start estimate causal mediation effects using the function
 
 ```{r}
 res_rb <- cmest(
-  data = data, 
-  model = "rb",     #rb means regression based 
-  outcome = "y",    #this is the name of outcome
-  exposure = "a",   #this is the name of exposure
-  mediator = "m",   #this is the name of mediator
-  basec = c("w1"),  #this is confounding factors, you can add more confounders here 
-  EMint = TRUE,     #whether include interaction, TRUE indicates to include 
-  mreg = list("linear"), #specify the mediator model, we use linear regression here 
-  yreg = "linear",  #specify the outcome model, we use linear regression here 
-  astar = 0,       # the level of exposure (not exposed)
-  a = 1,           # the level of exposure (exposed)
-  mval = list(27.8),  #specifiy the value of controlled mediator 
-  estimation = "paramfunc", #parameteric function 
+  data = data,
+  model = "rb", # rb means regression based
+  outcome = "y", # this is the name of outcome
+  exposure = "a", # this is the name of exposure
+  mediator = "m", # this is the name of mediator
+  basec = c("w1"), # this is confounding factors, you can add more confounders here
+  EMint = TRUE, # whether include interaction, TRUE indicates to include
+  mreg = list("linear"), # specify the mediator model, we use linear regression here
+  yreg = "linear", # specify the outcome model, we use linear regression here
+  astar = 0, # the level of exposure (not exposed)
+  a = 1, # the level of exposure (exposed)
+  mval = list(27.8), # specifiy the value of controlled mediator
+  estimation = "paramfunc", # parameteric function
   inference = "delta"
 )
 summary(res_rb)
@@ -553,21 +556,22 @@ summary(res_rb)
 
 ```{r}
 sim_rb <- cmest(
-  data = data, 
-  model = "rb",     #rb means regression based 
-  outcome = "y",    #this is the name of outcome
-  exposure = "a",   #this is the name of exposure
-  mediator = "m",   #this is the name of mediator
-  basec = c("w1"),  #this is confounding factors, you can add more confounders here 
-  EMint = TRUE,     #whether include interaction, TRUE indicates to include 
-  mreg = list("linear"), #specify the mediator model, we use linear regression here 
-  yreg = "linear",  #specify the outcome model, we use linear regression here 
-  astar = 0,       # the level of exposure (not exposed)
-  a = 1,           # the level of exposure (exposed)
-  mval = list(27.8),  #specifiy the value of controlled mediator 
-  estimation = "imputation",  ## use imputation
+  data = data,
+  model = "rb", # rb means regression based
+  outcome = "y", # this is the name of outcome
+  exposure = "a", # this is the name of exposure
+  mediator = "m", # this is the name of mediator
+  basec = c("w1"), # this is confounding factors, you can add more confounders here
+  EMint = TRUE, # whether include interaction, TRUE indicates to include
+  mreg = list("linear"), # specify the mediator model, we use linear regression here
+  yreg = "linear", # specify the outcome model, we use linear regression here
+  astar = 0, # the level of exposure (not exposed)
+  a = 1, # the level of exposure (exposed)
+  mval = list(27.8), # specifiy the value of controlled mediator
+  estimation = "imputation", ## use imputation
   inference = "bootstrap",
-  nboot = 20)
+  nboot = 20
+)
 summary(sim_rb)
 ```
 
@@ -590,7 +594,7 @@ variable. In practice you would adjust for many more variables to
 satisfy the confounding assumptions.
 
 ```{r}
-lm_m <- lm(m ~ a + w1 , data = data) 
+lm_m <- lm(m ~ a + w1, data = data)
 summary(lm_m)
 ```
 
@@ -600,7 +604,7 @@ Now, we run the model for the outcome, notice we have included an
 interaction term.
 
 ```{r}
-lm_y <- lm(y ~ a + m + a:m + w1 , data = data) 
+lm_y <- lm(y ~ a + m + a:m + w1, data = data)
 summary(lm_y)
 ```
 
@@ -636,9 +640,9 @@ For the controlled direct effect we set m to a specific value.
 Let's look at the distribution of m (BMI).
 
 ```{r}
-data %>%  
-  select(m) %>%   
-  summary()  
+data %>%
+  select(m) %>%
+  summary()
 median_m <- round(median(data$m), digits = 1)
 ```
 
@@ -669,7 +673,7 @@ We set the value for the confounder w1 for the interaction to be the
 mean value of w1.
 
 ```{r}
-mean_w1 <- mean(data$w1) 
+mean_w1 <- mean(data$w1)
 mean_w1
 ```
 
@@ -700,7 +704,7 @@ TNDE can be obtained by this formula:
 $TNDE = (\sigma_1 + \sigma_3 * (\beta_0 + beta_1*a + \beta'_2*w))(a - a^*)$
 
 ```{r}
-TNDE <- (lm_y$coefficients[2] + (lm_y$coefficients[5] * (lm_m$coefficients[1] + lm_m$coefficients[2] * 1 + lm_m$coefficients[3] * mean_w1))) * (1 - 0)  
+TNDE <- (lm_y$coefficients[2] + (lm_y$coefficients[5] * (lm_m$coefficients[1] + lm_m$coefficients[2] * 1 + lm_m$coefficients[3] * mean_w1))) * (1 - 0)
 round(as.numeric(TNDE), digits = 2)
 ```
 
@@ -720,7 +724,7 @@ The TNIE can be obtained by this formula:
 $TNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a)(a - a^*)$
 
 ```{r}
-TNIE <- ((lm_y$coefficients[3] * lm_m$coefficients[2]) + (lm_y$coefficients[5] * lm_m$coefficients[2] * 1)) * (1 - 0)  
+TNIE <- ((lm_y$coefficients[3] * lm_m$coefficients[2]) + (lm_y$coefficients[5] * lm_m$coefficients[2] * 1)) * (1 - 0)
 round(as.numeric(TNIE), digits = 2)
 ```
 
@@ -749,7 +753,7 @@ The PNIE can be obtained by this formula:
 $PNIE = (\sigma_2 * \beta_1 + \sigma_3 * \beta_1 * a^*)(a - a^*)$
 
 ```{r}
-PNIE <- ((lm_y$coefficients[3] * lm_m$coefficients[2]) + (lm_y$coefficients[5] * lm_m$coefficients[2] * 0)) * (1 - 0)  
+PNIE <- ((lm_y$coefficients[3] * lm_m$coefficients[2]) + (lm_y$coefficients[5] * lm_m$coefficients[2] * 0)) * (1 - 0)
 round(as.numeric(PNIE), digits = 2)
 ```
 
@@ -772,7 +776,7 @@ The total effect can be decomposed as:
 $TE = PNDE + TNIE$
 
 ```{r}
-TE <- PNDE + TNIE  
+TE <- PNDE + TNIE
 round(as.numeric(TE), digits = 2)
 ```
 
@@ -786,7 +790,7 @@ From this, we can calculate the proportion mediated.
 $PM = \frac{TNIE}{TE}$
 
 ```{r}
-PM <- TNIE / TE  
+PM <- TNIE / TE
 as.numeric(PM) * 100
 ```
 
