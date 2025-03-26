@@ -301,8 +301,6 @@ TE = PNIE + TNDE this decomposition usually is for research question:
 mediator?' @nguyen2021clarifying
 :::
 
-@article{nguyen2021clarifying,
-
 #### Interaction effects
 
 More information on the interaction effects can be found in
