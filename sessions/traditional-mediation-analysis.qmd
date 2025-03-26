@@ -17,54 +17,66 @@ library(dplyr)
 -   Understanding the assumptions and limitations of the methods.
 :::
 
-The purpose of mediation analysis is to determine if the effect of a
+The purpose of mediation analysis is to determine if the effect of an exposure or
 treatment (A) on an outcome (Y) can be explained by a third mediating
 variable (M). Thus, mediation analysis not only answers whether two
 variables are related, but also **why**.
 
 This can be visualized in the following figures.
 
-Overall relationship between X and Y:
+Overall relationship between A and Y:
 
 ```{r}
 #| echo: false
 
 grViz("
 digraph {
-  graph [label='X: exposure, Y: outcome\nU: set of all confounders\nc: total effect of X on Y', labelloc='b', fontsize=8]
+  graph [label='A: exposure, Y: outcome\n
+  U: set of all confounders\n
+  θ′₁: total effect of A on Y',
+  labelloc='b', fontsize=8]
+  
   node [shape = plaintext]
-    X [label = 'X']
+    A [label = 'A']
     Y [label = 'Y']
     U [label = 'U']
   edge [minlen = 1.5]
-    X->Y [label = 'c']
-    U->X [label = '']
+    A->Y [label = 'θ′₁']
+    U->A [label = '']
     U->Y [label = '']
-  { rank = same; X; Y }
+  { rank = same; A; Y }
   { rank = max; U;}
 }")
 ```
 
-Relationship between X and Y through M:
+Relationship between A and Y through M:
 
 ```{r echo=FALSE}
 #| echo: false
 
 grViz("
 digraph {
-  graph [label='X: exposure, Y: outcome\nM: mediator, U: set of all confounders\na: effect of X on M\nb: effect of M on Y\nc*: direct effect of X on Y\n ab: indirect effect of X on Y\n c: total effect of X on Y (=ab+c)', labelloc='b', fontsize=8]
+  graph [label='A: exposure, Y: outcome\n
+  M: mediator, U: set of all confounders\n
+  β₁: effect of A on M\n
+  θ₂: effect of M on Y\n
+  θ₁: direct effect of A on Y\n
+  β₁.θ₂: indirect effect of A on Y\n
+  θ′₁: total effect of A on Y (= β₁.θ₂ + θ₁)',
+  labelloc='b', fontsize=8]
+  
   node [shape = plaintext]
-    X [label = 'X']
+    A [label = 'A']
     M [label = 'M']
     Y [label = 'Y']
     U [label = 'U']
   edge [minlen = 1.5]
-    X->Y [xlabel = 'c', label = 'c*']
-    X->M [xlabel = 'a']
-    M->Y [label = 'b']
-    U->X [label = '']
+    A->Y [xlabel = 'θ′₁', label = 'θ₁']
+    A->M [xlabel = 'β₁']
+    M->Y [label = 'θ₂']
+    U->A [label = '']
     U->Y [label = '']
-  { rank = same; X; Y }
+  { rank = same; A; Y }
   { rank = min; M;}
   { rank = max; U;}
 }")
@@ -82,27 +94,27 @@ The traditional approach uses these equations for mediator and outcome
 
 Mediator model:
 
-$E(M|X=x, U=u) = \beta_0 + \beta_1x + \beta_2u$ (3.1)
+$E(M|A=a, U=u) = \beta_0 + \beta_1a + \beta_2u$ (3.1)
 
 Outcome model with adjustment for the mediator:
 
-$E(Y|X=x, M=m, U=u) = \theta_0 + \theta_1x + \theta_2m + \theta_4u$ (3.2)
+$E(Y|A=a, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta_3u$ (3.2)
 
 Outcome model without adjustment for the mediator:
 
-$E(Y|X=x, U=u) = \theta_0' + \theta_1'x + \theta_4'u$ (3.3)
+$E(Y|A=a, U=u) = \theta_0' + \theta_1'a + \theta_3'u$ (3.3)
 
 ::: callout-note
--   total effect=$\theta_1'$ , that is the total effect of the
-    independent variable on the dependent variable (c*)
+-   total effect = $\theta_1'$ , that is the total effect of the
+    independent variable on the dependent variable
 
--   direct effect=$\theta_1$, that is the effect of the independent
+-   direct effect = $\theta_1$, that is the effect of the independent
     variable on the dependent variable that is not mediated by the
-    mediator (c)
+    mediator
 
--   mediation effect=$\beta_1*\theta_2$ (the product method)
+-   mediation effect = $\beta_1*\theta_2$ (the product method)
 
--   mediation effect=$\theta_1'-\theta_1$ (the difference method)
+-   mediation effect = $\theta_1'-\theta_1$ (the difference method)
 :::
 
 
@@ -135,14 +147,14 @@ grViz("
 digraph {
   graph []
   node [shape = plaintext]
-    X [label = 'Physical activity']
+    A [label = 'Physical activity']
     M [label = 'BMI']
     Y [label = 'Pulse']
   edge [minlen = 1.5]
-    X->Y [label = 'c*', xlabel = 'c']
-    X->M [xlabel = 'a']
+    A->Y [label = 'c*', xlabel = 'c']
+    A->M [xlabel = 'a']
     M->Y [label = 'b']
-  { rank = same; X; Y }
+  { rank = same; A; Y }
   { rank = min; M;}
 }")
 ```
@@ -159,7 +171,7 @@ variables we need for the example.
 
 The variables used in the dataset:
 
--   exposure of interest (x): physical activity (continuous variable)
+-   exposure of interest (a): physical activity (continuous variable)
 
 -   outcome (y): Pulse (continuous variable)
 
@@ -188,7 +200,7 @@ data <- nhanes %>%
     u2 = Gender, 
     u3 = Education, 
     u4 = Smoke100, 
-    x = PhysActive, 
+    a = PhysActive, 
     m = BMI, 
     y = Pulse,
     y2 = Diabetes
@@ -199,7 +211,7 @@ data <- nhanes %>%
 
 ```{r}
 # Physical activity is a binary variable, dichotomized as 'Yes' or 'No'. 
-table(data$x)
+table(data$a)
 # check the distribution of outcome 
 summary(data$y)
 hist(data$y)
@@ -230,21 +242,21 @@ a mediator:
 The following shows the basic steps for mediation analysis suggested by
 Baron & Kenny.
 
-### Step 1: Estimate the relationship between X and M (path a)
+### Step 1: Estimate the relationship between A and M (path a)
 
 That is to check the relation between exposure (physical activity) and
 the mediator (BMI), which corresponds to criterion 1. Mediation makes
-sense only if X affects M. If X and M have no relationship, M is just a
+sense only if A affects M. If A and M have no relationship, M is just a
 third variable that may or may not be associated with Y.
 
 As the mediator is a continuous variable, we can build a linear
-regression model, adjusting for confounders on the pathway between X and
+regression model, adjusting for confounders on the pathway between A and
 M.
 
-$(E(M|X=x, U=u)$ = $\beta_0$ + $\beta_1x$ + $\beta_2u$ (3.1)
+$(E(M|A=a, U=u)$ = $\beta_0$ + $\beta_1a$ + $\beta_2u$ (3.1)
 
 ```{r}
-fita <- lm(m ~ x + u1 + u2 + u3 + u4, data = data)
+fita <- lm(m ~ a + u1 + u2 + u3 + u4, data = data)
 summary(fita)
 ```
 
@@ -254,16 +266,16 @@ higher BMI). Individuals who are physically active have an
 average BMI that is 1.64 kg/m2 lower than those who are inactive,
 holding all other variables constant.
 
-### Step 2: Estimate the relationship between M on Y controlling for X (path b)
+### Step 2: Estimate the relationship between M on Y controlling for A (path b)
 
 That is to build the model between BMI and pulse rate, controlling for
 physical activity. This step corresponds to criterion (ii).
 
-$(E(Y|X=x, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta4c$
+$(E(Y|A=a, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta4c$
 (3.2)
 
 ```{r}
-fitb <- lm(y ~ x + m + u1 + u2 + u3 + u4, data = data)
+fitb <- lm(y ~ a + m + u1 + u2 + u3 + u4, data = data)
 summary(fitb)
 ```
 
@@ -272,16 +284,16 @@ physical activity, each one-unit higher BMI is associated with a
 0.20-unit higher pulse rate. Physical activity retains its negative
 association with pulse rate, adjusting for the selected confounders.
 
-### Step 3: Estimate the relationship between X and Y (path c)
+### Step 3: Estimate the relationship between A and Y (path c)
 
 That is to build the model between physical activity and pulse rate,
 without adjusting for BMI. The only difference between step 2 and
 step 3 is that the mediator is not included in the model.
 
-$(E(Y|X=x, U=u)$ = $\theta_0'$ + $\theta_1'a$ + $\theta_4'c$ (3.3)
+$(E(Y|A=a, U=u)$ = $\theta_0'$ + $\theta_1'a$ + $\theta_4'c$ (3.3)
 
 ```{r}
-fitc <- lm(y ~ x + u1 + u2 + u3 + u4, data = data)
+fitc <- lm(y ~ a + u1 + u2 + u3 + u4, data = data)
 summary(fitc)
 ```
 
@@ -357,9 +369,9 @@ and Dwyer 1993).
 ::: callout-note
 Recall the four criteria suggested by Baron and Kenny. One of the
 criteria is that 'Path C must be significantly different from 0 to
-ensure there is a total effect between X and Y'. However, this step can
+ensure there is a total effect between A and Y'. However, this step can
 be controversial. Even if we don't find a significant association
-between X and Y, we could proceed to the next step if we have a strong
+between A and Y, we could proceed to the next step if we have a strong
 theoretical basis for their relationship.
 :::
 
@@ -369,7 +381,7 @@ theoretical basis for their relationship.
 -   Discuss with your group about the two traditional approaches, did
     you get the same results?
 -   Discuss the scenarios under which there might be no significant
-    association between X and Y.
+    association between A and Y.
 :::
 
 ### Use mediation packages
@@ -394,8 +406,8 @@ Let's load up the R packages.
 library(mediation) # Mediation package
 ```
 
-mediate() takes two model objects as input ($X \rightarrow M$ and
-$X + M \rightarrow Y$) and we need to specify which variable is the exposure (X) [treatment]
+mediate() takes two model objects as input ($A \rightarrow M$ and
+$A + M \rightarrow Y$) and we need to specify which variable is the exposure (A) [treatment]
 and the mediator (M) [mediator]. For bootstrapping, set boot =
 TRUE and sims to at least 500.
 
@@ -403,31 +415,31 @@ TRUE and sims to at least 500.
 set.seed(260524)
 
 # Fit mediator model
-lm_m <- lm(m ~ x + u1 + u2 + u3 + u4, data = data)
+lm_m <- lm(m ~ a + u1 + u2 + u3 + u4, data = data)
 # Fit outcome model
-lm_y <- glm(y ~ x + m + u1 + u2 + u3 + u4, data = data)
+lm_y <- glm(y ~ a + m + u1 + u2 + u3 + u4, data = data)
 # Run mediation analysis
-results <- mediate(lm_m, lm_y, treat = "x", mediator = "m", boot = TRUE, sims = 10) #set simulation for 10 for time efficacy
+results <- mediate(lm_m, lm_y, treat = "a", mediator = "m", boot = TRUE, sims = 10) #set simulation for 10 for time efficacy
 
 summary(results)
 ```
 
 -   **ADE** is the Average Direct Effect. It describes the direct
-    effect of the exposure (X) on the outcome (Y) when controlling for the mediator (M). Note
+    effect of the exposure (A) on the outcome (Y) when controlling for the mediator (M). Note
     this estimate is the same as the coefficient we got in the product
     and difference method. 
 
 -   **ACME** is the Average Causal Mediation Effect. This is the
-    indirect effect of the exposure (X) on the outcome (Y) that goes through the mediator (M).
+    indirect effect of the exposure (A) on the outcome (Y) that goes through the mediator (M).
     Note that ACME estimated to be -0.335, which is the same as the
     traditional approached we just used. By bootstrapping we are now able to get a *confidence
     interval* and *significance* level for the indirect effect, not
     only its two individual parts. This is something we will need when we report our mediation analysis.
 
--   **Total Effect** is the Total Effect (direct + indirect) of the exposure (X) on the outcome (Y).
+-   **Total Effect** is the Total Effect (direct + indirect) of the exposure (A) on the outcome (Y).
     We can also get it by adding the ACME (-0.335) and the ADE (-1.423).
 
--   **Prop. Mediated** is the proportion of the effect of the exposure (X) on the outcome (Y)
+-   **Prop. Mediated** is the proportion of the effect of the exposure (A) on the outcome (Y)
     that is mediated through the mediator (M). It is calculated by dividing the ACME (-0.335) by the total effect (-1.758) and yields
     0.191. This result suggests that the mediator (BMI) explains 19% of the effect of physical activity on pulse rate.
 
