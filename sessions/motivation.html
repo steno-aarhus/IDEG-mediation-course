@@ -261,8 +261,21 @@ div.csl-indent {
 
 <section id="mediation-analysis-in-epidemiology" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="mediation-analysis-in-epidemiology"><span class="header-section-number">4.1</span> Mediation analysis in Epidemiology</h2>
-<p>Mediation analysis is the study of pathways and mechanisms through which an exposure or intervention impacts an outcome. In clinical and epidemiological research, the primary focus is often on determining whether a specific intervention has an effect on a disease or health outcome (aetiological epidemiology). Once this effect is established, the next natural question is to explore the “black box”—the underlying mechanisms that explain how the exposure (or intervention) leads to the observed outcome. As we are not only interested in whether an exposure/intervention has an effect, but in how this effect works <span class="citation" data-cites="vanderweele_mediation_2016">(<a href="#ref-vanderweele_mediation_2016" role="doc-biblioref">1</a>)</span>.</p>
-<p>Mediation analysis provides an answer to this HOW question, by quantitatively exploring the pathways and mechanisms that explain the causal relationship between the exposure (or intervention or treatment) and the outcome. By doing so, mediation analysis helps to open the black box.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Mediation analysis is the <em>study of pathways and mechanisms through which an exposure or intervention impacts an outcome</em>.</p>
+</div>
+</div>
+<p>In clinical and epidemiological research, the primary focus is often on determining whether a specific exposure or intervention has an effect on a disease or health outcome (aetiological epidemiology). Once this effect is established, the next natural question is to explore the “black box”—the underlying mechanisms that explain how the exposure (or intervention) leads to the observed outcome. As we are not only interested in whether an exposure/intervention has an effect, but in how this effect works <span class="citation" data-cites="vanderweele_mediation_2016">(<a href="#ref-vanderweele_mediation_2016" role="doc-biblioref">1</a>)</span>.</p>
+<p>Mediation analysis helps us to define an answer to this HOW question, by quantitatively exploring the pathways and mechanisms that explain the causal relationship between the exposure (or intervention or treatment) and the outcome. By doing so, mediation analysis helps to open the black box.</p>
 </section>
 <section id="motivation-for-mediation-analysis" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="motivation-for-mediation-analysis"><span class="header-section-number">4.2</span> Motivation for mediation analysis</h2>
@@ -279,15 +292,15 @@ div.csl-indent {
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-e9f6ac267366f92cdef6" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-e9f6ac267366f92cdef6">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-cca83180284c7d23f1fc" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-cca83180284c7d23f1fc">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We might be interested in further refining the intervention so as to increase the magnitude of the effect. It would be interesting to know if the lifestyle changes reduce the risk of diabetes only because they lower BMI (effect mediated through BMI) or if lifestyle has a direct impact on diabetes risk that does not require any change in BMI. This may help us understand how important BMI targets are in future lifestyle modification programs.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-6ccd0ca5253dc45f3dd8" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-6ccd0ca5253dc45f3dd8">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-c047197e6885c83e1873" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-c047197e6885c83e1873">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
