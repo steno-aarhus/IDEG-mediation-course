@@ -24,7 +24,7 @@ variables are related, but also **why**.
 
 This can be visualized in the following figures.
 
-Overall relationship between A and Y:
+Overall relationship between X and Y:
 
 ```{r}
 #| echo: false
@@ -45,7 +45,7 @@ digraph {
 }")
 ```
 
-Relationship between A and Y through M:
+Relationship between X and Y through M:
 
 ```{r echo=FALSE}
 #| echo: false
@@ -82,31 +82,34 @@ The traditional approach use these equations for mediator and outcome
 
 Mediator-model:
 
-$E(M|X=x, U=u) = \beta_0 + \beta_1a + \beta_2c$ (3.1)
+$E(M|X=x, U=u) = \beta_0 + \beta_1x + \beta_2u$ (3.1)
 
 Outcome model with adjustment for mediator:
 
-$E(Y|X=x, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta4c$ (3.2)
+$E(Y|X=x, M=m, U=u) = \theta_0 + \theta_1x + \theta_2m + \theta_4u$ (3.2)
 
 Outcome model without adjustment for mediator:
 
-$E(Y|X=x, U=u) = \theta_0' + \theta_1'a + \theta4'c$ (3.3)
+$E(Y|X=x, U=u) = \theta_0' + \theta_1'x + \theta_4'u$ (3.3)
 
-Note:
-
+::: callout-note
 -   total effect=$\theta_1'$ , that is the total effect of the
-    independent variable on the dependent variable
+    independent variable on the dependent variable (c*)
 
--   direct effect=$\theta_1$', that is the effect of the independent
+-   direct effect=$\theta_1$, that is the effect of the independent
     variable on the dependent variable that is not mediated by the
-    mediator
+    mediator (c)
 
--   mediation effect=$\beta1*\theta_2$ (the product method)
+-   mediation effect=$\beta_1*\theta_2$ (the product method)
 
--   mediation effect='$\theta_1'-\theta_1$ (the difference method)
+-   mediation effect=$\theta_1'-\theta_1$ (the difference method)
+:::
 
-Note: The terms 'mediation effect' and 'indirect effect' are used
+
+::: callout-note
+The terms 'mediation effect' and 'indirect effect' are used
 synonymously.
+:::
 
 ## An example
 
@@ -137,7 +140,7 @@ digraph {
     Y [label = 'Pulse']
   edge [minlen = 1.5]
     X->Y [label = 'c*', xlabel = 'c']
-    X->M [taillabel = 'a']
+    X->M [xlabel = 'a']
     M->Y [label = 'b']
   { rank = same; X; Y }
   { rank = min; M;}
@@ -156,7 +159,7 @@ variables we need for the example.
 
 The variables used in the dataset:
 
--   exposure of interest (a): physical activity (continuous variable)
+-   exposure of interest (x): physical activity (continuous variable)
 
 -   outcome (y): Pulse (continuous variable)
 
@@ -169,9 +172,8 @@ so that they follow a normal distribution.
 
 Four demographic variables are considered in the analysis: age, gender,
 education, and smoking. We assume that adjusting for these four
-confounding is sufficient to block the backdoor paths. Further
-discussion on confounding adjustment will be covered in the following
-session.
+confounding is sufficient to block the backdoor paths (confounders, u). Further
+discussion on confounding adjustment is a separate topic.
 :::
 
 ```{r}
@@ -182,11 +184,11 @@ library(dplyr)
 data <- nhanes %>%
   dplyr::select(
     ID, 
-    w1 = Age, 
-    w2 = Gender, 
-    w3 = Education, 
-    w4 = Smoke100, 
-    a = PhysActive, 
+    u1 = Age, 
+    u2 = Gender, 
+    u3 = Education, 
+    u4 = Smoke100, 
+    x = PhysActive, 
     m = BMI, 
     y = Pulse,
     y2 = Diabetes
@@ -205,8 +207,8 @@ hist(data$y)
 summary(data$m)
 hist(data$m)
 # check the education categories and relevel 
-table(data$w3)
-data$w3 <- relevel(factor(data$w3), ref = "College Grad")
+table(data$u3)
+data$u3 <- relevel(factor(data$u3), ref = "College Grad")
 ```
 
 ## Method 1: Baron & Kenny (the product method)
@@ -228,73 +230,73 @@ a mediator:
 The following shows the basic steps for mediation analysis suggested by
 Baron & Kenny.
 
-### Step 1: Estimate the relationship between A on M (path a)
+### Step 1: Estimate the relationship between X and M (path a)
 
 That is to check the relation between exposure (physical activity) and
-the mediator (BMI), which corresponds to criteria 1. A mediation makes
-sense only if A affects M. If A and M have no relationship, M is just a
+the mediator (BMI), which corresponds to criterion 1. Mediation makes
+sense only if X affects M. If X and M have no relationship, M is just a
 third variable that may or may not be associated with Y.
 
 As the mediator is a continuous variable, we can build a linear
-regression model, adjusting for confounders on the pathway between A and
+regression model, adjusting for confounders on the pathway between X and
 M.
 
-$(E(M|A=a, C=c)$ = $\beta_0$ + $\beta_1a$ + $\beta_2c$ (3.1)
+$(E(M|X=x, U=u)$ = $\beta_0$ + $\beta_1x$ + $\beta_2u$ (3.1)
 
 ```{r}
-fita <- lm(m ~ a + w1 + w2 + w3 + w4, data = data)
+fita <- lm(m ~ x + u1 + u2 + u3 + u4, data = data)
 summary(fita)
 ```
 
 Here, we see that physical activity is negatively associated with BMI
-(an increase of 1 unit in physical activity is associated with a 1.64
-unit decrease in BMI). Individuals who are physically active have an
+(a 1 unit difference in physical activity is associated with a 1.64
+higher BMI). Individuals who are physically active have an
 average BMI that is 1.64 kg/m2 lower than those who are inactive,
 holding all other variables constant.
 
-### Step 2: Estimate the relationship between M on Y controlling for A (path b)
+### Step 2: Estimate the relationship between M on Y controlling for X (path b)
 
-That is to build the model between BMI and pulse rates, controlling for
-physical activity. This step corresponds to criteria (ii).
+That is to build the model between BMI and pulse rate, controlling for
+physical activity. This step corresponds to criterion (ii).
 
-$(E(Y|A=a, M=m, C=c) = \theta_0 + \theta_1a + \theta_2m + \theta4c$
+$(E(Y|X=x, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta4c$
 (3.2)
 
 ```{r}
-fitb <- lm(y ~ a + m + w1 + w2 + w3 + w4, data = data)
+fitb <- lm(y ~ x + m + u1 + u2 + u3 + u4, data = data)
 summary(fitb)
 ```
 
-BMI is positively associated with pulse rates after adjusting for
-physical activity, each one-unit increase in BMI is associated with a
-0.20-unit increase in pulse rate. Physical activity remains its negative
-association with pulse rates.
+BMI is positively associated with pulse rate after adjusting for
+physical activity, each one-unit higher BMI is associated with a
+0.20-unit higher pulse rate. Physical activity retains its negative
+association with pulse rate, adjusting for the selected confounders.
 
-### Step 3: Estimate the relationship between A on Y (path c)
+### Step 3: Estimate the relationship between X and Y (path c)
 
-That is to build the model between physical activity and pulse levels,
-without adjusting for the BMI. The only difference between step 2 and
-step 3 is that mediator is not included in the model.
+That is to build the model between physical activity and pulse rate,
+without adjusting for BMI. The only difference between step 2 and
+step 3 is that the mediator is not included in the model.
 
-$(E(Y|A=a, C=c)$ = $\theta_0'$ + $\theta_1'a$ + $\theta4'c$ (3.3)
+$(E(Y|X=x, U=u)$ = $\theta_0'$ + $\theta_1'a$ + $\theta_4'c$ (3.3)
 
 ```{r}
-fitc <- lm(y ~ a + w1 + w2 + w3 + w4, data = data)
+fitc <- lm(y ~ x + u1 + u2 + u3 + u4, data = data)
 summary(fitc)
 ```
 
-We can see that physical activity is associated with lower pulse levels.
+We can see that physical activity is associated with lower pulse rate.
 Specifically, if someone is physically active (compared to someone who
-is not), pulse decreases by 1.76 units.
+is not), pulse is 1.76 units lower.
 
-Based on the models, we can estimate the direct effect and indirect
+Based on these models, we can estimate the direct effect and indirect
 effect:
 
 -   **direct effect** = $\theta_1$\
--   **indirect effect** = $\beta_1 \theta_2$\
+-   **indirect effect** = $\beta_1 * \theta_2$\
 -   **total effect** = $\theta_1'$
 
-The *direct effect* ($\theta_1$) of physical activity on pulse levels
+The *direct effect* ($\theta_1$) of physical activity on pulse rate
 can be assessed by the coefficient of physical activity in model b.
 
 ```{r}
@@ -367,7 +369,7 @@ theoretical basis for their relationship.
 -   Discuss with your group about the two traditional approaches, did
     you get the same results?
 -   Discuss the scenarios under which there might be no significant
-    association between A and Y.
+    association between X and Y.
 :::
 
 ### Use mediation packages
@@ -382,8 +384,8 @@ To do so, there are two main approaches: the Sobel test
 
 Here we will demonstrate that we can use the mediate() function in
 'mediation' package @tingley_mediation_2014 to conduct mediation
-analysis. One of the very good options to conduct mediation analysis
-using the mediation package is we can get confidence interval by
+analysis. One of the advantages of conducting mediation analysis
+using the mediation package is we can get confidence intervals by
 bootstrapping.
 
 Let's load up the R packages.
@@ -392,20 +394,20 @@ Let's load up the R packages.
 library(mediation) # Mediation package
 ```
 
-mediate() takes two model objects as input ($A \rightarrow M$ and
-$A + M \rightarrow Y$) and we need to specify which variable is an IV
-(treatment) and a mediator (mediator). For bootstrapping, set boot =
+mediate() takes two model objects as input ($X \rightarrow M$ and
+$X + M \rightarrow Y$) and we need to specify which variable is the exposure (X) [treatment]
+and the mediator (M) [mediator]. For bootstrapping, set boot =
 TRUE and sims to at least 500.
 
 ```{r}
 set.seed(260524)
 
 # Fit mediator model
-lm_m <- lm(m ~ a + w1 + w2 + w3 + w4, data = data)
+lm_m <- lm(m ~ x + u1 + u2 + u3 + u4, data = data)
 # Fit outcome model
-lm_y <- glm(y ~ a + m + w1 + w2 + w3 + w4, data = data)
+lm_y <- glm(y ~ x + m + u1 + u2 + u3 + u4, data = data)
 # Run mediation analysis
-results <- mediate(lm_m, lm_y, treat = "a", mediator = "m", boot = TRUE, sims = 10) #set simulation for 10 for time effecacy
+results <- mediate(lm_m, lm_y, treat = "x", mediator = "m", boot = TRUE, sims = 10) #set simulation for 10 for time efficacy
 
 summary(results)
 ```
