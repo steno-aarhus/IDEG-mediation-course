@@ -1,3 +1,9 @@
+---
+editor: 
+  markdown: 
+    wrap: 72
+---
+
 # Motivation
 
 ## Mediation analysis in Epidemiology
@@ -7,20 +13,24 @@
 library(DiagrammeR)
 ```
 
-Mediation analysis is the study of pathways and mechanisms through which
-an exposure or intervention impacts an outcome. In clinical and
-epidemiological research, the primary focus is often on determining
-whether a specific intervention has an effect on a disease or health
-outcome (aetiological epidemiology). Once this effect is established, the next natural question is
-to explore the "black box"—the underlying mechanisms that explain how
-the exposure (or intervention) leads to the observed outcome. As we are
-not only interested in whether an exposure/intervention has an effect, but in how this effect works
-@vanderweele_mediation_2016.
+::: callout-tip
+Mediation analysis is the *study of pathways and mechanisms through
+which an exposure or intervention impacts an outcome*.
+:::
 
-Mediation analysis provides an answer to this HOW question, by
-quantitatively exploring the pathways and mechanisms that explain the causal
-relationship between the exposure (or intervention or treatment) and
-the outcome. By doing so, mediation analysis helps to open the black
+In clinical and epidemiological research, the primary focus is often on
+determining whether a specific exposure or intervention has an effect on
+a disease or health outcome (aetiological epidemiology). Once this
+effect is established, the next natural question is to explore the
+"black box"—the underlying mechanisms that explain how the exposure (or
+intervention) leads to the observed outcome. As we are not only
+interested in whether an exposure/intervention has an effect, but in how
+this effect works @vanderweele_mediation_2016.
+
+Mediation analysis helps us to define an answer to this HOW question, by
+quantitatively exploring the pathways and mechanisms that explain the
+causal relationship between the exposure (or intervention or treatment)
+and the outcome. By doing so, mediation analysis helps to open the black
 box.
 
 ## Motivation for mediation analysis
@@ -41,21 +51,24 @@ box.
     between exposures and outcomes.
 
     *Example*: Is the relationship between lower socioeconomic status
-    and cardiovascular disease explained (mediated) through high lipid levels?
+    and cardiovascular disease explained (mediated) through high lipid
+    levels?
 
 3.  **Refining Interventions**:
 
     Mediation analysis may help us to improve the effectiveness of
     interventions by allowing us to target key mediators.
 
-    *Example*: Let's consider the evidence from the landmark diabetes prevention
-    trials: The Diabetes Prevention Programme @knowler_reduction_2002,
-    The Diabetes Prevention Study @tuomilehto_prevention_2001, and The
-    Da Qin study @pan_effects_1997. These studies randomized high diabetes risk
-    individuals to either a lifestyle intervention
-    (consisting of diet modfication in combination with physical activity) or routine health advice and care. The
-    main finding was a \~58% lower risk of incidence type 2 diabetes in
-    the lifestyle intervention group compared to the routine care group.
+    *Example*: Let's consider the evidence from the landmark diabetes
+    prevention trials: The Diabetes Prevention Programme
+    @knowler_reduction_2002, The Diabetes Prevention Study
+    @tuomilehto_prevention_2001, and The Da Qin study @pan_effects_1997.
+    These studies randomized high diabetes risk individuals to either a
+    lifestyle intervention (consisting of diet modfication in
+    combination with physical activity) or routine health advice and
+    care. The main finding was a \~58% lower risk of incidence type 2
+    diabetes in the lifestyle intervention group compared to the routine
+    care group.
 
 ```{r, echo=FALSE}
 graph <- grViz("
@@ -74,8 +87,12 @@ graph
 ```
 
 We might be interested in further refining the intervention so as to
-increase the magnitude of the effect. It would be interesting to know if the lifestyle changes reduce the risk of diabetes only because they lower BMI (effect mediated through BMI) or if lifestyle has a direct impact on diabetes risk that does not require any change in BMI. This may help us understand how important BMI targets are in future lifestyle modification programs.
-
+increase the magnitude of the effect. It would be interesting to know if
+the lifestyle changes reduce the risk of diabetes only because they
+lower BMI (effect mediated through BMI) or if lifestyle has a direct
+impact on diabetes risk that does not require any change in BMI. This
+may help us understand how important BMI targets are in future lifestyle
+modification programs.
 
 ```{r,, echo=FALSE}
 library(DiagrammeR)
@@ -100,10 +117,9 @@ digraph {
 ::: callout-note
 ## Can you find a relevant mediation question in your own research?
 
-Spend 3 minutes talking to your neighbour and discuss an mediation question that may be relevant in your own
-research.
+Spend 3 minutes talking to your neighbour and discuss an mediation
+question that may be relevant in your own research.
 :::
-
 
 ## Motivations for running this workshop
 
@@ -130,7 +146,5 @@ Our goal is for you to learn how to apply **mediation analysis
 correctly** and leverage it as a powerful tool to advance your research.
 By improving the quality and rigor of mediation analysis in your work,
 you can ensure more reliable findings and meaningful insights.
-
-
 
 ## References
