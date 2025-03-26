@@ -105,16 +105,16 @@ Outcome model without adjustment for the mediator:
 $E(Y|A=a, U=u) = \theta_0' + \theta_1'a + \theta_3'u$ (3.3)
 
 ::: callout-note
--   total effect = $\theta_1'$ , that is the total effect of the
+-   Total effect = $\theta_1'$ , that is the total effect of the
     independent variable on the dependent variable
 
--   direct effect = $\theta_1$, that is the effect of the independent
+-   Direct effect = $\theta_1$, that is the effect of the independent
     variable on the dependent variable that is not mediated by the
     mediator
 
--   mediation effect = $\beta_1*\theta_2$ (the product method)
+-   Mediation effect = $\beta_1*\theta_2$ (the product method)
 
--   mediation effect = $\theta_1'-\theta_1$ (the difference method)
+-   Mediation effect = $\theta_1'-\theta_1$ (the difference method)
 :::
 
 
@@ -151,9 +151,9 @@ digraph {
     M [label = 'BMI']
     Y [label = 'Pulse']
   edge [minlen = 1.5]
-    A->Y [label = 'c*', xlabel = 'c']
-    A->M [xlabel = 'a']
-    M->Y [label = 'b']
+    A->Y [label = 'θ₁', xlabel = 'θ′₁']
+    A->M [xlabel = 'β₁']
+    M->Y [label = 'θ₂']
   { rank = same; A; Y }
   { rank = min; M;}
 }")
@@ -212,10 +212,10 @@ data <- nhanes %>%
 ```{r}
 # Physical activity is a binary variable, dichotomized as 'Yes' or 'No'. 
 table(data$a)
-# check the distribution of outcome 
+# check the distribution of the outcome (pulse in b/m) 
 summary(data$y)
 hist(data$y)
-# check the distribution of mediation
+# check the distribution of the mediator (BMI in kg/m2)
 summary(data$m)
 hist(data$m)
 # check the education categories and relevel 
@@ -271,7 +271,7 @@ holding all other variables constant.
 That is to build the model between BMI and pulse rate, controlling for
 physical activity. This step corresponds to criterion (ii).
 
-$(E(Y|A=a, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta4c$
+$(E(Y|A=a, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta_3u$
 (3.2)
 
 ```{r}
@@ -290,7 +290,7 @@ That is to build the model between physical activity and pulse rate,
 without adjusting for BMI. The only difference between step 2 and
 step 3 is that the mediator is not included in the model.
 
-$(E(Y|A=a, U=u)$ = $\theta_0'$ + $\theta_1'a$ + $\theta_4'c$ (3.3)
+$(E(Y|A=a, U=u)$ = $\theta_0'$ + $\theta_1'a$ + $\theta_3'u$ (3.3)
 
 ```{r}
 fitc <- lm(y ~ a + u1 + u2 + u3 + u4, data = data)
