@@ -354,15 +354,15 @@ Objective of this session
 <p>Overall relationship between A and Y:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-c7a201f013394f678f67" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-c7a201f013394f678f67">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  U: set of all confounders\n\n  θ′₁: total effect of A on Y\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"θ′₁\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-4a77312feb2950a6a76e" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-4a77312feb2950a6a76e">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  U: set of all confounders\n\n  θ′₁: total effect of A on Y\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"θ′₁\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Relationship between A and Y through M:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-d3014097cc4f24c68234" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-d3014097cc4f24c68234">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  M: mediator, U: set of all confounders\n\n  β₁: effect of A on M\n\n  θ₂: effect of M on Y\n\n  θ₁: direct effect of A on Y\n\n  β₁.θ₂: indirect effect of A on Y\n\n  θ′₁: total effect of A on Y (= β₁.θ₂ + θ₁)\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [xlabel = \"θ′₁\", label = \"θ₁\"]\n    A->M [xlabel = \"β₁\"]\n    M->Y [label = \"θ₂\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-c1e208fe7795baea4370" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-c1e208fe7795baea4370">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  M: mediator, U: set of all confounders\n\n  β₁: effect of A on M\n\n  θ₂: effect of M on Y\n\n  θ₁: direct effect of A on Y\n\n  β₁.θ₂: indirect effect of A on Y\n\n  θ′₁: total effect of A on Y (= β₁.θ₂ + θ₁)\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [xlabel = \"θ′₁\", label = \"θ₁\"]\n    A->M [xlabel = \"β₁\"]\n    M->Y [label = \"θ₂\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="traditional-approaches-for-mediation-analysis" class="level2" data-number="5.1">
@@ -415,8 +415,8 @@ Tip
 <p>How much does BMI explain the relation between physical activity and pulse rate?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-48864a7e57e803eb788a" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-48864a7e57e803eb788a">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"θ₁\", xlabel = \"θ′₁\"]\n    A->M [xlabel = \"β₁\"]\n    M->Y [label = \"θ₂\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-1f5c0885b2f7f7b60399" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-1f5c0885b2f7f7b60399">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"θ₁\", xlabel = \"θ′₁\"]\n    A->M [xlabel = \"β₁\"]\n    M->Y [label = \"θ₂\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -841,8 +841,8 @@ Simulations: 10 </code></pre>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-a08b1a7c6665eebe8178" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-a08b1a7c6665eebe8178">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"Inflammation\"]\n    Y [label = \"Lipid metabolism\"]\n    N[label = \"Insulin sensitivity\"]\n    A[label = \"Fasting insulin\"]\n  edge [minlen = 1.5]\n    X->Y \n    X->M \n    M->Y \n    X->N    \n    N->Y\n    X->A    \n    A->Y\n  { rank = same; X; N; Y; }\n  { rank = min; M;}\n  { rank = max; A;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-dc511e42fa00dad5602b" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-dc511e42fa00dad5602b">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"Inflammation\"]\n    Y [label = \"Lipid metabolism\"]\n    N[label = \"Insulin sensitivity\"]\n    A[label = \"Fasting insulin\"]\n  edge [minlen = 1.5]\n    X->Y \n    X->M \n    M->Y \n    X->N    \n    N->Y\n    X->A    \n    A->Y\n  { rank = same; X; N; Y; }\n  { rank = min; M;}\n  { rank = max; A;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
