@@ -13,52 +13,52 @@ library(tidyverse)
 library(dplyr)
 ```
 
-Overall relationship between A and Y:
+Overall relationship between Exposure (X) and Outcome (Y):
 
 ```{r echo=FALSE}
 #| echo: false
 grViz("
 digraph {
-  graph []
+  graph [label='X: exposure, Y: outcome\nU: set of all confounders\nc: total effect of X on Y', labelloc='b', fontsize=8]
   node [shape = plaintext]
-    A [label = 'A']
+    X [label = 'X']
     Y [label = 'Y']
+    U [label = 'U']
   edge [minlen = 1.5]
-    A->Y [label = 'c']
-  { rank = same; A; Y }
+    X->Y [label = 'c']
+    U->X [label = '']
+    U->Y [label = '']
+  { rank = same; X; Y }
+  { rank = max; U;}
 }")
 ```
 
-A: Exposure; Y: Outcome; c: path from exposure (A) to outcome (Y)
-
-Relationship between A and Y through M:
+Relationship between Exposure (X) and Outcome (Y) through mediator (M):
 
 ```{r echo=FALSE}
 #| echo: false
 
 grViz("
 digraph {
-  graph []
+  graph [label='X: exposure, Y: outcome\nM: mediator, U: set of all confounders\na: effect of X on M\nb: effect of M on Y\nc*: direct effect of X on Y\n ab: indirect effect of X on Y\n c: total effect of X on Y (=ab+c)', labelloc='b', fontsize=8]
   node [shape = plaintext]
-    A [label = 'A']
+    X [label = 'X']
     M [label = 'M']
     Y [label = 'Y']
+    U [label = 'U']
   edge [minlen = 1.5]
-    A->Y [label = 'c*', xlabel = 'c']
-    A->M [taillabel = 'a']
+    X->Y [xlabel = 'c', label = 'c*']
+    X->M [xlabel = 'a']
     M->Y [label = 'b']
-  { rank = same; A; Y }
+    U->X [label = '']
+    U->Y [label = '']
+  { rank = same; X; Y }
   { rank = min; M;}
+  { rank = max; U;}
 }")
 ```
 
-A: Exposure; Y: Outcome; M: Mediator of interest c: total path from
-exposure (A) to outcome (Y); c\*: direct path from exposure (A) to
-outcome (Y); a: path from exposure (A) to mediator (M); b: path from
-mediator (M) to outcome (Y)
-
-Example: How much does body mass index explain the relaitonship between
-physical activity and pulse rate?
+Example: How much does body mass index explain the relation between physical activity and pulse rate?
 
 ```{r echo=FALSE}
 #| echo: false
@@ -71,16 +71,12 @@ digraph {
     Y [label = 'Pulse']
   edge [minlen = 1.5]
     X->Y [label = 'c*', xlabel = 'c']
-    X->M [taillabel = 'a']
+    X->M [xlabel = 'a']
     M->Y [label = 'b']
   { rank = same; X; Y }
   { rank = min; M;}
 }")
 ```
-
-c: total path from physical activity to pulse rate; c\*: direct path
-from physical activity to pulse rate; a: path from physical activity to
-BMI; b: path from BMI to pulse rate
 
 ```{r}
 #| echo: false
@@ -105,5 +101,4 @@ digraph {
 ")
 ```
 
-A: Exposure; Y: Outcome; M: Mediator; C: confounding factors on the
-pathways
+A: Exposure; Y: Outcome; M: Mediator; C: confounding factors on the pathways
