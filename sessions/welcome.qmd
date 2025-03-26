@@ -2,16 +2,16 @@
 
 ## Welcome
 
-Welcome to the short workshop on Directed Acyclic Graphs (DAGs) and
+Welcome to the short IDEG workshop on Directed Acyclic Graphs (DAGs) and
 mediation analysis!
 
 Instrctors: Daniel Witte, Jie Zhang
 
 Time duration: 75 mins
 
-# Course Outline
+# Workshop Outline
 
-During this 75-minute course, you will learn about traditional mediation
+During this 75-minute workshop, you will learn about traditional mediation
 approaches before exploring the theory of causal mediation, accompanied
 by hands-on R coding practice. We hope this will be the beginning of
 your journey in mediation analysis and open the door to more interesting
@@ -20,11 +20,11 @@ research studies!
 ::: callout-note
 ## Learning outcomes
 
--   Understand the fundementals of mediation analysis
+-   Understand the fundamentals of mediation analysis
 
-    *What is mediation analyses?*
+    *What is mediation analysis?*
 
-    *Why and when to use mediation analyses?*
+    *Why and when to use mediation analysis?*
 
 -   Master the theoretical framework
 
@@ -45,13 +45,13 @@ research studies!
     *Draw meaningful conclusions from results*
 :::
 
-## Important things before the course
+## Important things before the workshop
 
-To make the most of our training course in Bangkok, please complete the
-pre-course tasks before you arrive. This will ensure we can start our
-sessions smoothly and dive right into the content!
+To make the most of our training workshop in Bangkok, please complete the
+pre-workshop tasks before you arrive. This will ensure we can start our
+session smoothly and dive right into the content!
 
-## Course outline
+## Workshop outline
 
 -   Motivation
 -   Traditional mediation analysis
@@ -61,12 +61,12 @@ sessions smoothly and dive right into the content!
 
 ## Acknowledgement
 
-This course is developed based on ['Mediation Analysis Course'](https://analysis-of-mechanisms.netlify.app/) developed
+This workshop is developed based on ['Mediation Analysis Course'](https://analysis-of-mechanisms.netlify.app/) developed
 by Daniel B. Ibsen, Omar Silverman, Jie Zhang from Steno Diabetes Center
 Aarhus in Denmark, and Nima Hejarzi and Ivan Diaz from the US, which is
 sponsored by the Danish Diabetes and Endocrine Academy.
 
 The repository contains the lesson, lecture, and assignment material for
-the course, including the website source files and other associated
-course administration files. You can always go to check the website to
+the workshop, including the website source files and other associated
+workshop administration files. You can always go to check the website to
 learn more about mediation.

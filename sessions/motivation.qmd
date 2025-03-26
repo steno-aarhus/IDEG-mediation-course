@@ -11,25 +11,24 @@ Mediation analysis is the study of pathways and mechanisms through which
 an exposure or intervention impacts an outcome. In clinical and
 epidemiological research, the primary focus is often on determining
 whether a specific intervention has an effect on a disease or health
-outcome. Once this effect is established, the next natural question is
+outcome (aetiological epidemiology). Once this effect is established, the next natural question is
 to explore the "black box"—the underlying mechanisms that explain how
-the intervention (or exposure) leads to the observed outcome. As we are
-not only interested in whether an intervention works, but how it works
+the exposure (or intervention) leads to the observed outcome. As we are
+not only interested in whether an exposure/intervention has an effect, but in how this effect works
 @vanderweele_mediation_2016.
 
 Mediation analysis provides an answer to this HOW question, by
-uncovering the pathways and mechanisms that explain the causal
-relationship between the exposure (e.g., intervention or treatment) and
+quantitatively exploring the pathways and mechanisms that explain the causal
+relationship between the exposure (or intervention or treatment) and
 the outcome. By doing so, mediation analysis helps to open the black
-box, showing not only if an intervention works but how it works, and
-guiding more effective and targeted interventions.
+box.
 
 ## Motivation for mediation analysis
 
 1.  **Explanation and Understanding**:
 
     Unpacking how and why certain factors (e.g., physical activity)
-    impact outcomes (e.g., diabetes risk) through intermediary variables
+    impact outcomes (e.g., diabetes risk) through intermediate variables
     (e.g., weight loss).
 
     *Example*: Does body mass index mediate the relationship between
@@ -37,7 +36,7 @@ guiding more effective and targeted interventions.
 
 2.  **Confirmation and Refutation of Theory**:
 
-    Testing theories about the mechanisms behind health outcomes and
+    Testing theories about the mechanisms driving health outcomes and
     determining whether certain factors mediate the relationships
     between exposures and outcomes.
 

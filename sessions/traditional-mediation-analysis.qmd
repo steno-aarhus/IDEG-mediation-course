@@ -77,18 +77,18 @@ The two traditional approaches to mediation analysis are **the
 difference method** and **the product method**; also known as the Baron
 & Kenny-method @baron_moderatormediator_1986.
 
-The traditional approach use these equations for mediator and outcome
+The traditional approach uses these equations for mediator and outcome
 (for the case of a continuous mediator and a continuous outcome)
 
-Mediator-model:
+Mediator model:
 
 $E(M|X=x, U=u) = \beta_0 + \beta_1x + \beta_2u$ (3.1)
 
-Outcome model with adjustment for mediator:
+Outcome model with adjustment for the mediator:
 
 $E(Y|X=x, M=m, U=u) = \theta_0 + \theta_1x + \theta_2m + \theta_4u$ (3.2)
 
-Outcome model without adjustment for mediator:
+Outcome model without adjustment for the mediator:
 
 $E(Y|X=x, U=u) = \theta_0' + \theta_1'x + \theta_4'u$ (3.3)
 
@@ -106,7 +106,7 @@ $E(Y|X=x, U=u) = \theta_0' + \theta_1'x + \theta_4'u$ (3.3)
 :::
 
 
-::: callout-note
+::: callout-tip
 The terms 'mediation effect' and 'indirect effect' are used
 synonymously.
 :::
@@ -199,7 +199,7 @@ data <- nhanes %>%
 
 ```{r}
 # Physical activity is a binary variable, dichotomized as 'Yes' or 'No'. 
-table(data$a)
+table(data$x)
 # check the distribution of outcome 
 summary(data$y)
 hist(data$y)
@@ -412,29 +412,24 @@ results <- mediate(lm_m, lm_y, treat = "x", mediator = "m", boot = TRUE, sims = 
 summary(results)
 ```
 
--   **ADE** stands for average direct effects. It describes the direct
-    effect of the A on the Y when controlling for the mediator. Note
-    this estimate is the same as the coefficient We got in the product
-    and difference method. But be aware we are able to get *confidence
-    interval* and *significance* levels for the indirect effect, not
-    only its two individual parts by bootstrapping. This is something we
-    need for reporting the mediation.
+-   **ADE** is the Average Direct Effect. It describes the direct
+    effect of the exposure (X) on the outcome (Y) when controlling for the mediator (M). Note
+    this estimate is the same as the coefficient we got in the product
+    and difference method. 
 
--   **ACME** stands for average causal mediation effects. This is the
-    indirect effect of the IV on the DV that goes through the mediator.
-    Note that ACME estimated to be -0.34, which is the same to the
-    traditional approached we just used.
+-   **ACME** is the Average Causal Mediation Effect. This is the
+    indirect effect of the exposure (X) on the outcome (Y) that goes through the mediator (M).
+    Note that ACME estimated to be -0.335, which is the same as the
+    traditional approached we just used. By bootstrapping we are now able to get a *confidence
+    interval* and *significance* level for the indirect effect, not
+    only its two individual parts. This is something we will need when we report our mediation analysis.
 
--   **Total Effect** stands for the total effect (direct + indirect) of
-    the IV onto the DV. We can also get it by adding the ACME () and the
-    ADE () to receive the total effect.
+-   **Total Effect** is the Total Effect (direct + indirect) of the exposure (X) on the outcome (Y).
+    We can also get it by adding the ACME (-0.335) and the ADE (-1.423).
 
--   **Prop. Mediated** describes the proportion of the effect of the IV
-    on the DV that goes through the mediator. It's calculated by
-    dividing the ACME (-0.34) by the total effect (-1.76) and yields
-    0.19. The result suggests the mediator (BMI) explains 19% proportion
-    of the effect of physical activity on pulse rate . We will talk more
-    about proportion mediation in the next session.
+-   **Prop. Mediated** is the proportion of the effect of the exposure (X) on the outcome (Y)
+    that is mediated through the mediator (M). It is calculated by dividing the ACME (-0.335) by the total effect (-1.758) and yields
+    0.191. This result suggests that the mediator (BMI) explains 19% of the effect of physical activity on pulse rate.
 
 ```{r}
 # We can also plot the estimates
