@@ -288,6 +288,10 @@ TE = PNDE + TNIE this decomposition usually is for research question:
 proposed mediator?' @nguyen2021clarifying
 :::
 
+::: callout-note
+The other way to decompose the TE is by Total natural direct effect and
+pure natural indirect effect.
+
 #### Total natural direct effect
 
 TNDE = $Y^{a=1,M_a=1}$ - $Y^{a=0,M_a=1}$
@@ -301,9 +305,6 @@ PNIE = $Y^{a=0,M_a=1}$ - $Y^{a=0,M_a=0}$
 
 Note, this is different from the TNIE in that the exposure is set to no
 intervention.
-
-::: callout-note
-## Decomposition
 
 TE = PNIE + TNDE this decomposition usually is for research question:
 'does the exposure influence the outcome in other ways, not through this
@@ -440,7 +441,7 @@ grViz("
 digraph {
   graph []
   node [shape = plaintext]
-    W [label = 'W']
+    U [label = 'U']
     A [label = 'A']
     M [label = 'M']
     Y [label = 'Y']
@@ -448,10 +449,10 @@ digraph {
     A->M
     M->Y
     A->Y
-    W->A
-    W->Y
-    W->M
-{rank = same; W; A; M; Y; }
+    U->A
+    U->Y
+    U->M
+{rank = same; U; A; M; Y; }
 }
 ")
 ```
