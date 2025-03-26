@@ -354,15 +354,15 @@ Objective of this session
 <p>Overall relationship between A and Y:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-a8b95d5a1cf3b08d84f0" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-a8b95d5a1cf3b08d84f0">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  U: set of all confounders\n\n  θ′₁: total effect of A on Y\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"θ′₁\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-c7a201f013394f678f67" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-c7a201f013394f678f67">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  U: set of all confounders\n\n  θ′₁: total effect of A on Y\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"θ′₁\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Relationship between A and Y through M:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-993290817bd7f2f242ed" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-993290817bd7f2f242ed">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  M: mediator, U: set of all confounders\n\n  β₁: effect of A on M\n\n  θ₂: effect of M on Y\n\n  θ₁: direct effect of A on Y\n\n  β₁.θ₂: indirect effect of A on Y\n\n  θ′₁: total effect of A on Y (= β₁.θ₂ + θ₁)\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [xlabel = \"θ′₁\", label = \"θ₁\"]\n    A->M [xlabel = \"β₁\"]\n    M->Y [label = \"θ₂\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-d3014097cc4f24c68234" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-d3014097cc4f24c68234">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  M: mediator, U: set of all confounders\n\n  β₁: effect of A on M\n\n  θ₂: effect of M on Y\n\n  θ₁: direct effect of A on Y\n\n  β₁.θ₂: indirect effect of A on Y\n\n  θ′₁: total effect of A on Y (= β₁.θ₂ + θ₁)\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [xlabel = \"θ′₁\", label = \"θ₁\"]\n    A->M [xlabel = \"β₁\"]\n    M->Y [label = \"θ₂\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="traditional-approaches-for-mediation-analysis" class="level2" data-number="5.1">
@@ -386,10 +386,10 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>total effect = <span class="math inline">\(\theta_1'\)</span> , that is the total effect of the independent variable on the dependent variable</p></li>
-<li><p>direct effect = <span class="math inline">\(\theta_1\)</span>, that is the effect of the independent variable on the dependent variable that is not mediated by the mediator</p></li>
-<li><p>mediation effect = <span class="math inline">\(\beta_1*\theta_2\)</span> (the product method)</p></li>
-<li><p>mediation effect = <span class="math inline">\(\theta_1'-\theta_1\)</span> (the difference method)</p></li>
+<li><p>Total effect = <span class="math inline">\(\theta_1'\)</span> , that is the total effect of the independent variable on the dependent variable</p></li>
+<li><p>Direct effect = <span class="math inline">\(\theta_1\)</span>, that is the effect of the independent variable on the dependent variable that is not mediated by the mediator</p></li>
+<li><p>Mediation effect = <span class="math inline">\(\beta_1*\theta_2\)</span> (the product method)</p></li>
+<li><p>Mediation effect = <span class="math inline">\(\theta_1'-\theta_1\)</span> (the difference method)</p></li>
 </ul>
 </div>
 </div>
@@ -415,8 +415,8 @@ Tip
 <p>How much does BMI explain the relation between physical activity and pulse rate?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-fdf516000ef3fa2e2c6c" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-fdf516000ef3fa2e2c6c">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c*\", xlabel = \"c\"]\n    A->M [xlabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-48864a7e57e803eb788a" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-48864a7e57e803eb788a">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"θ₁\", xlabel = \"θ′₁\"]\n    A->M [xlabel = \"β₁\"]\n    M->Y [label = \"θ₂\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -478,7 +478,7 @@ dbl (45): ID, Age, AgeMonths, HHIncomeMid, Poverty, HomeRooms, Weight, Lengt...
   No  Yes 
 3260 3656 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the distribution of outcome </span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the distribution of the outcome (pulse in b/m) </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -492,7 +492,7 @@ dbl (45): ID, Age, AgeMonths, HHIncomeMid, Poverty, HomeRooms, Weight, Lengt...
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the distribution of mediation</span></span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the distribution of the mediator (BMI in kg/m2)</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -567,7 +567,7 @@ F-statistic:  30.2 on 8 and 6907 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="step-2-estimate-the-relationship-between-m-on-y-controlling-for-a-path-b" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="step-2-estimate-the-relationship-between-m-on-y-controlling-for-a-path-b"><span class="header-section-number">5.3.2</span> Step 2: Estimate the relationship between M on Y controlling for A (path b)</h3>
 <p>That is to build the model between BMI and pulse rate, controlling for physical activity. This step corresponds to criterion (ii).</p>
-<p><span class="math inline">\((E(Y|A=a, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta4c\)</span> (3.2)</p>
+<p><span class="math inline">\((E(Y|A=a, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta_3u\)</span> (3.2)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fitb <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> a <span class="sc">+</span> m <span class="sc">+</span> u1 <span class="sc">+</span> u2 <span class="sc">+</span> u3 <span class="sc">+</span> u4, <span class="at">data =</span> data)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -605,7 +605,7 @@ F-statistic: 62.56 on 9 and 6906 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="step-3-estimate-the-relationship-between-a-and-y-path-c" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="step-3-estimate-the-relationship-between-a-and-y-path-c"><span class="header-section-number">5.3.3</span> Step 3: Estimate the relationship between A and Y (path c)</h3>
 <p>That is to build the model between physical activity and pulse rate, without adjusting for BMI. The only difference between step 2 and step 3 is that the mediator is not included in the model.</p>
-<p><span class="math inline">\((E(Y|A=a, U=u)\)</span> = <span class="math inline">\(\theta_0'\)</span> + <span class="math inline">\(\theta_1'a\)</span> + <span class="math inline">\(\theta_4'c\)</span> (3.3)</p>
+<p><span class="math inline">\((E(Y|A=a, U=u)\)</span> = <span class="math inline">\(\theta_0'\)</span> + <span class="math inline">\(\theta_1'a\)</span> + <span class="math inline">\(\theta_3'u\)</span> (3.3)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fitc <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> a <span class="sc">+</span> u1 <span class="sc">+</span> u2 <span class="sc">+</span> u3 <span class="sc">+</span> u4, <span class="at">data =</span> data)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -841,8 +841,8 @@ Simulations: 10 </code></pre>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-a58f15b3850875ce8ca1" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-a58f15b3850875ce8ca1">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"Inflammation\"]\n    Y [label = \"Lipid metabolism\"]\n    N[label = \"Insulin sensitivity\"]\n    A[label = \"Fasting insulin\"]\n  edge [minlen = 1.5]\n    X->Y \n    X->M \n    M->Y \n    X->N    \n    N->Y\n    X->A    \n    A->Y\n  { rank = same; X; N; Y; }\n  { rank = min; M;}\n  { rank = max; A;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-a08b1a7c6665eebe8178" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a08b1a7c6665eebe8178">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"Inflammation\"]\n    Y [label = \"Lipid metabolism\"]\n    N[label = \"Insulin sensitivity\"]\n    A[label = \"Fasting insulin\"]\n  edge [minlen = 1.5]\n    X->Y \n    X->M \n    M->Y \n    X->N    \n    N->Y\n    X->A    \n    A->Y\n  { rank = same; X; N; Y; }\n  { rank = min; M;}\n  { rank = max; A;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
