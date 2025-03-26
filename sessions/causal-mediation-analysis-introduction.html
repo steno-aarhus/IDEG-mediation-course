@@ -302,18 +302,18 @@ window.Quarto = {
   </ul></li>
   <li><a href="#from-causal-effects-to-causal-mediation" id="toc-from-causal-effects-to-causal-mediation" class="nav-link" data-scroll-target="#from-causal-effects-to-causal-mediation"><span class="header-section-number">6.2</span> From Causal effects to Causal mediation</a></li>
   <li><a href="#causal-mediation-estimation-approaches" id="toc-causal-mediation-estimation-approaches" class="nav-link" data-scroll-target="#causal-mediation-estimation-approaches"><span class="header-section-number">6.3</span> Causal Mediation Estimation Approaches</a></li>
-  <li><a href="#core-causal-assumptions" id="toc-core-causal-assumptions" class="nav-link" data-scroll-target="#core-causal-assumptions"><span class="header-section-number">6.4</span> Core Causal Assumptions</a>
+  <li><a href="#casual-mediation-effects" id="toc-casual-mediation-effects" class="nav-link" data-scroll-target="#casual-mediation-effects"><span class="header-section-number">6.4</span> Casual Mediation Effects</a>
   <ul class="collapse">
-  <li><a href="#association-vs-causation" id="toc-association-vs-causation" class="nav-link" data-scroll-target="#association-vs-causation"><span class="header-section-number">6.4.1</span> Association vs Causation</a></li>
-  <li><a href="#confounding-assumptions-in-causal-mediation-analysis" id="toc-confounding-assumptions-in-causal-mediation-analysis" class="nav-link" data-scroll-target="#confounding-assumptions-in-causal-mediation-analysis"><span class="header-section-number">6.4.2</span> Confounding assumptions in Causal Mediation Analysis</a></li>
+  <li><a href="#defining-estimands" id="toc-defining-estimands" class="nav-link" data-scroll-target="#defining-estimands"><span class="header-section-number">6.4.1</span> Defining estimands</a></li>
+  <li><a href="#effect-decomposition" id="toc-effect-decomposition" class="nav-link" data-scroll-target="#effect-decomposition"><span class="header-section-number">6.4.2</span> Effect decomposition</a></li>
+  <li><a href="#proportions" id="toc-proportions" class="nav-link" data-scroll-target="#proportions"><span class="header-section-number">6.4.3</span> Proportions</a></li>
   </ul></li>
-  <li><a href="#casual-mediation-effects" id="toc-casual-mediation-effects" class="nav-link" data-scroll-target="#casual-mediation-effects"><span class="header-section-number">6.5</span> Casual Mediation Effects</a>
+  <li><a href="#why-causal-mediation-analysis" id="toc-why-causal-mediation-analysis" class="nav-link" data-scroll-target="#why-causal-mediation-analysis"><span class="header-section-number">6.5</span> Why Causal Mediation Analysis?</a></li>
+  <li><a href="#core-causal-assumptions" id="toc-core-causal-assumptions" class="nav-link" data-scroll-target="#core-causal-assumptions"><span class="header-section-number">6.6</span> Core Causal Assumptions</a>
   <ul class="collapse">
-  <li><a href="#defining-estimands" id="toc-defining-estimands" class="nav-link" data-scroll-target="#defining-estimands"><span class="header-section-number">6.5.1</span> Defining estimands</a></li>
-  <li><a href="#effect-decomposition" id="toc-effect-decomposition" class="nav-link" data-scroll-target="#effect-decomposition"><span class="header-section-number">6.5.2</span> Effect decomposition</a></li>
-  <li><a href="#proportions" id="toc-proportions" class="nav-link" data-scroll-target="#proportions"><span class="header-section-number">6.5.3</span> Proportions</a></li>
+  <li><a href="#association-vs-causation" id="toc-association-vs-causation" class="nav-link" data-scroll-target="#association-vs-causation"><span class="header-section-number">6.6.1</span> Association vs Causation</a></li>
+  <li><a href="#confounding-assumptions-in-causal-mediation-analysis" id="toc-confounding-assumptions-in-causal-mediation-analysis" class="nav-link" data-scroll-target="#confounding-assumptions-in-causal-mediation-analysis"><span class="header-section-number">6.6.2</span> Confounding assumptions in Causal Mediation Analysis</a></li>
   </ul></li>
-  <li><a href="#why-causal-mediation-analysis" id="toc-why-causal-mediation-analysis" class="nav-link" data-scroll-target="#why-causal-mediation-analysis"><span class="header-section-number">6.6</span> Why Causal Mediation Analysis?</a></li>
   <li><a href="#practical-examples-using-r-package" id="toc-practical-examples-using-r-package" class="nav-link" data-scroll-target="#practical-examples-using-r-package"><span class="header-section-number">6.7</span> Practical Examples using R package</a></li>
   <li><a href="#example-not-using-r-package" id="toc-example-not-using-r-package" class="nav-link" data-scroll-target="#example-not-using-r-package"><span class="header-section-number">6.8</span> Example-not using R package</a>
   <ul class="collapse">
@@ -425,7 +425,7 @@ Notation
 </blockquote>
 <p>We can randomly assigning one group to take the pill, and the other group not to take the pill over 5 years. Then we compare the average risk of T2D after 5 year in each of the groups. If there is a difference, we could say there is an average causal effect.</p>
 <p>More formally we can now define a causal effect <span class="citation" data-cites="hernan_definition_2004">(<a href="#ref-hernan_definition_2004" role="doc-biblioref">1</a>)</span>:</p>
-<p>$E[Y^{a=1} = 1]-E[Y^{a=0} = 1] $</p>
+<p>$ E[Y^{a=1} = 1]-E[Y^{a=0} = 1] $</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -450,8 +450,8 @@ Notation
 <p>When we want to understand not just <strong>if</strong>, but <strong>how</strong> the magic pill affects risk of T2D, we need to consider mediating factors. For example:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-963802afa46482d15001" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-963802afa46482d15001">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-42d0ddb40161c57a9f47" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-42d0ddb40161c57a9f47">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Will taking the pill reduce my BMI, which in turn decreases the risk of T2D? This requires us to decompose the total effect into direct and indirect pathways.</p>
@@ -494,10 +494,131 @@ Note
 <p>While regression-based approaches are commonly used, several alternative estimation methods are available, including Inverse probability weighting (IPW), G-computation, and structural equation models (SEM).</p>
 <p>Note: additional approaches also exists, but we will not focus on these in this course.</p>
 </section>
-<section id="core-causal-assumptions" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="core-causal-assumptions"><span class="header-section-number">6.4</span> Core Causal Assumptions</h2>
-<section id="association-vs-causation" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="association-vs-causation"><span class="header-section-number">6.4.1</span> Association vs Causation</h3>
+<section id="casual-mediation-effects" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="casual-mediation-effects"><span class="header-section-number">6.4</span> Casual Mediation Effects</h2>
+<section id="defining-estimands" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="defining-estimands"><span class="header-section-number">6.4.1</span> Defining estimands</h3>
+<p>Imagine we have a hypothetical randomized controlled trial where we give participants treatment or no treatment on a specific outcome Y.</p>
+<p><span class="math inline">\(Y^{a=1} - Y^{a=0}\)</span></p>
+<p>For mediation, we are also interested in the effect of a mediator on this pathway. Now image that we also intervene on the mediator in a new hypothetical randomized controlled trial.</p>
+<p><span class="math inline">\(Y^{m=1} - Y^{m=0}\)</span></p>
+<p>Now consider if we, in the same trial, could intervene on both because we are interested in whether treatment <em>causes</em> the outcome because it <em>causes</em> the mediator.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Notation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(Y^a\)</span> = a subject’s outcome if treatment A were set, possible contrary to fact, to a</p>
+<p><span class="math inline">\(M^a\)</span> = a subject’s value of the mediator if the exposure A were set to the value of a</p>
+<p><span class="math inline">\(Y^{a,m}\)</span> = a subject’s outcome if A were set to a and M were set to m</p>
+<p><span class="math inline">\(Y^{a,M_a}\)</span> = a subject’s outcome if A were set to a and M were set the value m would have had had a been set to a. Note, this is a nested counterfactual</p>
+</div>
+</div>
+<p>We can now define these estimands:</p>
+<ul>
+<li>the controlled direct effect (CDE)</li>
+<li>natural direct effect (NDE)</li>
+<li>natural indirect effect (NIE)</li>
+</ul>
+<section id="controlled-direct-effect" class="level4" data-number="6.4.1.1">
+<h4 data-number="6.4.1.1" class="anchored" data-anchor-id="controlled-direct-effect"><span class="header-section-number">6.4.1.1</span> Controlled direct effect</h4>
+<p><span class="math inline">\(Y^{a=1,m}\)</span> - <span class="math inline">\(Y^{a=0,m}\)</span></p>
+<p>We intervene on <span class="math inline">\(a\)</span> but fix <span class="math inline">\(m\)</span> to a certain value. The CDE is how much the outcome would change on average if the mediator were fixed at level m uniformly in the population but the treatment were changed from 0 to 1.</p>
+<p>This could be relevant in the context of a change in a policy that impacted the mediator for everyone. For instance, if air pollution was a mediator between physical activity and cardiovaular disease risk. If a new policy would change the level of air pollution for all while we implement an intervention to increase biking in the city.</p>
+<p>This effect is not used that often. But can be highly relevant in some situations.</p>
+</section>
+<section id="pure-natural-direct-effect" class="level4" data-number="6.4.1.2">
+<h4 data-number="6.4.1.2" class="anchored" data-anchor-id="pure-natural-direct-effect"><span class="header-section-number">6.4.1.2</span> (Pure) Natural direct effect</h4>
+<p><span class="math inline">\(Y^{a=1,M_a=0}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
+<p>The PNDE is how much the outcome would change if the exposure was set at a = 1 versus a* = 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
+<p>Note that the word “natural” refers to the nested counterfactual, the level the mediator would have taken in the absence of exposure.</p>
+</section>
+<section id="total-natural-indirect-effect" class="level4" data-number="6.4.1.3">
+<h4 data-number="6.4.1.3" class="anchored" data-anchor-id="total-natural-indirect-effect"><span class="header-section-number">6.4.1.3</span> (Total) Natural indirect effect</h4>
+<p><span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=1,M_a=0}\)</span></p>
+<p>The NIE is how much the outcome would change on average if the exposure were fixed at level a = 1 but the mediator were changed from the level it would take if a* = 0 to the level it would take if a = 1.</p>
+<p>Note that exposure has to have an effect on M otherwise this will be zero.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Decomposition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>TE = PNDE + TNIE this decomposition usually is for research question: ‘is there a mediated effect?’ or ‘is the causal effect mediated by the proposed mediator?’ <span class="citation" data-cites="nguyen2021clarifying">(<a href="#ref-nguyen2021clarifying" role="doc-biblioref">2</a>)</span></p>
+</div>
+</div>
+</section>
+<section id="total-natural-direct-effect" class="level4" data-number="6.4.1.4">
+<h4 data-number="6.4.1.4" class="anchored" data-anchor-id="total-natural-direct-effect"><span class="header-section-number">6.4.1.4</span> Total natural direct effect</h4>
+<p>TNDE = <span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=1}\)</span></p>
+<p>Note, different from above in that the mediator is kept at the level it would have taken in the <strong>presence</strong> of the exposure.</p>
+</section>
+<section id="pure-natural-indirect-effect" class="level4" data-number="6.4.1.5">
+<h4 data-number="6.4.1.5" class="anchored" data-anchor-id="pure-natural-indirect-effect"><span class="header-section-number">6.4.1.5</span> Pure natural indirect effect</h4>
+<p>PNIE = <span class="math inline">\(Y^{a=0,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
+<p>Note, this is different from the TNIE in that the exposure is set to no intervention.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Decomposition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>TE = PNIE + TNDE this decomposition usually is for research question: ‘does the exposure influence the outcome in other ways, not through this mediator?’ <span class="citation" data-cites="nguyen2021clarifying">(<a href="#ref-nguyen2021clarifying" role="doc-biblioref">2</a>)</span></p>
+</div>
+</div>
+<p><span class="citation" data-cites="article">(<a href="#ref-article" role="doc-biblioref"><strong>article?</strong></a>)</span>{nguyen2021clarifying,</p>
+</section>
+<section id="interaction-effects" class="level4" data-number="6.4.1.6">
+<h4 data-number="6.4.1.6" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">6.4.1.6</span> Interaction effects</h4>
+<p>More information on the interaction effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">3</a>)</span>.</p>
+<p>Reference interaction:</p>
+<p><span class="math inline">\(INT_{ref} = PNDE - CDE\)</span></p>
+<p>Mediation interaction:</p>
+<p><span class="math inline">\(INT_{med} = TNIE - PNIE\)</span></p>
+</section>
+</section>
+<section id="effect-decomposition" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="effect-decomposition"><span class="header-section-number">6.4.2</span> Effect decomposition</h3>
+<p>Using the causal inference framework also allow for effect decomposition, even when there are interaction and non-linearity.</p>
+<p>Effect decomposition is important when we want to assess relative contributions such as the proportion mediated and eliminated.</p>
+<p>TE = PNDE + TNIE = TNDE + PNIE</p>
+<p>More information about decomposition of effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">3</a>)</span>.</p>
+</section>
+<section id="proportions" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="proportions"><span class="header-section-number">6.4.3</span> Proportions</h3>
+<p>Proportion mediated:</p>
+<p><span class="math inline">\(PM = NIE / TE\)</span></p>
+<p>Proportion eliminated:</p>
+<p><span class="math inline">\(PE = (TE-CDE) / TE\)</span></p>
+</section>
+</section>
+<section id="why-causal-mediation-analysis" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="why-causal-mediation-analysis"><span class="header-section-number">6.5</span> Why Causal Mediation Analysis?</h2>
+<p>Neither the product method nor the difference method in traditional mediation analysis can effectively account for interaction effects or non-linear relationships between variables. Traditional methods also lack attention to confounding and temporallity.</p>
+<p>Causal mediation analysis addresses these limitations through more sophisticated approaches. Specifically, it can:</p>
+<ul>
+<li><p>Constructing a comprehensive causal model that explicitly incorporates non-linear relationships and interaction effects. Counterfactual approaches can better handle complex, non-parametric relationships.</p></li>
+<li><p>Decomposition of effects: Counterfactual methods allow for more nuanced decomposition of total effects into direct and indirect effects, especially in the presence of treatment-mediator interactions.</p></li>
+<li><p>Counterfactual frameworks extend more naturally to settings with multiple mediators</p></li>
+</ul>
+</section>
+<section id="core-causal-assumptions" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="core-causal-assumptions"><span class="header-section-number">6.6</span> Core Causal Assumptions</h2>
+<section id="association-vs-causation" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="association-vs-causation"><span class="header-section-number">6.6.1</span> Association vs Causation</h3>
 <p>What makes it complicated to estimate a causal effect is that we cannot observe the outcome under different treatments.</p>
 <p>When we only have a subset of the outcomes, we have an association. This is illustrated in <a href="#fig-causation-association" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>.</p>
 <div id="fig-causation-association" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -547,8 +668,8 @@ Note
 </div>
 </div>
 </section>
-<section id="confounding-assumptions-in-causal-mediation-analysis" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="confounding-assumptions-in-causal-mediation-analysis"><span class="header-section-number">6.4.2</span> Confounding assumptions in Causal Mediation Analysis</h3>
+<section id="confounding-assumptions-in-causal-mediation-analysis" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="confounding-assumptions-in-causal-mediation-analysis"><span class="header-section-number">6.6.2</span> Confounding assumptions in Causal Mediation Analysis</h3>
 <p>Confounding assumptions are critical for valid causal inferences in mediation analysis. These assumptions specify the conditions under which we can interpret our estimates as truly causal rather than merely associational.</p>
 <div>
 <ol type="1">
@@ -561,8 +682,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-201c6eabf554e9905224" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-201c6eabf554e9905224">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-55f8179bbf5666d13991" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-55f8179bbf5666d13991">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W [label = \"W\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W->A\n    W->Y\n    W->M\n{rank = same; W; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -570,136 +691,12 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-ab007e368fe3eda86125" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-ab007e368fe3eda86125">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-d2e9fa1bc971f14c1e17" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-d2e9fa1bc971f14c1e17">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    W1 [label = \"W1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    W2 [label = \"W2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    W1->A\n    W1->Y\n    W1->M\n    W2->M\n    W2->Y\n    A->W2\n    W1->W2\n{rank = same; W1; A; M; Y; }\n{rank = max; W2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for W2 we open a backdoor path by adjusting for the collider <span class="math inline">\(W1 \rightarrow W2 \leftarrow A\)</span>.</p>
 </section>
-</section>
-<section id="casual-mediation-effects" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="casual-mediation-effects"><span class="header-section-number">6.5</span> Casual Mediation Effects</h2>
-<section id="defining-estimands" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="defining-estimands"><span class="header-section-number">6.5.1</span> Defining estimands</h3>
-<p>Imagine we have a hypothetical randomized controlled trial where we give participants treatment or no treatment on a specific outcome Y.</p>
-<p><span class="math inline">\(Y^{a=1} - Y^{a=0}\)</span></p>
-<p>For mediation, we are also interested in the effect of a mediator on this pathway. Now image that we also intervene on the mediator in a new hypothetical randomized controlled trial.</p>
-<p><span class="math inline">\(Y^{m=1} - Y^{m=0}\)</span></p>
-<p>Now consider if we, in the same trial, could intervene on both because we are interested in whether treatment <em>causes</em> the outcome because it <em>causes</em> the mediator.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Notation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(Y^a\)</span> = a subject’s outcome if treatment A were set, possible contrary to fact, to a</p>
-<p><span class="math inline">\(M^a\)</span> = a subject’s value of the mediator if the exposure A were set to the value of a</p>
-<p><span class="math inline">\(Y^{a,m}\)</span> = a subject’s outcome if A were set to a and M were set to m</p>
-<p><span class="math inline">\(Y^{a,M_a}\)</span> = a subject’s outcome if A were set to a and M were set the value m would have had had a been set to a. Note, this is a nested counterfactual</p>
-</div>
-</div>
-<p>We can now define these estimands:</p>
-<ul>
-<li>the controlled direct effect (CDE)</li>
-<li>natural direct effect (NDE)</li>
-<li>natural indirect effect (NIE)</li>
-</ul>
-<section id="controlled-direct-effect" class="level4" data-number="6.5.1.1">
-<h4 data-number="6.5.1.1" class="anchored" data-anchor-id="controlled-direct-effect"><span class="header-section-number">6.5.1.1</span> Controlled direct effect</h4>
-<p>The effect of A on Y not mediated through M. Fixing the value of M to m.</p>
-<p><span class="math inline">\(Y^{a=1,m}\)</span> - <span class="math inline">\(Y^{a=0,m}\)</span></p>
-<p>We intervene on <span class="math inline">\(a\)</span> but fix <span class="math inline">\(m\)</span> to a certain value. The CDE is how much the outcome would change on average if the mediator were fixed at level m uniformly in the population but the treatment were changed from 0 to 1.</p>
-<p>This could be relevant in the context of a change in a policy that impacted the mediator for everyone. For instance, if air pollution was a mediator between physical activity and cardiovaular disease risk. If a new policy would change the level of air pollution for all while we implement an intervention to increase biking in the city.</p>
-<p>This effect is not used that often. But can be highly relevant in some situations.</p>
-</section>
-<section id="pure-natural-direct-effect" class="level4" data-number="6.5.1.2">
-<h4 data-number="6.5.1.2" class="anchored" data-anchor-id="pure-natural-direct-effect"><span class="header-section-number">6.5.1.2</span> (Pure) Natural direct effect</h4>
-<p>The effect that would remain, if we were to disable the pathway from exposure to mediator.</p>
-<p><span class="math inline">\(Y^{a=1,M_a=0}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
-<p>The PNDE is how much the outcome would change if the exposure was set at a = 1 versus a* = 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
-<p>Note that the word “natural” refers to the nested counterfactual, the level the mediator would have taken in the absence of exposure.</p>
-</section>
-<section id="total-natural-indirect-effect" class="level4" data-number="6.5.1.3">
-<h4 data-number="6.5.1.3" class="anchored" data-anchor-id="total-natural-indirect-effect"><span class="header-section-number">6.5.1.3</span> (Total) Natural indirect effect</h4>
-<p>The effect of the mediator pathway.</p>
-<p><span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=1,M_a=0}\)</span></p>
-<p>The NIE is how much the outcome would change on average if the exposure were fixed at level a = 1 but the mediator were changed from the level it would take if a* = 0 to the level it would take if a = 1.</p>
-<p>Note that exposure has to have an effect on M otherwise this will be zero.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Decomposition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>TE = PNDE + TNIE this decomposition usually is for research question: ‘is there a mediated effect?’ or ‘is the causal effect mediated by the proposed mediator?’ <span class="citation" data-cites="nguyen2021clarifying">(<a href="#ref-nguyen2021clarifying" role="doc-biblioref">2</a>)</span></p>
-</div>
-</div>
-</section>
-<section id="total-natural-direct-effect" class="level4" data-number="6.5.1.4">
-<h4 data-number="6.5.1.4" class="anchored" data-anchor-id="total-natural-direct-effect"><span class="header-section-number">6.5.1.4</span> Total natural direct effect</h4>
-<p>TNDE = <span class="math inline">\(Y^{a=1,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=1}\)</span></p>
-<p>Note, different from above in that the mediator is kept at the level it would have taken in the <strong>presence</strong> of the exposure.</p>
-</section>
-<section id="pure-natural-indirect-effect" class="level4" data-number="6.5.1.5">
-<h4 data-number="6.5.1.5" class="anchored" data-anchor-id="pure-natural-indirect-effect"><span class="header-section-number">6.5.1.5</span> Pure natural indirect effect</h4>
-<p>PNIE = <span class="math inline">\(Y^{a=0,M_a=1}\)</span> - <span class="math inline">\(Y^{a=0,M_a=0}\)</span></p>
-<p>Note, this is different from the TNIE in that the exposure is set to no intervention.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Decomposition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>TE = PNIE + TNDE this decomposition usually is for research question: ‘does the exposure influence the outcome in other ways, not through this mediator?’ <span class="citation" data-cites="nguyen2021clarifying">(<a href="#ref-nguyen2021clarifying" role="doc-biblioref">2</a>)</span></p>
-</div>
-</div>
-<p><span class="citation" data-cites="article">(<a href="#ref-article" role="doc-biblioref"><strong>article?</strong></a>)</span>{nguyen2021clarifying,</p>
-</section>
-<section id="interaction-effects" class="level4" data-number="6.5.1.6">
-<h4 data-number="6.5.1.6" class="anchored" data-anchor-id="interaction-effects"><span class="header-section-number">6.5.1.6</span> Interaction effects</h4>
-<p>More information on the interaction effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">3</a>)</span>.</p>
-<p>Reference interaction:</p>
-<p><span class="math inline">\(INT_{ref} = PNDE - CDE\)</span></p>
-<p>Mediation interaction:</p>
-<p><span class="math inline">\(INT_{med} = TNIE - PNIE\)</span></p>
-</section>
-</section>
-<section id="effect-decomposition" class="level3" data-number="6.5.2">
-<h3 data-number="6.5.2" class="anchored" data-anchor-id="effect-decomposition"><span class="header-section-number">6.5.2</span> Effect decomposition</h3>
-<p>Using the causal inference framework also allow for effect decomposition, even when there are interaction and non-linearity.</p>
-<p>Effect decomposition is important when we want to assess relative contributions such as the proportion mediated and eliminated.</p>
-<p>TE = PNDE + TNIE = TNDE + PNIE</p>
-<p>More information about decomposition of effects can be found in <span class="citation" data-cites="vanderweele_unification_2014">(<a href="#ref-vanderweele_unification_2014" role="doc-biblioref">3</a>)</span>.</p>
-</section>
-<section id="proportions" class="level3" data-number="6.5.3">
-<h3 data-number="6.5.3" class="anchored" data-anchor-id="proportions"><span class="header-section-number">6.5.3</span> Proportions</h3>
-<p>Proportion mediated:</p>
-<p><span class="math inline">\(PM = NIE / TE\)</span></p>
-<p>Proportion eliminated:</p>
-<p><span class="math inline">\(PE = (TE-CDE) / TE\)</span></p>
-</section>
-</section>
-<section id="why-causal-mediation-analysis" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="why-causal-mediation-analysis"><span class="header-section-number">6.6</span> Why Causal Mediation Analysis?</h2>
-<p>Neither the product method nor the difference method in traditional mediation analysis can effectively account for interaction effects or non-linear relationships between variables. Traditional methods also lack attention to confounding and temporallity.</p>
-<p>Causal mediation analysis addresses these limitations through more sophisticated approaches. Specifically, it can:</p>
-<ul>
-<li><p>Constructing a comprehensive causal model that explicitly incorporates non-linear relationships and interaction effects. Counterfactual approaches can better handle complex, non-parametric relationships.</p></li>
-<li><p>Decomposition of effects: Counterfactual methods allow for more nuanced decomposition of total effects into direct and indirect effects, especially in the presence of treatment-mediator interactions.</p></li>
-<li><p>Counterfactual frameworks extend more naturally to settings with multiple mediators</p></li>
-</ul>
 </section>
 <section id="practical-examples-using-r-package" class="level2" data-number="6.7">
 <h2 data-number="6.7" class="anchored" data-anchor-id="practical-examples-using-r-package"><span class="header-section-number">6.7</span> Practical Examples using R package</h2>
@@ -1014,21 +1011,21 @@ Direct counterfactual imputation estimation with
  bootstrap standard errors, percentile confidence intervals and p-values 
  
               Estimate Std.error   95% CIL 95% CIU  P.val    
-cde          -2.135202  0.336485 -2.768571  -1.563 &lt;2e-16 ***
-pnde         -1.878738  0.373986 -2.566092  -1.162 &lt;2e-16 ***
-tnde         -2.115133  0.340535 -2.758249  -1.515 &lt;2e-16 ***
-pnie         -0.270278  0.066013 -0.381616  -0.168 &lt;2e-16 ***
-tnie         -0.506673  0.066924 -0.638522  -0.420 &lt;2e-16 ***
-te           -2.385410  0.356580 -3.059841  -1.728 &lt;2e-16 ***
-intref        0.256464  0.102464  0.113204   0.494 &lt;2e-16 ***
-intmed       -0.236395  0.091490 -0.441026  -0.109 &lt;2e-16 ***
-cde(prop)     0.895109  0.031883  0.834627   0.944 &lt;2e-16 ***
-intref(prop) -0.107514  0.057091 -0.251367  -0.040 &lt;2e-16 ***
-intmed(prop)  0.099100  0.049538  0.039253   0.221 &lt;2e-16 ***
-pnie(prop)    0.113304  0.028119  0.069251   0.165 &lt;2e-16 ***
-pm            0.212405  0.050626  0.162046   0.329 &lt;2e-16 ***
-int          -0.008413  0.010651 -0.034130   0.000    0.2    
-pe            0.104891  0.031883  0.056236   0.165 &lt;2e-16 ***
+cde          -2.135202  0.319457 -2.625107  -1.444 &lt;2e-16 ***
+pnde         -1.870244  0.296920 -2.388213  -1.306 &lt;2e-16 ***
+tnde         -2.106639  0.316091 -2.629447  -1.436 &lt;2e-16 ***
+pnie         -0.270278  0.085209 -0.413849  -0.112 &lt;2e-16 ***
+tnie         -0.506673  0.059302 -0.566614  -0.360 &lt;2e-16 ***
+te           -2.376917  0.290570 -2.808606  -1.759 &lt;2e-16 ***
+intref        0.264958  0.108796  0.059038   0.440 &lt;2e-16 ***
+intmed       -0.236395  0.097916 -0.393589  -0.054 &lt;2e-16 ***
+cde(prop)     0.898308  0.046848  0.795574   0.968 &lt;2e-16 ***
+intref(prop) -0.111471  0.045687 -0.187961  -0.022 &lt;2e-16 ***
+intmed(prop)  0.099455  0.040977  0.020389   0.163 &lt;2e-16 ***
+pnie(prop)    0.113709  0.042811  0.044043   0.207 &lt;2e-16 ***
+pm            0.213164  0.038164  0.143275   0.284 &lt;2e-16 ***
+int          -0.012017  0.009372 -0.026557   0.004    0.4    
+pe            0.101692  0.046848  0.032366   0.204 &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
