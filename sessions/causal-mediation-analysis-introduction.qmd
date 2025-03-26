@@ -779,8 +779,8 @@ round(as.numeric(PNIE), digits = 2)
 ```
 
 The PNIE is different from the TNIE because it does not include the
-interaction effect. We estimate the effect of red meat on inflammation
-and then subsequent effect of inflammation on blood glucose.
+interaction effect. We estimate the effect of physical activity on BMI
+and then subsequent effect of BMI on pulse rate.
 
 The PNIE answer the question: "to what extent does physical activity
 cause lower pulse rate via BMI only (i.e., due to physical activity
