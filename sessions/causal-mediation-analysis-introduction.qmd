@@ -87,11 +87,12 @@ slightly different question:
 We can randomly assigning one group to take the pill, and the other
 group not to take the pill over 5 years. Then we compare the average
 risk of T2D after 5 year in each of the groups. If there is a
-difference, we could say there is an average causal effect.
+difference, we could say there is an average causal effect
+@hernan_definition_2004.
 
-More formally we can now define a causal effect @hernan_definition_2004:
+More formally we can now define a causal effect:
 
-\$E\[Y\^{a=1} = 1\]-E\[Y\^{a=0} = 1\] \$
+$E[Y^{a=1} = 1]-E[Y^{a=0} = 1]$
 
 ::: callout-note
 ## Notation
