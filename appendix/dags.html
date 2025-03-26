@@ -234,28 +234,28 @@ ul.task-list li input[type="checkbox"] {
 <p>Overall relationship between Exposure (X) and Outcome (Y):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-3a25ae97d247fd1118f5" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-3a25ae97d247fd1118f5">{"x":{"diagram":"\ndigraph {\n  graph [label=\"X: exposure, Y: outcome\nU: set of all confounders\nc: total effect of X on Y\", labelloc=\"b\", fontsize=8]\n  node [shape = plaintext]\n    X [label = \"X\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c\"]\n    U->X [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; X; Y }\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-5c73d47877c5a293a128" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-5c73d47877c5a293a128">{"x":{"diagram":"\ndigraph {\n  graph [label=\"X: exposure, Y: outcome\nU: set of all confounders\nc: total effect of X on Y\", labelloc=\"b\", fontsize=8]\n  node [shape = plaintext]\n    X [label = \"X\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c\"]\n    U->X [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; X; Y }\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Relationship between Exposure (X) and Outcome (Y) through mediator (M):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-f901206a61b21eb48481" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f901206a61b21eb48481">{"x":{"diagram":"\ndigraph {\n  graph [label=\"X: exposure, Y: outcome\nM: mediator, U: set of all confounders\na: effect of X on M\nb: effect of M on Y\nc*: direct effect of X on Y\n ab: indirect effect of X on Y\n c: total effect of X on Y (=ab+c)\", labelloc=\"b\", fontsize=8]\n  node [shape = plaintext]\n    X [label = \"X\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    X->Y [xlabel = \"c\", label = \"c*\"]\n    X->M [xlabel = \"a\"]\n    M->Y [label = \"b\"]\n    U->X [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-372bdb3b9ee1529dac04" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-372bdb3b9ee1529dac04">{"x":{"diagram":"\ndigraph {\n  graph [label=\"X: exposure, Y: outcome\nM: mediator, U: set of all confounders\na: effect of X on M\nb: effect of M on Y\nc*: direct effect of X on Y\n ab: indirect effect of X on Y\n c: total effect of X on Y (=ab+c)\", labelloc=\"b\", fontsize=8]\n  node [shape = plaintext]\n    X [label = \"X\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    X->Y [xlabel = \"c\", label = \"c*\"]\n    X->M [xlabel = \"a\"]\n    M->Y [label = \"b\"]\n    U->X [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Example: How much does body mass index explain the relation between physical activity and pulse rate?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-8fc1d70548a49c4e4b50" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-8fc1d70548a49c4e4b50">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c*\", xlabel = \"c\"]\n    X->M [xlabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-d5e0d1eb0b75240325bd" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-d5e0d1eb0b75240325bd">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c*\", xlabel = \"c\"]\n    X->M [xlabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-380a5172cd6f48a25857" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-380a5172cd6f48a25857">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    C [label = \"C\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    C->A\n    C->Y\n    C->M\n{rank = same; C; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-cbd7d87c722fc3185d12" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-cbd7d87c722fc3185d12">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    C [label = \"C\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    C->A\n    C->Y\n    C->M\n{rank = same; C; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>A: Exposure; Y: Outcome; M: Mediator; C: confounding factors on the pathways</p>
