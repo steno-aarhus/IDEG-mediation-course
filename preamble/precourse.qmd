@@ -20,7 +20,8 @@ about them are found as you work through this section.
 ::: callout-note
 1.  Install the necessary programs and the right version of the
     programs.
-2.  Get familiar with [Directed Acyclic Graphs](/preamble/Introduction-to-DAGs.qmd).
+2.  Get familiar with [Directed Acyclic
+    Graphs](/preamble/Introduction-to-DAGs.qmd).
 3.  Download the data or the repository in @sec-download-data
 4.  Read the Code of Conduct
 :::
@@ -107,7 +108,9 @@ Some concepts in the mediation workshop are explained using Directed
 Acyclic Graphs. It is important that you understand what they are and
 how we use them in observational epidemiology. We have put together a
 very general introduction to DAGs. If you have not worked with DAGs
-before, please take some time to go through this [introduction to DAGs](/preamble/Introduction-to-DAGs.qmd) to familiarize yourself with them.
+before, please take some time to go through this [introduction to
+DAGs](/preamble/Introduction-to-DAGs.qmd) to familiarize yourself with
+them.
 
 ## Download the data and repository {#sec-download-data}
 
@@ -126,7 +129,7 @@ March 31, in the afternoon as we will making updates until then.
     Version control -\> Git"
 
 3.  Keeping RStudio open, open your browser and go to our
-    [repository](https://github.com/steno-aarhus/mediation-analysis-course)
+    [repository](https://github.com/steno-aarhus/IDEG-mediation-course.git)
 
 4.  Then, Click on the green "code" icon and copy-paste
 
