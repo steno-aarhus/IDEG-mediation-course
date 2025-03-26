@@ -234,31 +234,31 @@ ul.task-list li input[type="checkbox"] {
 <p>Overall relationship between A and Y:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-8da10fd2823cf2f4c3e2" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-8da10fd2823cf2f4c3e2">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c\"]\n  { rank = same; A; Y }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-f9889df4024c6b53f7d3" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-f9889df4024c6b53f7d3">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c\"]\n  { rank = same; A; Y }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>A: Exposure; Y: Outcome; c: path from exposure (A) to outcome (Y)</p>
 <p>Relationship between A and Y through M:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-88ad7c58be2d6e4db4fc" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-88ad7c58be2d6e4db4fc">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c*\", xlabel = \"c\"]\n    A->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-ec76ddd4087a32978ce2" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-ec76ddd4087a32978ce2">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c*\", xlabel = \"c\"]\n    A->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>A: Exposure; Y: Outcome; M: Mediator of interest c: total path from exposure (A) to outcome (Y); c*: direct path from exposure (A) to outcome (Y); a: path from exposure (A) to mediator (M); b: path from mediator (M) to outcome (Y)</p>
 <p>Example: How much does body mass index explain the relaitonship between physical activity and pulse rate?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-b61bcb0366a4c81d094f" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-b61bcb0366a4c81d094f">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c*\", xlabel = \"c\"]\n    X->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-eff33d03fe751780f6ce" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-eff33d03fe751780f6ce">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c*\", xlabel = \"c\"]\n    X->M [taillabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>c: total path from physical activity to pulse rate; c*: direct path from physical activity to pulse rate; a: path from physical activity to BMI; b: path from BMI to pulse rate</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-951582ca272e0fc98fb9" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-951582ca272e0fc98fb9">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    C [label = \"C\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    C->A\n    C->Y\n    C->M\n{rank = same; C; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-93e8022f40b3900f5e78" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-93e8022f40b3900f5e78">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    C [label = \"C\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    C->A\n    C->Y\n    C->M\n{rank = same; C; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>A: Exposure; Y: Outcome; M: Mediator; C: confounding factors on the pathways</p>
