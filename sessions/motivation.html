@@ -267,11 +267,11 @@ div.csl-indent {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Mediation analysis is:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Mediation analysis is the <em>study of pathways and mechanisms through which an exposure or intervention impacts an outcome</em>.</p>
+<p><em>The quantitative study of pathways and mechanisms through which an exposure or intervention impacts an outcome</em></p>
 </div>
 </div>
 <p>In clinical and epidemiological research, the primary focus is often on determining whether a specific exposure or intervention has an effect on a disease or health outcome (aetiological epidemiology). Once this effect is established, the next natural question is to explore the “black box”—the underlying mechanisms that explain how the exposure (or intervention) leads to the observed outcome. As we are not only interested in whether an exposure/intervention has an effect, but in how this effect works <span class="citation" data-cites="vanderweele_mediation_2016">(<a href="#ref-vanderweele_mediation_2016" role="doc-biblioref">1</a>)</span>.</p>
@@ -292,15 +292,15 @@ Tip
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-4941b66b71f9ac25738e" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-4941b66b71f9ac25738e">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-319d01e0beffec4919a6" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-319d01e0beffec4919a6">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We might be interested in further refining the intervention so as to increase the magnitude of the effect. It would be interesting to know if the lifestyle changes reduce the risk of diabetes only because they lower BMI (effect mediated through BMI) or if lifestyle has a direct impact on diabetes risk that does not require any change in BMI. This may help us understand how important BMI targets are in future lifestyle modification programs.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-7b247b0d227b3b668578" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-7b247b0d227b3b668578">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-15467f1c7851d08c787d" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-15467f1c7851d08c787d">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">

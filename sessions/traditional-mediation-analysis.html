@@ -297,9 +297,9 @@ window.Quarto = {
   <li><a href="#an-example" id="toc-an-example" class="nav-link" data-scroll-target="#an-example"><span class="header-section-number">5.2</span> An example</a></li>
   <li><a href="#method-1-baron-kenny-the-product-method" id="toc-method-1-baron-kenny-the-product-method" class="nav-link" data-scroll-target="#method-1-baron-kenny-the-product-method"><span class="header-section-number">5.3</span> Method 1: Baron &amp; Kenny (the product method)</a>
   <ul class="collapse">
-  <li><a href="#step-1-estimate-the-relationship-between-x-and-m-path-a" id="toc-step-1-estimate-the-relationship-between-x-and-m-path-a" class="nav-link" data-scroll-target="#step-1-estimate-the-relationship-between-x-and-m-path-a"><span class="header-section-number">5.3.1</span> Step 1: Estimate the relationship between X and M (path a)</a></li>
-  <li><a href="#step-2-estimate-the-relationship-between-m-on-y-controlling-for-x-path-b" id="toc-step-2-estimate-the-relationship-between-m-on-y-controlling-for-x-path-b" class="nav-link" data-scroll-target="#step-2-estimate-the-relationship-between-m-on-y-controlling-for-x-path-b"><span class="header-section-number">5.3.2</span> Step 2: Estimate the relationship between M on Y controlling for X (path b)</a></li>
-  <li><a href="#step-3-estimate-the-relationship-between-x-and-y-path-c" id="toc-step-3-estimate-the-relationship-between-x-and-y-path-c" class="nav-link" data-scroll-target="#step-3-estimate-the-relationship-between-x-and-y-path-c"><span class="header-section-number">5.3.3</span> Step 3: Estimate the relationship between X and Y (path c)</a></li>
+  <li><a href="#step-1-estimate-the-relationship-between-a-and-m-path-a" id="toc-step-1-estimate-the-relationship-between-a-and-m-path-a" class="nav-link" data-scroll-target="#step-1-estimate-the-relationship-between-a-and-m-path-a"><span class="header-section-number">5.3.1</span> Step 1: Estimate the relationship between A and M (path a)</a></li>
+  <li><a href="#step-2-estimate-the-relationship-between-m-on-y-controlling-for-a-path-b" id="toc-step-2-estimate-the-relationship-between-m-on-y-controlling-for-a-path-b" class="nav-link" data-scroll-target="#step-2-estimate-the-relationship-between-m-on-y-controlling-for-a-path-b"><span class="header-section-number">5.3.2</span> Step 2: Estimate the relationship between M on Y controlling for A (path b)</a></li>
+  <li><a href="#step-3-estimate-the-relationship-between-a-and-y-path-c" id="toc-step-3-estimate-the-relationship-between-a-and-y-path-c" class="nav-link" data-scroll-target="#step-3-estimate-the-relationship-between-a-and-y-path-c"><span class="header-section-number">5.3.3</span> Step 3: Estimate the relationship between A and Y (path c)</a></li>
   </ul></li>
   <li><a href="#method-2-difference-approach" id="toc-method-2-difference-approach" class="nav-link" data-scroll-target="#method-2-difference-approach"><span class="header-section-number">5.4</span> Method 2: Difference approach</a>
   <ul class="collapse">
@@ -349,20 +349,20 @@ Objective of this session
 </ul>
 </div>
 </div>
-<p>The purpose of mediation analysis is to determine if the effect of a treatment (A) on an outcome (Y) can be explained by a third mediating variable (M). Thus, mediation analysis not only answers whether two variables are related, but also <strong>why</strong>.</p>
+<p>The purpose of mediation analysis is to determine if the effect of an exposure or treatment (A) on an outcome (Y) can be explained by a third mediating variable (M). Thus, mediation analysis not only answers whether two variables are related, but also <strong>why</strong>.</p>
 <p>This can be visualized in the following figures.</p>
-<p>Overall relationship between X and Y:</p>
+<p>Overall relationship between A and Y:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-7510de3fe542c7705846" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-7510de3fe542c7705846">{"x":{"diagram":"\ndigraph {\n  graph [label=\"X: exposure, Y: outcome\nU: set of all confounders\nc: total effect of X on Y\", labelloc=\"b\", fontsize=8]\n  node [shape = plaintext]\n    X [label = \"X\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c\"]\n    U->X [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; X; Y }\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-a8b95d5a1cf3b08d84f0" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a8b95d5a1cf3b08d84f0">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  U: set of all confounders\n\n  θ′₁: total effect of A on Y\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"θ′₁\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p>Relationship between X and Y through M:</p>
+<p>Relationship between A and Y through M:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-dc1e856048cd82bfa767" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-dc1e856048cd82bfa767">{"x":{"diagram":"\ndigraph {\n  graph [label=\"X: exposure, Y: outcome\nM: mediator, U: set of all confounders\na: effect of X on M\nb: effect of M on Y\nc*: direct effect of X on Y\n ab: indirect effect of X on Y\n c: total effect of X on Y (=ab+c)\", labelloc=\"b\", fontsize=8]\n  node [shape = plaintext]\n    X [label = \"X\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    X->Y [xlabel = \"c\", label = \"c*\"]\n    X->M [xlabel = \"a\"]\n    M->Y [label = \"b\"]\n    U->X [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-993290817bd7f2f242ed" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-993290817bd7f2f242ed">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  M: mediator, U: set of all confounders\n\n  β₁: effect of A on M\n\n  θ₂: effect of M on Y\n\n  θ₁: direct effect of A on Y\n\n  β₁.θ₂: indirect effect of A on Y\n\n  θ′₁: total effect of A on Y (= β₁.θ₂ + θ₁)\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [xlabel = \"θ′₁\", label = \"θ₁\"]\n    A->M [xlabel = \"β₁\"]\n    M->Y [label = \"θ₂\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="traditional-approaches-for-mediation-analysis" class="level2" data-number="5.1">
@@ -370,11 +370,11 @@ Objective of this session
 <p>The two traditional approaches to mediation analysis are <strong>the difference method</strong> and <strong>the product method</strong>; also known as the Baron &amp; Kenny-method <span class="citation" data-cites="baron_moderatormediator_1986">(<a href="#ref-baron_moderatormediator_1986" role="doc-biblioref">1</a>)</span>.</p>
 <p>The traditional approach uses these equations for mediator and outcome (for the case of a continuous mediator and a continuous outcome)</p>
 <p>Mediator model:</p>
-<p><span class="math inline">\(E(M|X=x, U=u) = \beta_0 + \beta_1x + \beta_2u\)</span> (3.1)</p>
+<p><span class="math inline">\(E(M|A=a, U=u) = \beta_0 + \beta_1a + \beta_2u\)</span> (3.1)</p>
 <p>Outcome model with adjustment for the mediator:</p>
-<p><span class="math inline">\(E(Y|X=x, M=m, U=u) = \theta_0 + \theta_1x + \theta_2m + \theta_4u\)</span> (3.2)</p>
+<p><span class="math inline">\(E(Y|A=a, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta_3u\)</span> (3.2)</p>
 <p>Outcome model without adjustment for the mediator:</p>
-<p><span class="math inline">\(E(Y|X=x, U=u) = \theta_0' + \theta_1'x + \theta_4'u\)</span> (3.3)</p>
+<p><span class="math inline">\(E(Y|A=a, U=u) = \theta_0' + \theta_1'a + \theta_3'u\)</span> (3.3)</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -386,10 +386,10 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>total effect=<span class="math inline">\(\theta_1'\)</span> , that is the total effect of the independent variable on the dependent variable (c*)</p></li>
-<li><p>direct effect=<span class="math inline">\(\theta_1\)</span>, that is the effect of the independent variable on the dependent variable that is not mediated by the mediator (c)</p></li>
-<li><p>mediation effect=<span class="math inline">\(\beta_1*\theta_2\)</span> (the product method)</p></li>
-<li><p>mediation effect=<span class="math inline">\(\theta_1'-\theta_1\)</span> (the difference method)</p></li>
+<li><p>total effect = <span class="math inline">\(\theta_1'\)</span> , that is the total effect of the independent variable on the dependent variable</p></li>
+<li><p>direct effect = <span class="math inline">\(\theta_1\)</span>, that is the effect of the independent variable on the dependent variable that is not mediated by the mediator</p></li>
+<li><p>mediation effect = <span class="math inline">\(\beta_1*\theta_2\)</span> (the product method)</p></li>
+<li><p>mediation effect = <span class="math inline">\(\theta_1'-\theta_1\)</span> (the difference method)</p></li>
 </ul>
 </div>
 </div>
@@ -415,8 +415,8 @@ Tip
 <p>How much does BMI explain the relation between physical activity and pulse rate?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-073b87abaeaddad38b60" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-073b87abaeaddad38b60">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    X->Y [label = \"c*\", xlabel = \"c\"]\n    X->M [xlabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; X; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-fdf516000ef3fa2e2c6c" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-fdf516000ef3fa2e2c6c">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"c*\", xlabel = \"c\"]\n    A->M [xlabel = \"a\"]\n    M->Y [label = \"b\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -433,7 +433,7 @@ Example Dataset: A Brief Overview
 <p>To try this out in practice, we load the NHANES dataset, only keep the variables we need for the example.</p>
 <p>The variables used in the dataset:</p>
 <ul>
-<li><p>exposure of interest (x): physical activity (continuous variable)</p></li>
+<li><p>exposure of interest (a): physical activity (continuous variable)</p></li>
 <li><p>outcome (y): Pulse (continuous variable)</p></li>
 <li><p>mediator (m): BMI (continuous variable)</p></li>
 </ul>
@@ -463,7 +463,7 @@ dbl (45): ID, Age, AgeMonths, HHIncomeMid, Poverty, HomeRooms, Weight, Lengt...
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">u2 =</span> Gender, </span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">u3 =</span> Education, </span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">u4 =</span> Smoke100, </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> PhysActive, </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">a =</span> PhysActive, </span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">m =</span> BMI, </span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> Pulse,</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y2 =</span> Diabetes</span>
@@ -472,7 +472,7 @@ dbl (45): ID, Age, AgeMonths, HHIncomeMid, Poverty, HomeRooms, Weight, Lengt...
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Physical activity is a binary variable, dichotomized as 'Yes' or 'No'. </span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   No  Yes 
@@ -526,18 +526,18 @@ dbl (45): ID, Age, AgeMonths, HHIncomeMid, Poverty, HomeRooms, Weight, Lengt...
 <li>When controlling for the mediator, the association between the exposure and outcome should be reduced, with the strongest demonstration of mediation occurring when the path from the exposure to the outcome, when controlling for the mediator is zero.</li>
 </ol>
 <p>The following shows the basic steps for mediation analysis suggested by Baron &amp; Kenny.</p>
-<section id="step-1-estimate-the-relationship-between-x-and-m-path-a" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="step-1-estimate-the-relationship-between-x-and-m-path-a"><span class="header-section-number">5.3.1</span> Step 1: Estimate the relationship between X and M (path a)</h3>
-<p>That is to check the relation between exposure (physical activity) and the mediator (BMI), which corresponds to criterion 1. Mediation makes sense only if X affects M. If X and M have no relationship, M is just a third variable that may or may not be associated with Y.</p>
-<p>As the mediator is a continuous variable, we can build a linear regression model, adjusting for confounders on the pathway between X and M.</p>
-<p><span class="math inline">\((E(M|X=x, U=u)\)</span> = <span class="math inline">\(\beta_0\)</span> + <span class="math inline">\(\beta_1x\)</span> + <span class="math inline">\(\beta_2u\)</span> (3.1)</p>
+<section id="step-1-estimate-the-relationship-between-a-and-m-path-a" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="step-1-estimate-the-relationship-between-a-and-m-path-a"><span class="header-section-number">5.3.1</span> Step 1: Estimate the relationship between A and M (path a)</h3>
+<p>That is to check the relation between exposure (physical activity) and the mediator (BMI), which corresponds to criterion 1. Mediation makes sense only if A affects M. If A and M have no relationship, M is just a third variable that may or may not be associated with Y.</p>
+<p>As the mediator is a continuous variable, we can build a linear regression model, adjusting for confounders on the pathway between A and M.</p>
+<p><span class="math inline">\((E(M|A=a, U=u)\)</span> = <span class="math inline">\(\beta_0\)</span> + <span class="math inline">\(\beta_1a\)</span> + <span class="math inline">\(\beta_2u\)</span> (3.1)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fita <span class="ot">&lt;-</span> <span class="fu">lm</span>(m <span class="sc">~</span> x <span class="sc">+</span> u1 <span class="sc">+</span> u2 <span class="sc">+</span> u3 <span class="sc">+</span> u4, <span class="at">data =</span> data)</span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fita <span class="ot">&lt;-</span> <span class="fu">lm</span>(m <span class="sc">~</span> a <span class="sc">+</span> u1 <span class="sc">+</span> u2 <span class="sc">+</span> u3 <span class="sc">+</span> u4, <span class="at">data =</span> data)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fita)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = m ~ x + u1 + u2 + u3 + u4, data = data)
+lm(formula = m ~ a + u1 + u2 + u3 + u4, data = data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -546,7 +546,7 @@ Residuals:
 Coefficients:
                   Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)      28.467603   0.323923  87.884  &lt; 2e-16 ***
-xYes             -1.643518   0.170461  -9.642  &lt; 2e-16 ***
+aYes             -1.643518   0.170461  -9.642  &lt; 2e-16 ***
 u1                0.012135   0.004819   2.518 0.011827 *  
 u2male            0.274867   0.160396   1.714 0.086633 .  
 u38th Grade       1.271955   0.365283   3.482 0.000501 ***
@@ -564,17 +564,17 @@ F-statistic:  30.2 on 8 and 6907 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>Here, we see that physical activity is negatively associated with BMI (a 1 unit difference in physical activity is associated with a 1.64 higher BMI). Individuals who are physically active have an average BMI that is 1.64 kg/m2 lower than those who are inactive, holding all other variables constant.</p>
 </section>
-<section id="step-2-estimate-the-relationship-between-m-on-y-controlling-for-x-path-b" class="level3" data-number="5.3.2">
-<h3 data-number="5.3.2" class="anchored" data-anchor-id="step-2-estimate-the-relationship-between-m-on-y-controlling-for-x-path-b"><span class="header-section-number">5.3.2</span> Step 2: Estimate the relationship between M on Y controlling for X (path b)</h3>
+<section id="step-2-estimate-the-relationship-between-m-on-y-controlling-for-a-path-b" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="step-2-estimate-the-relationship-between-m-on-y-controlling-for-a-path-b"><span class="header-section-number">5.3.2</span> Step 2: Estimate the relationship between M on Y controlling for A (path b)</h3>
 <p>That is to build the model between BMI and pulse rate, controlling for physical activity. This step corresponds to criterion (ii).</p>
-<p><span class="math inline">\((E(Y|X=x, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta4c\)</span> (3.2)</p>
+<p><span class="math inline">\((E(Y|A=a, M=m, U=u) = \theta_0 + \theta_1a + \theta_2m + \theta4c\)</span> (3.2)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fitb <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> m <span class="sc">+</span> u1 <span class="sc">+</span> u2 <span class="sc">+</span> u3 <span class="sc">+</span> u4, <span class="at">data =</span> data)</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fitb <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> a <span class="sc">+</span> m <span class="sc">+</span> u1 <span class="sc">+</span> u2 <span class="sc">+</span> u3 <span class="sc">+</span> u4, <span class="at">data =</span> data)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = y ~ x + m + u1 + u2 + u3 + u4, data = data)
+lm(formula = y ~ a + m + u1 + u2 + u3 + u4, data = data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -583,7 +583,7 @@ Residuals:
 Coefficients:
                   Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)      73.580916   0.819142  89.827  &lt; 2e-16 ***
-xYes             -1.422879   0.298167  -4.772 1.86e-06 ***
+aYes             -1.422879   0.298167  -4.772 1.86e-06 ***
 m                 0.203864   0.020907   9.751  &lt; 2e-16 ***
 u1               -0.127155   0.008377 -15.178  &lt; 2e-16 ***
 u2male           -3.728063   0.278752 -13.374  &lt; 2e-16 ***
@@ -602,17 +602,17 @@ F-statistic: 62.56 on 9 and 6906 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>BMI is positively associated with pulse rate after adjusting for physical activity, each one-unit higher BMI is associated with a 0.20-unit higher pulse rate. Physical activity retains its negative association with pulse rate, adjusting for the selected confounders.</p>
 </section>
-<section id="step-3-estimate-the-relationship-between-x-and-y-path-c" class="level3" data-number="5.3.3">
-<h3 data-number="5.3.3" class="anchored" data-anchor-id="step-3-estimate-the-relationship-between-x-and-y-path-c"><span class="header-section-number">5.3.3</span> Step 3: Estimate the relationship between X and Y (path c)</h3>
+<section id="step-3-estimate-the-relationship-between-a-and-y-path-c" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="step-3-estimate-the-relationship-between-a-and-y-path-c"><span class="header-section-number">5.3.3</span> Step 3: Estimate the relationship between A and Y (path c)</h3>
 <p>That is to build the model between physical activity and pulse rate, without adjusting for BMI. The only difference between step 2 and step 3 is that the mediator is not included in the model.</p>
-<p><span class="math inline">\((E(Y|X=x, U=u)\)</span> = <span class="math inline">\(\theta_0'\)</span> + <span class="math inline">\(\theta_1'a\)</span> + <span class="math inline">\(\theta_4'c\)</span> (3.3)</p>
+<p><span class="math inline">\((E(Y|A=a, U=u)\)</span> = <span class="math inline">\(\theta_0'\)</span> + <span class="math inline">\(\theta_1'a\)</span> + <span class="math inline">\(\theta_4'c\)</span> (3.3)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fitc <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> u1 <span class="sc">+</span> u2 <span class="sc">+</span> u3 <span class="sc">+</span> u4, <span class="at">data =</span> data)</span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fitc <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> a <span class="sc">+</span> u1 <span class="sc">+</span> u2 <span class="sc">+</span> u3 <span class="sc">+</span> u4, <span class="at">data =</span> data)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = y ~ x + u1 + u2 + u3 + u4, data = data)
+lm(formula = y ~ a + u1 + u2 + u3 + u4, data = data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -621,7 +621,7 @@ Residuals:
 Coefficients:
                  Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)      79.38443    0.56664 140.095  &lt; 2e-16 ***
-xYes             -1.75793    0.29819  -5.895 3.92e-09 ***
+aYes             -1.75793    0.29819  -5.895 3.92e-09 ***
 u1               -0.12468    0.00843 -14.789  &lt; 2e-16 ***
 u2male           -3.67203    0.28058 -13.087  &lt; 2e-16 ***
 u38th Grade       0.71806    0.63900   1.124  0.26117    
@@ -651,7 +651,7 @@ F-statistic: 57.71 on 8 and 6907 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>direct_ma <span class="ot">&lt;-</span> fitb<span class="sc">$</span>coefficients[<span class="dv">2</span>]</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>direct_ma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     xYes 
+<pre><code>     aYes 
 -1.422879 </code></pre>
 </div>
 </div>
@@ -660,7 +660,7 @@ F-statistic: 57.71 on 8 and 6907 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>indirect_ma <span class="ot">&lt;-</span> fita<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> fitb<span class="sc">$</span>coefficients[<span class="dv">3</span>]</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>indirect_ma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     xYes 
+<pre><code>     aYes 
 -0.335054 </code></pre>
 </div>
 </div>
@@ -669,7 +669,7 @@ F-statistic: 57.71 on 8 and 6907 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>total_ma <span class="ot">&lt;-</span> fitc<span class="sc">$</span>coefficients[<span class="dv">2</span>]</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>total_ma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     xYes 
+<pre><code>     aYes 
 -1.757933 </code></pre>
 </div>
 </div>
@@ -684,7 +684,7 @@ F-statistic: 57.71 on 8 and 6907 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>indirect_mb <span class="ot">&lt;-</span> fitc<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">-</span> fitb<span class="sc">$</span>coefficients[<span class="dv">2</span>]</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>indirect_mb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     xYes 
+<pre><code>     aYes 
 -0.335054 </code></pre>
 </div>
 </div>
@@ -711,7 +711,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Recall the four criteria suggested by Baron and Kenny. One of the criteria is that ‘Path C must be significantly different from 0 to ensure there is a total effect between X and Y’. However, this step can be controversial. Even if we don’t find a significant association between X and Y, we could proceed to the next step if we have a strong theoretical basis for their relationship.</p>
+<p>Recall the four criteria suggested by Baron and Kenny. One of the criteria is that ‘Path C must be significantly different from 0 to ensure there is a total effect between A and Y’. However, this step can be controversial. Even if we don’t find a significant association between A and Y, we could proceed to the next step if we have a strong theoretical basis for their relationship.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -726,7 +726,7 @@ Group work - 5 minutes
 <div class="callout-body-container callout-body">
 <ul>
 <li>Discuss with your group about the two traditional approaches, did you get the same results?</li>
-<li>Discuss the scenarios under which there might be no significant association between X and Y.</li>
+<li>Discuss the scenarios under which there might be no significant association between A and Y.</li>
 </ul>
 </div>
 </div>
@@ -773,18 +773,18 @@ Attaching package: 'Matrix'</code></pre>
 Version: 4.5.0</code></pre>
 </div>
 </div>
-<p>mediate() takes two model objects as input (<span class="math inline">\(X \rightarrow M\)</span> and <span class="math inline">\(X + M \rightarrow Y\)</span>) and we need to specify which variable is the exposure (X) [treatment] and the mediator (M) [mediator]. For bootstrapping, set boot = TRUE and sims to at least 500.</p>
+<p>mediate() takes two model objects as input (<span class="math inline">\(A \rightarrow M\)</span> and <span class="math inline">\(A + M \rightarrow Y\)</span>) and we need to specify which variable is the exposure (A) [treatment] and the mediator (M) [mediator]. For bootstrapping, set boot = TRUE and sims to at least 500.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">260524</span>)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit mediator model</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>lm_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(m <span class="sc">~</span> x <span class="sc">+</span> u1 <span class="sc">+</span> u2 <span class="sc">+</span> u3 <span class="sc">+</span> u4, <span class="at">data =</span> data)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>lm_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(m <span class="sc">~</span> a <span class="sc">+</span> u1 <span class="sc">+</span> u2 <span class="sc">+</span> u3 <span class="sc">+</span> u4, <span class="at">data =</span> data)</span>
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit outcome model</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>lm_y <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x <span class="sc">+</span> m <span class="sc">+</span> u1 <span class="sc">+</span> u2 <span class="sc">+</span> u3 <span class="sc">+</span> u4, <span class="at">data =</span> data)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>lm_y <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> a <span class="sc">+</span> m <span class="sc">+</span> u1 <span class="sc">+</span> u2 <span class="sc">+</span> u3 <span class="sc">+</span> u4, <span class="at">data =</span> data)</span>
 <span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Run mediation analysis</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">mediate</span>(lm_m, lm_y, <span class="at">treat =</span> <span class="st">"x"</span>, <span class="at">mediator =</span> <span class="st">"m"</span>, <span class="at">boot =</span> <span class="cn">TRUE</span>, <span class="at">sims =</span> <span class="dv">10</span>) <span class="co">#set simulation for 10 for time efficacy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">mediate</span>(lm_m, lm_y, <span class="at">treat =</span> <span class="st">"a"</span>, <span class="at">mediator =</span> <span class="st">"m"</span>, <span class="at">boot =</span> <span class="cn">TRUE</span>, <span class="at">sims =</span> <span class="dv">10</span>) <span class="co">#set simulation for 10 for time efficacy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in mediate(lm_m, lm_y, treat = "x", mediator = "m", boot = TRUE, :
+<pre><code>Warning in mediate(lm_m, lm_y, treat = "a", mediator = "m", boot = TRUE, :
 treatment and control values do not match factor levels; using No and Yes as
 control and treatment, respectively</code></pre>
 </div>
@@ -813,10 +813,10 @@ Simulations: 10 </code></pre>
 </div>
 </div>
 <ul>
-<li><p><strong>ADE</strong> is the Average Direct Effect. It describes the direct effect of the exposure (X) on the outcome (Y) when controlling for the mediator (M). Note this estimate is the same as the coefficient we got in the product and difference method.</p></li>
-<li><p><strong>ACME</strong> is the Average Causal Mediation Effect. This is the indirect effect of the exposure (X) on the outcome (Y) that goes through the mediator (M). Note that ACME estimated to be -0.335, which is the same as the traditional approached we just used. By bootstrapping we are now able to get a <em>confidence interval</em> and <em>significance</em> level for the indirect effect, not only its two individual parts. This is something we will need when we report our mediation analysis.</p></li>
-<li><p><strong>Total Effect</strong> is the Total Effect (direct + indirect) of the exposure (X) on the outcome (Y). We can also get it by adding the ACME (-0.335) and the ADE (-1.423).</p></li>
-<li><p><strong>Prop. Mediated</strong> is the proportion of the effect of the exposure (X) on the outcome (Y) that is mediated through the mediator (M). It is calculated by dividing the ACME (-0.335) by the total effect (-1.758) and yields 0.191. This result suggests that the mediator (BMI) explains 19% of the effect of physical activity on pulse rate.</p></li>
+<li><p><strong>ADE</strong> is the Average Direct Effect. It describes the direct effect of the exposure (A) on the outcome (Y) when controlling for the mediator (M). Note this estimate is the same as the coefficient we got in the product and difference method.</p></li>
+<li><p><strong>ACME</strong> is the Average Causal Mediation Effect. This is the indirect effect of the exposure (A) on the outcome (Y) that goes through the mediator (M). Note that ACME estimated to be -0.335, which is the same as the traditional approached we just used. By bootstrapping we are now able to get a <em>confidence interval</em> and <em>significance</em> level for the indirect effect, not only its two individual parts. This is something we will need when we report our mediation analysis.</p></li>
+<li><p><strong>Total Effect</strong> is the Total Effect (direct + indirect) of the exposure (A) on the outcome (Y). We can also get it by adding the ACME (-0.335) and the ADE (-1.423).</p></li>
+<li><p><strong>Prop. Mediated</strong> is the proportion of the effect of the exposure (A) on the outcome (Y) that is mediated through the mediator (M). It is calculated by dividing the ACME (-0.335) by the total effect (-1.758) and yields 0.191. This result suggests that the mediator (BMI) explains 19% of the effect of physical activity on pulse rate.</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can also plot the estimates</span></span>
@@ -841,8 +841,8 @@ Simulations: 10 </code></pre>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-016dcf4b41161ebc69c5" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-016dcf4b41161ebc69c5">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"Inflammation\"]\n    Y [label = \"Lipid metabolism\"]\n    N[label = \"Insulin sensitivity\"]\n    A[label = \"Fasting insulin\"]\n  edge [minlen = 1.5]\n    X->Y \n    X->M \n    M->Y \n    X->N    \n    N->Y\n    X->A    \n    A->Y\n  { rank = same; X; N; Y; }\n  { rank = min; M;}\n  { rank = max; A;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-a58f15b3850875ce8ca1" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a58f15b3850875ce8ca1">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Physical activity\"]\n    M [label = \"Inflammation\"]\n    Y [label = \"Lipid metabolism\"]\n    N[label = \"Insulin sensitivity\"]\n    A[label = \"Fasting insulin\"]\n  edge [minlen = 1.5]\n    X->Y \n    X->M \n    M->Y \n    X->N    \n    N->Y\n    X->A    \n    A->Y\n  { rank = same; X; N; Y; }\n  { rank = min; M;}\n  { rank = max; A;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
