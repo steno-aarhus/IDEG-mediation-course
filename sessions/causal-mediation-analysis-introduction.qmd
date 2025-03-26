@@ -141,7 +141,7 @@ T2D? This requires us to decompose the total effect into direct and
 indirect pathways.
 
 ![cross-world
-counterfacturals](/images/decompose.png){#fig-decompose}
+counterfacturals](/images/decompose1.png){#fig-decompose1}
 
 For mediation effects, we need to consider scenarios that cross between
 different possible worlds, such as: What would my risk of getting T2D be
@@ -476,21 +476,21 @@ digraph {
   graph []
   node [shape = plaintext]
     W1 [label = 'W1']
-    A [label = 'A']
+    X [label = 'X']
     M [label = 'M']
     Y [label = 'Y']
-    W2 [label = 'W2']
+    U2 [label = 'U2']
   edge [minlen = 2]
-    A->M
+    X->M
     M->Y
-    A->Y
-    W1->A
-    W1->Y
-    W1->M
-    W2->M
-    W2->Y
-    A->W2
-    W1->W2
+    X->Y
+    U1->X
+    U1->Y
+    U1->M
+    U2->M
+    U2->Y
+    A->U2
+    U1->U2
 {rank = same; W1; A; M; Y; }
 {rank = max; W2 ; }
 }
