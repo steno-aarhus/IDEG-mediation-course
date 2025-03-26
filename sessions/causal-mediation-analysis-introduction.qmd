@@ -248,9 +248,15 @@ implement an intervention to increase biking in the city.
 This effect is not used that often. But can be highly relevant in some
 situations.
 
+![controled direct
+effect](/images/cde.png){#fig-cde}
+
 #### (Pure) Natural direct effect
 
 $Y^{a=1,M_a=0}$ - $Y^{a=0,M_a=0}$
+
+![pure natural direct
+effect](/images/pnde.png){#fig-pnde}
 
 The PNDE is how much the outcome would change if the exposure was set at
 a = 1 versus a\* = 0 but for each individual the mediator was kept at
@@ -263,6 +269,9 @@ level the mediator would have taken in the absence of exposure.
 #### (Total) Natural indirect effect
 
 $Y^{a=1,M_a=1}$ - $Y^{a=1,M_a=0}$
+
+![total natural indirect
+effect](/images/tnie.png){#fig-tnie}
 
 The NIE is how much the outcome would change on average if the exposure
 were fixed at level a = 1 but the mediator were changed from the level
@@ -300,19 +309,6 @@ TE = PNIE + TNDE this decomposition usually is for research question:
 'does the exposure influence the outcome in other ways, not through this
 mediator?' @nguyen2021clarifying
 :::
-
-#### Interaction effects
-
-More information on the interaction effects can be found in
-@vanderweele_unification_2014.
-
-Reference interaction:
-
-$INT_{ref} = PNDE - CDE$
-
-Mediation interaction:
-
-$INT_{med} = TNIE - PNIE$
 
 ### Effect decomposition
 
