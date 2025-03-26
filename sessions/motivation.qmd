@@ -14,8 +14,10 @@ library(DiagrammeR)
 ```
 
 ::: callout-tip
-Mediation analysis is the *study of pathways and mechanisms through
-which an exposure or intervention impacts an outcome*.
+## Mediation analysis is:
+
+*The quantitative study of pathways and mechanisms through which an
+exposure or intervention impacts an outcome*
 :::
 
 In clinical and epidemiological research, the primary focus is often on
