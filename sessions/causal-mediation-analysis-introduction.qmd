@@ -477,7 +477,7 @@ grViz("
 digraph {
   graph []
   node [shape = plaintext]
-    W1 [label = 'W1']
+    U1 [label = 'U1']
     X [label = 'X']
     M [label = 'M']
     Y [label = 'Y']
@@ -493,16 +493,16 @@ digraph {
     U2->Y
     A->U2
     U1->U2
-{rank = same; W1; A; M; Y; }
-{rank = max; W2 ; }
+{rank = same; U1; A; M; Y; }
+{rank = max; U2 ; }
 }
 ")
 ```
 
 From the DAG rules, we have a special problem that we cannot solve with
-traditional regression approaches. If we adjust for W2 we open a
+traditional regression approaches. If we adjust for U2 we open a
 backdoor path by adjusting for the collider
-$W1 \rightarrow W2 \leftarrow A$.
+$U1 \rightarrow U2 \leftarrow A$.
 
 ## Practical Examples using R package
 
