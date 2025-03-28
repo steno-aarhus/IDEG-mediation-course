@@ -478,15 +478,15 @@ digraph {
   graph []
   node [shape = plaintext]
     U1 [label = 'U1']
-    X [label = 'X']
+    A [label = 'A']
     M [label = 'M']
     Y [label = 'Y']
     U2 [label = 'U2']
   edge [minlen = 2]
-    X->M
+    A->M
     M->Y
-    X->Y
-    U1->X
+    A->Y
+    U1->A
     U1->Y
     U1->M
     U2->M
