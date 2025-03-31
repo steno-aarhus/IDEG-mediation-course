@@ -450,8 +450,8 @@ Notation
 <p>When we want to understand not just <strong>if</strong>, but <strong>how</strong> the magic pill affects risk of T2D, we need to consider mediating factors. For example:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-3c4641f7510e8c2f3d64" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-3c4641f7510e8c2f3d64">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-79615efbfda538f49ffa" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-79615efbfda538f49ffa">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Will taking the pill reduce my BMI, which in turn decreases the risk of T2D? This requires us to decompose the total effect into direct and indirect pathways.</p>
@@ -704,8 +704,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-f689578296689b0a9d9b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f689578296689b0a9d9b">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U [label = \"U\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U->A\n    U->Y\n    U->M\n{rank = same; U; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-cf0e428d974263637b1d" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-cf0e428d974263637b1d">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U [label = \"U\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U->A\n    U->Y\n    U->M\n{rank = same; U; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the exposure and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -713,11 +713,11 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment(or exposure):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-112e72388d38e2078f75" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-112e72388d38e2078f75">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U1 [label = \"U1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U2 [label = \"U2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U1->A\n    U1->Y\n    U1->M\n    U2->M\n    U2->Y\n    A->U2\n    U1->U2\n{rank = same; U1; A; M; Y; }\n{rank = max; U2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-c83c45e8f69ad270d02b" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-c83c45e8f69ad270d02b">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U1 [label = \"U1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U2 [label = \"U2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U1->A\n    U1->Y\n    U1->M\n    U2->M\n    U2->Y\n    U3->Y\n    U3->U2\n    A->U2\n    U1->U2\n{rank = same; U1; A; M; Y; }\n{rank = max; U2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for U2 we open a backdoor path by adjusting for the collider <span class="math inline">\(U1 \rightarrow U2 \leftarrow A\)</span>.</p>
+<p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for U2 we open a backdoor path by adjusting for the collider <span class="math inline">\(A \rightarrow U2 \leftarrow U3\leftarrow Y\)</span>.</p>
 </section>
 </section>
 <section id="practical-examples-using-r-package" class="level2" data-number="6.7">
@@ -1033,21 +1033,21 @@ Direct counterfactual imputation estimation with
  bootstrap standard errors, percentile confidence intervals and p-values 
  
               Estimate Std.error   95% CIL 95% CIU  P.val    
-cde          -2.135202  0.294680 -2.589563  -1.570 &lt;2e-16 ***
-pnde         -1.889941  0.297820 -2.272549  -1.162 &lt;2e-16 ***
-tnde         -2.126336  0.292499 -2.550333  -1.535 &lt;2e-16 ***
-pnie         -0.270278  0.076822 -0.365635  -0.149 &lt;2e-16 ***
-tnie         -0.506673  0.067618 -0.620446  -0.388 &lt;2e-16 ***
-te           -2.396614  0.291555 -2.744704  -1.715 &lt;2e-16 ***
-intref        0.245261  0.100382  0.082681   0.436 &lt;2e-16 ***
-intmed       -0.236395  0.091997 -0.402774  -0.072 &lt;2e-16 ***
-cde(prop)     0.890925  0.038500  0.840526   0.959 &lt;2e-16 ***
-intref(prop) -0.102337  0.053483 -0.238535  -0.036 &lt;2e-16 ***
-intmed(prop)  0.098637  0.048324  0.031115   0.218 &lt;2e-16 ***
-pnie(prop)    0.112775  0.032441  0.058344   0.158 &lt;2e-16 ***
-pm            0.211412  0.043705  0.157085   0.322 &lt;2e-16 ***
-int          -0.003699  0.010270 -0.028004   0.010    0.4    
-pe            0.109075  0.038500  0.041234   0.159 &lt;2e-16 ***
+cde          -2.135202  0.263124 -2.740213  -1.849 &lt;2e-16 ***
+pnde         -1.913181  0.248605 -2.382321  -1.638 &lt;2e-16 ***
+tnde         -2.149577  0.260602 -2.734155  -1.828 &lt;2e-16 ***
+pnie         -0.270278  0.058008 -0.381963  -0.190 &lt;2e-16 ***
+tnie         -0.506673  0.079908 -0.678698  -0.427 &lt;2e-16 ***
+te           -2.419854  0.235299 -2.979851  -2.155 &lt;2e-16 ***
+intref        0.222021  0.091513  0.106995   0.418 &lt;2e-16 ***
+intmed       -0.236395  0.087218 -0.399059  -0.103 &lt;2e-16 ***
+cde(prop)     0.882368  0.032441  0.835724   0.944 &lt;2e-16 ***
+intref(prop) -0.091750  0.037283 -0.178588  -0.047 &lt;2e-16 ***
+intmed(prop)  0.097690  0.034701  0.040524   0.163 &lt;2e-16 ***
+pnie(prop)    0.111692  0.028143  0.067324   0.166 &lt;2e-16 ***
+pm            0.209382  0.037634  0.159226   0.274 &lt;2e-16 ***
+int           0.005940  0.008027 -0.019777   0.006    0.3    
+pe            0.117632  0.032441  0.055831   0.164 &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
