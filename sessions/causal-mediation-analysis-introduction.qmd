@@ -50,7 +50,7 @@ we explore health outcomes.
 ### Individual causal effect
 
 When investigating health outcomes, we would ideally want to know if you
-**do X**, then Y will happen. We could have a specific question:
+**do A**, then Y will happen. We could have a specific question:
 
 > Will take the magic pill reduce my risk of developing T2D in 5 years?
 
@@ -707,10 +707,10 @@ exposure-physical activity, was set at 1 versus 0 but for each
 individual the mediator was kept at the level it would have taken, for
 that individual, in the absence of the exposure.
 
-how pulse rate would change if the treatment (or exposure) physically
-active (a=1) was set at 1 versus 0, while for each individual the
-mediator (BMI) was kept at the level it would naturally be in the
-**abcense** of physical activity(**a=0**).
+how pulse rate would change if the exposure-physically active (a=1) was
+set at 1 versus 0, while for each individual the mediator (BMI) was kept
+at the level it would naturally be in the **abcense** of physical
+activity(**a=0**).
 
 In other words, it measures the direct effect of physical activity on
 pulse rate that doesn't work through changing BMI.
