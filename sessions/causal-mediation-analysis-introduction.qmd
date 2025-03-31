@@ -491,6 +491,8 @@ digraph {
     U1->M
     U2->M
     U2->Y
+    U3->Y
+    U3->U2
     A->U2
     U1->U2
 {rank = same; U1; A; M; Y; }
@@ -502,7 +504,7 @@ digraph {
 From the DAG rules, we have a special problem that we cannot solve with
 traditional regression approaches. If we adjust for U2 we open a
 backdoor path by adjusting for the collider
-$U1 \rightarrow U2 \leftarrow A$.
+$A \rightarrow U2 \leftarrow U3\leftarrow Y$.
 
 ## Practical Examples using R package
 
