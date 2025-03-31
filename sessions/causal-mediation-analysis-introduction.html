@@ -450,8 +450,8 @@ Notation
 <p>When we want to understand not just <strong>if</strong>, but <strong>how</strong> the magic pill affects risk of T2D, we need to consider mediating factors. For example:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-6aec5da72ec35df0f91d" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-6aec5da72ec35df0f91d">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-b720c83286fca2c7695d" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b720c83286fca2c7695d">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Will taking the pill reduce my BMI, which in turn decreases the risk of T2D? This requires us to decompose the total effect into direct and indirect pathways.</p>
@@ -704,17 +704,17 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-dd56f90c93682f0c9a88" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-dd56f90c93682f0c9a88">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U [label = \"U\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U->A\n    U->Y\n    U->M\n{rank = same; U; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-cc1905f9c0ede8eab69c" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-cc1905f9c0ede8eab69c">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U [label = \"U\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U->A\n    U->Y\n    U->M\n{rank = same; U; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p>We can see that we not only have to take confounding between the treatment and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
-<p>In addition, we can have a more complicated situation where the treatment also impacts another mediator that is also a mediator-outcome confounder.</p>
-<p>Below DAG shows where the mediator-outcome relation is affected by treatment:</p>
+<p>We can see that we not only have to take confounding between the exposure and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
+<p>In addition, we can have a more complicated situation where the exposure also impacts another mediator that is also a mediator-outcome confounder.</p>
+<p>Below DAG shows where the mediator-outcome relation is affected by treatment(or exposure):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-1a14b5dd6c6ae5f45595" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-1a14b5dd6c6ae5f45595">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U1 [label = \"U1\"]\n    X [label = \"X\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U2 [label = \"U2\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    X->Y\n    U1->X\n    U1->Y\n    U1->M\n    U2->M\n    U2->Y\n    A->U2\n    U1->U2\n{rank = same; U1; A; M; Y; }\n{rank = max; U2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-4a375a116385b9e59e4a" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-4a375a116385b9e59e4a">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U1 [label = \"U1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U2 [label = \"U2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U1->A\n    U1->Y\n    U1->M\n    U2->M\n    U2->Y\n    A->U2\n    U1->U2\n{rank = same; U1; A; M; Y; }\n{rank = max; U2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for U2 we open a backdoor path by adjusting for the collider <span class="math inline">\(U1 \rightarrow U2 \leftarrow A\)</span>.</p>
@@ -1032,22 +1032,22 @@ Number of Fisher Scoring iterations: 2
 Direct counterfactual imputation estimation with 
  bootstrap standard errors, percentile confidence intervals and p-values 
  
-              Estimate Std.error   95% CIL 95% CIU  P.val    
-cde          -2.135202  0.325015 -2.748182  -1.645 &lt;2e-16 ***
-pnde         -1.894514  0.295781 -2.474558  -1.447 &lt;2e-16 ***
-tnde         -2.130910  0.326943 -2.747610  -1.627 &lt;2e-16 ***
-pnie         -0.270278  0.090306 -0.422408  -0.120 &lt;2e-16 ***
-tnie         -0.506673  0.053500 -0.582763  -0.420 &lt;2e-16 ***
-te           -2.401187  0.313519 -2.983149  -1.907 &lt;2e-16 ***
-intref        0.240688  0.100468  0.047495   0.377    0.1 .  
-intmed       -0.236395  0.095208 -0.361903  -0.040    0.1 .  
-cde(prop)     0.889228  0.042014  0.825464   0.965 &lt;2e-16 ***
-intref(prop) -0.100237  0.041872 -0.159945  -0.022    0.1 .  
-intmed(prop)  0.098449  0.038769  0.019166   0.144    0.1 .  
-pnie(prop)    0.112560  0.039260  0.047993   0.173 &lt;2e-16 ***
-pm            0.211009  0.025772  0.160552   0.251 &lt;2e-16 ***
-int          -0.001788  0.006337 -0.019883   0.002    0.2    
-pe            0.110772  0.042014  0.035493   0.175 &lt;2e-16 ***
+               Estimate  Std.error    95% CIL 95% CIU  P.val    
+cde          -2.1352022  0.2357300 -2.6591405  -1.879 &lt;2e-16 ***
+pnde         -1.9003441  0.2783969 -2.4753733  -1.525 &lt;2e-16 ***
+tnde         -2.1367393  0.2403294 -2.6503450  -1.847 &lt;2e-16 ***
+pnie         -0.2702775  0.0646868 -0.3920145  -0.151 &lt;2e-16 ***
+tnie         -0.5066728  0.0767432 -0.6560785  -0.392 &lt;2e-16 ***
+te           -2.4070169  0.2546983 -2.9164208  -2.066 &lt;2e-16 ***
+intref        0.2348581  0.0730283  0.1592181   0.377 &lt;2e-16 ***
+intmed       -0.2363953  0.0711286 -0.3753423  -0.149 &lt;2e-16 ***
+cde(prop)     0.8870740  0.0264620  0.8431382   0.944 &lt;2e-16 ***
+intref(prop) -0.0975723  0.0378263 -0.1717688  -0.060 &lt;2e-16 ***
+intmed(prop)  0.0982109  0.0359121  0.0574007   0.167 &lt;2e-16 ***
+pnie(prop)    0.1122873  0.0254058  0.0635638   0.162 &lt;2e-16 ***
+pm            0.2104982  0.0404271  0.1486600   0.272 &lt;2e-16 ***
+int           0.0006386  0.0068368 -0.0227362   0.002    0.1 .  
+pe            0.1129260  0.0264620  0.0557496   0.157 &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1173,7 +1173,7 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code>[1] -2.14</code></pre>
 </div>
 </div>
-<p>The CDE is how much the outcome, here the pulse, would change on average if the mediator, here BMI, were fixed at level (m = 27.8) uniformly in the population but the treatment, physical activity, was changed from 0 to 1.</p>
+<p>The CDE is how much the outcome, here the pulse, would change on average if the mediator, here BMI, were fixed at level (m = 27.8) uniformly in the population but the exposure-physical activity, was changed from 0 to 1.</p>
 <p>The CDE answer the question, <em>what would be the effect of A on Y, when fixing M at a specific value for everyone in the population</em> <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">5</a>)</span>?</p>
 </section>
 <section id="pure-natural-direct-effect-1" class="level3" data-number="6.8.2">
@@ -1196,7 +1196,7 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code>[1] -1.88</code></pre>
 </div>
 </div>
-<p>The PNDE is how much the outcome, pulse, would change if the treatment a, physical activity, was set at 1 versus 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
+<p>The PNDE is how much the outcome, pulse, would change if the exposure-physical activity, was set at 1 versus 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
 <p>how pulse rate would change if the treatment (or exposure) physically active (a=1) was set at 1 versus 0, while for each individual the mediator (BMI) was kept at the level it would naturally be in the <strong>abcense</strong> of physical activity(<strong>a=0</strong>).</p>
 <p>In other words, it measures the direct effect of physical activity on pulse rate that doesn’t work through changing BMI.</p>
 </section>
@@ -1225,7 +1225,7 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code>[1] -0.51</code></pre>
 </div>
 </div>
-<p>The TNIE is how much the outcome would change on average if the treatment was fixed at level a = 1 but the mediator was changed from the level it would take if a* = 0 (physical inactive) to the level it would take if a =1 (physical active).</p>
+<p>The TNIE is how much the outcome would change on average if the exposure was fixed at level a = 1 but the mediator was changed from the level it would take if a* = 0 (physical inactive) to the level it would take if a =1 (physical active).</p>
 <p>Note that exposure has to have an effect on M otherwise this will be zero.</p>
 <p>The TNIE asks the question: to what extent does physical activity cause pulse via BMI and the possible interaction between physical activity and BMI in affecting pulse rate? In other words, the effect of exposure that ‘would be prevented if the exposure did not cause the mediator’ (i.e., the portion of the effect for which mediation is ‘necessary’) <span class="citation" data-cites="wang_g-computation_2015">(<a href="#ref-wang_g-computation_2015" role="doc-biblioref">5</a>)</span>.</p>
 <p>This is often the effect we are interested in in biomedical research for questions regarding mediation.</p>
