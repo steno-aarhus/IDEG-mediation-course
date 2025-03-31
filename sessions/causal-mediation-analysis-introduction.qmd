@@ -459,16 +459,16 @@ digraph {
 ```
 
 We can see that we not only have to take confounding between the
-treatment and outcome into account, but we also have to take
+exposure and outcome into account, but we also have to take
 mediator-outcome ($A \leftarrow W \rightarrow Y$) confounding into
 account.
 
-In addition, we can have a more complicated situation where the
-treatment also impacts another mediator that is also a mediator-outcome
+In addition, we can have a more complicated situation where the exposure
+also impacts another mediator that is also a mediator-outcome
 confounder.
 
 Below DAG shows where the mediator-outcome relation is affected by
-treatment:
+treatment(or exposure):
 
 ```{r}
 #| echo: false
@@ -674,7 +674,7 @@ round(as.numeric(CDE_m), digits = 2)
 
 The CDE is how much the outcome, here the pulse, would change on average
 if the mediator, here BMI, were fixed at level (m = `r median_m`)
-uniformly in the population but the treatment, physical activity, was
+uniformly in the population but the exposure-physical activity, was
 changed from 0 to 1.
 
 The CDE answer the question, *what would be the effect of A on Y, when
@@ -702,10 +702,10 @@ PNDE <- (lm_y$coefficients[2] + (lm_y$coefficients[5] * (lm_m$coefficients[1] + 
 round(as.numeric(PNDE), digits = 2)
 ```
 
-The PNDE is how much the outcome, pulse, would change if the treatment
-a, physical activity, was set at 1 versus 0 but for each individual the
-mediator was kept at the level it would have taken, for that individual,
-in the absence of the exposure.
+The PNDE is how much the outcome, pulse, would change if the
+exposure-physical activity, was set at 1 versus 0 but for each
+individual the mediator was kept at the level it would have taken, for
+that individual, in the absence of the exposure.
 
 how pulse rate would change if the treatment (or exposure) physically
 active (a=1) was set at 1 versus 0, while for each individual the
@@ -746,10 +746,10 @@ TNIE <- ((lm_y$coefficients[3] * lm_m$coefficients[2]) + (lm_y$coefficients[5] *
 round(as.numeric(TNIE), digits = 2)
 ```
 
-The TNIE is how much the outcome would change on average if the
-treatment was fixed at level a = 1 but the mediator was changed from the
-level it would take if a\* = 0 (physical inactive) to the level it would
-take if a =1 (physical active).
+The TNIE is how much the outcome would change on average if the exposure
+was fixed at level a = 1 but the mediator was changed from the level it
+would take if a\* = 0 (physical inactive) to the level it would take if
+a =1 (physical active).
 
 Note that exposure has to have an effect on M otherwise this will be
 zero.
