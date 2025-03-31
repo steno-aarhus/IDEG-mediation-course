@@ -496,7 +496,7 @@ digraph {
     A->U2
     U1->U2
 {rank = same; U1; A; M; Y; }
-{rank = max; U2 ; }
+{rank = max; U2 ; U3}
 }
 ")
 ```
