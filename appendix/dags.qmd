@@ -19,16 +19,20 @@ Overall relationship between Exposure (X) and Outcome (Y):
 #| echo: false
 grViz("
 digraph {
-  graph [label='X: exposure, Y: outcome\nU: set of all confounders\nc: total effect of X on Y', labelloc='b', fontsize=8]
+  graph [label='A: exposure, Y: outcome\n
+  U: set of all confounders\n
+  θ′₁: total effect of A on Y',
+  labelloc='b', fontsize=8]
+  
   node [shape = plaintext]
-    X [label = 'X']
+    A [label = 'A']
     Y [label = 'Y']
     U [label = 'U']
   edge [minlen = 1.5]
-    X->Y [label = 'c']
-    U->X [label = '']
+    A->Y [label = 'θ′₁']
+    U->A [label = '']
     U->Y [label = '']
-  { rank = same; X; Y }
+  { rank = same; A; Y }
   { rank = max; U;}
 }")
 ```
@@ -40,19 +44,27 @@ Relationship between Exposure (X) and Outcome (Y) through mediator (M):
 
 grViz("
 digraph {
-  graph [label='X: exposure, Y: outcome\nM: mediator, U: set of all confounders\na: effect of X on M\nb: effect of M on Y\nc*: direct effect of X on Y\n ab: indirect effect of X on Y\n c: total effect of X on Y (=ab+c)', labelloc='b', fontsize=8]
+  graph [label='A: exposure, Y: outcome\n
+  M: mediator, U: set of all confounders\n
+  β₁: effect of A on M\n
+  θ₂: effect of M on Y\n
+  θ₁: direct effect of A on Y\n
+  β₁.θ₂: indirect effect of A on Y\n
+  θ′₁: total effect of A on Y (= β₁.θ₂ + θ₁)',
+  labelloc='b', fontsize=8]
+  
   node [shape = plaintext]
-    X [label = 'X']
+    A [label = 'A']
     M [label = 'M']
     Y [label = 'Y']
     U [label = 'U']
   edge [minlen = 1.5]
-    X->Y [xlabel = 'c', label = 'c*']
-    X->M [xlabel = 'a']
-    M->Y [label = 'b']
-    U->X [label = '']
+    A->Y [xlabel = 'θ′₁', label = 'θ₁']
+    A->M [xlabel = 'β₁']
+    M->Y [label = 'θ₂']
+    U->A [label = '']
     U->Y [label = '']
-  { rank = same; X; Y }
+  { rank = same; A; Y }
   { rank = min; M;}
   { rank = max; U;}
 }")
@@ -66,14 +78,14 @@ grViz("
 digraph {
   graph []
   node [shape = plaintext]
-    X [label = 'Physical activity']
+    A [label = 'Physical activity']
     M [label = 'BMI']
     Y [label = 'Pulse']
   edge [minlen = 1.5]
-    X->Y [label = 'c*', xlabel = 'c']
-    X->M [xlabel = 'a']
-    M->Y [label = 'b']
-  { rank = same; X; Y }
+    A->Y [label = 'θ₁', xlabel = 'θ′₁']
+    A->M [xlabel = 'β₁']
+    M->Y [label = 'θ₂']
+  { rank = same; A; Y }
   { rank = min; M;}
 }")
 ```
