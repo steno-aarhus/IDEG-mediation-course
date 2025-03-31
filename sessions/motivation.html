@@ -292,15 +292,15 @@ Mediation analysis is:
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-d86e79da09f98ab74f1b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-d86e79da09f98ab74f1b">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-3807dce4c81eea88c6c2" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-3807dce4c81eea88c6c2">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We might be interested in further refining the intervention so as to increase the magnitude of the effect. It would be interesting to know if the lifestyle changes reduce the risk of diabetes only because they lower BMI (effect mediated through BMI) or if lifestyle has a direct impact on diabetes risk that does not require any change in BMI. This may help us understand how important BMI targets are in future lifestyle modification programs.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-fdc7abf3882e7f7a8c60" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-fdc7abf3882e7f7a8c60">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-b4d933843f1c4c875fe6" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b4d933843f1c4c875fe6">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
