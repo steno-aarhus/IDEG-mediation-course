@@ -394,7 +394,7 @@ Objective of this session
 <p>We employ causal inference constantly in our daily lives. Consider a simple example: when you press a light switch, you expect the light to turn on. Or in another scenario, you anticipate that performing action A will result in outcome Y. In some instances, we can identify deterministic relationships where action A will lead to outcome Y. While these straightforward cause-and-effect relationships are intuitive and help us navigate the world, they become significantly more complex when we explore health outcomes.</p>
 <section id="individual-causal-effect" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="individual-causal-effect"><span class="header-section-number">6.1.1</span> Individual causal effect</h3>
-<p>When investigating health outcomes, we would ideally want to know if you <strong>do X</strong>, then Y will happen. We could have a specific question:</p>
+<p>When investigating health outcomes, we would ideally want to know if you <strong>do A</strong>, then Y will happen. We could have a specific question:</p>
 <blockquote class="blockquote">
 <p>Will take the magic pill reduce my risk of developing T2D in 5 years?</p>
 </blockquote>
@@ -450,8 +450,8 @@ Notation
 <p>When we want to understand not just <strong>if</strong>, but <strong>how</strong> the magic pill affects risk of T2D, we need to consider mediating factors. For example:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-b720c83286fca2c7695d" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-b720c83286fca2c7695d">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-f9fcda3463e7fa5e17ac" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-f9fcda3463e7fa5e17ac">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Will taking the pill reduce my BMI, which in turn decreases the risk of T2D? This requires us to decompose the total effect into direct and indirect pathways.</p>
@@ -704,8 +704,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-cc1905f9c0ede8eab69c" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-cc1905f9c0ede8eab69c">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U [label = \"U\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U->A\n    U->Y\n    U->M\n{rank = same; U; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-bff5d5126b7d6088c810" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-bff5d5126b7d6088c810">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U [label = \"U\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U->A\n    U->Y\n    U->M\n{rank = same; U; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the exposure and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow W \rightarrow Y\)</span>) confounding into account.</p>
@@ -713,8 +713,8 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment(or exposure):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-4a375a116385b9e59e4a" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-4a375a116385b9e59e4a">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U1 [label = \"U1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U2 [label = \"U2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U1->A\n    U1->Y\n    U1->M\n    U2->M\n    U2->Y\n    A->U2\n    U1->U2\n{rank = same; U1; A; M; Y; }\n{rank = max; U2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-f73d52fca42e20284338" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-f73d52fca42e20284338">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U1 [label = \"U1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U2 [label = \"U2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U1->A\n    U1->Y\n    U1->M\n    U2->M\n    U2->Y\n    A->U2\n    U1->U2\n{rank = same; U1; A; M; Y; }\n{rank = max; U2 ; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for U2 we open a backdoor path by adjusting for the collider <span class="math inline">\(U1 \rightarrow U2 \leftarrow A\)</span>.</p>
@@ -1032,22 +1032,22 @@ Number of Fisher Scoring iterations: 2
 Direct counterfactual imputation estimation with 
  bootstrap standard errors, percentile confidence intervals and p-values 
  
-               Estimate  Std.error    95% CIL 95% CIU  P.val    
-cde          -2.1352022  0.2357300 -2.6591405  -1.879 &lt;2e-16 ***
-pnde         -1.9003441  0.2783969 -2.4753733  -1.525 &lt;2e-16 ***
-tnde         -2.1367393  0.2403294 -2.6503450  -1.847 &lt;2e-16 ***
-pnie         -0.2702775  0.0646868 -0.3920145  -0.151 &lt;2e-16 ***
-tnie         -0.5066728  0.0767432 -0.6560785  -0.392 &lt;2e-16 ***
-te           -2.4070169  0.2546983 -2.9164208  -2.066 &lt;2e-16 ***
-intref        0.2348581  0.0730283  0.1592181   0.377 &lt;2e-16 ***
-intmed       -0.2363953  0.0711286 -0.3753423  -0.149 &lt;2e-16 ***
-cde(prop)     0.8870740  0.0264620  0.8431382   0.944 &lt;2e-16 ***
-intref(prop) -0.0975723  0.0378263 -0.1717688  -0.060 &lt;2e-16 ***
-intmed(prop)  0.0982109  0.0359121  0.0574007   0.167 &lt;2e-16 ***
-pnie(prop)    0.1122873  0.0254058  0.0635638   0.162 &lt;2e-16 ***
-pm            0.2104982  0.0404271  0.1486600   0.272 &lt;2e-16 ***
-int           0.0006386  0.0068368 -0.0227362   0.002    0.1 .  
-pe            0.1129260  0.0264620  0.0557496   0.157 &lt;2e-16 ***
+              Estimate Std.error   95% CIL 95% CIU  P.val    
+cde          -2.135202  0.354228 -2.963846  -1.616 &lt;2e-16 ***
+pnde         -1.882840  0.331244 -2.551580  -1.417 &lt;2e-16 ***
+tnde         -2.119235  0.345603 -2.932447  -1.623 &lt;2e-16 ***
+pnie         -0.270278  0.061423 -0.315780  -0.109 &lt;2e-16 ***
+tnie         -0.506673  0.058653 -0.600801  -0.415 &lt;2e-16 ***
+te           -2.389513  0.338875 -3.130515  -1.908 &lt;2e-16 ***
+intref        0.252362  0.115476  0.117008   0.511 &lt;2e-16 ***
+intmed       -0.236395  0.098231 -0.450099  -0.113 &lt;2e-16 ***
+cde(prop)     0.893572  0.038602  0.846414   0.988 &lt;2e-16 ***
+intref(prop) -0.105612  0.048644 -0.214358  -0.043 &lt;2e-16 ***
+intmed(prop)  0.098930  0.041053  0.041397   0.187 &lt;2e-16 ***
+pnie(prop)    0.113110  0.029758  0.038658   0.149 &lt;2e-16 ***
+pm            0.212040  0.032900  0.151868   0.257 &lt;2e-16 ***
+int          -0.006682  0.010721 -0.030947   0.008    0.5    
+pe            0.106428  0.038602  0.012103   0.154    0.1 .  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1197,7 +1197,7 @@ F-statistic: 85.23 on 4 and 6911 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <p>The PNDE is how much the outcome, pulse, would change if the exposure-physical activity, was set at 1 versus 0 but for each individual the mediator was kept at the level it would have taken, for that individual, in the absence of the exposure.</p>
-<p>how pulse rate would change if the treatment (or exposure) physically active (a=1) was set at 1 versus 0, while for each individual the mediator (BMI) was kept at the level it would naturally be in the <strong>abcense</strong> of physical activity(<strong>a=0</strong>).</p>
+<p>how pulse rate would change if the exposure-physically active (a=1) was set at 1 versus 0, while for each individual the mediator (BMI) was kept at the level it would naturally be in the <strong>abcense</strong> of physical activity(<strong>a=0</strong>).</p>
 <p>In other words, it measures the direct effect of physical activity on pulse rate that doesn’t work through changing BMI.</p>
 </section>
 <section id="total-natural-direct-effect-1" class="level3" data-number="6.8.3">
