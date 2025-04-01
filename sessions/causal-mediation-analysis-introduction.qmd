@@ -583,16 +583,12 @@ results_simple_df <- data.frame(
   Effect = c(
     "Controlled Direct Effect (CDE)",
     "Pure Natural Direct Effect (PNDE)",
-    "Total Natural Direct Effect (TNDE)",
-    "Pure Natural Indirect Effect (PNIE)",
     "Total Natural Indirect Effect (TNIE)",
     "Total Effect (TE)"
   ),
   `Point Estimate (95% CI)` = c(
     sprintf("-2.14 (-2.70 to -1.57)"),
     sprintf("-1.88 (-2.45 to -1.31)"),
-    sprintf("-2.12 (-2.69 to -1.55)"),
-    sprintf("-0.27 (-0.38 to -0.16)"),
     sprintf("-0.51 (-0.65 to -0.36)"),
     sprintf("-2.39 (-2.95 to -1.83)")
   )
