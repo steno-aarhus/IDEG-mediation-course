@@ -64,7 +64,7 @@ box.
     *Example*: Let's consider the evidence from the landmark diabetes
     prevention trials: The Diabetes Prevention Programme
     @knowler_reduction_2002, The Diabetes Prevention Study
-    @tuomilehto_prevention_2001, and The Da Qin study @pan_effects_1997.
+    @tuomilehto_prevention_2001, and The Da Qing study @pan_effects_1997.
     These studies randomized high diabetes risk individuals to either a
     lifestyle intervention (consisting of diet modfication in
     combination with physical activity) or routine health advice and
