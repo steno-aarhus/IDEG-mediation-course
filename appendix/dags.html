@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,7 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-0bdeeeba54692e2e3ed4e674e149c507.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -234,28 +234,28 @@ ul.task-list li input[type="checkbox"] {
 <p>Overall relationship between Exposure (X) and Outcome (Y):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-260c07c995831aee0cb8" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-260c07c995831aee0cb8">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  U: set of all confounders\n\n  θ′₁: total effect of A on Y\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"θ′₁\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-6c3fe04418207664036e" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-6c3fe04418207664036e">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  U: set of all confounders\n\n  θ′₁: total effect of A on Y\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"θ′₁\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Relationship between Exposure (X) and Outcome (Y) through mediator (M):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-6ba1d0f87cfa9264384d" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-6ba1d0f87cfa9264384d">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  M: mediator, U: set of all confounders\n\n  β₁: effect of A on M\n\n  θ₂: effect of M on Y\n\n  θ₁: direct effect of A on Y\n\n  β₁.θ₂: indirect effect of A on Y\n\n  θ′₁: total effect of A on Y (= β₁.θ₂ + θ₁)\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [xlabel = \"θ′₁\", label = \"θ₁\"]\n    A->M [xlabel = \"β₁\"]\n    M->Y [label = \"θ₂\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-8bad9d7d2fe4201c8d47" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-8bad9d7d2fe4201c8d47">{"x":{"diagram":"\ndigraph {\n  graph [label=\"A: exposure, Y: outcome\n\n  M: mediator, U: set of all confounders\n\n  β₁: effect of A on M\n\n  θ₂: effect of M on Y\n\n  θ₁: direct effect of A on Y\n\n  β₁.θ₂: indirect effect of A on Y\n\n  θ′₁: total effect of A on Y (= β₁.θ₂ + θ₁)\",\n  labelloc=\"b\", fontsize=8]\n  \n  node [shape = plaintext]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U [label = \"U\"]\n  edge [minlen = 1.5]\n    A->Y [xlabel = \"θ′₁\", label = \"θ₁\"]\n    A->M [xlabel = \"β₁\"]\n    M->Y [label = \"θ₂\"]\n    U->A [label = \"\"]\n    U->Y [label = \"\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n  { rank = max; U;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Example: How much does body mass index explain the relation between physical activity and pulse rate?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-5658ffaaa8e140c50051" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-5658ffaaa8e140c50051">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"θ₁\", xlabel = \"θ′₁\"]\n    A->M [xlabel = \"β₁\"]\n    M->Y [label = \"θ₂\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-35249f03a332fe5e38cd" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-35249f03a332fe5e38cd">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    A [label = \"Physical activity\"]\n    M [label = \"BMI\"]\n    Y [label = \"Pulse\"]\n  edge [minlen = 1.5]\n    A->Y [label = \"θ₁\", xlabel = \"θ′₁\"]\n    A->M [xlabel = \"β₁\"]\n    M->Y [label = \"θ₂\"]\n  { rank = same; A; Y }\n  { rank = min; M;}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-da6e331b6c8048995e89" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-da6e331b6c8048995e89">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    C [label = \"C\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    C->A\n    C->Y\n    C->M\n{rank = same; C; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-dc05bc6d62c0cf19371e" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-dc05bc6d62c0cf19371e">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    C [label = \"C\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    C->A\n    C->Y\n    C->M\n{rank = same; C; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>A: Exposure; Y: Outcome; M: Mediator; C: confounding factors on the pathways</p>

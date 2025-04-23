@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -90,7 +90,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-0bdeeeba54692e2e3ed4e674e149c507.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -450,8 +450,8 @@ Notation
 <p>When we want to understand not just <strong>if</strong>, but <strong>how</strong> the magic pill affects risk of T2D, we need to consider mediating factors. For example:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-f80ccb884a7c36e89cef" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f80ccb884a7c36e89cef">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-89e4c4c988cc94c25cc2" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-89e4c4c988cc94c25cc2">{"x":{"diagram":"\ndigraph {\n  rankdir = LR;\n  node [shape = box];\n  \n  Pill [label = \"Pill\"];\n  BMI [label = \"BMI\"];\n  T2D [label = \"T2D\"];\n\n  Pill -> T2D [label = \"Direct Effect\"];\n  Pill -> BMI [label = \"a\"];\n  BMI -> T2D [label = \"b\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Will taking the pill reduce my BMI, which in turn decreases the risk of T2D? This requires us to decompose the total effect into direct and indirect pathways.</p>
@@ -704,8 +704,8 @@ Note
 <p>By using DAGs, the assumptions about confounding are made much more explicit.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-7caad06fba9995bf6fa9" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-7caad06fba9995bf6fa9">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U [label = \"U\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U->A\n    U->Y\n    U->M\n{rank = same; U; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-7119db764cf02b75397f" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-7119db764cf02b75397f">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U [label = \"U\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U->A\n    U->Y\n    U->M\n{rank = same; U; A; M; Y; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can see that we not only have to take confounding between the exposure and outcome into account, but we also have to take mediator-outcome (<span class="math inline">\(A \leftarrow U \rightarrow Y\)</span>) confounding into account.</p>
@@ -713,8 +713,8 @@ Note
 <p>Below DAG shows where the mediator-outcome relation is affected by treatment(or exposure):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-5d609c3f1217fcdb3074" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-5d609c3f1217fcdb3074">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U1 [label = \"U1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U2 [label = \"U2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U1->A\n    U1->Y\n    U1->M\n    U2->M\n    U2->Y\n    U3->Y\n    U3->U2\n    A->U2\n    U1->U2\n{rank = same; U1; A; M; Y; }\n{rank = max; U2 ; U3}\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-c43baf2a25bf1c9649f2" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-c43baf2a25bf1c9649f2">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    U1 [label = \"U1\"]\n    A [label = \"A\"]\n    M [label = \"M\"]\n    Y [label = \"Y\"]\n    U2 [label = \"U2\"]\n  edge [minlen = 2]\n    A->M\n    M->Y\n    A->Y\n    U1->A\n    U1->Y\n    U1->M\n    U2->M\n    U2->Y\n    U3->Y\n    U3->U2\n    A->U2\n    U1->U2\n{rank = same; U1; A; M; Y; }\n{rank = max; U2 ; U3}\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>From the DAG rules, we have a special problem that we cannot solve with traditional regression approaches. If we adjust for U2 we open a backdoor path by adjusting for the collider <span class="math inline">\(A \rightarrow U2 \leftarrow U3\leftarrow Y\)</span>.</p>
@@ -1082,21 +1082,21 @@ Direct counterfactual imputation estimation with
  bootstrap standard errors, percentile confidence intervals and p-values 
  
               Estimate Std.error   95% CIL 95% CIU  P.val    
-cde          -2.135202  0.304616 -2.721496  -1.780 &lt;2e-16 ***
-pnde         -1.872225  0.329803 -2.518636  -1.493 &lt;2e-16 ***
-tnde         -2.108620  0.309816 -2.728658  -1.761 &lt;2e-16 ***
-pnie         -0.270278  0.074243 -0.388180  -0.162 &lt;2e-16 ***
-tnie         -0.506673  0.067770 -0.651643  -0.432 &lt;2e-16 ***
-te           -2.378898  0.304257 -3.007291  -2.083 &lt;2e-16 ***
-intref        0.262977  0.095564  0.098423   0.411 &lt;2e-16 ***
-intmed       -0.236395  0.087977 -0.377905  -0.091 &lt;2e-16 ***
-cde(prop)     0.897560  0.033188  0.842809   0.944 &lt;2e-16 ***
-intref(prop) -0.110546  0.044277 -0.188445  -0.038 &lt;2e-16 ***
-intmed(prop)  0.099372  0.039846  0.035392   0.165 &lt;2e-16 ***
-pnie(prop)    0.113615  0.032047  0.056987   0.160 &lt;2e-16 ***
-pm            0.212986  0.042751  0.157635   0.294 &lt;2e-16 ***
-int          -0.011174  0.009252 -0.025404   0.007    0.3    
-pe            0.102440  0.033188  0.055996   0.157 &lt;2e-16 ***
+cde          -2.135202  0.342752 -2.770083  -1.636 &lt;2e-16 ***
+pnde         -1.881922  0.339194 -2.514792  -1.370 &lt;2e-16 ***
+tnde         -2.118317  0.346702 -2.760520  -1.622 &lt;2e-16 ***
+pnie         -0.270278  0.067452 -0.369951  -0.154 &lt;2e-16 ***
+tnie         -0.506673  0.063575 -0.616988  -0.416 &lt;2e-16 ***
+te           -2.388595  0.331587 -3.037730  -1.953 &lt;2e-16 ***
+intref        0.253280  0.062592  0.168968   0.395 &lt;2e-16 ***
+intmed       -0.236395  0.066723 -0.409469  -0.164 &lt;2e-16 ***
+cde(prop)     0.893916  0.032761  0.835177   0.935 &lt;2e-16 ***
+intref(prop) -0.106037  0.030105 -0.172239  -0.076 &lt;2e-16 ***
+intmed(prop)  0.098968  0.030235  0.072697   0.171 &lt;2e-16 ***
+pnie(prop)    0.113153  0.035473  0.061906   0.173 &lt;2e-16 ***
+pm            0.212122  0.041807  0.164103   0.299 &lt;2e-16 ***
+int          -0.007069  0.005486 -0.013364   0.006    0.4    
+pe            0.106084  0.032761  0.064853   0.165 &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 

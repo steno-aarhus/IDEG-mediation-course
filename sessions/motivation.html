@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -56,7 +56,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-0bdeeeba54692e2e3ed4e674e149c507.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -288,19 +288,19 @@ Mediation analysis is:
 <p><em>Example</em>: Is the relationship between lower socioeconomic status and cardiovascular disease explained (mediated) through high lipid levels?</p></li>
 <li><p><strong>Refining Interventions</strong>:</p>
 <p>Mediation analysis may help us to improve the effectiveness of interventions by allowing us to target key mediators.</p>
-<p><em>Example</em>: Let’s consider the evidence from the landmark diabetes prevention trials: The Diabetes Prevention Programme <span class="citation" data-cites="knowler_reduction_2002">(<a href="#ref-knowler_reduction_2002" role="doc-biblioref">2</a>)</span>, The Diabetes Prevention Study <span class="citation" data-cites="tuomilehto_prevention_2001">(<a href="#ref-tuomilehto_prevention_2001" role="doc-biblioref">3</a>)</span>, and The Da Qin study <span class="citation" data-cites="pan_effects_1997">(<a href="#ref-pan_effects_1997" role="doc-biblioref">4</a>)</span>. These studies randomized high diabetes risk individuals to either a lifestyle intervention (consisting of diet modfication in combination with physical activity) or routine health advice and care. The main finding was a ~58% lower risk of incidence type 2 diabetes in the lifestyle intervention group compared to the routine care group.</p></li>
+<p><em>Example</em>: Let’s consider the evidence from the landmark diabetes prevention trials: The Diabetes Prevention Programme <span class="citation" data-cites="knowler_reduction_2002">(<a href="#ref-knowler_reduction_2002" role="doc-biblioref">2</a>)</span>, The Diabetes Prevention Study <span class="citation" data-cites="tuomilehto_prevention_2001">(<a href="#ref-tuomilehto_prevention_2001" role="doc-biblioref">3</a>)</span>, and The Da Qing study <span class="citation" data-cites="pan_effects_1997">(<a href="#ref-pan_effects_1997" role="doc-biblioref">4</a>)</span>. These studies randomized high diabetes risk individuals to either a lifestyle intervention (consisting of diet modfication in combination with physical activity) or routine health advice and care. The main finding was a ~58% lower risk of incidence type 2 diabetes in the lifestyle intervention group compared to the routine care group.</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-fc700ca34de0eed01f06" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-fc700ca34de0eed01f06">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-289e27e638f6c67636ff" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-289e27e638f6c67636ff">{"x":{"diagram":"\ndigraph {\n  graph [rankdir = LR]  # Left to right graph\n  node [shape = plaintext] \n  X [label = \"Lifestyle intervention\"] \n  M [label = \"Weight loss\"] \n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n  X -> M\n  M -> Y\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We might be interested in further refining the intervention so as to increase the magnitude of the effect. It would be interesting to know if the lifestyle changes reduce the risk of diabetes only because they lower BMI (effect mediated through BMI) or if lifestyle has a direct impact on diabetes risk that does not require any change in BMI. This may help us understand how important BMI targets are in future lifestyle modification programs.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-7eab157c5ea0e37179cf" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-7eab157c5ea0e37179cf">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-7d83745f5922288211d1" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-7d83745f5922288211d1">{"x":{"diagram":"\ndigraph {\n  graph []\n  node [shape = plaintext]\n    X [label = \"Lifestyle intervention\"]\n    M [label = \"Weight loss\"]\n    N [label = \"?\"]\n  Y [label = \"Type 2 diabetes\"]\n  edge [minlen = 2]\n    X->M\n    M->Y\n    N->M\n   {rank = same; M; X; Y; }\n   {rank = min; N; }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
